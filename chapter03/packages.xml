@@ -8,9 +8,9 @@
 <sect1 id="materials-packages">
   <?dbhtml filename="packages.html"?>
 
-  <title>All Packages</title>
+  <title>所有的软件包</title>
 
-  <para>Download or otherwise obtain the following packages:</para>
+  <para>下载或用其他方式获取下列源码包：</para>
 
   <variablelist role="materials">
 
@@ -139,12 +139,15 @@
         <para>MD5 sum: <literal>&file-md5;</literal></para>
 
         <note>
+<!--E
           <para>File (&file-version;) may no longer be available at the
           listed location. The site administrators of the master download
           location occasionally remove older versions when new ones are
           released. An alternative download location that may have the correct
           version available can also be found at: <ulink
           url="http://www.linuxfromscratch.org/lfs/download.html#ftp"/>.</para>
+-->
+          <para>(&file-version;) 版本的 File 软件包在所列的位置可能下载不到，主下载站点的管理员有时候会在新版本发布之后，删除旧的版本。替代的下载位置是 <ulink url="http://www.linuxfromscratch.org/lfs/download.html#ftp"/>，这里可以下载到所需的版本。</para>
         </note>
       </listitem>
     </varlistentry>
@@ -328,17 +331,22 @@
         <para>MD5 sum: <literal>&linux-md5;</literal></para>
 
         <note>
+<!--E
           <para>The Linux kernel is updated relatively often, many times due to
           discoveries of security vulnerabilities.  The latest available
           &linux-major-version;.&linux-minor-version;.x kernel version should be
           used, unless the errata page says otherwise.</para>
+-->
+          <para>由于经常发现安全漏洞，Linux 内核更新很快。除非勘误表上指出，读者应当下载使用最新的 &linux-major-version;.&linux-minor-version;.x 版本。</para>
 
+<!--E
           <para>For users with limited speed or expensive bandwidth who wish to
           update the Linux kernel, a baseline version of the package and
           patches can be downloaded separately.  This may save some time or
           cost for a subsequent patch level upgrade within a minor release.
           </para>
-
+-->
+          <para>对于想要升级内核但带宽有限的读者，主版本的源码包和后续补丁可以分别下载。这样可以在次级发行版本补丁升级上节约时间。</para>
         </note>
       </listitem>
     </varlistentry>
@@ -605,6 +613,6 @@
 
   </variablelist>
 
-  <para>Total size of these packages: about <returnvalue/></para>
+  <para>全部源码包总计约 <returnvalue/>。</para>
 
 </sect1>
