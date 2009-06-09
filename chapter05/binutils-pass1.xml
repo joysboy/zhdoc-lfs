@@ -14,7 +14,10 @@
     <address>&binutils-url;</address>
   </sect1info>
 
+<!--E
   <title>Binutils-&binutils-version; - Pass 1</title>
+-->
+  <title>Binutils-&binutils-version; - 第一遍</title>
 
   <indexterm zone="ch-tools-binutils-pass1">
     <primary sortas="a-Binutils">Binutils</primary>
@@ -41,95 +44,140 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Binutils</title>
+-->
+    <title>安装 Binutils</title>
 
+<!--E
     <para>It is important that Binutils be the first package compiled
     because both Glibc and GCC perform various tests on the available
     linker and assembler to determine which of their own features to
     enable.</para>
+-->
+    <para>首先安装的第一个软件包是 Binutils ，这非常重要。因为 Glibc 和 GCC 会针对可用的连接器和汇编器进行多种测试，以决定是否打开某些特性。</para>
 
+<!--E
     <para>Binutils does not recognize versions of Texinfo newer than 4.9.  Fix
     this issue by applying the following patch:</para>
+-->
+    <para>Binutils 不能识别高于 4.9 版本的 Texinfo。应用下面的补丁修正这个问题：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&binutils-configure-patch;</userinput></screen>
 
+<!--E
     <para>The Binutils documentation recommends building Binutils outside of the
     source directory in a dedicated build directory:</para>
+-->
+    <para>Binutils 的文档推荐用一个新建的目录来编译它，而不是在源码目录中：</para>
 
 <screen><userinput remap="pre">mkdir -v ../binutils-build
 cd ../binutils-build</userinput></screen>
 
     <note>
+<!--E
       <para>In order for the SBU values listed in the rest of the book
       to be of any use, measure the time it takes to build this package from
       the configuration, up to and including the first install. To achieve
       this easily, wrap the three commands in a <command>time</command>
       command like this: <userinput>time { ./configure ... &amp;&amp; make
       &amp;&amp; make install; }</userinput>.</para>
+-->
+      <para>如果你想使用本书余下部份列出的 SBU 值，那么现在就要测量一下编译本软件包的时间。你可以用类似下面这样的time 命令来测量：<userinput>time { ./configure ... &amp;&amp; make &amp;&amp; make install; }</userinput></para>
     </note>
 
+<!--E
     <para>Now prepare Binutils for compilation:</para>
+-->
+    <para>现在开始准备编译：</para>
 
 <screen><userinput remap="configure">CC="gcc -B/usr/bin/" ../binutils-&binutils-version;/configure \
     --prefix=/tools --disable-nls --disable-werror</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><envar>CC="gcc -B/usr/bin/"</envar></term>
         <listitem>
+<!--E
           <para>This forces <command>gcc</command> to prefer the linker from
           the host in <filename class="directory">/usr/bin</filename>. This
           is necessary on some hosts where the new <command>ld</command>
           built here is not compatible with the host's <command>gcc</command>.
           </para>
+-->
+          <para>该选项强制 <command>gcc</command> 使用宿主系统中 <filename class="directory">/usr/bin</filename> 目录下的连接器。这样做的必要是因为新生成的 <command>ld</command> 可能与某些宿主系统的 <command>gcc</command> 不兼容。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--prefix=/tools</parameter></term>
         <listitem>
+<!--E
           <para>This tells the configure script to prepare to install the
           Binutils programs in the <filename class="directory">/tools</filename>
           directory.</para>
+-->
+          <para>这个参数告诉配置脚本，应该把 Binutils 软件包中的程序安装到 <filename class="directory">/tools</filename> 目录中。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--disable-nls</parameter></term>
         <listitem>
+<!--E
           <para>This disables internationalization as i18n is not needed for the
           temporary tools.</para>
+-->
+          <para>这个参数禁用国际化(通常简称 i18n)，临时工具不需要国际化的特性。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--disable-werror</parameter></term>
         <listitem>
+<!--E
           <para>This prevents the build from stopping in the event that there
           are warnings from the host's compiler.</para>
+-->
+          <para>该参数防止在使用某些宿主系统的编译器给出警告信息时停止编译。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Continue with compiling the package:</para>
+-->
+    <para>接下来编译它：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>Compilation is now complete. Ordinarily we would now run the
     test suite, but at this early stage the test suite framework (Tcl,
     Expect, and DejaGNU) is not yet in place. The benefits of running the
     tests at this point are minimal since the programs from this
     first pass will soon be replaced by those from the second.</para>
+-->
+    <para>现在编译完成了。通常我们会运行测试套件，但是目前测试套件（Tcl、Expect 和 DejaGNU）尚未安装。而且在这里运行测试也没什么用处，因为第一遍安装的程序很快就会被第二遍的程序所覆盖。</para>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装它：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Next, prepare the linker for the <quote>Adjusting</quote> phase
     later on:</para>
+-->
+    <para>下面为后面<quote>调整工具链</quote>做准备：</para>
 
 <screen><userinput remap="adjust">make -C ld clean
 make -C ld LIB_PATH=/tools/lib
@@ -141,15 +189,19 @@ cp -v ld/ld-new /tools/bin</userinput></screen>
       <varlistentry>
         <term><parameter>-C ld clean</parameter></term>
         <listitem>
+<!--E
           <para>This tells the make program to remove all compiled
           files in the <filename class="directory">ld</filename>
           subdirectory.</para>
+-->
+          <para>告诉 make 程序删除所有 <filename class="directory">ld</filename> 子目录中编译生成的文件。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>-C ld LIB_PATH=/tools/lib</parameter></term>
         <listitem>
+<!--E
           <para>This option rebuilds everything in the <filename
           class="directory">ld</filename> subdirectory. Specifying the
           <envar>LIB_PATH</envar> Makefile variable on the command line
@@ -157,6 +209,8 @@ cp -v ld/ld-new /tools/bin</userinput></screen>
           temporary tools location. The value of this variable specifies
           the linker's default library search path. This preparation is
           used later in the chapter.</para>
+-->
+          <para>这个选项重新编译 <filename class="directory">ld</filename> 子目录中的所有文件。在命令行中指定 Makefile 的 <envar>LIB_PATH</envar> 变量值，使它明确指向临时工具目录，以覆盖默认值。这个变量的值指定了连接器的默认库搜索路径，它在这一章的稍后部分会用到。</para>
         </listitem>
       </varlistentry>
 
@@ -167,8 +221,11 @@ cp -v ld/ld-new /tools/bin</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-binutils" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-binutils" role="."/>。</para>
 
   </sect2>
 

@@ -8,14 +8,21 @@
 <sect1 id="ch-tools-generalinstructions">
   <?dbhtml filename="generalinstructions.html"?>
 
+<!--E
   <title>General Compilation Instructions</title>
+-->
+  <title>基本编译规则说明</title>
 
+<!--E
   <para>When building packages there are several assumptions made within 
   the instructions:</para>
+-->
+  <para>在编译软件包时有一些假定，说明如下：</para>
 
   <itemizedlist>
 
   <listitem>
+<!--E
     <para>Several of the packages are patched before compilation, but only when
     the patch is needed to circumvent a problem. A patch is often needed in
     both this and the next chapter, but sometimes in only one or the other.
@@ -24,45 +31,65 @@
     <emphasis>fuzz</emphasis> may also be encountered when applying a patch. Do
     not worry about these warnings, as the patch was still successfully
     applied.</para>
+-->
+    <para>有些软件包在编译之前需要打补丁，但是仅仅在需要修正一个问题的时候才会打该补丁。一个补丁可能在本章和下一章都需要，但有时会只在这章或下章需要，因此会发现已经下载了的补丁在编译时没有应用，此时不必有太多顾虑。在应用某个补丁时可能会出现 <emphasis>offset</emphasis> 或 <emphasis>fuzz</emphasis> 的警告信息，不要在意这些警告，这些补丁仍能成功被应用。</para>
   </listitem>
 
   <listitem>
+<!--E
     <para>During the compilation of most packages, there will be several
     warnings that scroll by on the screen. These are normal and can safely be
     ignored.  These warnings are as they appear&mdash;warnings about
     deprecated, but not invalid, use of the C or C++ syntax. C standards change
     fairly often, and some packages still use the older standard. This is not a
     problem, but does prompt the warning.</para>
+-->
+    <para>在编译大多数软件包的时候，会出现一些警告信息。这是很正常的，可以安全的忽略掉。这些警告大都分是关于警告 C 或 C++ 使用了不推荐(deprecated)但仍有效的语法。C 语言的标准会经常更改，某些软件包使用了旧的标准，这不算问题，但是会给出警告信息。</para>
 
     <important>
+<!--E
       <para>After installing each package, delete its source and build
       directories, unless specifically instructed otherwise. Deleting the
       sources prevents mis-configuration when the same package is reinstalled
       later.</para>
+-->
+      <para>在每个软件包安装好以后，删除它的源码和编译目录，另有特殊说明除外。删除源码可以防止同一个软件包再次编译安装时配置出错。</para>
     </important>
   </listitem>
 
   <listitem>
+<!--E
     <para>Check one last time that the <envar>LFS</envar> environment variable
     is set up properly:</para>
+-->
+    <para>再次检查 <envar>LFS</envar> 变量是否设置正确。</para>
 
 <screen role="nodump"><userinput>echo $LFS</userinput></screen>
 
+<!--E
     <para>Make sure the output shows the path to the LFS partition's mount
     point, which is <filename class="directory">/mnt/lfs</filename>, using our
     example.</para>
+-->
+    <para>确认输出结果为 LFS 分区的挂载点，在我们的配置中是 <filename class="directory">/mnt/lfs</filename>。</para>
   </listitem>
 
   <listitem>
 
+<!--E
     <para>Finally, one last important item must be emphasized:</para>
+-->
+    <para>最后一个重要的事项要着重指出：</para>
 
     <important>
+<!--E
       <para>Before issuing the build instructions for a package, the package
       should be unpacked as user <systemitem class="username">lfs</systemitem>,
       and a <command>cd</command> into the created directory should be
       performed.  The build instructions assume that the
       <command>bash</command> shell is in use.</para>
+-->
+      <para>在安照说明编译安装软件包之前，每个源码包应该作为 <systemitem class="username">lfs</systemitem> 用户解压，而且进入(cd)到新生成的目录中。编译说明假设使用 <command>bash</command> Shell。</para>
     </important>
   </listitem>
 
