@@ -8,30 +8,45 @@
 <sect1 id="ch-intro-resources">
   <?dbhtml filename="resources.html"?>
 
+<!--E
   <title>Resources</title>
+-->
+  <title>资源</title>
 
   <sect2 id="ch-intro-faq">
     <title>FAQ</title>
 
+<!--E
     <para>If during the building of the LFS system you encounter any
     errors, have any questions, or think there is a typo in the book,
     please start by consulting the Frequently Asked Questions (FAQ)
     that is located at <ulink url="&faq-root;"/>.</para>
+-->
+    <para>如果您在构建 LFS 系统的过程中遇到错误、有什么问题、或者认为书中有排版错误，请首先查看在 <ulink url="&faq-root;"/> 上的常见问题回答（FAQ）。</para>
 
   </sect2>
 
   <sect2 id="ch-intro-maillists" xreflabel="Chapter 1 - Mailing Lists">
+<!--E
     <title>Mailing Lists</title>
+-->
+    <title>邮件列表</title>
 
+<!--E
     <para>The <uri>linuxfromscratch.org</uri> server hosts a number of mailing
     lists used for the development of the LFS project. These lists include the
     main development and support lists, among others. If the FAQ does not solve
     the problem you are having, the next step would be to search the mailing
     lists at <ulink url="&lfs-root;search.html"/>.</para>
+-->
+    <para><uri>linuxfromscratch.org</uri> 服务器为 LFS 项目的开发提供了许多邮件列表，包括主要的开发和支持列表以及其它内容。如果 FAQ 没能解决你的问题，你可以在 <ulink url="&lfs-root;search.html"/> 搜索邮件列表。</para>
 
+<!--E
     <para>For information on the different lists, how to subscribe, archive
     locations, and additional information, visit
     <ulink url="&lfs-root;mail.html"/>.</para>
+-->
+    <para>要了解这些不同邮件列表的信息、如何订阅邮件列表、邮件列表的存档位置以及其它的相关信息，请访问 <ulink url="&lfs-root;mail.html"/>。</para>
 
   </sect2>
 
@@ -53,12 +68,15 @@
   <sect2 id="ch-intro-irc">
     <title>IRC</title>
 
+<!--E
     <para>Several members of the LFS community offer assistance on our
     community Internet Relay Chat (IRC) network. Before using this support,
     please make sure that your question is not already answered in the LFS
     FAQ or the mailing list archives. You can find the IRC network at
     <uri>irc.linuxfromscratch.org</uri>. The support channel is named
     #LFS-support.</para>
+-->
+    <para>LFS 社区的许多成员在我们社区的 Internet 多线交谈（IRC）网络上为大家提供帮助。在您使用这种方式获取帮助之前，请确定您的问题没有在 LFS FAQ 和邮件列表存档里出现过。您可以在 <uri>irc.linuxfromscratch.org</uri> 找到支持的频道 #LFS-support。</para>
 
   </sect2>
 
@@ -73,20 +91,29 @@
   </sect2>  -->
 
   <sect2 id="ch-intro-mirrors" xreflabel="Chapter 1 - Mirror sites">
+<!--E
     <title>Mirror Sites</title>
+-->
+    <title>镜像站点</title>
 
+<!--E
     <para>The LFS project has a number of world-wide mirrors to make accessing
     the website and downloading the required packages more convenient. Please
     visit the LFS website at <ulink url="&lfs-root;mirrors.html"/> for a list
     of current mirrors.</para>
+-->
+    <para>LFS 项目在全世界范围内有许多镜像，可以让访问 Web 站点和下载所需的软件包更加快捷便利。请访问 <ulink url="&lfs-root;mirrors.html"/> 以获得当前可用的镜像站点列表。</para>
 
   </sect2>
 
   <sect2 id="ch-intro-contactinfo">
-    <title>Contact Information</title>
+    <title>联系信息</title>
 
+<!--E
     <para>Please direct all your questions and comments to one of the LFS
     mailing lists (see above).</para>
+-->
+    <para>请直接将您的问题和意见发送到上面所列的邮件列表。</para>
 
   </sect2>
 

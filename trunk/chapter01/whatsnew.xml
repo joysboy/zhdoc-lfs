@@ -8,10 +8,16 @@
 <sect1 id="ch-intro-whatsnew">
   <?dbhtml filename="whatsnew.html"?>
 
+<!--E
   <title>What's new since the last release</title>
+-->
+  <title>版本更新</title>
 
+<!--E
   <para>Below is a list of package updates made since the previous
   release of the book.</para>
+-->
+  <para>下面是本书自上一个版本到当前版本的更新列表。</para>
 
   <!--
     Every package in the book is listed in the "Upgraded to:" section.
@@ -20,7 +26,10 @@
   -->
 
   <itemizedlist>
+<!--E
     <title>Upgraded to:</title>
+-->
+    <title>升级至：</title>
 
 
 <!--
@@ -212,7 +221,7 @@
   </itemizedlist>-->
 
   <itemizedlist>
-    <title>Added:</title>
+    <title>增加了：</title>
 
     <listitem>
       <para>&bash-fixes-patch;</para>
@@ -309,7 +318,7 @@
   </itemizedlist>
 
   <itemizedlist>
-    <title>Removed:</title>
+    <title>去除了：</title>
 
     <listitem>
       <para>bash-3.2-fixes-5.patch</para>
