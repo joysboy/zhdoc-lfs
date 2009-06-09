@@ -8,15 +8,24 @@
 <sect1 id="ch-scatter-changelog">
   <?dbhtml filename="changelog.html"?>
 
+<!--E
   <title>Changelog</title>
+-->
+  <title>更新日志</title>
 
+<!--E
   <para>This is version &version; of the Linux From Scratch book, dated
   &releasedate;. If this book is more than six months old, a newer and better
   version is probably already available. To find out, please check one of the
   mirrors via <ulink url="&lfs-root;mirrors.html"/>.</para>
+-->
+  <para>这是 &version; 版本的 Linux From Scratch 指导书，&releasedate;发布。如果本书的版本过期了六个月以上，可能已经有更新更好的版本可供下载了。要获得更新的版本，请访问 <ulink url="http://www.linuxfromscratch.org/mirrors.html"/>。</para>
 
+<!--E
   <para>Below is a list of changes made since the previous release of the
   book.</para>
+-->
+  <para>下面是本书自上一个版本到当前版本的详细更新日志。</para>
 
   <itemizedlist>
     <title>Changelog Entries:</title>

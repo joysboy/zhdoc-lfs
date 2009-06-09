@@ -8,18 +8,28 @@
 <sect1 id="ch-intro-askforhelp">
   <?dbhtml filename="askforhelp.html"?>
 
+<!--E
   <title>Help</title>
+-->
+  <title>寻求帮助</title>
 
+<!--E
   <para>If an issue or a question is encountered while working through
   this book, check the FAQ page at <ulink url="&faq-root;#generalfaq"/>.
   Questions are often already answered there. If your question is not
   answered on this page, try to find the source of the problem. The
   following hint will give you some guidance for troubleshooting:
   <ulink url="&hints-root;errors.txt"/>.</para>
+-->
+  <para>如果您在本书中遇到困难或者问题，请查看 FAQ 页 <ulink url="&faq-root;#generalfaq"/>。您所遇到的问题往往这里已经有解答了。如果 FAQ 没有解决您的问题，请尝试找到问题的根源。<ulink url="&hints-root;errors.txt"/> 上的提示将给您提供一些故障诊断的指导。</para>
 
+<!--E
   <para>If you cannot find your problem listed in the FAQ, search the mailing
   lists at <ulink url="&lfs-root;search.html"/>.</para>
+-->
+  <para>如果 FAQ 没有解决你的问题，你可以在 <ulink url="&lfs-root;search.html"/> 搜索邮件列表。</para>
 
+<!--E
   <para>We also have a wonderful LFS community that is willing to offer
   assistance through the mailing lists and IRC (see the <xref
   linkend="ch-intro-resources"/> section of this book). However,
@@ -29,13 +39,22 @@
   research on your own first. That allows us to focus on the more unusual
   support needs. If your searches do not produce a solution, please include
   all relevant information (mentioned below) in your request for help.</para>
+-->
+  <para>我们也有一个出色的 LFS 社区愿意通过 IRC 和邮件列表为您提供帮助（参见本书<xref linkend="ch-intro-resources"/>）。然而，我们每天都会收到一些只要简单地察看 FAQ 或者搜索邮件列表就可以解决的问题。为了让我们能够为真正不寻常的问题提供帮助，请您自己先搜索一下！仅在你的搜索得不到问题的解决办法的时候，再向我们寻求帮助。为了帮助诊断和解决问题，您需要在帮助请求中包含所有相关信息（见下面描述）。</para>
 
   <sect2>
+<!--E
     <title>Things to Mention</title>
+-->
+    <title>需要提及的事情</title>
 
+<!--E
     <para>Apart from a brief explanation of the problem being experienced,
     the essential things to include in any request for help are:</para>
+-->
+    <para>除了一份您所遇到的问题的简短描述外，在任何帮助请求中您还需要附加一些必需的信息：</para>
 
+<!--E
     <itemizedlist>
       <listitem>
         <para>The version of the book being used (in this case &version;)</para>
@@ -53,30 +72,61 @@
         <para>Note whether you have deviated from the book at all </para>
       </listitem>
     </itemizedlist>
+-->
+    <itemizedlist>
+      <listitem>
+        <para>您所使用的 LFS Book 的版本（本书的版本是 &version;）</para>
+      </listitem>
+      <listitem>
+        <para>创建 LFS 所用的宿主 Linux 发行版的名称及其版本</para>
+      </listitem>
+      <listitem>
+        <para>遇到问题的软件包以及所在的章节</para>
+      </listitem>
+      <listitem>
+        <para>确切的错误信息或描述</para>
+      </listitem>
+      <listitem>
+        <para>注明是否完全是按本书所说的在做［强烈建议新手完全按照本书操作］</para>
+      </listitem>
+    </itemizedlist>
 
     <note>
+<!--E
       <para>Deviating from this book does <emphasis>not</emphasis> mean that
       we will not help you. After all, LFS is about personal preference.
       Being upfront about any changes to the established procedure helps us
       evaluate and determine possible causes of your problem.</para>
+-->
+      <para>不按本书说的做并不意味着我们就不会给您提供帮助，毕竟 LFS 是个性化的选择。提供您在建立过程中所做的任何更改，将有助于我们估计和确定导致您所遇到的问题的可能原因。</para>
     </note>
 
   </sect2>
 
   <sect2>
+<!--E
     <title>Configure Script Problems</title>
+-->
+    <title>配置脚本的问题</title>
 
+<!--E
     <para>If something goes wrong while running the <command>configure</command>
     script, review the <filename>config.log</filename> file. This file may
     contain errors encountered during <command>configure</command> which were
     not printed to the screen. Include the <emphasis>relevant</emphasis> lines
     if you need to ask for help.</para>
+-->
+    <para>如果执行 <command>configure</command> 脚本的时候，某个地方出错了，请检查 <filename>config.log</filename> 文件，这个文件可能包含 <command>configure</command> 过程中没有输出到屏幕的错误，如果您需要请求帮助，请把<emphasis>这里面的相关信息</emphasis>也包含进去。</para>
 
   </sect2>
 
   <sect2>
+<!--E
     <title>Compilation Problems</title>
+-->
+    <title>编译问题</title>
 
+<!--E
     <para>Both the screen output and the contents of various files are useful
     in determining the cause of compilation problems. The screen output from
     the <command>configure</command> script and the <command>make</command>
@@ -84,6 +134,8 @@
     do include enough of the relevant information. Below is an example of the
     type of information to include from the screen output from
     <command>make</command>:</para>
+-->
+    <para>屏幕输出和各种生成的文件内容，对确定产生编译问题的原因都是有用的。<command>configure</command> 和 <command>make</command> 的屏幕输出也是有帮助的。不需要把所有的输出都包含进来，只需要包含足够的相关信息就行了。下面是一个从 <command>make</command> 的屏幕输出中包含所需信息的例子：</para>
 
 <screen><computeroutput>gcc -DALIASPATH=\"/mnt/lfs/usr/share/locale:.\"
 -DLOCALEDIR=\"/mnt/lfs/usr/share/locale\"
@@ -104,22 +156,31 @@ make[1]: *** [all-recursive] Error 1
 make[1]: Leaving directory `/lfs/tmp/make-3.79.1'
 make: *** [all-recursive-am] Error 2</computeroutput></screen>
 
+<!--E
     <para>In this case, many people would just include the bottom
     section:</para>
+-->
+    <para>类似的情形下，许多人会仅仅只包含最后一段：</para>
 
 <screen><computeroutput>make [2]: *** [make] Error 1</computeroutput></screen>
 
+<!--E
     <para>This is not enough information to properly diagnose the problem
     because it only notes that something went wrong, not
     <emphasis>what</emphasis> went wrong. The entire section, as in the
     example above, is what should be saved because it includes the command
     that was executed and the associated error message(s).</para>
+-->
+    <para>这对于正确的分析问题是不够的，因为它只是提示出错了，而没有说是什么出错了。在上面例子中，全部内容都应该保存下来，因为它包括了所运行的命令和相关的错误信息。</para>
 
+<!--E
     <para>An excellent article about asking for help on the Internet is
     available online at <ulink
     url="http://catb.org/~esr/faqs/smart-questions.html"/>. Read and
     follow the hints in this document to increase the likelihood of getting
     the help you need.</para>
+-->
+    <para><ulink url="http://catb.org/~esr/faqs/smart-questions.html"/> 上有一篇很好的文章，讲述如何在 Internet 上寻求帮助，请阅读并遵照文章中的提示，将有助于您得到您所需要的答案。</para>
 
   </sect2>
 
