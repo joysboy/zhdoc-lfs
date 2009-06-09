@@ -8,8 +8,12 @@
 <sect1 id="pre-hostreqs">
   <?dbhtml filename="hostreqs.html"?>
 
+<!--E
   <title>Host System Requirements</title>
+-->
+  <title>宿主系统要求</title>
 
+<!--E
     <para>Your host system should have the following software with the
     minimum versions indicated. This should not be an issue for most
     modern Linux distributions. Also note that many distributions will
@@ -17,6 +21,8 @@
     <quote>&lt;package-name&gt;-devel</quote> or
     <quote>&lt;package-name&gt;-dev</quote>. Be sure to install those if
     your distribution provides them.</para>
+-->
+    <para>你的宿主系统应该有下列软件，并满足其最低版本要求。对于现在大部分 Linux 发行版都不是问题。需要指出的是，多数的发行版将软件的头文件放在不同的软件包中，常以<quote>&lt;package-name&gt;-devel</quote> 或 <quote>&lt;package-name&gt;-dev</quote>的形式。如果你的发行版提供这些软件包，请确保安装了它们。</para>
 
   <itemizedlist spacing="compact">
 
@@ -84,12 +90,16 @@
       <para><emphasis role="strong">Linux Kernel-2.6.x</emphasis>
       (having been compiled with GCC-3.0 or greater)</para>
 
+<!--E
       <para>The reason for the kernel version requirement is that thread-local
       storage support in Binutils will not be built and the Native POSIX
       Threading Library (NPTL) test suite will segfault if the host's kernel
       isn't at least a 2.6.x version compiled with a 3.0 or later release of
       GCC.</para>
+-->
+      <para>之所以对内核版本提出要求是因为：如果宿主系统的内核不是由 GCC3.0 或以上版本编译的 2.6.x 内核，Binutils 的线程局部存储支持 (thread-local storage support) 将不会被编译，而且本地 POSIX 线程库 (NPTL) 测试套件会出现段错误。</para>
 
+<!--E
       <para>If the host kernel is either earlier than 2.6.x, or it was not
       compiled using a GCC-3.0 (or later) compiler, you will have to replace
       the kernel with one adhering to the specifications. There are two methods
@@ -99,8 +109,11 @@
       then you can compile a 2.6 kernel yourself. Instructions for compiling the
       kernel and configuring the boot loader (assuming the host uses GRUB) are
       located in <xref linkend="chapter-bootable"/>.</para>
+-->
+      <para>如果宿主系统内核版本早于 2.6.x，或者不是使用 GCC-3.0（或以后）编译而成，你不得不更新内核版本以满足需要。有两种方法来解决该问题，查看你的发行版是否提供 2.6 的内核包，如果是，你可以安装它。如果没有提供或者是你不想安装它，你可以自己编译一个 2.6 的内核。关于编译内核以及配置引导程序（假定宿主安装了 grub）可以参考 <xref linkend="chapter-bootable"/>。</para>
 
       <note>
+<!--E
         <para>This version of the book builds a 32-bit Linux system and
         requires an existing 32-bit version of of the kernel on the Intel/AMD
         x86 architecture.  Adding capabilty for x86_64 systems is a major
@@ -108,6 +121,8 @@
         additional architectures can be found in the Cross-Compiled Linux From
         Scratch (CLFS) project at <ulink url="http://cross-lfs.org/view/svn/"/>.
         </para>
+-->
+        <para>此版本构建一个 32 位的 Linux 系统，也需要一个安装在 Intel/AMD x86 架构的 32 位内核。添加对 x86_64 架构的支持是 LFS 未来版本的主要目标。对 64 位系统及其他系统结构的支持请参阅位于 <ulink url="http://cross-lfs.org/view/svn/"/> 的 Cross-Compiled Linux From Scratch (CLFS) 项目。</para> 
       </note>
 
     </listitem>
@@ -143,15 +158,21 @@
 
   </itemizedlist>
 
+<!--E
   <para>Note that the symlinks mentioned above are required to build an LFS
   system using the instructions contained within this book. Symlinks that
   point to other software (such as dash, mawk, etc.) may work, but are not
   tested or supported by the LFS development team, and may require either
   deviation from the instructions or additional patches to some
   packages.</para>
+-->
+  <para>请注意在本书指令中提及到的符号链接（symlinks），这些是为构建 LFS 系统所需。指向其他软件的符号链接（比如 dash、mawk 等等）能够工作，但没有没有 LFS 开发团队的测试和支持，不能有任何命令差错或一些软件的其他补丁。</para>
 
+<!--E
   <para>To see whether your host system has all the appropriate versions, and
   the ability to compile programs, run the following:</para>
+-->
+  <para>为了查看你的宿主系统是否能满足所有的版本要求，并且能够编译程序，运行下面指令：</para>
 
 <screen role="nodump"><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
 <literal>#!/bin/bash
