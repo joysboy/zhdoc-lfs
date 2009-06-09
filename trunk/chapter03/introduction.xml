@@ -8,8 +8,12 @@
 <sect1 id="materials-introduction">
   <?dbhtml filename="introduction.html"?>
 
+<!--E
   <title>Introduction</title>
+-->
+  <title>本章介绍</title>
 
+<!--E
   <para>This chapter includes a list of packages that need to be downloaded in
   order to build a basic Linux system. The listed version numbers correspond to
   versions of the software that are known to work, and this book is based on
@@ -18,14 +22,20 @@
   versions may also have problems that require work-arounds. These work-arounds
   will be developed and stabilized in the development version of the
   book.</para>
+-->
+  <para>本章包含了一个构建基本 Linux 系统需要下载的软件包清单，列出的版本号是已知可以正常工作的版本，本书就是建立在这些软件包之上的。我们强烈建议不要使用新的版本，因为用于前一个版本的编译安装命令可能并不适用于新的版本。最新版本的软件包也许需要一个与旧版本不同的工作环境而可能会出现问题。在本书的开发版本中将会建立这种新的工作环境。</para>
 
+<!--E
   <para>Download locations may not always be accessible. If a download
   location has changed since this book was published, Google (<ulink
   url="http://www.google.com/"/>) provides a useful search engine for
   most packages. If this search is unsuccessful, try one of the
   alternative means of downloading discussed at <ulink
   url="&lfs-root;lfs/packages.html#packages"/>.</para>
+-->
+  <para>下载地址并不是总是可用的，如果在本书出版之后，软件包的下载地址变了，Google（<ulink url="http://www.google.com/"/>）提供了强大的搜索引擎帮我们寻找绝大多数的软件包。如果搜索不到，试试 <ulink url="&lfs-root;lfs/packages.html#packages"/> 上介绍的其他下载方式。</para>
 
+<!--E
   <para>Downloaded packages and patches will need to be stored somewhere
   that is conveniently available throughout the entire build. A working
   directory is also required to unpack the sources and build them.
@@ -34,18 +44,26 @@
   directory. By using this directory, the required elements will be
   located on the LFS partition and will be available during all stages
   of the building process.</para>
+-->
+  <para>下载好的软件包和补丁需要放在一个构建过程中便于访问的目录，还要一个用于解压和编译源码包的目录。<filename class="directory">$LFS/sources</filename> 可同时满足这两个要求。使用这个目录让所有需要的部件都在 LFS 分区上，且构建过程中的所有步骤都可以访问到。</para>
 
+<!--E
   <para>To create this directory, execute the following command, as user
   <systemitem class="username">root</systemitem>, before starting the download
   session:</para>
+-->
+  <para>要创建该目录，在下载前用root 用户运行下面的命令：</para>
 
 <screen role="nodump"><userinput>mkdir -v $LFS/sources</userinput></screen>
 
+<!--E
   <para>Make this directory writable and sticky. <quote>Sticky</quote>
   means that even if multiple users have write permission on a
   directory, only the owner of a file can delete the file within a
   sticky directory. The following command will enable the write and
   sticky modes:</para>
+-->
+  <para>把该目录设置为所有用户可写和 sticky 模式，<quote>Sticky</quote>表示虽然多个用户对该目录有写的权限，但是只有文件的所有者才能删除。下面的命令将该目录设置可写和sticky模式：</para>
 
 <screen role="nodump"><userinput>chmod -v a+wt $LFS/sources</userinput></screen>
 
