@@ -41,19 +41,29 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Glibc</title>
+-->
+    <title>Glibc 的安装</title>
 
+<!--E
     <para>Fix a potential issue if <filename>/etc/ld.so.preload</filename> is
     used on the host system.</para>
+-->
+    <para>如果宿主系统使用 <filename>/etc/ld.so.preload</filename>，运行下面命令修正可能出现的问题。</para>
 
 <screen><userinput remap="pre">sed -i 's@/etc/ld.so.preload@/tools/etc/ld.so.preload@' elf/rtld.c</userinput></screen>
 
+<!--E
     <para>The Glibc documentation recommends building Glibc outside of the source
     directory in a dedicated build directory:</para>
+-->
+    <para>Glibc 文档推荐在源码目录之外的一个专门的编译目录下进行编译：</para>
 
 <screen><userinput remap="pre">mkdir -v ../glibc-build
 cd ../glibc-build</userinput></screen>
 
+<!--E
     <para>Because Glibc no longer supports i386, its developers say to use the
     compiler flag <parameter>-march=i486</parameter> when building it for x86
     machines. There are several ways to accomplish that, but testing shows that
@@ -63,10 +73,15 @@ cd ../glibc-build</userinput></screen>
     making use of the special file <filename>configparms</filename>. The
     -mtune=native flag is also necessary to reset a reasonable value for -mtune
     that is changed when setting -march.</para>
+-->
+    <para>由于 Glibc 不再支持 i386，Glibc 的开发者提示在为 X86 机器构建时使用编译选项 <parameter>-march=i486</parameter>，尽管其他方法也能做到，但是测试显示，最好的办法是将它传递给参数<quote>CFLAGS</quote>。为了不完全覆盖 Glibc 内部构建系统使用的 CFLAGS，使用特殊文件 <filename>configparms</filename> 将所需新选项附加到其原内容之后。由于设置了参数 <parameter>-march</parameter>，参数 <parameter>-mtune</parameter> 也会发生改变，使用 <parameter>-mtune=native</parameter> 将其设置为一个合理的值。</para>
 
 <screen><userinput remap="configure">echo "CFLAGS += -march=i486 -mtune=native" &gt; configparms</userinput></screen>
 
+<!--E
     <para>Next, prepare Glibc for compilation:</para>
+-->
+    <para>接下来，配置 Glibc 为编译做准备：</para>
 
 <screen><userinput remap="configure">../glibc-&glibc-version;/configure --prefix=/tools \
     --disable-profile --enable-add-ons \
@@ -75,72 +90,99 @@ cd ../glibc-build</userinput></screen>
     --without-selinux</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--disable-profile</parameter></term>
         <listitem>
+<!--E
           <para>This builds the libraries without profiling information. Omit
           this option if profiling on the temporary tools is necessary.</para>
+-->
+          <para>该设置去掉了程序性能分析相关的库文件编译。如果需要在临时工具上做程序概要分析，就省掉这个参数。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--enable-add-ons</parameter></term>
         <listitem>
+<!--E
           <para>This tells Glibc to use the NPTL add-on as its threading
           library.</para>
+-->
+          <para>该选项告诉 Glibc 使用 NPTL（本地 POSIX 线程库）作为其线程库。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--enable-kernel=2.6.0</parameter></term>
         <listitem>
+<!--E
           <para>This tells Glibc to compile the library with support
           for 2.6.x Linux kernels.</para>
+-->
+          <para>告诉 Glibc 在编译库文件时支持 Linux 2.6.x 内核。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--with-binutils=/tools/bin</parameter></term>
         <listitem>
+<!--E
           <para>While not required, this switch ensures that there are
           no errors pertaining to which Binutils programs get used during the
           Glibc build.</para>
+-->
+          <para>这个参数并不是必需的。但它们能保证在编译 Glibc 时不会用错 Binutils 程序。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--without-gd</parameter></term>
         <listitem>
+<!--E
           <para>This prevents the build of the <command>memusagestat</command>
           program, which insists on linking against the host's libraries
           (libgd, libpng, libz, etc.).</para>
+-->
+          <para>这个参数保证不生成 <command>memusagestat</command> 程序，这个程序会顽固地连接到宿主系统的库文件（libgd、libpng 和 libz 等等）。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--with-headers=/tools/include</parameter></term>
         <listitem>
+<!--E
           <para>This tells Glibc to compile itself against the headers recently
           installed to the tools directory, so that it knows exactly what
           features the kernel has and can optimize itself accordingly.</para>
+-->
+          <para>这个参数指示 Glibc 按照前面刚刚安装到 tools 目录中的内核头文件编译自己，从而精确的知道内核的特性以根据这些特性对自己进行最佳化编译。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--without-selinux</parameter></term>
         <listitem>
+<!--E
           <para>When building from hosts that include SELinux functionality
           (e.g., Fedora Core 3), Glibc will build with support for SELinux.
           As the LFS tools environment does not contain support for SELinux, a
           Glibc compiled with such support will fail to operate correctly.</para>
+-->
+          <para>当从一个含有 SELinux 特性的宿主系统（如 Fedora Core 3）编译时，Glibc 将会将 SELinux 支持编译进来。由于 LFS 工具链并不包含 SELinux 支持，所以一个含有 SELinux 特性的 Glibc 将会导致许多操作失败。所以这里明确禁用它。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>During this stage the following warning might appear:</para>
+-->
+    <para>在此过程中可能出现下面的警告信息：</para>
 
     <blockquote>
 <screen><computeroutput>configure: WARNING:
@@ -150,6 +192,7 @@ cd ../glibc-build</userinput></screen>
 *** Check the INSTALL file for required versions.</computeroutput></screen>
     </blockquote>
 
+<!--E
     <para>The missing or incompatible <command>msgfmt</command> program is
     generally harmless, but it can sometimes cause issues when running the
     test suite. This <command>msgfmt</command> program is part of the
@@ -157,37 +200,57 @@ cd ../glibc-build</userinput></screen>
     <command>msgfmt</command> is present but deemed incompatible, upgrade
     the host system's Gettext package or continue without it and see if
     the test suite runs without problems regardless.</para>
+-->
+    <para><command>msgfmt</command> 程序的缺失或不兼容没有什么大问题，但是在运行测试程序时，有时可能出问题。<command>msgfmt</command> 是宿主系统中 Gettext 软件应提供的一部分，如果安装了 <command>msgfmt</command> 却不兼容，升级宿主系统的 Gettext。如果测试套件运行没有问题也可以不去管它。</para>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>This package does come with a test suite, however, it cannot be
     run at this time because we do not have a C++ compiler yet.</para>
+-->
+    <para>该包提供了测试套件，但由于我们还没有 C++ 的编译器，现在还不能运行。</para>
 
+<!--E
     <para>The install stage of Glibc will issue a harmless warning at the
     end about the absence of <filename>/tools/etc/ld.so.conf</filename>.
     Prevent this warning with:</para>
+-->
+    <para>安装 Glibc 的过程会出现一个 <filename>/tools/etc/ld.so.conf</filename> 文件缺失的警告， 这没有什么危害，可以运行下面的命令消除掉：</para>
 
 <screen><userinput remap="install">mkdir -v /tools/etc
 touch /tools/etc/ld.so.conf</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Different countries and cultures have varying conventions for
     how to communicate. These conventions range from the format for
     representing dates and times to more complex issues, such as the
     language spoken. The <quote>internationalization</quote> of GNU
     programs works by locale.</para>
+-->
+    <para>不同的国家和文化，使用不同的习俗来交流。这样的习俗很多，从比较简单的时间和日期格式，到非常复杂的语言发音。GNU 程序的<quote>internationalization</quote>（国际化，又称<quote>i18n</quote>，18表示中间的18个字母）是以 locale 来实现的。</para>
 
     <note>
+<!--E
       <para>If the test suites are not being run in this chapter (as per
       the recommendation), there is no need to install the locales now.
       The appropriate locales will be installed in the next chapter.
       To install the Glibc locales anyway, use instructions from
       <xref linkend="ch-system-glibc" role="."/></para>
+-->
+      <para>如果没有运行测试套件（正如我们推荐的），现在就没有必要安装 locales。在下一章我们会安装合适的 locales，如果想要现在安装，请参考<xref linkend="ch-system-glibc" role="."/>里的说明。</para>
     </note>
 
   </sect2>
@@ -195,8 +258,11 @@ touch /tools/etc/ld.so.conf</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-glibc" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-glibc" role="."/>。</para>
 
   </sect2>
 
