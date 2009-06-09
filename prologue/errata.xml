@@ -8,8 +8,12 @@
 <sect1 id="pre-errata">
   <?dbhtml filename="errata.html"?>
 
+<!--E
   <title>Errata</title>
+-->
+  <title>勘误表</title>
 
+<!--E
   <para>The software used to create an LFS system is constantly being updated
   and enhanced. Security warnings and bug fixes may become available after
   the LFS book has been released. To check whether the package versions or
@@ -18,5 +22,7 @@
   url="&errata;"/> before proceeding with your build. You should note any
   changes shown and apply them to the relevant section of the book as you
   progress with building the LFS system.</para>
+-->
+  <para>用于构建 LFS 系统的软件会经常性的更新优化，LFS 指导书发布后也会经常发布安全警告和 bug 修正。为了系统安全，如果需要查看本书中的软件包版本更新，新的安全补丁或 bug 修正，请查看 <ulink url="&errata;"/>。在继续构建之前，我们要注意将更改应用到相应的章节。</para>
 
 </sect1>
