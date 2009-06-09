@@ -8,42 +8,64 @@
 <sect1 id="space-mounting">
   <?dbhtml filename="mounting.html"?>
 
+<!--E
   <title>Mounting the New Partition</title>
+-->
+  <title>挂载新分区</title>
 
+<!--E
   <para>Now that a file system has been created, the partition needs to
   be made accessible. In order to do this, the partition needs to be
   mounted at a chosen mount point. For the purposes of this book, it is
   assumed that the file system is mounted under <filename
   class="directory">/mnt/lfs</filename>, but the directory choice is up
   to you.</para>
+-->
+  <para>新的文件系统建立以后，为了可以访问到新的分区，我们需要一个挂载点挂载它。本书假定新的文件系统挂载到 <filename class="directory">/mnt/lfs</filename>，当然选择权归你。</para>
 
+<!--E
   <para>Choose a mount point and assign it to the <envar>LFS</envar>
   environment variable by running:</para>
+-->
+  <para>选择一个挂载点，并运行下面命令将其指定到 LFS环境变量：</para>
 
 <screen role="nodump"><userinput>export LFS=/mnt/lfs</userinput></screen>
 
+<!--E
   <para>Next, create the mount point and mount the LFS file system by
   running:</para>
+-->
+  <para>接下来的命令，创建挂载点并挂载LFS文件系统：</para>
 
 <screen role="nodump"><userinput>mkdir -pv $LFS
 mount -v -t ext3 /dev/<replaceable>&lt;xxx&gt;</replaceable> $LFS</userinput></screen>
 
+<!--E
   <para>Replace <replaceable>&lt;xxx&gt;</replaceable> with the designation of the LFS
   partition.</para>
+-->
+  <para>根据你的LFS分区命名，替换 <replaceable>&lt;xxx&gt;</replaceable>。</para>
 
+<!--E
   <para>If using multiple partitions for LFS (e.g., one for <filename
   class="directory">/</filename> and another for <filename
   class="directory">/usr</filename>), mount them using:</para>
+-->
+  <para>如果想为 LFS 分配多个分区（比如一个作 <filename class="directory">/</filename> 分区，另一个作 <filename class="directory">/usr</filename> 分区），请使用下面命令分别挂载：</para>
 
 <screen role="nodump"><userinput>mkdir -pv $LFS
 mount -v -t ext3 /dev/<replaceable>&lt;xxx&gt;</replaceable> $LFS
 mkdir -v $LFS/usr
 mount -v -t ext3 /dev/<replaceable>&lt;yyy&gt;</replaceable> $LFS/usr</userinput></screen>
 
+<!--E
   <para>Replace <replaceable>&lt;xxx&gt;</replaceable> and
   <replaceable>&lt;yyy&gt;</replaceable> with the appropriate partition
   names.</para>
+-->
+  <para>将 <replaceable>&lt;xxx&gt;</replaceable> 和 <replaceable>&lt;yyy&gt;</replaceable> 分别替换成相应的分区名。</para>
 
+<!--E
   <para>Ensure that this new partition is not mounted with permissions that
   are too restrictive (such as the <option>nosuid</option>, <option>nodev</option>,
   or <option>noatime</option> options). Run the <command>mount</command> command
@@ -51,18 +73,30 @@ mount -v -t ext3 /dev/<replaceable>&lt;yyy&gt;</replaceable> $LFS/usr</userinput
   partition. If <option>nosuid</option>, <option>nodev</option>, and/or
   <option>noatime</option> are set, the partition will need to be
   remounted.</para>
+-->
+  <para>请确认挂载的新分区的权限不是太严格，（比如 <option>nosuid</option>、<option>nodev</option> 或 <option>noatime</option> 选项）。不带任何参数运行 <command>mount</command>，如果设置了 <option>nosuid</option>、<option>nodev</option> 或 <option>noatime</option> 选项，则需要重新挂载该分区。</para>
 
+<!--E
   <para>If you are using a <systemitem
   class="filesystem">swap</systemitem> partition, ensure that it is enabled
   using the <command>swapon</command> command:</para>
+-->
+  <para>如果你使用了交换分区，使用 <command>swapon</command> 命令确保它被启用：</para>
 
 <screen role="nodump"><userinput>/sbin/swapon -v /dev/<replaceable>&lt;zzz&gt;</replaceable></userinput></screen>
 
+<!--E
   <para>Replace <replaceable>&lt;zzz&gt;</replaceable> with the name of the
   <systemitem class="filesystem">swap</systemitem> partition.</para>
+-->
+  <para>将 <replaceable>&lt;zzz&gt;</replaceable> 替换成交换分区名。</para>
 
+<!--E
   <para>Now that there is an established place to work, it is time to
   download the packages.</para>
+-->
+
+  <para>现在工作空间建立好的了，是时候下载软件包了。</para>
 
 </sect1>
 

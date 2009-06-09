@@ -8,8 +8,12 @@
 <sect1 id="space-creatingpartition">
   <?dbhtml filename="creatingpartition.html"?>
 
+<!--E
   <title>Creating a New Partition</title>
+-->
+  <title>创建新的分区</title>
 
+<!--E
   <para>Like most other operating systems, LFS is usually installed on a
   dedicated partition. The recommended approach to building an LFS system
   is to use an available empty partition or, if you have enough unpartitioned
@@ -19,7 +23,10 @@
   document <ulink url="&hints-root;lfs_next_to_existing_systems.txt"/>
   explains how to implement this, whereas this book discusses the method of
   using a fresh partition for the installation.</para>
+-->
+  <para>像大多数其他操作系统一样，LFS 通常安装在一个新的专用分区上。如果你有足够的磁盘空间，创建一个新分区，推荐在新的空分区上构建 LFS 系统。当然，LFS 系统（实际上多个 LFS 系统）也可以安装在已经安装了其他操作系统的磁盘分区上，它们可以和平共处。<ulink url="&hints-root;lfs_next_to_existing_systems.txt"/> 解释了怎样实现上述目标。但是本书只讨论如何在一个新的空白分区上构建 LFS 系统。</para>
 
+<!--E
   <para>A minimal system requires a partition of around 1.3 gigabytes (GB).
   This is enough to store all the source tarballs and compile the packages.
   However, if the LFS system is intended to be the primary Linux system,
@@ -28,7 +35,10 @@
   A large portion of this requirement is to provide sufficient free temporary
   storage. Compiling packages can require a lot of disk space which will be
   reclaimed after the package is installed.</para>
+-->
+  <para>建立一个最小的系统需要 1.3GB 左右的分区，这样才能有足够的空间存储并编译所有的源码包。当然，如果您打算把 LFS 作为您的主 Linux 系统，您可能会在上面安装其它软件，那么您就需要更大的空间(2~3GB)。LFS 系统本身并不占用这么多空间，所需的空间大部分用来为软件编译提供足够的临时空间，编译软件包的时候需要使用大量的临时空间，软件包装好之后这些临时空间可以回收。</para>
 
+<!--E
   <para>Because there is not always enough Random Access Memory (RAM) available
   for compilation processes, it is a good idea to use a small disk partition as
   <systemitem class="filesystem">swap</systemitem> space. This is used by the
@@ -36,7 +46,10 @@
   processes. The <systemitem class="filesystem">swap</systemitem> partition for
   an LFS system can be the same as the one used by the host system, in which
   case it is not necessary to create another one.</para>
+-->
+  <para>因为编译过程中内存(RAM)并不总是够用的，所以最好使用一个小的硬盘分区作为交换空间。内核使用交换空间来存放不常用到的数据，以便为正在运行的进程腾出内存空间。LFS 系统使用的交换分区与宿主系统使用的交换分区可以是同一个，因此当宿主系统已经有交换分区的时候就不必为 LFS 系统再创建一个了。</para>
 
+<!--E
   <para>Start a disk partitioning program such as <command>cfdisk</command>
   or <command>fdisk</command> with a command line option naming the hard
   disk on which the new partition will be created&mdash;for example
@@ -45,11 +58,16 @@
   <systemitem class="filesystem">swap</systemitem> partition, if needed. Please
   refer to <filename>cfdisk(8)</filename> or <filename>fdisk(8)</filename> if
   you do not yet know how to use the programs.</para>
+-->
+  <para>启动一个磁盘分区程序，例如 <command>cfdisk</command> 或者 <command>fdisk</command>，用即将在上面创建新分区的硬盘名字作为命令行选项，比如主 IDE 硬盘名字就是 <filename class="devicefile">/dev/hda</filename>。如果需要，创建一个交换(<systemitem class="filesystem">swap</systemitem>)分区。如果您还不知道如何使用这两个工具的话，请参考 <filename>cfdisk(8)</filename> 或 <filename>fdisk(8)</filename>。</para>
 
+<!--E
   <para>Remember the designation of the new partition (e.g., <filename
   class="devicefile">hda5</filename>). This book will refer to this as
   the LFS partition. Also remember the designation of the <systemitem
   class="filesystem">swap</systemitem> partition. These names will be
   needed later for the <filename>/etc/fstab</filename> file.</para>
+-->
+  <para>记下新分区的命名，比如<filename class="devicefile">hda5</filename>，本书将其作为 LFS 分区。另外记下 <systemitem class="filesystem">swap</systemitem> 分区的命名。在后面配置 <filename>/etc/fstab</filename> 的时候会用到。</para>
 
 </sect1>
