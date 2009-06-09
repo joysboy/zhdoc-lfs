@@ -8,17 +8,24 @@
 <sect1 id="ch-tools-settingenviron">
   <?dbhtml filename="settingenvironment.html"?>
 
+<!--E
   <title>Setting Up the Environment</title>
+-->
+  <title>设置编译环境</title>
 
+<!--E
   <para>Set up a good working environment by creating two new startup files
   for the <command>bash</command> shell. While logged in as user
   <systemitem class="username">lfs</systemitem>, issue the following command
   to create a new <filename>.bash_profile</filename>:</para>
+-->
+  <para>通过给 <command>bash</command> shell 创建两个新的启动文件来设置一个良好的工作环境。作为 <systemitem class="username">lfs</systemitem> 用户登入，输入下面的命令生成新的 <filename>.bash_profile</filename> 文件：</para>
 
 <screen><userinput>cat &gt; ~/.bash_profile &lt;&lt; "EOF"
 <literal>exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash</literal>
 EOF</userinput></screen>
 
+<!--E
   <para>When logged on as user <systemitem class="username">lfs</systemitem>,
   the initial shell is usually a <emphasis>login</emphasis> shell which reads
   the <filename>/etc/profile</filename> of the host (probably containing some
@@ -30,12 +37,17 @@ EOF</userinput></screen>
   unwanted and potentially hazardous environment variables from the host system
   leak into the build environment. The technique used here achieves the goal of
   ensuring a clean environment.</para>
+-->
+  <para>当作为 <systemitem class="username">lfs</systemitem> 用户登入时，初始 Shell 一般是<emphasis>登入</emphasis>Shell，它会从宿主系统的 <filename>/etc/profile</filename> 文件（通常包含一些设置和环境变量），然后读取读入 <filename>.bash_profile</filename> 文件来完成初始化。<filename>.bash_profile</filename> 中的 <command>exec env -i.../bin/bash</command> 命令用完全空的环境（除了<envar>HOME</envar>、<envar>TERM</envar> 和 <envar>PS1</envar> 变量外）来启动 Shell。这样能保证我们的编译环境不会被宿主系统中不必要的或者有潜在危险的环境变量所影响，从而确保获得一个干净的工作环境。</para>
 
+<!--E
   <para>The new instance of the shell is a <emphasis>non-login</emphasis>
   shell, which does not read the <filename>/etc/profile</filename> or
   <filename>.bash_profile</filename> files, but rather reads the
   <filename>.bashrc</filename> file instead. Create the
   <filename>.bashrc</filename> file now:</para>
+-->
+  <para>另一个 Shell 实例是<emphasis>非登入</emphasis>Shell，它不读取 <filename>/etc/profile</filename> 或 <filename>.bash_profile</filename>，而是 <filename>.bashrc</filename>，利用下面命令生成 <filename>.bashrc</filename>：</para>
 
 <screen><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
 <literal>set +h
@@ -46,6 +58,7 @@ PATH=/tools/bin:/bin:/usr/bin
 export LFS LC_ALL PATH</literal>
 EOF</userinput></screen>
 
+<!--E
   <para>The <command>set +h</command> command turns off
   <command>bash</command>'s hash function. Hashing is ordinarily a useful
   feature&mdash;<command>bash</command> uses a hash table to remember the
@@ -57,16 +70,25 @@ EOF</userinput></screen>
   <filename class="directory">$LFS/tools</filename> as soon as they are
   available without remembering a previous version of the same program in a
   different location.</para>
+-->
+  <para><command>set +h</command> 命令关闭了 <command>bash</command> 的哈希功能，哈希功能通常是一个有用的功能&mdash;&mdash;<command>bash</command> 用一个哈希表来记录可执行文件的完整路径，从而在避免反复搜索系统的 <envar>PATH</envar> 变量来寻找同一个可执行文件。但是，我们需要在新编译好的工具安装好后立刻使用它。关闭哈希功能，当需要运行一个软件的时候，Shell 总是会在 <envar>PATH</envar>里搜索。因此当一个程序可用时，Shell 可以在 <filename class="directory">$LFS/tools</filename> 里立即搜索到，而不是使用哈希表里记忆的在其它目录下的同一个程序。</para>
 
+<!--E
   <para>Setting the user file-creation mask (umask) to 022 ensures that newly
   created files and directories are only writable by their owner, but are
   readable and executable by anyone (assuming default modes are used by the
   <function>open(2)</function> system call, new files will end up with permission
   mode 644 and directories with mode 755).</para>
+-->
+  <para>将用户文件创建掩码(umask)设置为 022 保证了新生成的文件和目录只对其所有者可写，但其他人都可读和可执行。（假定 <function>open(2)</function> 系统调用使用默认模式，新文件权限模式为 644，目录为 755）。</para>
 
+<!--E
   <para>The <envar>LFS</envar> variable should be set to the chosen mount
   point.</para>
+-->
+  <para>LFS变量应当设置为所选择的挂载点。</para>
 
+<!--E
   <para>The <envar>LC_ALL</envar> variable controls the localization of certain
   programs, making their messages follow the conventions of a specified country.
   If the host system uses a version of Glibc older than 2.2.4, having
@@ -75,16 +97,24 @@ EOF</userinput></screen>
   environment and wish to return later. Setting <envar>LC_ALL</envar> to
   <quote>POSIX</quote> or <quote>C</quote> (the two are equivalent) ensures that
   everything will work as expected in the chroot environment.</para>
+-->
+  <para><envar>LC_ALL</envar> 变量控制着某些程序的本地化，使其显示的信息复合指定国家的规范。如果宿主系统使用早于 2.2.4 版本的 Glibc，<envar>LC_ALL</envar> 使用除<quote>POSIX</quote> 或 <quote>C</quote> 外其他的值可能导致在退出 chroot 环境再返回继续时出现问题。</para>
 
+<!--E
   <para>By putting <filename class="directory">/tools/bin</filename> ahead of the
   standard <envar>PATH</envar>, all the programs installed in <xref
   linkend="chapter-temporary-tools"/> are picked up by the shell immediately after
   their installation. This, combined with turning off hashing, limits the risk
   that old programs are used from the host when the same programs are available in
   the chapter 5 environment.</para>
+-->
+  <para>将 <filename class="directory">/tools/bin</filename>  置于 <envar>PATH</envar> 变量的开头，可以使在<xref linkend="chapter-temporary-tools"/>安装的程序安装后可以立即被 Shell 使用。再加上关闭 shell 哈希功能，在<xref linkend="chapter-temporary-tools"/>的环境中，使得宿主系统中的相同名字的程序被使用的可能降到最小。</para>
 
+<!--E
   <para>Finally, to have the environment fully prepared for building the
   temporary tools, source the just-created user profile:</para>
+-->
+  <para>最后，为了完全准备好构建临时工具的环境，导入刚才生成的配置文件：</para>
 
 <screen><userinput>source ~/.bash_profile</userinput></screen>
 
