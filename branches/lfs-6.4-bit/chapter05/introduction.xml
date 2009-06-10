@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-introduction">
+  <?dbhtml filename="introduction.html"?>
+
+<!--E
+  <title>Introduction</title>
+-->
+  <title>本章介绍</title>
+
+<!--E
+  <para>This chapter shows how to build a minimal Linux system.
+  This system will contain just enough tools to start constructing the final
+  LFS system in <xref linkend="chapter-building-system"/> and allow a working
+  environment with more user convenience than a minimum environment would.</para>
+-->
+  <para>本章介绍如何编译和安装一个极小的 Linux 系统，这个系统将仅包含用于构建<xref linkend="chapter-building-system"/>中最终的 LFS 系统的必要的工具，且还能带给用户便利的工作环境。</para>
+
+<!--E
+  <para>There are two steps in building this minimal system. The first step
+  is to build a new and host-independent toolchain (compiler, assembler,
+  linker, libraries, and a few useful utilities).  The second step uses this
+  toolchain to build the other essential tools.</para>
+-->
+  <para>构建这个环境分两个步骤。第一步建立一个新的依赖于宿主系统的工具链（包括编译器，汇编器，链接器，库文件和一些实用工具），第二部是利用工具链构建其他的必要工具。</para>
+
+<!--E
+  <para>The files compiled in this chapter will be installed under the
+  <filename class="directory">$LFS/tools</filename> directory to keep them
+  separate from the files installed in the next chapter and the host
+  production directories. Since the packages compiled here are temporary,
+  we do not want them to pollute the soon-to-be LFS system.</para>
+-->
+  <para>本章中编译安装的文件将安装在 <filename class="directory">$LFS/tools</filename> 目录下。这样可以与下一章将要安装的软件以及宿主系统区分开来。这些软件包编译出来是起临时作用的，我们不希望这些软件和即将建立的 LFS 系统混杂在一起。</para>
+
+</sect1>

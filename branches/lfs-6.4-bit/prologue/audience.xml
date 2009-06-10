@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-audience">
+  <?dbhtml filename="audience.html"?>
+
+<!--E
+  <title>Audience</title>
+-->
+  <title>谁该读此书</title>
+
+<!--E
+  <para>There are many reasons why somebody would want to read this book.
+  The principal reason is to install a Linux system from the source code.
+  A question many people raise is, <quote>why go through all the hassle of
+  manually building a Linux system from scratch when you can just download
+  and install an existing one?</quote> That is a good question and is the
+  impetus for this section of the book.</para>
+-->
+  <para>有很多原因让人们想来读此书，最主要的原因就是为了从源代码开始安装 Linux 系统。很多人就会问，<quote>当你完全可以下载安装一个现有的发行版，为什么要费力的从头开始手动的构建一个 Linux 系统呢?</quote>这个问题很好，这也是本节所要回答的。</para>
+
+<!--E
+  <para>One important reason for LFS's existence is to help people learn
+  how a Linux system works from the inside out. Building an LFS system
+  helps demonstrate what makes Linux tick, and how things work together
+  and depend on each other. One of the best things that this learning
+  experience provides is the ability to customize Linux to your own tastes
+  and needs.</para>
+-->
+  <para>LFS 存在的一个重要原因就是帮助人们从头到脚去了解一个 Linux 系统是怎样工作的。构建一个 Linux 系统的过程演示了是什么使 Linux 运转起来，系统的各个组件是怎么配合起来工作的，又有怎样的依赖关系。这个学习过程的最好收获就是获得定制符合自己喜好和需要的 Linux 系统的能力。</para>
+
+<!--E
+  <para>A key benefit of LFS is that it allows users to have more control
+  over the system without relying on someone else's Linux implementation.
+  With LFS, <emphasis>you</emphasis> are in the driver's seat and dictate
+  every aspect of the system, such as the directory layout and bootscript
+  setup. You also dictate where, why, and how programs are installed.</para>
+-->
+  <para>LFS 最关键的优点就是让用户拥有更多的系统控制权，而不是依赖其他人的 Linux 实现。使用 LFS，<emphasis>你</emphasis>在驾驶员的位置上，控制这系统的各个方面，比如目录层次，启动脚本设置等。你还能指定软件安装在哪，怎么安装。</para>
+
+<!--E
+  <para>Another benefit of LFS is the ability to create a very compact Linux
+  system. When installing a regular distribution, one is often forced to
+  include several programs which are probably never used. These programs
+  waste disk space, or worse, CPU cycles. It is not difficult to build an
+  LFS system of less than 100 megabytes (MB), which is substantially smaller
+  than the majority of existing installations. Does this still sound like a
+  lot of space? A few of us have been working on creating a very small
+  embedded LFS system. We successfully built a system that was specialized
+  to run the Apache web server with approximately 8MB of disk space used.
+  Further stripping could bring this down to 5 MB or less. Try that with a
+  regular distribution! This is only one of the many benefits of designing
+  your own Linux implementation.</para>
+-->
+  <para>LFS 的另一个好处就是创建一个非常简洁的 Linux 系统。安装一个常规的发行版会被迫安装一些从不使用的软件，这些软件占有磁盘空间，甚至占用 CPU。构建一个小于 100M 的 LFS系统并非难事，这比大多数的发行版要小的多。这还不够小？有些人在努力创建一个非常小的嵌入式的 LFS 系统。我们已经成功的构建一个只占 8M 磁盘空间，专门运行 Apache 网页服务器的系统，进一步的精简可以小到 5M 甚至更小。试试常规的版本，谁能做到！这只是设计属于自己的 Linux 实现的众多优点之一。</para>
+
+<!--E
+  <para>We could compare Linux distributions to a hamburger purchased at a
+  fast-food restaurant&mdash;you have no idea what might be in what you are
+  eating. LFS, on the other hand, does not give you a hamburger. Rather,
+  LFS provides the recipe to make the exact hamburger desired. This allows
+  users to review the recipe, omit unwanted ingredients, and add your own
+  ingredients to enhance the flavor of the burger. When you are satisfied
+  with the recipe, move on to preparing it. It can be made to exact
+  specifications&mdash;broil it, bake it, deep-fry it, or barbecue it.</para>
+-->
+  <para>我们可以把 Linux 发行版比作在快餐店买的汉堡— 你不知道吃到嘴里的都有什么。与此不同，LFS 不是给你一个汉堡，而是提供做汉堡的配方。用户可以参考配方，去除不想要的配料，添加自己的配料来增加汉堡的风味。当感到满意时就可以动手做了。烤、炸、烧——随便什么样子。</para>
+
+<!--E
+  <para>Another analogy that we can use is that of comparing LFS with a
+  finished house. LFS provides the skeletal plan of a house, but it is up
+  to you to build it. LFS maintains the freedom to adjust plans throughout
+  the process, customizing it to the user's needs and preferences.</para>
+-->
+  <para>另如，我们可以拿建好的房子和 LFS 比较，LFS 提供的是建房子的草案，房子本身则需要你自己去建造，LFS 提供在建造过程中调整方案以满足用户需要的自由，</para>
+
+<!--E
+  <para>An additional advantage of a custom built Linux system is security.
+  By compiling the entire system from source code, you are empowered to audit
+  everything and apply all the security patches desired. It is no longer
+  necessary to wait for somebody else to compile binary packages that fix a
+  security hole. Unless you examine the patch and implement it yourself, you
+  have no guarantee that the new binary package was built correctly and
+  adequately fixes the problem.</para>
+-->
+  <para>定制的 Linux 系统的另一个优势就是安全性。在从源代码编译整个系统的过程中，你可以审核一切，应用一切需要的安全补丁。修补安全漏洞再也不需要等其他人编译好的二进制补丁包。只有自己检查并应用补丁才能保证新的二进制包正确并能充分的修正问题。</para>
+
+<!--E
+  <para>The goal of Linux From Scratch is to build a complete and usable
+  foundation-level system. Readers who do not wish to build their own Linux
+  system from scratch may not benefit from the information in this book. If
+  you only want to know what happens while the computer boots, we recommend
+  the <quote>From Power Up To Bash Prompt</quote> HOWTO located at
+  <ulink url="http://axiom.anu.edu.au/~okeefe/p2b/"/> or on The Linux
+  Documentation Project's (TLDP) website at <ulink
+  url="http://www.tldp.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO.html"/>.
+  The HOWTO builds a system which is similar to that of this book, but it
+  focuses strictly on creating a system capable of booting to a BASH prompt.
+  Consider your objective. If you wish to build a Linux system while learning
+  along the way, then this book is your best choice.</para>
+-->
+  <para>Linux Form Scratch 的目标是构建一个完整的，可用的基础系统。不想从头开始构建自己的系统的读者不会从本书中获益。如果你只是想知道一台计算机启动时发生来什么，我们推荐位于 <ulink url="http://axiom.anu.edu.au/~okeefe/p2b/" /> 或者 Linux 文档项目（TLDP）站点 <ulink url="http://www.tldp.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO.html"/> 的 <quote>From Power Up To Bash Prompt</quote> HOWTO 文档。它构建一个一个与本书类似的系统，但更专注于构建一个可以启动到 BASH 提示符的系统。考虑下你的目标，如果想构建一个 Linux 系统并从中学习，这本书是你的最佳选择。</para> 
+
+<!--E
+  <para>There are too many good reasons to build your own LFS system to
+  list them all here. This section is only the tip of the iceberg. As
+  you continue in your LFS experience, you will find the power that
+  information and knowledge truly bring.</para>
+-->
+  <para>有太多好的理由来构建自己的 LFS 系统而不能在这一一列举，本节只是冰山一角。随着 LFS 经验的增加，你会发现知识和信息真正带给你的力量。</para>
+
+</sect1>

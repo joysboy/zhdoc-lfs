@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="prepare-aboutsbus">
+  <?dbhtml filename="aboutsbus.html"?>
+
+<!--E
+  <title>About SBUs</title>
+-->
+  <title>关于 SBU</title>
+
+<!--E
+  <para>Many people would like to know beforehand approximately how long
+  it takes to compile and install each package. Because Linux From
+  Scratch can be built on many different systems, it is impossible to
+  provide accurate time estimates. The biggest package (Glibc) will
+  take approximately 20 minutes on the fastest systems, but could take
+  up to three days on slower systems! Instead of providing actual times,
+  the Standard Build Unit (SBU) measure will be
+  used instead.</para>
+-->
+  <para>许多人都想知道编译和安装一个软件包预计需要多长时间。因为 Linux From Scratch 可以在多种不同的系统上创建，准确估计所需的时间是不可能的。最快的系统上编译安装最大的软件包(Glibc)大约需要 20 分钟，但在很慢的系统上可能耗费长达三天时间。我们不提供准确时间，代之以标准编译时间单位(SBU)来度量。</para>
+
+<!--E
+  <para>The SBU measure works as follows. The first package to be compiled
+  from this book is Binutils in <xref linkend="chapter-temporary-tools"/>. The
+  time it takes to compile this package is what will be referred to as the
+  Standard Build Unit or SBU. All other compile times will be expressed relative
+  to this time.</para>
+-->
+  <para>SBU 度量具体说明如下，本书中第一个编译的软件包是<xref linkend="chapter-temporary-tools"/>中静态编译的 Binutils。编译这个软件包所花费的时间就作为标准编译时间单位(SBU)。所有其它软件的编译时间都用这个时间来衡量。</para>
+
+<!--E
+  <para>For example, consider a package whose compilation time is 4.5
+  SBUs. This means that if a system took 10 minutes to compile and
+  install the first pass of Binutils, it will take
+  <emphasis>approximately</emphasis> 45 minutes to build this example package.
+  Fortunately, most build times are shorter than the one for Binutils.</para>
+-->
+  <para>例如，对于一个编译时间为 4.5 SBU 的软件包，这意味着如果一个系统静态编译安装 Binutils 需要花费 10 分钟，那么编译这个软件包将<emphasis>大约需要</emphasis> 45 分钟。幸运的是，大多数软件包编译安装所需的时间都比 Binutils 所需的时间要短。</para>
+
+<!--E
+  <para>In general, SBUs are not entirely accurate because they depend on many
+  factors, including the host system's version of GCC. Note that on Symmetric
+  Multi-Processor (SMP)-based machines, SBUs are even less accurate. They are
+  provided here to give an estimate of how long it might take to install a
+  package, but the numbers can vary by as much as dozens of minutes in some
+  cases.</para>
+-->
+  <para>通常，SBU 并不十分精确，因为它依赖于许多因素，包括宿主系统 GCC 的版本。另外，在基于对称多处理器(SMP)的机器上，SBU 更加不准确。我们提供 SBU，仅仅是给出安装一个软件包所需时间的大概估计，在某些情况下实际花费的时间与预估计的时间之间可能有数十分钟的差异。</para>
+
+<!--E
+  <para>To view actual timings for a number of specific machines, we recommend
+  The LinuxFromScratch SBU Home Page at <ulink url="&lfs-root;~sbu/"/>.</para>
+-->
+  <para>要查看在一些特定机器上的实际编译安装时间，我们推荐您查看 LinuxFromScratch SBU 的主页 <ulink url="&lfs-root;~sbu/"/>。</para> 
+
+</sect1>
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-prerequisites">
+  <?dbhtml filename="prerequisites.html"?>
+
+<!--E
+  <title>Prerequisites</title>
+-->
+  <title>先决条件</title>
+
+<!--E
+  <para>Building an LFS system is not a simple task. It requires a certain
+  level of existing knowledge of Unix system administration in order to resolve
+  problems, and correctly execute the commands listed. In particular, as an
+  absolute minimum, the reader should already have the ability to use the
+  command line (shell) to copy or move files and directories, list directory
+  and file contents, and change the current directory. It is also expected that
+  the reader has a reasonable knowledge of using and installing Linux
+  software.</para>
+-->
+  <para>构建 LFS 系统不是一个简单的任务。它要求具有一定的 unix 系统管理知识去解决可能出现的问题，正确执行列出的命令。特别地，读者应用最基本的使用命令行（shell）的能力，包括复制或移动文件和文件夹;列出文件和文件夹的内容，在文件夹中切换。读者最好有一定的使用和安装 Linux 软件的能力。</para>
+
+<!--E
+  <para>Because the LFS book assumes <emphasis>at least</emphasis> this basic
+  level of skill, the various LFS support forums are unlikely to be able to
+  provide you with much assistance; you will find that your questions regarding
+  such basic knowledge will likely go unanswered, or you will simply be referred
+  to the LFS essential pre-reading list.</para>
+-->
+  <para>因此本书假定读者<emphasis>至少</emphasis>拥有此类的能力，许多的 LFS 支持论坛并不能提供给太多的帮助，你会发现关于这类基本知识的问题很少有人回答。你最好现参考 LFS 的预先阅读清单。</para>
+
+<!--E
+  <para>Before building an LFS system, we recommend reading the following
+  HOWTOs:</para>
+-->
+  <para>在构建 LFS 系统之间，我们推荐阅读下列 HOWTO 文档：</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>Software-Building-HOWTO
+      <ulink url="http://www.tldp.org/HOWTO/Software-Building-HOWTO.html"/></para>
+<!--E
+      <para>This is a comprehensive guide to building and installing
+      <quote>generic</quote> Unix software packages under Linux.</para>
+-->
+      <para>这是一本全面介绍在Linux下构建安装<quote>基本</quote>Unix软件的书。</para>
+    </listitem>
+
+    <listitem>
+      <para>The Linux Users' Guide
+      <ulink url="http://www.linuxhq.com/guides/LUG/guide.html"/></para>
+
+<!--E
+      <para>This guide covers the usage of assorted Linux software.</para>
+-->
+      <para>这份指南涵盖了各类 Linux 软件的用法。</para>
+    </listitem>
+
+    <listitem>
+      <para>The Essential Pre-Reading Hint
+      <ulink url="&hints-root;essential_prereading.txt"/></para>
+
+<!--E
+      <para>This is an LFS Hint written specifically for users new to Linux.
+      It includes a list of links to excellent sources of information on a
+      wide range of topics. Anyone attempting to install LFS should have an
+      understanding of many of the topics in this hint.</para>
+-->
+      <para>这是一份专为 Linux 新手而写的 LFS 建议，包括一份链接列表，这些链接的信息源包含的主题广泛而且内容很棒。任何想安装 LFS 的人都应该对这份建议里的许多主题有所了解。</para>
+    </listitem>
+
+  </itemizedlist>
+
+</sect1>

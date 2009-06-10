@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-tcl" role="wrap">
+  <?dbhtml filename="tcl.html"?>
+
+  <sect1info condition="script">
+    <productname>tcl</productname>
+    <productnumber>&tcl-version;</productnumber>
+    <address>&tcl-url;</address>
+  </sect1info>
+
+  <title>Tcl-&tcl-version;</title>
+
+  <indexterm zone="ch-tools-tcl">
+    <primary sortas="a-Tcl">Tcl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+<!--E
+    <para>The Tcl package contains the Tool Command Language.</para>
+-->
+    <para>Tcl 软件包包含工具命令语言（Tool Command Language）。</para>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&tcl-ch5-sbu;</seg>
+        <seg>&tcl-ch5-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+<!--E
+    <title>Installation of Tcl</title>
+-->
+    <title>Tcl 的安装</title>
+
+<!--E
+    <para>This package and the next two (Expect and DejaGNU) are installed
+    to support running the test suites for GCC and Binutils. Installing
+    three packages for testing purposes may seem excessive, but it is very
+    reassuring, if not essential, to know that the most important tools are
+    working properly. Even if the test suites are not run in this chapter
+    (they are not mandatory), these packages are required to run the test
+    suites in <xref linkend="chapter-building-system"/>.</para>
+-->
+    <para>这个软件包和接下来的两个（Expect 和 DejaGNU）的安装用于支持运行 GCC 和 Binutils 的测试程序。仅仅为了测试目的安装三个软件包看起来显得多余，虽然不是必须的，但是为了最重要的工具能正常工作，这样做会更让人放心。即使现在不会运行这些测试程序，<xref linkend="chapter-building-system"/>中的测试也会需要这些。</para>
+
+<!--E
+    <para>Prepare Tcl for compilation:</para>
+-->
+    <para>准备编译 Tcl：</para>
+
+<screen><userinput remap="configure">cd unix
+./configure --prefix=/tools</userinput></screen>
+
+<!--E
+    <para>Build the package:</para>
+-->
+    <para>编译它</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+<!--E
+    <para>Compilation is now complete. As discussed earlier, running the test
+    suite is not mandatory for the temporary tools here in this chapter. To run
+    the Tcl test suite anyway, issue the following command:</para>
+-->
+    <para>现在编译完成了，如前所述，在本章为了一个临时工具运行测试程序不是强制的。如果要测试它，运行下面命令：</para>
+
+<screen><userinput remap="test">TZ=UTC make test</userinput></screen>
+
+<!--E
+    <para>The Tcl test suite may experience failures under certain host
+    conditions that are not fully understood. Therefore, test suite failures
+    here are not surprising, and are not considered critical. The
+    <parameter>TZ=UTC</parameter> parameter sets the time zone to Coordinated
+    Universal Time (UTC), also known as Greenwich Mean Time (GMT), but only
+    for the duration of the test suite run. This ensures that the clock tests
+    are exercised correctly. Details on the <envar>TZ</envar> environment
+    variable are provided in <xref linkend="chapter-bootscripts"/>.</para>
+-->
+    <para>现在还不完全清楚为什么 Tcl 的测试程序在某些宿主系统上会遭遇失败。因此，如果测试失败了也不要紧，这并不是关键。参数 <parameter>TZ=UTC</parameter> 将时区设置为协调通用时间（UTC），也就是格林尼治时间（GMT），但仅仅在测试时。这保证了时钟测试的正确性。关于环境变量 <envar>TZ</envar> 的详细信息请参阅<xref linkend="chapter-bootscripts"/>。</para>
+
+<!--E
+    <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+<!--E
+    <para>Make the installed library writable so debugging symbols can
+    be removed later:</para>
+-->
+    <para>将安装的库文件设置为可写，以便后面剔除调试信息：</para>
+
+<screen><userinput remap="install">chmod -v u+w /tools/lib/libtcl8.5.so</userinput></screen>
+
+<!--E
+    <para>Install Tcl's headers. The next package, Expect, requires them
+    to build.</para>
+-->
+    <para>安装 Tcl 的头文件，安装下一个软件包（Expect）时会用到。</para>
+
+<screen><userinput remap="install">make install-private-headers</userinput></screen>
+
+<!--E
+    <para>Now make a necessary symbolic link:</para>
+-->
+    <para>添加必要的符号链接：</para>
+
+<screen><userinput remap="install">ln -sv tclsh8.5 /tools/bin/tclsh</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-tcl" role="content">
+<!--E
+    <title>Contents of Tcl</title>
+-->
+    <title>Tcl 的内容</title>
+
+    <segmentedlist>
+      <segtitle>Installed programs</segtitle>
+      <segtitle>Installed library</segtitle>
+
+      <seglistitem>
+<!--E
+        <seg>tclsh (link to tclsh8.5) and tclsh8.5</seg>
+-->
+        <seg>tclsh（链接到 tclsh8.5）和 tclsh8.5</seg>
+        <seg>libtcl8.5.so</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+<!--E
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="tclsh8.5">
+        <term><command>tclsh8.5</command></term>
+        <listitem>
+<!--E
+          <para>The Tcl command shell</para>
+-->
+          <para>Tcl 命令行 Shell </para>
+          <indexterm zone="ch-tools-tcl tclsh8.5">
+            <primary sortas="b-tclsh8.5">8.5</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tclsh">
+        <term><command>tclsh</command></term>
+        <listitem>
+<!--E
+          <para>A link to tclsh8.5</para>
+-->
+          <para>到 tclsh8.5 的链接</para>
+          <indexterm zone="ch-tools-tcl tclsh">
+            <primary sortas="b-tclsh">tclsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtcl8.5.so">
+        <term><filename class="libraryfile">libtcl8.5.so</filename></term>
+        <listitem>
+<!--E
+          <para>The Tcl library</para>
+-->
+          <para>Tcl 库</para>
+          <indexterm zone="ch-tools-tcl libtcl8.5.so">
+            <primary sortas="c-libtcl8.5.so">libtcl8.5.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

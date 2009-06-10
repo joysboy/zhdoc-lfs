@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-gcc-pass1" role="wrap">
+  <?dbhtml filename="gcc-pass1.html"?>
+
+  <sect1info condition="script">
+    <productname>gcc</productname>
+    <productnumber>&gcc-version;</productnumber>
+    <address>&gcc-url;</address>
+  </sect1info>
+
+<!--E
+  <title>GCC-&gcc-version; - Pass 1</title>
+-->
+  <title>GCC-&gcc-version; - 第一遍</title>
+
+  <indexterm zone="ch-tools-gcc-pass1">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>tools, pass 1</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../chapter06/gcc.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&gcc-ch5p1-sbu;</seg>
+        <seg>&gcc-ch5p1-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+<!--E
+    <title>Installation of GCC</title>
+-->
+    <title>安装 GCC</title>
+
+<!--E
+    <para>GCC now requires the GMP and MPFR packages. As these packages may
+    not be included in your host distribution, they will be built with
+    GCC.</para>
+-->
+    <para>该版本的 GCC 需要 GMP 和 MPFR 软件包，你的宿主系统上可能没有安装这两个软件包，它们将一起编译进 GCC。</para>
+
+<screen><userinput remap="pre">tar -jxf ../mpfr-&mpfr-version;.tar.bz2
+mv mpfr-&mpfr-version; mpfr
+tar -jxf ../gmp-&gmp-version;.tar.bz2
+mv gmp-&gmp-version; gmp</userinput></screen>
+
+<!--E
+    <para>The GCC documentation recommends building GCC outside of the
+    source directory in a dedicated build directory:</para>
+-->
+    <para>GCC 的安装指南推荐用一个新建的目录来编译它，而不是在源码目录中：</para>
+
+<screen><userinput remap="pre">mkdir -v ../gcc-build
+cd ../gcc-build</userinput></screen>
+
+<!--E
+    <para>Prepare GCC for compilation:</para>
+-->
+    <para>准备编译 GCC：</para>
+
+<screen><userinput remap="configure">CC="gcc -B/usr/bin/" ../gcc-&gcc-version;/configure --prefix=/tools \
+    --with-local-prefix=/tools --disable-nls --disable-shared --disable-libssp \
+    --enable-languages=c</userinput></screen>
+
+    <variablelist>
+<!--E
+      <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
+
+      <varlistentry>
+        <term><envar>CC="gcc -B/usr/bin/"</envar></term>
+        <listitem>
+<!--E
+          <para>This forces <command>gcc</command> to prefer the linker from
+          the host in <filename class="directory">/usr/bin</filename>. This
+          is necessary on some hosts where the new <command>ld</command>
+          built in the previous section is not compatible with the host's
+          <command>gcc</command>.</para>
+-->
+          <para>该选项强制 <command>gcc</command> 使用宿主系统中 <filename class="directory">/usr/bin</filename> 目录下的连接器。这样做的必要是因为上一节新生成的 <command>ld</command> 可能与某些宿主系统的 <command>gcc</command> 不兼容。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--with-local-prefix=/tools</parameter></term>
+        <listitem>
+<!--E
+          <para>The purpose of this switch is to remove <filename
+          class="directory">/usr/local/include</filename> from
+          <command>gcc</command>'s include search path. This is not
+          absolutely essential, however, it helps to minimize the
+          influence of the host system.</para>
+-->
+          <para>这个参数的目的是把 <filename class="directory">/usr/local/include</filename> 目录从 <command>gcc</command> 的 头文件搜索路径里删除。这并不是绝对必要，但能尽量减小宿主系统的影响。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-shared</parameter></term>
+        <listitem>
+<!--E
+          <para>This switch forces GCC to link its internal libraries
+          statically. We do this to avoid possible issues with the host
+          system.</para>
+-->
+          <para>该开关强制 GCC 静态链接中间库，这样做是为了避免宿主系统可能带来的错误。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--disable-libssp</parameter></term>
+        <listitem>
+<!--E
+          <para>This switch prevents a conflict with older versions of 
+          glibc which can cause the build to fail.</para>
+-->
+          <para>该开关是为了防止和旧版本的 glibc 的冲突，该冲突可能导致编译失败。</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><parameter>--enable-languages=c</parameter></term>
+        <listitem>
+<!--E
+          <para>This option ensures that only the C compiler is built.
+          This is the only language needed now.</para>
+-->
+          <para>该选项确保只编译 C 语言的编译器，现在我们只需要 C 。</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+<!--E
+    <para>The following command will compile GCC not once, but several times. It
+    uses the programs compiled in a first round to compile itself a second time,
+    and then again a third time. It then compares these second and third compiles
+    to make sure it can reproduce itself flawlessly. This is called
+    <quote>bootstrapping</quote>. Building GCC in this way ensures that it was
+    compiled correctly and is now the default configuration for the released
+    package. Continue with compiling by running:</para>
+-->
+    <para>下面的命令会不只一次的编译 GCC，它会使用第一遍编译的程序来编译第二次，再利用第二次的结果进行第三次编译。然后对第二次和第三次的结果进行比较，确保能完全无差错的编译自身。这被称作<quote>bootstrapping</quote>。这样编译 GCC 可以保证其正确性。有了软件包的配置文件，运行下面命令进行下一步的编译：</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+<!--E
+    <para>Compilation is now complete. At this point, the test suite would
+    normally be run, but, as mentioned before, the test suite framework is
+    not in place yet. The benefits of running the tests at this point
+    are minimal since the programs from this first pass will soon be
+    replaced.</para>
+-->
+    <para>编译完成之后，按通常情况要运行测试程序，但是如前面所述，测试框架还没有就位。在这里运行测试没什么用处，因为第一遍安装的程序很快就会被第二遍的程序所覆盖。</para>
+
+<!--E
+    <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+<!--E
+    <para>Using <parameter>&hyphen;-disable-shared</parameter> means that the
+    <filename>libgcc_eh.a</filename> file isn't created and installed. The
+    Glibc package depends on this library as it uses
+    <parameter>-lgcc_eh</parameter> within its build system. We can satisfy
+    that dependency by creating a symlink to <filename>libgcc.a</filename>,
+    since that file will end up containing the objects normally contained in
+    <filename>libgcc_eh.a</filename>.</para>
+-->
+    <para>使用参数 <parameter>--disable-shared</parameter> 意味着文件 <filename>libgcc_eh.a</filename> 不会被编译和安装，而在编译 Glibc 时，由于使用了参数 <parameter>-lgcc_eh</parameter>，这会依赖 <filename>libgcc_eh.a</filename> 库。我们可以创建一个到 <filename>libgcc.a</filename> 的符号链接来满足这一依赖关系，因为该文件中通常包含了 <filename>libgcc_eh.a</filename> 中的内容。</para>
+
+<screen><userinput remap="install">ln -vs libgcc.a `gcc -print-libgcc-file-name | \
+    sed 's/libgcc/&amp;_eh/'`</userinput></screen>
+
+<!--E
+    <para>As a finishing touch, create a symlink. Many programs and scripts
+    run <command>cc</command> instead of <command>gcc</command>, which is
+    used to keep programs generic and therefore usable on all kinds of UNIX
+    systems where the GNU C compiler is not always installed. Running
+    <command>cc</command> leaves the system administrator free to decide
+    which C compiler to install:</para>
+-->
+    <para>最后，我们创建一个必要的符号连接。因为许多程序和脚本运行 <command>cc</command> 而不是 <command>gcc</command>，这是为了保持程序的通用性，使得在一些没有安装 GCC 的 UNIX 系统上也能运行。运行 <command>cc</command> 可以使系统管理员自由选择使用系统中不同的 C 语言编译器。</para>
+
+<screen><userinput remap="install">ln -vs gcc /tools/bin/cc</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+<!--E
+    <para>Details on this package are located in
+    <xref linkend="contents-gcc" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gcc" role="."/>。</para>
+
+  </sect2>
+
+</sect1>

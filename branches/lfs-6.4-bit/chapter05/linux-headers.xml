@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-linux-headers" role="wrap">
+  <?dbhtml filename="linux-headers.html"?>
+
+  <sect1info condition="script">
+    <productname>linux</productname>
+    <productnumber>&linux-version;</productnumber>
+    <address>&linux-url;</address>
+  </sect1info>
+
+<!--E
+  <title>Linux-&linux-version; API Headers</title>
+-->
+  <title>Linux-&linux-version; API 头文件</title>
+
+  <indexterm zone="ch-tools-linux-headers">
+    <primary sortas="a-Linux">Linux</primary>
+    <secondary>tools, API headers</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../chapter06/linux-headers.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&linux-headers-ch5-sbu;</seg>
+        <seg>&linux-headers-ch5-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+<!--E
+    <title>Installation of Linux API Headers</title>
+-->
+    <title>Linux API 头文件的安装</title>
+
+<!--E
+    <para>The Linux kernel needs to expose an Application Programming Interface
+    (API) for the system's C library (Glibc in LFS) to use.  This is done
+    by way of sanitizing various C header files that are shipped in the Linux
+    kernel source tarball.</para>
+-->
+    <para>Linux 内核需要向系统 C 语言库（LFS 中为 Glibc）使用的应用程序接口(API)。我们通过安装 Linux 内核源码包中的 C 语言头文件来实现。</para>
+
+<!--E
+    <para>First, make sure there are no stale files and dependencies lying around
+    from previous activity:</para>
+-->
+    <para>首先，确认使没有上次使用留下来的过时的文件和依赖关系。</para>
+
+<screen><userinput remap="install">make mrproper</userinput></screen>
+
+<!--E
+    <para>Now test and extract the user-visible kernel headers from the source.
+    They are placed in an intermediate local directory and copied to the needed
+    location because the extraction process removes any existing files in 
+    the target directory.</para>
+-->
+    <para>现在测试并提取源码包中的用户可见内核头文件，它们被放置在一个本地的中间目录，然后复制到所需的位置。整个提取过程会移动目标目录的任何文件。</para>
+
+<screen><userinput remap="install">make headers_check
+make INSTALL_HDR_PATH=dest headers_install
+cp -rv dest/include/* /tools/include</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+<!--E
+    <para>Details on this package are located in
+    <xref linkend="contents-linux-headers" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-linux-headers" role="."/>。</para> 
+
+  </sect2>
+
+</sect1>

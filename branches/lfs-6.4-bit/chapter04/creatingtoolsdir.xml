@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-creatingtoolsdir">
+  <?dbhtml filename="creatingtoolsdir.html"?>
+
+<!--E
+  <title>Creating the $LFS/tools Directory</title>
+-->
+  <title>创建 $LFS/tools 目录</title>
+
+<!--E
+  <para>All programs compiled in <xref linkend="chapter-temporary-tools"/>
+  will be installed under <filename class="directory">$LFS/tools</filename>
+  to keep them separate from the programs compiled in <xref
+  linkend="chapter-building-system"/>. The programs compiled here are
+  temporary tools and will not be a part of the final LFS system. By keeping
+  these programs in a separate directory, they can easily be discarded later
+  after their use. This also prevents these programs from ending up in the
+  host production directories (easy to do by accident in <xref
+  linkend="chapter-temporary-tools"/>).</para>
+-->
+  <para><xref linkend="chapter-temporary-tools"/>中编译的所有程序都将安装到 <filename class="directory">$LFS/tools</filename> 目录下，以便与<xref linkend="chapter-building-system"/>中编译的程序隔离开来。这里编译的程序只是临时使用的工具，不是最终 LFS 系统的组成部分。把这些程序放到一个单独的目录下，在使用过之后简单的删除掉就可以了。这样做也可以防止这些程序与宿主系统中相同的程序混淆（在<xref
+  linkend="chapter-temporary-tools"/>一不小心就会混淆）。</para>
+
+<!--E
+  <para>Create the required directory by running the following as
+  <systemitem class="username">root</systemitem>:</para>
+-->
+  <para>运行下列命令以创建所需的目录：</para>
+
+<screen><userinput>mkdir -v $LFS/tools</userinput></screen>
+
+<!--E
+  <para>The next step is to create a <filename class="symlink">/tools</filename>
+  symlink on the host system. This will point to the newly-created directory on
+  the LFS partition. Run this command as <systemitem
+  class="username">root</systemitem> as well:</para>
+-->
+  <para>接下来就是创建到宿主系统的符号链接/tools，它将指向在LFS分区上新建的目录。用root用户运行下面的命令：</para>
+
+<screen><userinput>ln -sv $LFS/tools /</userinput></screen>
+
+  <note>
+<!--E
+    <para>The above command is correct. The <command>ln</command> command
+    has a few syntactic variations, so be sure to check
+    <command>info coreutils ln</command> and <filename>ln(1)</filename>
+    before reporting what you may think is an error.</para>
+-->
+    <para>上述命令是正确的，<command>ln</command> 命令的语法有了一点变化。如果您认为发现了一个错误，在报告它之前，先用 <command>info coreutils ln</command> 和 <command>ln(1)</command> 命令查看手册页。</para>
+  </note>
+
+<!--E
+  <para>The created symlink enables the toolchain to be compiled so that it
+  always refers to <filename class="directory">/tools</filename>, meaning
+  that the compiler, assembler, and linker will work both in this chapter
+  (when we are still using some tools from the host) and in the next (when
+  we are <quote>chrooted</quote> to the LFS partition).</para>
+-->
+  <para>创建的符号链接使得将要编译的工具链总是引用 <filename class="directory">/tools</filename>，从而使得编译器，汇编器和链接器在本章（此时我们仍然使用宿主系统的一些工具）和下一章（我们已经<quote>chrooted</quote>到 LFS 分区）都能很好的工作。</para>
+
+</sect1>

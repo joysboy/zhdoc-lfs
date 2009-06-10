@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-hostreqs">
+  <?dbhtml filename="hostreqs.html"?>
+
+<!--E
+  <title>Host System Requirements</title>
+-->
+  <title>宿主系统要求</title>
+
+<!--E
+    <para>Your host system should have the following software with the
+    minimum versions indicated. This should not be an issue for most
+    modern Linux distributions. Also note that many distributions will
+    place software headers into separate packages, often in the form of
+    <quote>&lt;package-name&gt;-devel</quote> or
+    <quote>&lt;package-name&gt;-dev</quote>. Be sure to install those if
+    your distribution provides them.</para>
+-->
+    <para>你的宿主系统应该有下列软件，并满足其最低版本要求。对于现在大部分 Linux 发行版都不是问题。需要指出的是，多数的发行版将软件的头文件放在不同的软件包中，常以<quote>&lt;package-name&gt;-devel</quote> 或 <quote>&lt;package-name&gt;-dev</quote>的形式。如果你的发行版提供这些软件包，请确保安装了它们。</para>
+
+  <itemizedlist spacing="compact">
+
+    <listitem>
+      <para><emphasis role="strong">Bash-2.05a</emphasis> (/bin/sh
+      should be a symbolic or hard link to bash)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Binutils-2.12</emphasis> (Versions
+      greater than &binutils-version; are not recommended as they have
+      not been tested)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Bison-1.875</emphasis> (/usr/bin/yacc
+      should be a link to bison or small script that executes bison)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Bzip2-1.0.2</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Coreutils-5.0</emphasis> (or Sh-Utils-2.0,
+      Textutils-2.0, and Fileutils-4.1)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Diffutils-2.8</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Findutils-4.1.20</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Gawk-3.0</emphasis> (/usr/bin/awk
+      should be a link to gawk)</para>
+    </listitem>
+
+    <listitem>
+      <!-- Gcc-2.95.3 breaks feature tests when using CC="gcc -B/usr/bin/"
+           in the *-pass1 sections -->
+      <para><emphasis role="strong">Gcc-3.0.1</emphasis> (Versions
+      greater than &gcc-version; are not recommended as they have not
+      been tested)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Glibc-2.2.5</emphasis> (Versions
+      greater than &glibc-version; are not recommended as they have
+      not been tested)</para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Grep-2.5</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Gzip-1.2.4</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Linux Kernel-2.6.x</emphasis>
+      (having been compiled with GCC-3.0 or greater)</para>
+
+<!--E
+      <para>The reason for the kernel version requirement is that thread-local
+      storage support in Binutils will not be built and the Native POSIX
+      Threading Library (NPTL) test suite will segfault if the host's kernel
+      isn't at least a 2.6.x version compiled with a 3.0 or later release of
+      GCC.</para>
+-->
+      <para>之所以对内核版本提出要求是因为：如果宿主系统的内核不是由 GCC3.0 或以上版本编译的 2.6.x 内核，Binutils 的线程局部存储支持 (thread-local storage support) 将不会被编译，而且本地 POSIX 线程库 (NPTL) 测试套件会出现段错误。</para>
+
+<!--E
+      <para>If the host kernel is either earlier than 2.6.x, or it was not
+      compiled using a GCC-3.0 (or later) compiler, you will have to replace
+      the kernel with one adhering to the specifications. There are two methods
+      you can take to solve this. First, see if your Linux vendor provides a
+      2.6 kernel package. If so, you may wish to install it. If your vendor
+      doesn't offer a 2.6 kernel package, or you would prefer not to install it,
+      then you can compile a 2.6 kernel yourself. Instructions for compiling the
+      kernel and configuring the boot loader (assuming the host uses GRUB) are
+      located in <xref linkend="chapter-bootable"/>.</para>
+-->
+      <para>如果宿主系统内核版本早于 2.6.x，或者不是使用 GCC-3.0（或以后）编译而成，你不得不更新内核版本以满足需要。有两种方法来解决该问题，查看你的发行版是否提供 2.6 的内核包，如果是，你可以安装它。如果没有提供或者是你不想安装它，你可以自己编译一个 2.6 的内核。关于编译内核以及配置引导程序（假定宿主安装了 grub）可以参考 <xref linkend="chapter-bootable"/>。</para>
+
+      <note>
+<!--E
+        <para>This version of the book builds a 32-bit Linux system and
+        requires an existing 32-bit version of of the kernel on the Intel/AMD
+        x86 architecture.  Adding capabilty for x86_64 systems is a major
+        objective of a future version of LFS.  Support for 64-bit systems and
+        additional architectures can be found in the Cross-Compiled Linux From
+        Scratch (CLFS) project at <ulink url="http://cross-lfs.org/view/svn/"/>.
+        </para>
+-->
+        <para>此版本构建一个 32 位的 Linux 系统，也需要一个安装在 Intel/AMD x86 架构的 32 位内核。添加对 x86_64 架构的支持是 LFS 未来版本的主要目标。对 64 位系统及其他系统结构的支持请参阅位于 <ulink url="http://cross-lfs.org/view/svn/"/> 的 Cross-Compiled Linux From Scratch (CLFS) 项目。</para> 
+      </note>
+
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">M4-1.4</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Make-3.79.1</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Patch-2.5.4</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Perl-5.6.0</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Sed-3.0.2</emphasis></para>
+    </listitem>
+
+    <listitem>
+      <para><emphasis role="strong">Tar-1.14</emphasis></para>
+    </listitem>
+
+    <!-- Needed by the apparently broken Binutils-2.18 -->
+    <listitem>
+      <para><emphasis role="strong">Texinfo-4.8</emphasis></para>
+    </listitem>
+
+  </itemizedlist>
+
+<!--E
+  <para>Note that the symlinks mentioned above are required to build an LFS
+  system using the instructions contained within this book. Symlinks that
+  point to other software (such as dash, mawk, etc.) may work, but are not
+  tested or supported by the LFS development team, and may require either
+  deviation from the instructions or additional patches to some
+  packages.</para>
+-->
+  <para>请注意在本书指令中提及到的符号链接（symlinks），这些是为构建 LFS 系统所需。指向其他软件的符号链接（比如 dash、mawk 等等）能够工作，但没有没有 LFS 开发团队的测试和支持，不能有任何命令差错或一些软件的其他补丁。</para>
+
+<!--E
+  <para>To see whether your host system has all the appropriate versions, and
+  the ability to compile programs, run the following:</para>
+-->
+  <para>为了查看你的宿主系统是否能满足所有的版本要求，并且能够编译程序，运行下面指令：</para>
+
+<screen role="nodump"><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
+<literal>#!/bin/bash
+export LC_ALL=C
+
+# Simple script to list version numbers of critical development tools
+
+bash --version | head -n1 | cut -d" " -f2-4
+echo "/bin/sh -> `readlink -f /bin/sh`"
+echo -n "Binutils: "; ld --version | head -n1 | cut -d" " -f3-
+bison --version | head -n1
+if [ -e /usr/bin/yacc ]; then echo "/usr/bin/yacc -> `readlink -f /usr/bin/yacc`"; 
+  else echo "yacc not found"; fi
+bzip2 --version 2&gt;&amp;1 &lt; /dev/null | head -n1 | cut -d" " -f1,6-
+echo -n "Coreutils: "; chown --version | head -n1 | cut -d")" -f2
+diff --version | head -n1
+find --version | head -n1
+gawk --version | head -n1
+if [ -e /usr/bin/awk ]; then echo "/usr/bin/awk -> `readlink -f /usr/bin/awk`"; 
+  else echo "awk not found"; fi
+gcc --version | head -n1
+/lib/libc.so.6 | head -n1 | cut -d" " -f1-7
+grep --version | head -n1
+gzip --version | head -n1
+cat /proc/version
+m4 --version | head -n1
+make --version | head -n1
+patch --version | head -n1
+echo Perl `perl -V:version`
+sed --version | head -n1
+tar --version | head -n1
+makeinfo --version | head -n1
+echo 'main(){}' > dummy.c &amp;&amp; gcc -o dummy dummy.c
+if [ -x dummy ]; then echo "Compilation OK"; else echo "Compilation failed"; fi
+rm -f dummy.c dummy
+</literal>
+EOF
+
+bash version-check.sh</userinput></screen>
+
+</sect1>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-tools-binutils-pass2" role="wrap">
+  <?dbhtml filename="binutils-pass2.html"?>
+
+  <sect1info condition="script">
+    <productname>binutils</productname>
+    <productnumber>&binutils-version;</productnumber>
+    <address>&binutils-url;</address>
+  </sect1info>
+
+<!--E
+  <title>Binutils-&binutils-version; - Pass 2</title>
+-->
+  <title>Binutils-&binutils-version; - 第二遍</title>
+
+  <indexterm zone="ch-tools-binutils-pass2">
+    <primary sortas="a-Binutils">Binutils</primary>
+    <secondary>tools, pass 2</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../chapter06/binutils.xml"
+    xpointer="xpointer(/sect1/sect2[1]/para[1])"/>
+
+    <segmentedlist>
+      <segtitle>&buildtime;</segtitle>
+      <segtitle>&diskspace;</segtitle>
+
+      <seglistitem>
+        <seg>&binutils-ch5p2-sbu;</seg>
+        <seg>&binutils-ch5p2-du;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+<!--E
+    <title>Re-installation of Binutils</title>
+-->
+    <title>重新安装 Binutils</title>
+
+<!--E
+    <para>Binutils does not recognize versions of Texinfo newer than 4.9.  Fix
+    this issue by applying the following patch:</para>
+-->
+    <para>Binutils 不能识别高于 4.9 版本的 Texinfo。应用下面的补丁修正这个问题：</para>
+
+<screen><userinput remap="pre">patch -Np1 -i ../&binutils-configure-patch;</userinput></screen>
+
+<!--E
+    <para>Create a separate build directory again:</para>
+-->
+    <para>再次创建独立的编译目录：</para>
+
+<screen><userinput remap="pre">mkdir -v ../binutils-build
+cd ../binutils-build</userinput></screen>
+
+<!--E
+    <para>Prepare Binutils for compilation:</para>
+-->
+    <para>配置 Binutils：</para>
+
+<screen><userinput remap="configure">../binutils-&binutils-version;/configure --prefix=/tools \
+    --disable-nls --with-lib-path=/tools/lib</userinput></screen>
+
+    <variablelist>
+<!--E
+      <title>The meaning of the new configure options:</title>
+-->
+      <title>配置选项的含义：</title>
+
+      <varlistentry>
+        <term><parameter>--with-lib-path=/tools/lib</parameter></term>
+        <listitem>
+<!--E
+          <para>This tells the configure script to specify the library
+          search path during the compilation of Binutils, resulting in
+          <filename class="directory">/tools/lib</filename> being passed
+          to the linker. This prevents the linker from searching through
+          library directories on the host.</para>
+-->
+          <para>告诉配置脚本在为编译 Binutils 的过程中使用正确的库搜索路径，也就是将 <filename class="directory">/tools/lib</filename> 传递给连接器。这防止连接器搜索宿主系统中的库文件目录。</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+<!--E
+    <para>Compile the package:</para>
+-->
+    <para>编译它：</para>
+
+<screen><userinput remap="make">make</userinput></screen>
+
+<!--E
+    <para>Compilation is now complete. As discussed earlier, running the
+    test suite is not mandatory for the temporary tools here in this
+    chapter. To run the Binutils test suite anyway, issue the following
+    command:</para>
+-->
+    <para>现在编译完成了，同前面一样，在本章为了一个临时工具运行测试程序不是强制的。如果想运行测试套件，使用下列命令：</para>
+
+<screen><userinput remap="test">make check</userinput></screen>
+
+<!--E
+    <para>Install the package:</para>
+-->
+    <para>安装 Binutils：</para>
+
+<screen><userinput remap="install">make install</userinput></screen>
+
+<!--E
+    <para>Now prepare the linker for the <quote>Re-adjusting</quote> phase in
+    the next chapter:</para>
+-->
+    <para>接下来，为下一章<quote>重新调整工具链</quote>准备连接器：</para>
+
+<screen><userinput remap="adjust">make -C ld clean
+make -C ld LIB_PATH=/usr/lib:/lib
+cp -v ld/ld-new /tools/bin</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+<!--E
+    <para>Details on this package are located in
+    <xref linkend="contents-binutils" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于 <xref linkend="contents-binutils" role="."/>。</para>
+
+  </sect2>
+
+</sect1>

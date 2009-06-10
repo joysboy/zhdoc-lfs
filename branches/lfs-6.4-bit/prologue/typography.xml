@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-typography">
+  <?dbhtml filename="typography.html"?>
+
+<!--E
+  <title>Typography</title>
+-->
+  <title>排版约定</title>
+
+<!--E
+  <para>To make things easier to follow, there are a few typographical
+  conventions used throughout this book. This section contains some
+  examples of the typographical format found throughout Linux From
+  Scratch.</para>
+-->
+  <para>为了便于理解和使用，本书使用某些排版上的约定。本节给出贯穿全书的排版格式的例子。</para>
+
+<screen role="nodump"><userinput>./configure --prefix=/usr</userinput></screen>
+
+<!--E
+  <para>This form of text is designed to be typed exactly as seen unless
+  otherwise noted in the surrounding text. It is also used in the explanation
+  sections to identify which of the commands is being referenced.</para>
+-->
+  <para>这种格式的文字应当按看到的内容完整的输入，除非上下文另有说明。也用于说明部分，表示哪个命令被引用。</para>
+
+<!--E
+  <para>In some cases, a logical line is extended to two or more physical lines
+  with a backslash at the end of the line.</para>
+-->
+  <para>在某些情况下，一个逻辑行使用反斜杠"\"扩展为二个或更多物理行</para>
+
+<screen role="nodump"><userinput>CC="gcc -B/usr/bin/" ../binutils-2.18/configure \
+  --prefix=/tools --disable-nls --disable-werror</userinput></screen>
+
+<!--E
+  <para>Note that the backslash must be followed by an immediate return.  Other
+  whitespace characters like spaces or tab characters will create incorrect
+  results.</para>
+-->
+  <para>需要指出的是，反斜杠"\"后面必须立即跟上一个回车(Enter),其它空白字符，比如空格或制表符会导致错误的输出。</para>
+
+<screen><computeroutput>install-info: unknown option '--dir-file=/mnt/lfs/usr/info/dir'</computeroutput></screen>
+
+<!--E
+  <para>This form of text (fixed-width text) shows screen output, probably as
+  the result of commands issued.  This format is also used to show filenames,
+  such as <filename>/etc/ld.so.conf</filename>.</para>
+-->
+  <para>这种格式（固定宽度的文本）表示屏幕输出，可能是命令的输出。也用来显示文件名比如 <filename>/etc/ld.so.conf</filename>。</para>
+
+<!--E
+  <para><emphasis>Emphasis</emphasis></para>
+-->
+  <para><emphasis>强调</emphasis></para>
+
+<!--E
+  <para>This form of text is used for several purposes in the book. Its main
+  purpose is to emphasize important points or items.</para>
+-->
+  <para>这种格式在本书中有很多用途，最主要的用途是强调重点。</para>
+
+  <para><ulink url="&lfs-root;"/></para>
+
+<!--E
+  <para>This format is used for hyperlinks both within the LFS community and to
+  external pages. It includes HOWTOs, download locations, and websites.</para>
+-->
+  <para>这种格式用于超链接，LFS 社区内部和外部链接都有，包括 HOWTO 文档、下载地址和网址等。</para>
+
+<screen role="nodump"><userinput>cat &gt; $LFS/etc/group &lt;&lt; "EOF"
+<literal>root:x:0:
+bin:x:1:
+......</literal>
+EOF</userinput></screen>
+
+<!--E
+  <para>This format is used when creating configuration files. The first command
+  tells the system to create the file <filename>$LFS/etc/group</filename> from
+  whatever is typed on the following lines until the sequence end of file (EOF)
+  is encountered. Therefore, this entire section is generally typed as
+  seen.</para>
+-->
+  <para>这种格式用于创建配置文件，第一个命令告诉系统创建 <filename>$LFS/etc/group</filename>，内容为后面的输入行直到遇到文件结束符(EOF)。因此，整个段落就按看到的内容输入。</para>
+
+<!--E
+  <para><replaceable>&lt;REPLACED TEXT&gt;</replaceable></para>
+-->
+  <para><replaceable>&lt;需替换文本&gt;</replaceable></para>
+
+<!--E
+  <para>This format is used to encapsulate text that is not to be typed
+  as seen or for copy-and-paste operations.</para>
+-->
+  <para>这个格式用于需要结合自己需要替换或用于复制粘贴的内容。</para>
+
+<!--E
+  <para><replaceable>[OPTIONAL TEXT]</replaceable></para>
+-->
+  <para><replaceable>[可选文本]</replaceable></para>
+
+<!--E
+  <para>This format is used to encapsulate text that is optional.</para>
+-->
+  <para>这种说明该选项是可选的。</para>
+
+  <para><filename>passwd(5)</filename></para>
+
+<!--E
+  <para>This format is used to refer to a specific manual page (hereinafter
+  referred to simply as a <quote>man</quote> page). The number inside parentheses
+  indicates a specific section inside of <command>man</command>. For example,
+  <command>passwd</command> has two man pages. Per LFS installation instructions,
+  those two man pages will be located at
+  <filename>/usr/share/man/man1/passwd.1</filename> and
+  <filename>/usr/share/man/man5/passwd.5</filename>. Both man pages have different
+  information in them. When the book uses <filename>passwd(5)</filename> it is
+  specifically referring to <filename>/usr/share/man/man5/passwd.5</filename>.
+  <command>man passwd</command> will print the first man page it finds that
+  matches <quote>passwd</quote>, which will be
+  <filename>/usr/share/man/man1/passwd.1</filename>. For this example, you will
+  need to run <command>man 5 passwd</command> in order to read the specific page
+  being referred to. It should be noted that most man pages do not have duplicate
+  page names in different sections. Therefore, <command>man <replaceable>&lt;program
+  name&gt;</replaceable></command> is generally sufficient.</para>
+-->
+  <para>该格式说明需查阅特定的手册页（后面简称<quote>man</quote>）。括号中的数字指定 <command>man</command> 中特定的章节。比如 <command>passwd</command> 有两个手册页。根据 LFS 安装说明，这两个手册页将会位于 <filename>/usr/share/man/man1/passwd.1</filename> 和 <filename>/usr/share/man/man5/passwd.5</filename>。每个手册页都有不同的内容。本书使用 <filename>passwd(5)</filename> 来指代 <filename>/usr/share/man/man5/passwd.5</filename>。<command>man passwd</command> 会显示它能匹配<quote>passwd</quote> 的第一个手册页，即 <filename>/usr/share/man/man1/passwd.1</filename>。在此例中，若要读取该手册页，则需要运行 <command>man 5 passwd</command> 来读取你想要指定的手册。需要说明的是绝大部分手册不存在多个相同的手册名，因此 <command>man <replaceable>&lt;程序名&gt;</replaceable></command> 基本就足够了。</para>
+
+</sect1>
+
