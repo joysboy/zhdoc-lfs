@@ -601,3 +601,20 @@ p.updated {
 .feature-blowfish {
   color: #8E6B23
 }
+
+.sect1 {
+  padding-right: 12em;
+}
+
+.sidebar {
+  background-color: #EEEEEE;
+  float: right;
+  width: 11em;
+  margin-right: -12em;
+  padding: 0.2em 0.5em;
+}
+
+.sidebar p {
+  margin: 0;
+  padding: 0;
+}
