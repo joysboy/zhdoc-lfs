@@ -14,7 +14,10 @@
     <address>&gcc-url;</address>
   </sect1info>
 
+<!--E
   <title>GCC-&gcc-version; - Pass 2</title>
+-->
+  <title>GCC-&gcc-version; - 第二遍</title>
 
   <indexterm zone="ch-tools-gcc-pass2">
     <primary sortas="a-GCC">GCC</primary>
@@ -291,7 +294,7 @@ cd ../gcc-build</userinput></screen>
     suite is very comprehensive and is almost guaranteed to generate a few
     failures.</para>
 -->
-    <para>参数 <parameter>-k</paraeter> 用来保证 GCC 在遇到错误时不会停下来，直到全部测试完成。GCC 的测试套件非常全面，几乎肯定会出些错误。</para>
+    <para>参数 <parameter>-k</parameter> 用来保证 GCC 在遇到错误时不会停下来，直到全部测试完成。GCC 的测试套件非常全面，几乎肯定会出些错误。</para>
 
 <!--E
     <para>For a discussion of test failures that are of particular
