@@ -49,6 +49,9 @@
 -->
     <title>Linux API 头文件的安装</title>
 
+    <sidebar>
+      <para>要执行本节的命令，需首先下载 Linux 内核源代码，解压然后进入源代码目录。</para>
+    </sidebar>
 <!--E
     <para>The Linux kernel needs to expose an Application Programming Interface
     (API) for the system's C library (Glibc in LFS) to use.  This is done

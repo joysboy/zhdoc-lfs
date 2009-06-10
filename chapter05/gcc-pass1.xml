@@ -49,6 +49,12 @@
 -->
     <title>安装 GCC</title>
 
+    <sidebar>
+      <para>首先，还是要先解压 GCC 的源代码，然后按照本节的命令把 GMP 和 MPFR 的软件包解压到 GCC 的源代码目录中。</para>
+
+      <para>编译 GCC 的时间较长，可以下载已经编译好的数据，直接执行 <command>make install</command> 命令。</para>
+    </sidebar>
+
 <!--E
     <para>GCC now requires the GMP and MPFR packages. As these packages may
     not be included in your host distribution, they will be built with

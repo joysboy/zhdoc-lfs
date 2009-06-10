@@ -13,6 +13,11 @@
 -->
   <title>工具链技术说明</title>
 
+  <sidebar>
+    <para>软件的不同版本之间，不一定能够兼容，在系统软件这个层面更是如此。Ubuntu Linux 上提供的编译器，可以正常编译各种应用软件，但未必能够正常编译出 LFS 系统的全部系统软件。因此，必须要先搞出一组确定可以正常编译出 LFS 的工具。工欲善其事，必先利其器。</para>
+    <para>制作工具链在工程中经常会用到，特别是开发系统级的软件和嵌入式系统时。</para>
+  </sidebar>
+
 <!--E
   <para>This section explains some of the rationale and technical details
   behind the overall build method. It is not essential to immediately
