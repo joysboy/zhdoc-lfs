@@ -13,6 +13,12 @@
 -->
   <title>创建新的分区</title>
 
+  <sidebar>
+    <para>在 Ubuntu Linux 的安装实验中，我们已经为系统创建了四个分区。其中 <filename class="devicefile">sda1</filename> 用来存放引导文件，<filename class="devicefile">sda2</filename> 上安装了 Ubuntu Linux 系统，<filename class="devicefile">sda3</filename>（10G）是用于 LFS 系统安装的，而 <filename class="devicefile">sda4</filename> 则是两个系统共用的交换分区。</para>
+
+    <para>通过 <command>free</command> 命令可以查看目前自己的系统究竟有多少内存，正常情况下应该有 700M 左右的物理内存（Mem）和 1G 的交换分区（Swap）。</para>
+  </sidebar>
+
 <!--E
   <para>Like most other operating systems, LFS is usually installed on a
   dedicated partition. The recommended approach to building an LFS system
@@ -69,5 +75,6 @@
   needed later for the <filename>/etc/fstab</filename> file.</para>
 -->
   <para>记下新分区的命名，比如<filename class="devicefile">hda5</filename>，本书将其作为 LFS 分区。另外记下 <systemitem class="filesystem">swap</systemitem> 分区的命名。在后面配置 <filename>/etc/fstab</filename> 的时候会用到。</para>
+
 
 </sect1>
