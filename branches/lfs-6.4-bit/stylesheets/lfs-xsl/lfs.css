@@ -602,7 +602,7 @@ p.updated {
   color: #8E6B23
 }
 
-.sect1 {
+.sect1, .installation {
   padding-right: 12em;
 }
 
