@@ -13,10 +13,6 @@
 -->
   <title>设置编译环境</title>
 
-  <sidebar>
-    <para>本页的步骤是非常重要的，如果不按照说明完成，在制作工具链时会遇到错误。</para>
-  </sidebar>
-
 <!--E
   <para>Set up a good working environment by creating two new startup files
   for the <command>bash</command> shell. While logged in as user

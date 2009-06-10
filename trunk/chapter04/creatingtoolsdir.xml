@@ -13,11 +13,6 @@
 -->
   <title>创建 $LFS/tools 目录</title>
 
-  <sidebar>
-    <para>如果在读到此文档前，你已经开始在 /tools 下创建工具链，可以通过命令 <command>sudo mv /tools /mnt/lfs/tools</command> 将所有已经创建好的内容挪到 LFS 的分区上，然后再用第二个命令创建一个符号链接。</para>
-    <para>执行本节的命令，必须使用 <command>sudo</command> 切换身份。</para>
-  </sidebar>
-
 <!--E
   <para>All programs compiled in <xref linkend="chapter-temporary-tools"/>
   will be installed under <filename class="directory">$LFS/tools</filename>
