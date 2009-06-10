@@ -13,6 +13,10 @@
 -->
   <title>添加 LFS 用户</title>
 
+  <sidebar>
+    <para>这个步骤不是必须的，但作为初学者，完全按照手册操作是一个很好的选择。在执行本页的命令前，需切换到 <systemitem class="username">root</systemitem> 身份，用命令 <command>sudo su</command>。</para>
+  </sidebar>
+
 <!--E
   <para>When logged in as user <systemitem class="username">root</systemitem>,
   making a single mistake can damage or destroy a system. Therefore, we
