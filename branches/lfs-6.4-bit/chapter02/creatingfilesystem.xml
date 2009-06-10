@@ -13,6 +13,10 @@
 -->
   <title>在新分区上建立文件系统</title>
 
+  <sidebar>
+    <para>格式化 <filename class="devicefile">sda3</filename> 的命令为 <command>sudo mke2fs -jv /dev/sda3</command>，此命令是必须以 root 身份执行的，普通用户是无权访问重要的设备文件的。</para>
+  </sidebar>
+
 <!--E
   <para>Now that a blank partition has been set up, the file system can be created.
   The most widely-used system in the Linux world is the second extended file
