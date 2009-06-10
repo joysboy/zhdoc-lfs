@@ -49,6 +49,11 @@
 -->
     <title>安装 Binutils</title>
 
+    <sidebar>
+      <para>首先，要下载 Binutils 的软件包和补丁，然后将前者解压。</para>
+      <para>执行 <command>patch</command> 命令时，Shell 的当前工作目录应该是源代码所在的目录。</para>
+    </sidebar>
+
 <!--E
     <para>It is important that Binutils be the first package compiled
     because both Glibc and GCC perform various tests on the available

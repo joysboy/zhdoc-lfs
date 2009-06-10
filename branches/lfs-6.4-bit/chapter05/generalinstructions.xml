@@ -13,6 +13,11 @@
 -->
   <title>基本编译规则说明</title>
 
+  <sidebar>
+    <para>要给软件打补丁，需要通过命令 <command>sudo apt-get install patch</command> 安装 patch 软件包。所谓补丁，指的是在软件源代码上的一些改动，通过一种特定的文本格式表示出来。</para>
+    <para>在编译一个软件前，需先解压其源代码，可以使用 <command>tar xf <replaceable>&lt;filename&gt;</replaceable></command> 命令。新版的 <command>tar</command> 命令可以自动地区分 <command>gzip</command> 和 <command>bzip2</command> 压缩的文件包。</para>
+  </sidebar>
+
 <!--E
   <para>When building packages there are several assumptions made within 
   the instructions:</para>

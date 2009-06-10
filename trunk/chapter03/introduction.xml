@@ -13,6 +13,10 @@
 -->
   <title>本章介绍</title>
 
+  <sidebar>
+    <para>所有的软件包，可以从校内的开源镜像站 <ulink url="http://mirror.bitunion.org/lfs/lfs-packages"/> 下载到。</para>
+  </sidebar>
+
 <!--E
   <para>This chapter includes a list of packages that need to be downloaded in
   order to build a basic Linux system. The listed version numbers correspond to
