@@ -13,6 +13,10 @@
 -->
   <title>关于 SBU</title>
 
+  <sidebar>
+    <para>在实验所使用的计算机上，SBU 大约为 10 分钟。我们会将非常耗费时间的部件提前编译好放在服务器上。</para>
+  </sidebar>
+
 <!--E
   <para>Many people would like to know beforehand approximately how long
   it takes to compile and install each package. Because Linux From
