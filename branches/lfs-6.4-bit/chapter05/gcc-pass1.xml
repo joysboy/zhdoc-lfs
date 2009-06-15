@@ -52,7 +52,7 @@
     <sidebar>
       <para>首先，还是要先解压 GCC 的源代码，然后按照本节的命令把 GMP 和 MPFR 的软件包解压到 GCC 的源代码目录中。</para>
 
-      <para>编译 GCC 的时间较长，可以下载已经编译好的数据，直接执行 <command>make install</command> 命令。</para>
+      <para>编译 GCC 的时间较长，可以在解压并给源代码打补丁后，从 <ulink url="ftp://10.1.10.8/incoming/linux2008"/> 下载已经编译好的数据，解压到目录 <filename class="directory">$LFS/sources</filename> 中，然后直接执行 <command>make install</command> 命令。</para>
     </sidebar>
 
 <!--E
