@@ -41,37 +41,55 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Bash</title>
+-->
+    <title>安装 Bash</title>
 
+<!--E
     <para>Apply fixes for several bugs discovered since the initial release of
     Bash-&bash-version;:</para>
+-->
+    <para>应用下面补丁修复自 Bash-&bash-version; 正式发布以来的一些 bug：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&bash-fixes-patch;</userinput></screen>
 
+<!--E
     <para>Prepare Bash for compilation:</para>
+-->
+    <para>配置 Bash，为编译做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools --without-bash-malloc \
    ac_cv_func_working_mktime=yes</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--without-bash-malloc</parameter></term>
         <listitem>
+<!--E
           <para>This option turns off the use of Bash's memory allocation
           (<function>malloc</function>) function which is known to cause
           segmentation faults. By turning this option off, Bash will use
           the <function>malloc</function> functions from Glibc which are
           more stable.</para>
+-->
+          <para>该选项关闭 Bash 的内存分配函数（<function>malloc</function>，已知该函数会导致段错误。关闭了该选项之后，Bash 会使用更为稳定的、由 Glibc 提供的malloc 函数。）</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><parameter>ac_cv_func_working_mktime=yes</parameter></term>
         <listitem>
+<!--E
           <para>This parameter bypasses the search for mktime in configure
           and uses the version in glibc. The is necessary due to a change in
           gcc that has not been incorporated into this package yet.</para>
+-->
+          <para>这个参数是在配置过程中绕过对 mktime 的搜索，改为使用在 glibc 中的版本。这样做的需要的原因是，有一个 gcc 的变化，但本软件包还没有包括进来。</para>
         </listitem>
       </varlistentry>
 
@@ -81,19 +99,27 @@
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>Compilation is now complete. As discussed earlier, running the test
     suite is not mandatory for the temporary tools here in this chapter. To run
     the Bash test suite anyway, issue the following command:</para>
-
+-->
+    <para>现在编译完成了，同前面一样，在本章为了一个临时工具运行测试程序不是强制的。如果想运行测试套件，使用下列命令：</para>
 
 <screen><userinput remap="test">make tests</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装该软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Make a link for the programs that use <command>sh</command> for
     a shell:</para>
+-->
+    <para>为那些使用 <command>sh</command> 作为其 Shell 的软件创建链接：</para>
 
 <screen><userinput remap="install">ln -vs bash /tools/bin/sh</userinput></screen>
 
@@ -102,8 +128,11 @@
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-bash" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-bash" role="."/>。</para>
 
   </sect2>
 

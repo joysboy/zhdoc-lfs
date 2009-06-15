@@ -41,10 +41,16 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Perl</title>
+-->
+    <title>安装 Perl</title>
 
+<!--E
     <para>First apply a series of patches to address security issues and adapt some 
     hard-wired paths to the C library by applying the following patch:</para>
+-->
+    <para>首先应用一系列补丁修补安全问题和调整指向 C 语言库的硬链接：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&perl-consolidated-patch;</userinput></screen>
 
@@ -53,39 +59,57 @@
 <screen><userinput remap="pre">mv -v makedepend.SH{,.orig}
 sed 's/command /command[ -]/' makedepend.SH.orig &gt; makedepend.SH</userinput></screen> -->
 
+<!--E
     <para>Prepare Perl for compilation (make sure to get the
     'Data/Dumper Fcntl IO POSIX' part of the command correct&mdash;they are all
     letters):</para>
+-->
+    <para>配置 Perl（请正确输入下面命令中的<quote>Data/Dumper Fcntl IO POSIX</quote>部分，它们全部为字母）。</para>
 
 <screen><userinput remap="configure">sh Configure -des -Dprefix=/tools \
                   -Dstatic_ext='Data/Dumper Fcntl IO POSIX'</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>-Dstatic_ext='Data/Dumper Fcntl IO POSIX'</parameter></term>
         <listitem>
+<!--E
           <para>This tells Perl to build the minimum set of static extensions
           needed for installing and testing the Coreutils and Glibc packages in the
           next chapter.</para>
+-->
+          <para>告诉 Perl 只为下一章安装和测试 Coreutils 和 Glibc 构建静态扩展的最小集。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Only a few of the utilities contained in this package, and one of its
     libraries need to be built:</para>
+-->
+    <para>只需要该包的一小部分工具和相应的库：</para>
 
 <screen><userinput remap="make">make perl utilities ext/Errno/pm_to_blib</userinput></screen>
 
+<!--E
     <para>Although Perl comes with a test suite, it is not recommended to
     run it at this point. Only part of Perl was built and running
     <command>make test</command> now will cause the rest of Perl to be
     built as well, which is unnecessary at this point. The test suite can
     be run in the next chapter if desired.</para>
+-->
+    <para>虽然 perl 带有测试套件，但是现在不推荐运行测试套件。因为我们只安装了 perl 的一小部分，运行 <command>make test</command> 会编译现在还不需要的剩余部分。如果需要，请在下一章再运行测试套件。</para>
 
+<!--E
     <para>Install these tools and their libraries:</para>
+-->
+    <para>安装这些工具和库：</para>
 
 <screen><userinput remap="install">cp -v perl pod/pod2man /tools/bin
 mkdir -pv /tools/lib/perl5/&perl-version;
@@ -96,8 +120,11 @@ cp -Rv lib/* /tools/lib/perl5/&perl-version;</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-perl" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-perl" role="."/>。</para>
 
   </sect2>
 

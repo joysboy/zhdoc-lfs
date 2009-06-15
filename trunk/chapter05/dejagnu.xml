@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The DejaGNU package contains a framework for testing other
     programs.</para>
+-->
+    <para>DejaGNU 包含为测试其他程序的一个框架。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,27 +42,45 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of DejaGNU</title>
+-->
+    <title>DejaGNU 的安装</title>
 
+<!--E
     <para>Prepare DejaGNU for compilation:</para>
+-->
+    <para>配置 DejaGNU：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools</userinput></screen>
 
+<!--E
     <para>Build and install the package:</para>
+-->
+    <para>编译安装：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>This package does come with a test suite, however, it cannot be
     run at this time because we do not have a C++ compiler yet.</para>
+-->
+    <para>这个软件包的确包含一个测试程序，但是由于我们还没有安装 C++ 编译器而不能运行。</para>
 
   </sect2>
 
 
   <sect2 id="contents-dejagnu" role="content">
+<!--E
     <title>Contents of DejaGNU</title>
+-->
+    <title>DejaGNU 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed program</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
 
       <seglistitem>
         <seg>runtest</seg>
@@ -67,15 +88,21 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="runtest">
         <term><command>runtest</command></term>
         <listitem>
+<!--E
           <para>A wrapper script that locates the proper
           <command>expect</command> shell and then runs DejaGNU</para>
+-->
+          <para>一个包装脚本，用于定位合适的 <command>expect</command> shell 并接着运行 DejaGNU。</para>
           <indexterm zone="ch-tools-dejagnu runtest">
             <primary sortas="b-runtest">runtest</primary>
           </indexterm>
