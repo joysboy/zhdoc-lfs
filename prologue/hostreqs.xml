@@ -14,7 +14,7 @@
   <title>宿主系统要求</title>
 
   <sidebar>
-    <para>有几个软件包很多同学都没有正常安装，它们是 build-essential、patch、gawk、m4 和 texinfo，可以使用 <command>suod apt-get install build-essential patch gawk m4 texinfo</command> 命令安装它们。</para>
+    <para>有一些开发工具包很多同学都没有正常安装，可以使用 <command>suod apt-get install build-essential patch gawk m4 texinfo autoconf</command> 命令安装它们。</para>
 
     <para>请执行本页的脚本以确定自己确实安装了需要的软件包（从网页复制，然后粘贴到 Shell 窗口中即可执行）。</para>
   </sidebar>
