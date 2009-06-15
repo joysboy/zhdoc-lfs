@@ -41,28 +41,43 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Util-linux-ng</title>
+-->
+    <title>安装 Util-linux-ng</title>
 
+<!--E
     <para>Prepare Util-linux-ng for compilation:</para>
+-->
+    <para>为编译 Util-linux-ng 作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools</userinput></screen>
 
+<!--E
     <para>Only a few of the utilities contained in this package need to be
     built:</para>
+-->
+    <para>现在我们只需要该包中的一部分工具：</para>
 
 <screen><userinput remap="make">make BLKID_LIBS="-lblkid -luuid" -C mount mount umount
 make -C text-utils more</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the make parameter:</title>
+-->
+      <title>make 参数的含义：</title>
 
       <varlistentry>
         <term><parameter>BLKID_LIBS="-lblkid -luuid"</parameter></term>
         <listitem>
+<!--E
           <para>When building only a subset of the package, the
           <filename class="libraryfile">libuuid.a</filename> library is not
           pulled into the build as it is supposed to. This command overrides
           the default from the <filename>Makefile</filename>.</para>
+-->
+          <para>当只编译软件包的一部分时，<filename class="libraryfile">libuuid.a</filename> 库不会像预料的那样被编译进来，该选项覆盖掉 <filename>Makefile</filename> 中的默认值。</para>
         </listitem>
       </varlistentry>
 
@@ -77,9 +92,15 @@ make -C text-utils more</userinput></screen>
 
 <screen><userinput remap="test">make check</userinput></screen> -->
 
+<!--E
     <para>This package does not come with a test suite.</para>
+-->
+    <para>该包不提供测试套件。</para>
 
+<!--E
     <para>Copy these programs to the temporary tools directory:</para>
+-->
+    <para>复制这些程序到我们的临时工具目录：</para>
 
 <screen><userinput remap="install">cp -v mount/{,u}mount text-utils/more /tools/bin</userinput></screen>
 
@@ -88,8 +109,11 @@ make -C text-utils more</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-utillinux" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-utillinux" role="."/>。</para>
 
   </sect2>
 

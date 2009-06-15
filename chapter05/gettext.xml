@@ -41,40 +41,64 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Gettext</title>
+-->
+    <title>安装 Gettext</title>
 
+<!--E
     <para>For our temporary set of tools, we only need to build and install
     one binary from Gettext.</para>
+-->
+    <para>对于临时工具链来说，我们只需要编译和安装 Gettext 中的一个二进制文件即可。</para>
 
+<!--E
     <para>Prepare Gettext for compilation:</para>
+-->
+    <para>为编译 Gettext 作准备：</para>
 
 <screen><userinput remap="configure">cd gettext-tools
 ./configure --prefix=/tools --disable-shared</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure option:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--disable-shared</parameter></term>
         <listitem>
+<!--E
           <para>We do not need to install any of the shared Gettext libraries at
           this time, therefore there is no need to build them.</para>
+-->
+          <para>此时我们不需要安装任何的 Gettext 共享库，因此不需要编译它们。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make -C gnulib-lib
 make -C src msgfmt</userinput></screen>
 
+<!--E
     <para>As only one binary has been compiled, it is not possible to run the
     testsuite without compiling additional support libraries from the Gettext
     package. It is therefore not recommended to attempt to run the testsuite at
     this stage.</para>
+-->
+    <para>由于只编译了一个二进制文件，没有其他 Gettext 库文件的支持，不可能运行测试套件，因此我们不推荐去尝试运行测试套件。</para>
 
+<!--E
     <para>Install the <command>msgfmt</command> binary:</para>
+-->
+    <para>安装 <command>msgfmt</command>：</para>
 
 <screen><userinput remap="install">cp -v src/msgfmt /tools/bin</userinput></screen>
 
@@ -83,8 +107,11 @@ make -C src msgfmt</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-gettext" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gettext" role="."/>。</para>
 
   </sect2>
 

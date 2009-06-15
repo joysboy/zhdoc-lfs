@@ -41,37 +41,58 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Gawk</title>
+-->
+    <title>安装 Gawk</title>
 
+<!--E
     <para>Prepare Gawk for compilation:</para>
+-->
+    <para>为编译 Gawk 作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools ac_cv_func_working_mktime=yes</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure option:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>ac_cv_func_working_mktime=yes</parameter></term>
         <listitem>
+<!--E
           <para>This parameter bypasses the search for mktime in configure
           and uses the version in glibc. The is necessary due to a change in
           gcc that has not been incorporated into this package yet.</para>
+-->
+          <para>这个参数是在配置过程中绕过对 mktime 的搜索，改为使用在 glibc 中的版本。这样做的需要的原因是，有一个 gcc 的变化，但本软件包还没有包括进来。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Compilation is now complete. As discussed earlier, running the test
     suite is not mandatory for the temporary tools here in this chapter. To run
     the Gawk test suite anyway, issue the following command:</para>
+-->
+    <para>现在编译完成了，同前面一样，在本章为了一个临时工具运行测试程序不是强制的。如果想运行测试套件，使用下列命令：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>测试编译结果：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装该软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -80,8 +101,11 @@
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-gawk" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gawk" role="."/>。</para>
 
   </sect2>
 

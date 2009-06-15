@@ -41,48 +41,72 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Grep</title>
+-->
+    <title>安装 Grep</title>
 
+<!--E
     <para>Prepare Grep for compilation:</para>
+-->
+    <para>为编译作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools \
     --disable-perl-regexp \
     --without-included-regex</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure switches:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--disable-perl-regexp</parameter></term>
         <listitem>
+<!--E
           <para>This ensures that the <command>grep</command> program does
           not get linked against a Perl Compatible Regular Expression (PCRE)
           library that may be present on the host but will not be available
           once we enter the <command>chroot</command> environment.</para>
+-->
+          <para>这个选项确保 <command>grep</command> 程序不连接可能在宿主系统上存在的 PCRE（Perl 兼容正则表达式）库，因为进入 <command>chroot</command> 环境后，它就不能使用了。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--without-included-regex</parameter></term>
         <listitem>
+<!--E
           <para>The configure check for glibc's regex library is broken when
           building against glibc-2.8.  This switch forces the use of glibc's
           regex library.</para>
+-->
+          <para>该选项强制使用 glibc 的正则表达式库，并检查编译时是否破坏了glibc 的正则表达式库(??)。</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>Compilation is now complete. As discussed earlier, running the test
     suite is not mandatory for the temporary tools here in this chapter. To run
     the Grep test suite anyway, issue the following command:</para>
+-->
+    <para>现在编译完成了，同前面一样，在本章为了一个临时工具运行测试程序不是强制的。如果想运行测试套件，使用下列命令：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装该软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -91,8 +115,11 @@
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-grep" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-grep" role="."/>。</para>
 
   </sect2>
 
