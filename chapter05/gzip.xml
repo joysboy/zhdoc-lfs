@@ -41,32 +41,50 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Gzip</title>
+-->
+    <title>安装 Gzip</title>
 
+<!--E
     <para>The version of the function <quote>futimens</quote> used
     by Gzip is incompatible with the version that current
     Glibc provides, so we'll rename the function:</para>
+-->
+    <para>该版本的 Gzip 使用的函数<quote>futimens</quote> 和我们提供的 Glibc 版本不兼容。所以我们要重命名该函数：</para>
 
 <screen><userinput remap="pre">for file in gzip.c lib/utimens.{c,h} ; do \
    cp -v $file{,.orig}
    sed 's/futimens/gl_&amp;/' $file.orig &gt; $file
 done</userinput></screen>
 
+<!--E
     <para>Prepare Gzip for compilation:</para>
+-->
+    <para>为编译作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>Compilation is now complete. As discussed earlier, running the test
     suite is not mandatory for the temporary tools here in this chapter. To run
     the Gzip test suite anyway, issue the following command:</para>
+-->
+    <para>现在编译完成了，同前面一样，在本章为了一个临时工具运行测试程序不是强制的。如果想运行测试套件，使用下列命令：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装该软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -75,8 +93,11 @@ done</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-gzip" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gzip" role="."/>。</para>
 
   </sect2>
 
