@@ -41,19 +41,34 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Diffutils</title>
+-->
+    <title>安装 Diffutils</title>
 
+<!--E
     <para>Prepare Diffutils for compilation:</para>
+-->
+    <para>为编译 Diffutils 作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/tools</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译该软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>This package does not come with a test suite.</para>
+-->
+    <para>该软件包不含测试套件。</para>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装该软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -62,8 +77,11 @@
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-diffutils" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-diffutils" role="."/>。</para>
 
   </sect2>
 

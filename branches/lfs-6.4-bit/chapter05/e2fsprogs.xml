@@ -40,28 +40,46 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of E2fsprogs</title>
+-->
+    <title>安装 E2fsprogs</title>
 
+<!--E
     <para>The E2fsprogs documentation recommends that the package be built in
     a subdirectory of the source tree: </para>
+-->
+    <para>E2fsprogs 文档推荐在源码目录树的子目录下编译该软件：</para>
 
 <screen><userinput remap="pre">mkdir -v build
 cd build</userinput></screen>
 
+<!--E
     <para>Prepare E2fsprogs for compilation:</para>
+-->
+    <para>为编译 E2fsprogs 作准备：</para>
 
 <screen><userinput remap="configure">../configure --prefix=/tools</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译它：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>Install the static libraries and headers required by Util-linux-ng:</para>
+-->
+    <para>安装 Util-linux-ng 所需的静态库和头文件。</para>
 
 <screen><userinput remap="install">make install-libs</userinput></screen>
 
+<!--E
     <para>Make the installed static libraries writable so debugging symbols can 
     be removed later.</para>
+-->
+    <para>为后面剔除调试信息，设置静态库为可写。</para>
 
 <screen><userinput remap="install">chmod -v u+w /tools/lib/{libblkid,libcom_err,libe2p,libext2fs,libss,libuuid}.a</userinput></screen>
 
@@ -70,8 +88,10 @@ cd build</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
-    <xref linkend="contents-e2fsprogs" role="."/></para>
+-->
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-e2fsprogs" role="."/>。</para>
   </sect2>
 
 </sect1>
