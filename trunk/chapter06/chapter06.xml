@@ -12,7 +12,7 @@
 <!--E
   <title>Installing Basic System Software</title>
 -->
-  <title>安装基本系统软件</title>
+  <title>安装系统基础软件</title>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="introduction.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="kernfs.xml"/>
