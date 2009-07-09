@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -6,14 +6,20 @@
 ]>
 
 <sect1 id="ch-system-introduction">
-  <?dbhtml filename="introduction.html"?>
-
+ <?dbhtml filename="introduction.html"?>
+<!--E
   <title>Introduction</title>
-
+-->
+  <title>简介</title>
+<!--E
   <para>In this chapter, we enter the building site and start constructing the
   LFS system in earnest. That is, we chroot into the temporary mini Linux system,
   make a few final preparations, and then begin installing the packages.</para>
+-->
 
+  <para>在这一章，我们进入"建筑工地"，开始精心构建 LFS 系统。也就是指我们通过 chroot 命令进入一个临时的微型 Linux 系统，并作一些最后的准备，然后开始安装软件包。</para>
+
+<!--E
   <para>The installation of this software is straightforward. Although in many
   cases the installation instructions could be made shorter and more generic,
   we have opted to provide the full instructions for every package to minimize
@@ -22,7 +28,9 @@
   needs it.  For every installed package, a summary of its contents is given,
   followed by concise descriptions of each program and library the package
   installed.</para>
-
+-->
+  <para>软件的安装非常直截了当。尽管许多情况下对安装过程的说明可以更加简洁，但为了消除可能出现的错误，我们为每一个包都提供了全面的安装说明。理解 Linux 系统是如何工作的关键在于明白每个包的用途以及为什么用户( 或系统 )需要它。对每一个安装的软件包，我们都给出了对其内容的简要说明，另外，对该软件包所安装的每一个程序文件和库文件也作了简要的描述。</para>
+<!--E
   <para>If using compiler optimizations, please
   review the optimization hint at <ulink url="&hints-root;optimization.txt"/>.
   Compiler optimizations can make a program run slightly faster, but they may
@@ -37,7 +45,9 @@
   compiler optimizations are often outweighed by the risks. First-time builders
   of LFS are encouraged to build without custom optimizations. The subsequent
   system will still run very fast and be stable at the same time.</para>
-
+-->
+  <para>如果在本章中进行编译器优化，那么请看看编译器优化提示：<ulink url="&hints-root;optimization.txt"/>。编译器优化可以使程序运行的稍快一些，但也同样会导致在程序运行时出现某些编译问题。如果某个包在使用优化的情况下无法通过编译，试试不用优化编译能不能解决问题。即使使用优化编译成功，由于源码与编译工具之间复杂的相互作用，程序仍有可能被错误的编译了。要注意 <option>-march</option> 和 <option>-mtune</option> 选项或许会导致一些工具链软件包( Binutils、GCC、Glibc )的问题。使用编译器优化得到的小幅度性能提升，与它带来的风险相比微不足道。所以初次编译 LFS 的用户最好不要使用任何优化，你的系统依然会又快又稳定。</para>
+<!--E
   <para>The order that packages are installed in this chapter needs to be
   strictly followed to ensure that no program accidentally acquires a path
   referring to <filename class="directory">/tools</filename> hard-wired into
@@ -46,12 +56,15 @@
   in a program containing a hard-wired path to <filename
   class="directory">/tools</filename>, which will cause the program to stop
   working when that directory is removed.</para>
-
+-->
+  <para>本章中软件包的安装顺序应当严格遵守，以确保没有一个程序会把 <filename class="directory">/tools</filename> 作为路径硬连接到代码中。同样不要并行编译包。并行编译可能会节省时间( 特别是在双CPU的机器上 )，但也可能造成程序包含 <filename class="directory">/tools</filename> 硬连接路径，以致在 <filename class="directory">/tools</filename> 目录被删除之后，程序无法运行。</para>
+<!--E
   <para>Before the installation instructions, each installation page provides
   information about the package, including a concise description of what it
   contains, approximately how long it will take to build, and how much disk
   space is required during this building process. Following the installation
   instructions, there is a list of programs and libraries (along with brief
   descriptions of these) that the package installs.</para>
-
+-->
+  <para>在每个软件包安装说明页的首部都提供了与该包相关的一些信息，包括：软件包内容的简要说明、编译大约所需时间、编译过程所需磁盘空间、编译所依赖的软件包。在安装说明之后还有该包所安装的程序和库的列表以及对它们的简要说明。</para>
 </sect1>
