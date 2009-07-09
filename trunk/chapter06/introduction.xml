@@ -29,7 +29,7 @@
   followed by concise descriptions of each program and library the package
   installed.</para>
 -->
-  <para>软件的安装非常直截了当。尽管许多情况下对安装过程的说明可以更加简洁，但为了消除可能出现的错误，我们为每一个包都提供了全面的安装说明。理解 Linux 系统是如何工作的关键在于明白每个包的用途以及为什么用户( 或系统 )需要它。对每一个安装的软件包，我们都给出了对其内容的简要说明，另外，对该软件包所安装的每一个程序文件和库文件也作了简要的描述。</para>
+  <para>软件的安装非常直截了当。尽管许多情况下对安装过程的说明可以更加简洁，但为了消除可能出现的错误，我们为每一个包都提供了全面的安装说明。理解 Linux 系统是如何工作的关键在于明白每个包的用途以及为什么用户（或系统）需要它。对每一个安装的软件包，我们都给出了对其内容的简要说明，另外，对该软件包所安装的每一个程序文件和库文件也作了简要的描述。</para>
 <!--E
   <para>If using compiler optimizations, please
   review the optimization hint at <ulink url="&hints-root;optimization.txt"/>.
@@ -46,7 +46,7 @@
   of LFS are encouraged to build without custom optimizations. The subsequent
   system will still run very fast and be stable at the same time.</para>
 -->
-  <para>如果在本章中进行编译器优化，那么请看看编译器优化提示：<ulink url="&hints-root;optimization.txt"/>。编译器优化可以使程序运行的稍快一些，但也同样会导致在程序运行时出现某些编译问题。如果某个包在使用优化的情况下无法通过编译，试试不用优化编译能不能解决问题。即使使用优化编译成功，由于源码与编译工具之间复杂的相互作用，程序仍有可能被错误的编译了。要注意 <option>-march</option> 和 <option>-mtune</option> 选项或许会导致一些工具链软件包( Binutils、GCC、Glibc )的问题。使用编译器优化得到的小幅度性能提升，与它带来的风险相比微不足道。所以初次编译 LFS 的用户最好不要使用任何优化，你的系统依然会又快又稳定。</para>
+  <para>如果在本章中进行编译器优化，那么请看看编译器优化提示：<ulink url="&hints-root;optimization.txt"/>。编译器优化可以使程序运行的稍快一些，但也同样会导致在程序运行时出现某些编译问题。如果某个包在使用优化的情况下无法通过编译，试试不用优化编译能不能解决问题。即使使用优化编译成功，由于源码与编译工具之间复杂的相互作用，程序仍有可能被错误的编译了。要注意 <option>-march</option> 和 <option>-mtune</option> 选项或许会导致一些工具链软件包（Binutils、GCC、Glibc）的问题。使用编译器优化得到的小幅度性能提升，与它带来的风险相比微不足道。所以初次编译 LFS 的用户最好不要使用任何优化，你的系统依然会又快又稳定。</para>
 <!--E
   <para>The order that packages are installed in this chapter needs to be
   strictly followed to ensure that no program accidentally acquires a path
@@ -57,7 +57,7 @@
   class="directory">/tools</filename>, which will cause the program to stop
   working when that directory is removed.</para>
 -->
-  <para>本章中软件包的安装顺序应当严格遵守，以确保没有一个程序会把 <filename class="directory">/tools</filename> 作为路径硬连接到代码中。同样不要并行编译包。并行编译可能会节省时间( 特别是在双CPU的机器上 )，但也可能造成程序包含 <filename class="directory">/tools</filename> 硬连接路径，以致在 <filename class="directory">/tools</filename> 目录被删除之后，程序无法运行。</para>
+  <para>本章中软件包的安装顺序应当严格遵守，以确保没有一个程序会把 <filename class="directory">/tools</filename> 作为路径硬连接到代码中。同样不要并行编译包。并行编译可能会节省时间（特别是在双CPU的机器上），但也可能造成程序包含 <filename class="directory">/tools</filename> 硬连接路径，以致在 <filename class="directory">/tools</filename> 目录被删除之后，程序无法运行。</para>
 <!--E
   <para>Before the installation instructions, each installation page provides
   information about the package, including a concise description of what it

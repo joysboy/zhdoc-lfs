@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -7,9 +7,11 @@
 
 <sect1 id="ch-system-pkgmgt">
   <?dbhtml filename="pkgmgt.html"?>
-
+<!--E
   <title>Package Management</title>
-
+-->
+  <title>包管理</title>
+<!--E
   <para>Package Management is an often requested addition to the LFS Book. A
   Package Manager allows tracking the installation of files making it easy to
   remove and upgrade packages. As well as the binary and library files, a
@@ -20,10 +22,14 @@
   be among these techniques or may be a combination of two or more of these
   techniques. This section briefly mentions issues that may arise when upgrading
   packages.</para>
-
+-->
+  <para>对于 LFS BOOK，包管理通常被请求加进去。一个包管理器允许跟踪文件的安装，使删除或升级软件包变得简单。在这一部分里，我们不会讨论或者是推荐任何一个包管理器。我们讲述的是一些流行的技术，以及他们是怎么工作的。对于你来说，一个完美的包管理器可能在这些技术之中，也可能是一些技术的结合。这一部分简明的描述了当升级软件包的时候会出现的几个问题。</para>
+<!--E
   <para>Some reasons why no package manager is mentioned in LFS or BLFS
   include:</para>
-
+-->
+  <para>LFS 和 BLFS 中没有涉及包管理器的几个原因有：</para>
+<!--E
   <itemizedlist>
     <listitem>
       <para>Dealing with package management takes the focus away from the goals
@@ -36,21 +42,39 @@
       is difficult.</para>
     </listitem>
   </itemizedlist>
+-->
 
+  <itemizedlist>
+    <listitem>
+      <para> 把精力拿来做包管理器，就偏离了我们的LFS的初衷：一个Linux系统是如何构建的。</para>
+    </listitem>
+
+    <listitem>
+      <para>包管理有很多解决方案，每一个都有优点和缺点。任何一个都很难令喜欢其他类型的 fans 满意的。</para>
+    </listitem>
+  </itemizedlist>
+<!--E
   <para>There are some hints written on the topic of package management. Visit
   the <ulink url="&hints-index;">Hints Project</ulink> and see if one of them
   fits your need.</para>
+-->
+  <para>有一些提示写的是关于包管理。可以查看 <ulink url="&hints-index;">Hints Project</ulink> 来选择一个适合你的。</para>
 
   <sect2>
+<!--E
     <title>Upgrade Issues</title>
-
+-->
+    <title>升级问题</title>
+<!--E
     <para>A Package Manager makes it easy to upgrade to newer versions when they
     are released. Generally the instructions in the LFS and BLFS Book can be
     used to upgrade to the newer versions. Here are some points that you should
     be aware of when upgrading packages, especially on a running system.</para>
-
+-->
+    <para>一个包管理器会使升级一个软件包到新的版本变得很简单。通常 LFS 和 BLFS 手册中的说明可以用来升级软件包。这里有几点，你在升级软件包的时候应该注意的，尤其是在一个运行着的系统上。</para>
     <itemizedlist>
       <listitem>
+<!--E
         <para>If one of the toolchain packages (Glibc, GCC or Binutils) needs
         to be upgraded to a newer minor version, it is safer to rebuild LFS.
         Though you <emphasis>may</emphasis> be able to get by rebuilding all
@@ -59,9 +83,12 @@
         to rebuild. For micro version updates, a simple reinstallation usually
         works, but is not guaranteed. For example, upgrading from glibc-2.3.4
         to glibc-2.3.5 will not usually cause any problems.</para>
+-->
+        <para>如果工具链中的一个软件包（Glibc、GCC、Binutils）需要升级到一个新的次版本，重新构建LFS是比较安全的。尽管你可以按照依赖关系，只是重新构建一部分的软件包。但我们并不推荐这样做。例如，如果 glibc-2.2.x 需要升级到 glibc-2.3.x，重新构建是比较安全的。对于小版本的升级，简单的重新安装通常可以正常的工作，但是不能够保证。 例如，从 glibc-2.3.4 升级到 glibc-2.3.5 通常不会有问题。</para>
       </listitem>
 
       <listitem>
+<!--E
         <para>If a package containing a shared library is updated, and if the
         name of the library changes, then all the packages dynamically linked
         to the library need to be recompiled to link against the newer library.
@@ -77,32 +104,45 @@
         <filename class='libraryfile'>libfoo.so.2</filename>. Note that you
         should not remove the previous libraries until the dependent packages
         are recompiled.</para>
+-->
+        <para>如果包含一个共享库的软件包升级，并且共享库的名字发生了变化。动态链接到这个库的所有的包都需要重新编译链接到新的库（注意包的版本和库的名字没有关系）。例如，一个软件包 foo-1.2.3 安装了一个名为 <filename class='libraryfile'>libfoo.so.1</filename> 的共享库。你升级这个包到新版本 foo-1.2.4，而这个新版本安装的共享库名为 <filename class='libraryfile'>libfoo.so.2</filename>。这种情况下，所有链接到 <filename class='libraryfile'>libfoo.so.1</filename> 的包都需要重新编译链接到 <filename class='libraryfile'>libfoo.so.2</filename>。注意在依赖的软件包没有编译完之前，不要删除原来的库。</para>
       </listitem>
     </itemizedlist>
 
   </sect2>
 
   <sect2>
+<!--E
     <title>Package Management Techniques</title>
-
+-->
+    <title>包管理技术</title>
+<!--E
     <para>The following are some common package management techniques. Before
     making a decision on a package manager, do some research on the various
     techniques, particularly the drawbacks of the particular scheme.</para>
-
+-->
+    <para>下面是一些常用的包管理的技术。在决定安装包管理器之前，对多种包管理技术进行一下研究，找出某一种的缺点。</para>
     <sect3>
+<!--E
       <title>It is All in My Head!</title>
-
+-->
+      <title>全部记在心里！</title>
+<!--E
       <para>Yes, this is a package management technique. Some folks do not find
       the need for a package manager because they know the packages intimately
       and know what files are installed by each package. Some users also do not
       need any package management because they plan on rebuilding the entire
       system when a package is changed.</para>
-
+-->
+      <para>是的，这是一种包管理的技术。一些人不需要包管理器，因为他们对包都非常熟悉，知道每一个包所安装的文件。一些人也不需要包管理器，是因为当一个软件包改变时，他们重新构建整个系统。</para>
     </sect3>
 
     <sect3>
+<!--E
       <title>Install in Separate Directories</title>
-
+-->
+      <title>分别安装到不同目录</title>
+<!--E
       <para>This is a simplistic package management that does not need any extra
       package to manage the installations. Each package is installed in a
       separate directory. For example, package foo-1.1 is installed in
@@ -112,18 +152,24 @@
       a new version foo-1.2, it is installed in
       <filename class='directory'>/usr/pkg/foo-1.2</filename> and the previous
       symlink is replaced by a symlink to the new version.</para>
-
+-->
+      <para>这是一种最简单的包管理方式，不需要安装额外的软件包来管理安装过程。每一个软件包安装到不同的目录下。 例如，包 foo-1.1 安装到 <filename class='directory'>/usr/pkg/foo-1.1</filename>，创建一个从 <filename>/usr/pkg/foo</filename> 指向 <filename class='directory'>/usr/pkg/foo-1.1</filename> 的符号链接。当安装一个新版本 foo-1.2 时，它会安装在 <filename class='directory'>/usr/pkg/foo-1.2</filename>，前面的符号链接也指向新版本。</para>
+<!--E
       <para>Environment variables such as <envar>PATH</envar>,
       <envar>LD_LIBRARY_PATH</envar>, <envar>MANPATH</envar>,
       <envar>INFOPATH</envar> and <envar>CPPFLAGS</envar> need to be expanded to
       include <filename>/usr/pkg/foo</filename>. For more than a few packages,
       this scheme becomes unmanageable.</para>
-
+-->
+      <para>一些环境变量，像 <envar>PATH</envar>，<envar>LD_LIBRARY_PATH</envar>，<envar>MANPATH</envar>，<envar>INFOPATH</envar> 和 <envar>CPPFLAGS</envar> 都会增大 <filename>/usr/pkg/foo</filename>目录。当软件包数量大了之后，就难于管理了。</para>
     </sect3>
 
     <sect3>
+<!--E
       <title>Symlink Style Package Management</title>
-
+-->
+      <title>符号连接风格的包管理</title>
+<!--E
       <para>This is a variation of the previous package management technique.
       Each package is installed similar to the previous scheme. But instead of
       making the symlink, each file is symlinked into the
@@ -132,7 +178,9 @@
       created by the user to automate the creation, many package managers have
       been written using this approach. A few of the popular ones include Stow,
       Epkg, Graft, and Depot.</para>
-
+-->
+      <para>这是前面包管理技术的一个变种。每一个包也是按照类似于前面方法进行安装。但是不是创建符号链接， 而是每一个都被链接到 <filename class='directory'>/usr</filename> 目录。这样就不需要添加环境变量了。尽管有时在安装的时候符号链接自动创建，还是有很多的是采用这种方法的。一些比较流行的有： Stow，Epkg，Graft，和 Depot。</para>
+<!--E
       <para>The installation needs to be faked, so that the package thinks that
       it is installed in <filename class="directory">/usr</filename> though in
       reality it is installed in the
@@ -140,11 +188,13 @@
       this manner is not usually a trivial task. For example, consider that you
       are installing a package libfoo-1.1. The following instructions may
       not install the package properly:</para>
+-->
+      <para>安装过程需要伪造，这样包就会认为自己被安装到了 <filename class="directory">/usr</filename> 目录，尽管实际上 它们安装到 <filename class="directory">/usr/pkg</filename> 目录下。以这种风格安装并不是很麻烦的事情。比如，你要安装一个包 libfoo-1.1 。用下面的指令安装就不合适：</para>
 
 <screen role="nodump"><userinput>./configure --prefix=/usr/pkg/libfoo/1.1
 make
 make install</userinput></screen>
-
+<!--E
       <para>The installation will work, but the dependent packages may not link
       to libfoo as you would expect. If you compile a package that links against
       libfoo, you may notice that it is linked to
@@ -153,42 +203,56 @@ make install</userinput></screen>
       as you would expect. The correct approach is to use the
       <envar>DESTDIR</envar> strategy to fake installation of the package. This
       approach works as follows:</para>
+-->
+      <para>安装是没有问题，但是依赖的包不能够像你想像的那样链接到 libfoo。如果你编译一个链接到 libfoo 的包，你就要注意，要链接到 <filename class='libraryfile'>/usr/pkg/libfoo/1.1/lib/libfoo.so.1</filename>，而不是x 像你想像的那样链接到 <filename class='libraryfile'>/usr/lib/libfoo.so.1</filename>。正确的方法是使用 <envar>DESTDIR</envar> 来伪造包的安装。可以这样来使用这种方法：</para>
 
 <screen role="nodump"><userinput>./configure --prefix=/usr
 make
 make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
-
+<!--E
       <para>Most packages support this approach, but there are some which do not.
       For the non-compliant packages, you may either need to manually install the
       package, or you may find that it is easier to install some problematic
       packages into <filename class='directory'>/opt</filename>.</para>
-
+-->
+      <para>大多数的包都支持这种方法，但还是有一些不支持。对于这些不兼容的包，你可以手工安装，或许把一些有问题的包 安装到 <filename class="directory">/opt</filename> 可能更简单。</para>
     </sect3>
 
     <sect3>
+<!--E
       <title>Timestamp Based</title>
-
+-->
+      <title>基于时间戳</title>
+<!--E
       <para>In this technique, a file is timestamped before the installation of
       the package. After the installation, a simple use of the
       <command>find</command> command with the appropriate options can generate
       a log of all the files installed after the timestamp file was created. A
       package manager written with this approach is install-log.</para>
-
+-->
+      <para>这种技术里，在安装包之前，会创建一个时间戳标记文件。安装之后，简单的使用的 <command>find</command> 命令的某些选项就能生成一个时间戳标记文件创建之后安装的文件的日志。install-log 就是利用这种技术写的包管理器。</para>
+<!--E
       <para>Though this scheme has the advantage of being simple, it has two
       drawbacks. If, during installation, the files are installed with any
       timestamp other than the current time, those files will not be tracked by
       the package manager. Also, this scheme can only be used when one package
       is installed at a time. The logs are not reliable if two packages are
       being installed on two different consoles.</para>
-
+-->
+      <para>尽管这种方法简单，但是它有两个缺点。如果在安装的过程中，安装的文件的时间戳不是当前的时间，这些文件将不会被包管理器记录。另外，这种方案只能用在一次只有一个包安装时。如果有两个包在两个终端下同时安装，那么这时的日志是不可靠的。</para>
     </sect3>
 
     <sect3>
+<!--E
       <title>Tracing Installation Scripts</title>
-
+-->
+      <title>追踪安装脚本</title>
+<!--E
       <para>In this approach, the commands that the installation scripts perform
       are recorded.  There are two techniques that one can use:</para>
-
+-->
+      <para>在这种方案中，所有在安装脚本中使用的命令都会被记录下来。这里有两种技巧可以使用，其中之一是：</para>
+<!--E
       <para>The <envar>LD_PRELOAD</envar> environment variable can be set to
       point to a library to be preloaded before installation.  During
       installation, this library tracks the packages that are being installed by
@@ -200,21 +264,30 @@ make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
       installation. Therefore, it is advised that one performs some tests to
       ensure that the package manager does not break anything and logs all the
       appropriate files.</para>
-
+-->
+      <para>设置环境变量 <envar>LD_PRELOAD</envar> 可以使得在安装之前有一个库被提前加载。在安装的过程中，这个库就会跟踪正在安装的包，通过给自己附加上 各种可执行性的动作，像 <command>cp</command>，<command>install</command>，<command>mv</command> 这些命令，来跟踪那些修改文件系统系统调用。为了让这种方法正常的工作，所有的可执行文件需要都是动态链接的且没有设置 suid 和 sgid 位。预先加载库可能会产生一些讨厌的副作用。因此，建议做一些测试，来确保包管理器不会破坏任何东西，并且能够记录所有适当的文件。</para>
+<!--E
       <para>The second technique is to use <command>strace</command>, which
       logs all system calls made during the execution of the installation
       scripts.</para>
+-->
+      <para>第二种技巧是用 <command>strace</command> 命令。它可以记录在执行安装脚本过程中所产生的所有系统调用。</para>
     </sect3>
 
     <sect3>
+<!--E
       <title>Creating Package Archives</title>
-
+-->
+      <title>创建包的归档</title>
+<!--E
       <para>In this scheme, the package installation is faked into a separate
       tree as described in the Symlink style package management. After the
       installation, a package archive is created using the installed files.
       This archive is then used to install the package either on the local
       machine or can even be used to install the package on other machines.</para>
-
+-->
+      <para>在这种方案中，包被分别安装到不同的目录树下，就像符号连接风格的包管理描述的。安装之后，系统就会使用安装的文件创建一个包的归档。这个档案可以在本机上安装包，甚至可以在其他机器上安装包。</para>
+<!--
       <para>This approach is used by most of the package managers found in the
       commercial distributions. Examples of package managers that follow this
       approach are RPM (which, incidentally, is required by the <ulink
@@ -223,12 +296,17 @@ make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
       Gentoo's Portage system.  A hint describing how to adopt this style of
       package management for LFS systems is located at <ulink
       url="&hints-root;fakeroot.txt"/>.</para>
+-->
+      <para>这种方法被大多数商业发行版的包管理器采用。例如，RPM（<ulink url="http://www.linux-foundation.org/en/Specifications">Linux Standard Base Specification</ulink> 自然是必需的），pkg-utils，Debian 的 apt 和 Gentoo 的 Portage 系统。这里有个提示描述了在 LFS 系统中如何应用这样的包管理器，详情参见 <ulink url="&hints-root;fakeroot.txt"/>。</para>
 
     </sect3>
 
     <sect3>
+<!--E
       <title>User Based Management</title>
-
+-->
+      <title>基于用户的管理</title>
+<!--E
       <para>This scheme, unique to LFS, was devised by Matthias Benkmann, and is
       available from the <ulink url="&hints-index;">Hints Project</ulink>. In
       this scheme, each package is installed as a separate user into the
@@ -236,7 +314,9 @@ make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
       checking the user ID. The features and shortcomings of this approach are
       too complex to describe in this section. For the details please see the
       hint at <ulink url="&hints-root;more_control_and_pkg_man.txt"/>.</para>
-
+-->
+      <para>这种方案是 LFS 特有的，是由 Matthias Benkmann 提出的，可以参考 <ulink url="&hints-index;">Hints Project</ulink>。在这种方案里，每一个包都是以不同的用户安装到标准的目录里。通过检验 user ID 可以很容易的标识一个软件包。这种方法的特点和缺点非常复杂，这里就不描述了。详细内容参见 <ulink url="&hints-root;more_control_and_pkg_man.txt"/>。</para>
+      
     </sect3>
 
   </sect2>
