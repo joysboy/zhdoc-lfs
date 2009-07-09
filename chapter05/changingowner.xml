@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -8,8 +8,12 @@
 <sect1 id="ch-tools-changingowner">
   <?dbhtml filename="changingowner.html"?>
 
+<!--
   <title>Changing Ownership</title>
+-->
+  <title>改变所有者</title>
 
+<!--
   <note>
     <para>The commands in the remainder of this book must be performed while
     logged in as user <systemitem class="username">root</systemitem> and no
@@ -17,7 +21,13 @@
     check that <envar>$LFS</envar> is set in <systemitem
     class="username">root</systemitem>'s environment.</para>
   </note>
+-->
 
+  <note>
+    <para>本书剩余部分的命令必须以 <systemitem class="username">root</systemitem> 用户登陆后执行而不再使用 <systemitem class="username">lfs</systemitem>用户了。同样，有必要再一次检查 <systemitem class="username">root</systemitem> 用户环境下的 <envar>$LFS</envar> 环境变量是否被正确的设置了。</para>
+  </note>
+
+<!--
   <para>Currently, the <filename class="directory">$LFS/tools</filename> directory
   is owned by the user <systemitem class="username">lfs</systemitem>, a user
   that exists only on the host system. If the <filename
@@ -34,20 +44,31 @@
   ownership of the <filename class="directory">$LFS/tools</filename> directory to
   user <systemitem class="username">root</systemitem> by running the following
   command:</para>
+-->
+  <para>目前，<filename class="directory">$LFS/tools</filename> 目录的所有者是仅存在于宿主环境中的 <systemitem class="username">lfs</systemitem> 用户。如果保留 <filename class="directory">$LFS/tools</filename> 目录，那么该目录内文件的所有者的 user ID 就没有对应的账号。这会带来安全上的问题，在以后创建一个用户帐号的时候，如果该用户帐号的 user ID 刚好与目录 <filename class="directory">$LFS/tools</filename> 所有者的 user ID 相同，那么该目录下的文件就会面临被恶意操作的危险。</para>
+  <para>为了避免这个问题，在后面建立LFS 系统的时候，在创建<filename>/etc/passwd</filename> 文件时添加与宿主系统的 user ID 和 group ID相同的 <systemitem class="username">lfs</systemitem>  用户。另外一个更好的办法是通过下面的指令把 <filename class="directory">$LFS/tools</filename> 目录以及其中文件的所有者改为 <systemitem class="username">root</systemitem> 用户:</para>
 
 <screen><userinput>chown -R root:root $LFS/tools</userinput></screen>
 
+<!--
   <para>Although the <filename class="directory">$LFS/tools</filename> directory
   can be deleted once the LFS system has been finished, it can be retained to build
   additional LFS systems <emphasis>of the same book version</emphasis>. How best
   to backup <filename class="directory">$LFS/tools</filename> is a matter of
   personal preference and is left as an exercise for the reader.</para>
+-->
 
+
+  <para>虽然在 LFS 系统完成的时候，可以把 <filename class="directory">$LFS/tools</filename> 目录删除，但是它还可以再用来建立多个<emphasis>相同版本</emphasis> 的 LFS 系统，所以很多人会选择保留该目录。如何以最好的方法备份 <filename class="directory">$LFS/tools</filename> 目录取决于个人喜好，我们把这个任务留给读者作为练习。</para>
+<!--
   <caution>
     <para>If you intend to keep the temporary tools for use in building future LFS
     systems, <emphasis>now</emphasis> is the time to back them up. Subsequent
     commands in chapter 6 will alter the tools currently in place, rendering them
     useless for future builds.</para>
   </caution>
-
+-->
+  <caution>
+    <para>如果你打算保留临时工具用来建立今后的 LFS 系统，那么<emphasis>现在</emphasis>是把它备份的时候了。在接下来第6章的命令会改变工具目前的位置，工具是为了以后的编译作准备。</para>
+  </caution>
 </sect1>
