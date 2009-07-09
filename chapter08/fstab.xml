@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -7,17 +7,16 @@
 
 <sect1 id="ch-bootable-fstab">
   <?dbhtml filename="fstab.html"?>
-
-  <title>Creating the /etc/fstab File</title>
+  <!--E
+       <title>Creating the /etc/fstab File</title>
+  -->
+  <title>创建 /etc/fstab 文件</title>
 
   <indexterm zone="ch-bootable-fstab">
     <primary sortas="e-/etc/fstab">/etc/fstab</primary>
   </indexterm>
 
-  <para>The <filename>/etc/fstab</filename> file is used by some programs to
-  determine where file systems are to be mounted by default, in which order, and
-  which must be checked (for integrity errors) prior to mounting. Create a new
-  file systems table like this:</para>
+  <para>一些程序用 <filename>/etc/fstab</filename> 文件来确定文件系统默认挂载的位置和挂载顺序，以及哪些必须在挂载前校验(完整性错误校验)。创建一个新的文件系统表如下：</para>
 
 <screen><userinput>cat &gt; /etc/fstab &lt;&lt; "EOF"
 <literal># Begin /etc/fstab
@@ -34,64 +33,29 @@ tmpfs          /dev/shm     tmpfs  defaults        0     0
 # End /etc/fstab</literal>
 EOF</userinput></screen>
 
-  <para>Replace <replaceable>&lt;xxx&gt;</replaceable>,
-  <replaceable>&lt;yyy&gt;</replaceable>, and <replaceable>&lt;fff&gt;</replaceable>
-  with the values appropriate for the system, for example, <filename
-  class="partition">hda2</filename>, <filename
-  class="partition">hda5</filename>, and <systemitem
-  class="filesystem">ext3</systemitem>. For details on the six
-  fields in this file, see <command>man 5 fstab</command>.</para>
+  <para>在你的系统上替换 <replaceable>&lt;xxx&gt;</replaceable>，  <replaceable>&lt;yyy&gt;</replaceable>， 和 <replaceable>&lt;fff&gt;</replaceable>  为适当的值， 例如， <filename  class="partition">hda2</filename>， <filename  class="partition">hda5</filename>， 和 <systemitem  class="filesystem">ext3</systemitem>。 有关文件中六行字段的详细信息，请查看 <command>man 5 fstab</command>。</para>
 
-  <para>The <filename class="directory">/dev/shm</filename> mount point
-  for <systemitem class="filesystem">tmpfs</systemitem> is included to
-  allow enabling POSIX-shared memory. The kernel must have the required
-  support built into it for this to work (more about this is in the next
-  section). Please note that very little software currently uses
-  POSIX-shared memory.  Therefore, consider the <filename
-  class="directory">/dev/shm</filename> mount point optional. For more
-  information, see
-  <filename>Documentation/filesystems/tmpfs.txt</filename> in the kernel
-  source tree.</para>
+  <para>这个<systemitem class="filesystem">tmpfs</systemitem>（虚拟内存文件系统）上的 <filename class="directory">/dev/shm</filename> 挂载点包括了允许启用 POSIX- 共享内存。对此必须在内核上构建起所需的支持才能运作(更多相关信息在下一个章节)。请注意目前很少有软件使用 POSIX- 共享内存。因此，可以认为 <filename  class="directory">/dev/shm</filename> 挂载点是非必须的。更多信息请查看内核源码树里的 <filename>Documentation/filesystems/tmpfs.txt</filename>。</para>
 
-  <para>Filesystems with MS-DOS or Windows origin (i.e.: vfat, ntfs, smbfs, cifs,
-  iso9660, udf) need the <quote>iocharset</quote> mount option in order for
-  non-ASCII characters in file names to be interpreted properly. The value
-  of this option should be the same as the character set of your locale,
-  adjusted in such a way that the kernel understands it. This works if the
-  relevant character set definition (found under File systems -&gt;
-  Native Language Support) has been compiled into the kernel
-  or built as a module. The <quote>codepage</quote> option is also needed for
-  vfat and smbfs filesystems. It should be set to the codepage number used
-  under MS-DOS in your country. E.g., in order to mount USB flash drives, a
-  ru_RU.KOI8-R user would need the following in the options portion of its
-  mount line in <filename>/etc/fstab</filename>:</para>
+  <para>有 MS-DOS 或者 Windows origin 源 (i.e.: vfat, ntfs, smbfs, cifs, iso9660, udf) 的文件系统需要有 <quote>iocharset</quote> 加载选项来恰当说明文件名中的非 -ASCII 字符。这个选项的值应当和你本地的 codepage 字符集一样，这样调整内核就能读懂它了。如果相关的字符集定义(在 File systems ->  Native Language Support下可找到)已经被编译进了内核或组建成了模块，那么就是可行的。vfat 和 smbfs 文件系统还需要 <quote>codepage</quote> 选项。 它应该被设置为 MS-DOS 在你的国家使用的内码编号。 例如， 为了挂载 USB flash 设备驱动， ru_RU.KOI8-R 的用户需要在 <filename>/etc/fstab</filename> 里挂载行的选项部分运行以下行：</para>
 
 <screen><literal>noauto,user,quiet,showexec,iocharset=koi8r,codepage=866</literal></screen>
 
-  <para>The corresponding options fragment for ru_RU.UTF-8 users is:</para>
+  <para>ru_RU.UTF-8 使用者选项的相应片断是：</para>
 
 <screen><literal>noauto,user,quiet,showexec,iocharset=utf8,codepage=866</literal></screen>
 
   <note>
-    <para>In the latter case, the kernel emits the following message:</para>
+    <para>在后面的情况中，内核发出如下信息：</para>
 
 <screen><computeroutput>FAT: utf8 is not a recommended IO charset for FAT filesystems,
     filesystem will be case sensitive!</computeroutput></screen>
 
-    <para>This negative recommendation should be ignored, since all other values
-    of the <quote>iocharset</quote> option result in wrong display of filenames in
-    UTF-8 locales.</para>
+    <para>这个消极的建议可以忽略，因为 <quote>iocharset</quote> 选项的其他所有值在本地 UTF-8 中都会导致错误的文件名显示。</para>
   </note>
 
-  <para>It is also possible to specify default codepage and iocharset values for
-  some filesystems during kernel configuration. The relevant parameters
-  are named
-  <quote>Default NLS Option</quote> (<option>CONFIG_NLS_DEFAULT)</option>,
-  <quote>Default Remote NLS Option</quote> (<option>CONFIG_SMB_NLS_DEFAULT</option>),
-  <quote>Default codepage for FAT</quote> (<option>CONFIG_FAT_DEFAULT_CODEPAGE</option>), and
-  <quote>Default iocharset for FAT</quote> (<option>CONFIG_FAT_DEFAULT_IOCHARSET</option>).
-  There is no way to specify these settings for the
-  ntfs filesystem at kernel compilation time.</para>
+  <para>在内核配置的时候还可能指定一些文件系统默认的 codepage 和 iocharset 的值。 相关参数为 <quote>默认 NLS 选项</quote> (<option>CONFIG_NLS_DEFAULT)</option>， <quote>默认远程 NLS 选项</quote> (<option>CONFIG_SMB_NLS_DEFAULT</option>)， <quote>默认 FAT 的 codepage 字符集</quote> (<option>CONFIG_FAT_DEFAULT_CODEPAGE</option>)， 和 <quote>默认 FAT 的 iocharset 字符集</quote> (<option>CONFIG_FAT_DEFAULT_IOCHARSET</option>)。
+  在内核编译时无法具体指明这些 ntfs 文件系统设置。</para>
   <!-- Personally, I find it more foolproof to always specify the iocharset and
   codepage in /etc/fstab for MS-based filesystems - Alexander E. Patrakov -->
 
