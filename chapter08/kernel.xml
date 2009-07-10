@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -23,7 +23,10 @@
   <sect2 role="package">
     <title/>
 
-    <para>The Linux package contains the Linux kernel.</para>
+    <para>Linux 内核软件包包含内核源代码及其头文件。</para>
+    <!--E
+         <para> The Linux package contains the Linux kernel. </para>
+    -->
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -38,117 +41,72 @@
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of the kernel</title>
+    <!--E
+         <title>Installation of the kernel</title>
+    -->
+    <title>安装 kernel</title>
 
-    <para>Building the kernel involves a few steps&mdash;configuration,
-    compilation, and installation. Read the <filename>README</filename> file
-    in the kernel source tree for alternative methods to the way this book
-    configures the kernel.</para>
+    <para>编译内核包含几个步骤&mdash;配置、编译和安装。阅读内核源码树里的 <filename>README</filename> 文件可选择不同于本书的配置内核的其他方法。</para>
 
-    <para>Prepare for compilation by running the following command:</para>
+    <para>运行下面的命令准备编译：</para>
 
 <screen><userinput remap="pre">make mrproper</userinput></screen>
 
-    <para>This ensures that the kernel tree is absolutely clean. The
-    kernel team recommends that this command be issued prior to each
-    kernel compilation. Do not rely on the source tree being clean after
-    un-tarring.</para>
-
+    <para>这样可确保内核树绝对干净。内核开放团队推荐每次编译内核之前都运行这个命令。不要指望解压后的源码树都是干净的。</para>
     <!-- Support for compiling a keymap into the kernel is deliberately removed -->
 
-    <para>Configure the kernel via a menu-driven interface. BLFS has some
-    information regarding particular kernel configuration requirements of
-    packages outside of LFS at <ulink
-    url="&blfs-root;view/svn/longindex.html#kernel-config-index"/>:</para>
+    <para>配置内核通过一个菜单来驱动界面。BLFS 在 LFS 包之外有一些详细的有关内核配置要求的软件包，在 <ulink url="&blfs-root;view/svn/longindex.html#kernel-config-index"/>:</para>
 
 <screen role="nodump"><userinput>make LANG=<replaceable>&lt;host_LANG_value&gt;</replaceable> LC_ALL= menuconfig</userinput></screen>
 
     <variablelist>
-      <title>The meaning of the make parameters:</title>
+      <title>编译参数的含义：</title>
 
       <varlistentry>
         <term><parameter>LANG=&lt;host_LANG_value&gt; LC_ALL=</parameter></term>
         <listitem>
-          <para>This establishes the locale setting to the one used on the host.
-          This is needed for a proper menuconfig ncurses interface line
-          drawing on UTF-8 linux text console.</para>
+          <para>这建立了在主机上使用的本地设置。这需要一个适当的内核界面接口线来动用 UTF-8 的 linux 文本控制台。</para>
 
-          <para>Be sure to replace <replaceable>&lt;host_LANG_value&gt;</replaceable>
-          by the value of the <envar>$LANG</envar> variable from your host.
-          If not set, you could use instead the host's value of <envar>$LC_ALL</envar>
-          or <envar>$LC_CTYPE</envar>.</para>
+          <para>确保用你主机上变量 <envar>$LANG</envar> 的值来替换 <replaceable>&lt;host_LANG_value&gt;</replaceable>。如果未设置，你可以用主机上 <envar>$LC_ALL</envar> 或者 <envar>$LC_CTYPE</envar> 的值来替代它。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
-    <para>Alternatively, <command>make oldconfig</command> may be more
-    appropriate in some situations. See the <filename>README</filename>
-    file for more information.</para>
+    <para>在同样的情况下选择 <command>make oldconfig</command> 可能更合适。阅读 <filename>README</filename> 以获取更多信息。</para>
 
-    <para>If desired, skip kernel configuration by copying the kernel
-    config file, <filename>.config</filename>, from the host system
-    (assuming it is available) to the unpacked <filename
-    class="directory">linux-&linux-version;</filename> directory. However,
-    we do not recommend this option. It is often better to explore all the
-    configuration menus and create the kernel configuration from
-    scratch.</para>
+    <para>如果愿意，可以跳过内核配置，直接从主机系统（假定可用）复制内核配置文件 <filename>.config</filename>，解压到 <filename class="directory">linux-&linux-version;</filename> 目录下。然而，我们不推荐这种选择。通常探究所有配置菜单项并且从头创建内核配置更好。</para>
 
-    <para>Compile the kernel image and modules:</para>
+    <para>编译内核镜像和模块：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
-    <para>If using kernel modules, an <filename>/etc/modprobe.conf</filename>
-    file may be needed. Information pertaining to modules and kernel
-    configuration is located in <xref linkend="ch-scripts-udev"/> and in the
-    kernel documentation in the <filename
-    class="directory">linux-&linux-version;/Documentation</filename> directory.
-    Also, <filename>modprobe.conf(5)</filename> may be of interest.</para>
+    <para>如果使用内核模块，可能需要 <filename>/etc/modprobe.conf</filename> 文件。有关模块和内核的配置信息可在 <xref linkend="ch-scripts-udev"/> 和 <filename class="directory">linux-&linux-version;/Documentation</filename> 目录中的内核文档中找到。同样，<filename>modprobe.conf(5)</filename> 可能也很重要。</para>
 
-    <para>Install the modules, if the kernel configuration uses them:</para>
+    <para>如果内核配置使用模块，安装它们：</para>
 
 <screen><userinput remap="install">make modules_install</userinput></screen>
 
-    <para>After kernel compilation is complete, additional steps are
-    required to complete the installation. Some files need to be copied to
-    the <filename class="directory">/boot</filename> directory.</para>
+    <para>内核编译完成后，为完成安装还需要额外的步凑。一些文件需要拷贝副本到 <filename class="directory">/boot</filename> 目录。</para>
 
-    <para>The path to the kernel image may vary depending on the platform
-    being used. The following command assumes an x86 architecture:</para>
+    <para>内核镜像的路径，根据平台的不同可能会改变。下面的命令假定架构在 x86 上：</para>
 
 <screen><userinput remap="install">cp -v arch/x86/boot/bzImage /boot/lfskernel-&linux-version;</userinput></screen>
 
-    <para><filename>System.map</filename> is a symbol file for the kernel.
-    It maps the function entry points of every function in the kernel API,
-    as well as the addresses of the kernel data structures for the running
-    kernel. Issue the following command to install the map file:</para>
+    <para><filename>System.map</filename> 是内核的一个符号文件。它映射每个内核 API 函数的入口，以及内核在运行中的数据结构地址。运行下面这个命令安装这个映射文件：</para>
 
 <screen><userinput remap="install">cp -v System.map /boot/System.map-&linux-version;</userinput></screen>
 
-    <para>The kernel configuration file <filename>.config</filename>
-    produced by the <command>make menuconfig</command> step
-    above contains all the configuration selections for the kernel
-    that was just compiled. It is a good idea to keep this file for future
-    reference:</para>
+    <para>内核配置文件 <filename>.config</filename> 产生于步凑 <command>make menuconfig</command>，包含所有被编译的内核配置选项。保留这个文件以备将来参考是个好主意:</para>
 
 <screen><userinput remap="install">cp -v .config /boot/config-&linux-version;</userinput></screen>
 
-    <para>Install the documentation for the Linux kernel:</para>
+    <para>安装Linux内核文档：</para>
 
 <screen><userinput remap="install">install -d /usr/share/doc/linux-&linux-version;
 cp -r Documentation/* /usr/share/doc/linux-&linux-version;</userinput></screen>
 
-    <para>It is important to note that the files in the kernel source
-    directory are not owned by <emphasis>root</emphasis>. Whenever a
-    package is unpacked as user <emphasis>root</emphasis> (like we did
-    inside chroot), the files have the user and group IDs of whatever
-    they were on the packager's computer. This is usually not a problem
-    for any other package to be installed because the source tree is
-    removed after the installation. However, the Linux source tree is
-    often retained for a long time.  Because of this, there is a chance
-    that whatever user ID the packager used will be assigned to somebody
-    on the machine. That person would then have write access to the kernel
-    source.</para>
+    <para>有一点重要提示，内核源码目录的所有者不是 <emphasis>root</emphasis>。只要是用 <emphasis>root</emphasis> (类似我们在 chroot 环境下做的）解压，无论他们在什么打包者的计算机上解压后的文件都有用户和组的 ID。对于其他安装包这通常不是问题因为源码树在安装后被移除了。但是，Linux 源码树通常保留很长时间。为此，无论包装者使用什么 ID，用户的 ID 仍然有可能被分配给机器上的某人。此人将拥有改写内核源码的权限。</para>
 
     <para>If the kernel source tree is going to be retained, run
     <command>chown -R 0:0</command> on the <filename
