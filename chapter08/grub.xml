@@ -7,51 +7,84 @@
 
 <sect1 id="ch-bootable-grub">
   <?dbhtml filename="grub.html"?>
+
+  <title>使 LFS 系统能够启动</title>
   <!--E
        <title>Making the LFS System Bootable</title>
   -->
-  <title>使 LFS 系统能够启动</title>
 
   <indexterm zone="ch-bootable-grub">
     <primary sortas="a-Grub">GRUB</primary>
     <secondary>configuring</secondary>
   </indexterm>
 
-  <para>你全新的 LFS 系统差不多要完成了。最后要做的事之一是确保系统可以正常启动。下面的指令仅适用于 IA-32 架构的计算机，也就是主流的 PC 机。关于其他架构计算机<quote>boot loading（引导装载）</quote>的信息可以在一般资源的具体位置里找到。</para>
+  <para>你全新的 LFS 系统差不多要完成了。最后要做的事之一是确保系统可以正常启动。下面的指令仅适用于 IA-32 架构的计算机，也就是主流的 PC 机。关于其他架构计算机<quote>bo ot loading（引导装载）</quote>的信息可以在一般资源的具体位置里找到。</para>
+  <!--E
+  <para>Your shiny new LFS system is almost complete. One of the last things to do is to ensure that the system can be properly booted. The instructions below apply only to computers of IA-32 architecture, meaning mainstream PCs. Information on <quote>boot loading</quote> for other architectures should be available in the usual resource-specific locations for those architectures.</para>
+  -->
 
   <para>引导装载是一个很复杂的问题，因此接下来会有一些警告的话。要熟悉所需要能启动的当前引导装置和硬盘上其他操作系统。确保准备好能<quote>拯救</quote>计算机的应急启动盘以防计算机不能使用（不能启动）。</para>
+  <!--E
+  <para>Boot loading can be a complex area, so a few cautionary words are in order. Be familiar with the current boot loader and any other operating systems present on the hard drive(s) that need to be bootable. Make sure that an emergency boot disk is ready to <quote>rescue</quote> the computer if the computer becomes unusable (un-bootable).</para>
+  -->
 
   <para>先前，我们编译和安装了 GRUB 引导装载程序，为此步凑做好了准备。这个程序包括了在硬盘的特定位置上写入一些特殊 GRUB 文件。我们强烈推荐你创建一张 GRUB 引导软盘作为备份，插入一张空白软盘并运行下面的命令：</para>
+  <!--E
+  <para>Earlier, we compiled and installed the GRUB boot loader software in preparation for this step. The procedure involves writing some special GRUB files to specific locations on the hard drive. We highly recommend creating a GRUB boot floppy diskette as a backup. Insert a blank floppy diskette and run the following commands:</para>
+  -->
 
 <screen><userinput>dd if=/boot/grub/stage1 of=/dev/fd0 bs=512 count=1
 dd if=/boot/grub/stage2 of=/dev/fd0 bs=512 seek=1</userinput></screen>
 
   <para>取出软盘存放在安全的地方。现在，运行 <command>grub</command> shell:</para>
+  <!--E
+  <para>Remove the diskette and store it somewhere safe. Now, run the <command>grub</command> shell:</para>
+  -->
 
 <screen><userinput>grub</userinput></screen>
 
   <para>GRUB 使用它自己驱动器和分区命名的结构，形式是 <emphasis>(hdn,m)</emphasis>，这里 <emphasis>n</emphasis> 是硬盘驱动号，<emphasis>m</emphasis> 是分区号，两个都是从零开始。例如，分区 <filename  class="partition">hda1</filename> 是 GRUB 的 <emphasis>(hd0,0)</emphasis>，<filename class="partition">hdb3</filename> 是 <emphasis>(hd1,2)</emphasis>。与 Linux 不同的是，GRUB 不把 CD-ROM 光驱认为是硬盘驱动器。例如，假如使用 <filename class="partition">hdb</filename> 作为光盘驱动器，用 <filename class="partition">hdc</filename> 作为第二个硬盘驱动器， 那么第二个硬盘驱动器仍然是 <emphasis>(hd1)</emphasis>。</para>
+  <!--E
+  <para>GRUB uses its own naming structure for drives and partitions in the form of <emphasis>(hdn,m)</emphasis>, where <emphasis>n</emphasis> is the hard drive number and <emphasis>m</emphasis> is the partition number, both starting from zero. For example, partition <filename  class="partition">hda1</filename> is <emphasis>(hd0,0)</emphasis> to GRUB and <filename class="partition">hdb3</filename> is <emphasis>(hd1,2)</emphasis>. In contrast to Linux, GRUB does not consider CD-ROM drives to be hard drives. For example, if using a CD on <filename class="partition">hdb</filename> and a second hard drive on hdc, that second hard drive would still be <emphasis>(hd1)</emphasis>.</para>
+  -->
 
-  <para>用上面的信息确定 root 分区（或 boot 分区，假如单独使用了一个分区）合适的标志符。下面的例子假定 root 分区（或单独的 boot分区）是 <filename
-  class="partition">hda4</filename>.</para>
+  <para>用上面的信息确定 root 分区（或 boot 分区，假如单独使用了一个分区）合适的标志符。下面的例子假定 root 分区（或单独的 boot分区）是 <filename class="partition">hda4</filename>。</para>
+  <!--E
+  <para>Using the above information, determine the appropriate designator for the root partition (or boot partition, if a separate one is used). For the following example, it is assumed that the root (or separate boot) partition is <filename class="partition">hda4</filename>.</para>
+  -->
 
   <para>告诉 GRUB 哪里搜索它的 <filename>stage{1,2}</filename> 文件。Tab 键在各处都可以用来让 GRUB 显示可选择项：</para>
+  <!--E
+  <para> Tell GRUB where to search for its <filename>stage{1,2}</filename> files. The Tab key can be used everywhere to make GRUB show the alternatives:</para>
+  -->
 
 <screen><userinput>root (hd0,3)</userinput></screen>
 
   <warning>
     <para>下一个命令会覆盖当前的引导装载程序，如果不是特别需要就不要运行这个命令，例如，设想使用第三方启动管理器来管理主引导记录 (MBR)。现在的情形是，安装 GRUB 到 LFS 分区的 <quote>boot sector</quote> 更有意义。在这种情况下，下一个指令将会是 <userinput>setup (hd0,3)</userinput>。</para>
+  <!--E
+  <para>The following command will overwrite the current boot loader. Do not run the command if this is not desired, for example, if using a third party boot manager to manage the Master Boot Record (MBR). In this scenario, it would make more sense to install GRUB into the <quote>boot sector</quote> of the LFS partition. In this case, this next command would become <userinput>setup (hd0,3)</userinput>.</para>
+  -->
   </warning>
 
   <para>告诉 GRUB 安装它自己到 <filename class="partition">hda</filename> 的 MBR：</para>
+  <!--E
+  <para>Tell GRUB to install itself into the MBR of <filename class="partition">hda</filename>:</para>
+  -->
 
 <screen><userinput>setup (hd0)</userinput></screen>
 
-  <para>如果一切顺利，GRUB 会报告在 <filename class="directory">/boot/grub</filename>找到它的文件。就这么简单。退出 <command>grub</command> shell:</para>
+  <para>如果一切顺利，GRUB 会报告在 <filename class="directory">/boot/grub</filename> 找到它的文件。就这么简单。退出 <command>grub</command> shell:</para>
+  <!--E
+  <para>If all went well, GRUB will have reported finding its files in <filename class="directory">/boot/grub</filename>. That's all there is to it. Quit the <command>grub</command> shell:</para>
+  -->
 
 <screen><userinput>quit</userinput></screen>
 
   <para>创建一个 <quote>显示菜单</quote> 文件来定义 GRUB 的启动菜单:</para>
+  <!--E
+  <para>Create a <quote>menu list</quote> file defining GRUB's boot menu:</para>
+  -->
 
 <screen><userinput>cat &gt; /boot/grub/menu.lst &lt;&lt; "EOF"
 <literal># Begin /boot/grub/menu.lst
@@ -72,6 +105,9 @@ kernel /boot/lfskernel-&linux-version; root=/dev/hda4</literal>
 EOF</userinput></screen>
 
   <para>如果有必要可以为宿主系统增加一个条目。看起来像这样：</para>
+  <!--E
+  <para>Add an entry for the host distribution if desired. It might look like this:</para>
+  -->
 
 <screen><userinput>cat &gt;&gt; /boot/grub/menu.lst &lt;&lt; "EOF"
 <literal>title Red Hat
@@ -81,6 +117,9 @@ initrd /boot/initrd-2.6.5</literal>
 EOF</userinput></screen>
 
   <para>如果是 Windows 的双启动系统，下面的条目能够启动它：</para>
+  <!--E
+  <para>If dual-booting Windows, the following entry will allow booting it:</para>
+  -->
 
 <screen><userinput>cat &gt;&gt; /boot/grub/menu.lst &lt;&lt; "EOF"
 <literal>title Windows
@@ -89,8 +128,14 @@ chainloader +1</literal>
 EOF</userinput></screen>
 
   <para>如果 <command>info grub</command> 不能提供所有必要的材料，获取更多的有关 GRUB 的信息可以访问它的网站：<ulink url="http://www.gnu.org/software/grub/"/>。</para>
+  <!--E
+  <para>If <command>info grub</command> does not provide all necessary material, additional information regarding GRUB is located on its website at: <ulink url="http://www.gnu.org/software/grub/"/>.</para>
+  -->
 
   <para>FHS 规定 GRUB 的 <filename>menu.lst</filename> 文件要链接到 <filename class="symlink">/etc/grub/menu.lst</filename>。为了符合上述要求，可以使用下面的命令:</para>
+  <!--E
+  <para>The FHS stipulates that GRUB's <filename>menu.lst</filename> file should be symlinked to <filename class="symlink">/etc/grub/menu.lst</filename>. To satisfy this requirement, issue the following command:</para>
+  -->
 
 <screen><userinput>mkdir -v /etc/grub
 ln -sv /boot/grub/menu.lst /etc/grub</userinput></screen>
