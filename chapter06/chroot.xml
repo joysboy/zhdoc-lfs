@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -7,19 +7,22 @@
 
 <sect1 id="ch-system-chroot">
   <?dbhtml filename="chroot.html"?>
-
+<!--E
   <title>Entering the Chroot Environment</title>
-
+-->
+  <title>进入 Chroot 环境</title>
+<!--E
   <para>It is time to enter the chroot environment to begin building and
   installing the final LFS system. As user <systemitem
   class="username">root</systemitem>, run the following command to enter the
   realm that is, at the moment, populated with only the temporary tools:</para>
-
+-->
+  <para>现在将要进入 chroot 环境开始编译安装最终的 LFS 系统了，注意：在这里我们只使用临时构建的工具。以 <systemitem class="username">root</systemitem> 身份运行以下命令进入构建环境：</para>
 <screen><userinput>chroot "$LFS" /tools/bin/env -i \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
     /tools/bin/bash --login +h</userinput></screen>
-
+<!--E
   <para>The <parameter>-i</parameter> option given to the <command>env</command>
   command will clear all variables of the chroot environment. After that, only
   the <envar>HOME</envar>, <envar>TERM</envar>, <envar>PS1</envar>, and
@@ -30,25 +33,33 @@
   to operate properly.  If other variables are needed, such as
   <envar>CFLAGS</envar> or <envar>CXXFLAGS</envar>, this is a good place to set
   them again.</para>
-
+-->
+  <para> <command>env</command> 命令的参数 <parameter>-i</parameter> 的作用是清除所有 chroot 环境变量。后面是重新设定 <envar>HOME</envar>，<envar>TERM</envar>，<envar>PS1</envar>，<envar>PATH</envar> 等变量的值。<parameter>TERM=$TERM</parameter> 设定 chroot 环境中的 <envar>TERM</envar> 的值与 chroot 环境外的一样。这个值是让像 <command>vim</command> 和 <command>less</command> 之类的程序可以正确操作。如果还需要重新设置其它变量的值，如 <envar>CFLAGS</envar> 或 <envar>CXXFLAGS</envar>，现在是个很好的机会去设定它们。</para>
+<!--E
   <para>From this point on, there is no need to use the
   <envar>LFS</envar> variable anymore, because all work will be restricted
   to the LFS file system.  This is because the Bash shell is told that
   <filename class="directory">$LFS</filename> is now the root
   (<filename class="directory">/</filename>) directory.</para>
-
+-->
+  <para>从这里开始，不再需要环境变量 <envar>LFS</envar> 了。因为所有的工作都被限制在 LFS 文件系统里面。这是因为已经告诉 Bash shell <filename class="directory">$LFS</filename> 是现在的根目录（<filename class="directory">/</filename>）。</para>
+<!--E
   <para>Notice that <filename class="directory">/tools/bin</filename> comes last
   in the <envar>PATH</envar>. This means that a temporary tool will no longer be
   used once its final version is installed. This occurs when the shell does not
   <quote>remember</quote> the locations of executed binaries&mdash;for this
   reason, hashing is switched off by passing the <parameter>+h</parameter> option
   to <command>bash</command>.</para>
-
+-->
+  <para>注意，这里 <filename class="directory">/tools/bin</filename> 位于 <envar>PATH</envar> 的最后面。也就是说当软件包的最终版本安装之后就不再使用临时工具了。为了使 shell 无法"记住"可执行二进制代码的位置，需要通过使用 <parameter>+h</parameter> 参数关闭 <command>bash</command> 的散列功能。</para>
+<!--E
   <para>Note that the <command>bash</command> prompt will say
   <computeroutput>I have no name!</computeroutput> This is normal because the
   <filename>/etc/passwd</filename> file has not been created yet.</para>
-
+-->
+  <para>注意此时 <command>bash</command> 提示符会显示：<computeroutput>I have no name!</computeroutput> 这是正常的，因为 <filename>/etc/passwd</filename> 还没有创建。</para>
   <note>
+<!--E
     <para>It is important that all the commands throughout the remainder of this
     chapter and the following chapters are run from within the chroot
     environment. If you leave this environment for any reason (rebooting for
@@ -56,6 +67,8 @@
     explained in <xref linkend="ch-system-bindmount"/> and <xref
     linkend="ch-system-kernfsmount"/> and enter chroot again before continuing
     with the installation.</para>
+-->
+    <para>这一章剩下的命令以及后面几章的命令都是在 chroot 环境下进行的。如果你离开了这个环境（比如重启）， 要确保内核虚拟文件系统挂载，像在 <xref linkend="ch-system-bindmount"/> 和 <xref linkend="ch-system-kernfsmount"/> 描述的。在继续安装之前，再次进入 chroot 环境。</para>
   </note>
 
 </sect1>
