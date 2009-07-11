@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -8,8 +8,12 @@
 <sect1 id="ch-finish-reboot">
   <?dbhtml filename="reboot.html"?>
 
+<!--E
   <title>Rebooting the System</title>
+-->
+  <title>重启系统</title>
 
+<!--E
   <para>Now that all of the software has been installed, it is time to reboot
   your computer. However, you should be aware of a few things. The system you
   have created in this book is quite minimal, and most likely will not have
@@ -23,14 +27,20 @@
   are in a situation where static IP configuration does not meet your networking
   requirements, installing packages such as Dhcpcd or PPP at this point might
   also be useful.</para>
+-->
+  <para>现在所有的软件都安装完毕，到了重启你的电脑的时候了。但是，你还需要注意一些事情。运用这本书，你所创建的系统在功能上是最小限度的，所以系统很有可能会缺少你继续前进工作所需要的功能。在当前的chroot环境中，通过安装BLFS书中一些额外的包，你可以使自己当重启进入新的LFS系统后,置身于一个更加好的环境来进行以后的工作。安装一个文本模式的浏览器，例如Lynx，这样你可以在一个虚拟终端上更加方便地浏览BLFS书籍，而同时在另一个终端上安装包。GPM包也可以使你在虚拟终端上执行拷贝和粘贴的任务。最后，如果你的静态IP配置不能满足你的网络需求，你可以安装Dhcpcd或PPP包，这些包在这方面会很有帮助。</para>
 
-
+<!--E
   <para>Now that we have said that, lets move on to booting our shiny new LFS
   installation for the first time! First exit from the chroot environment:</para>
-
+-->
+  <para>现在一切就绪，让我们继续开始第一次启动我们崭新的LFS系统。首先，退出chroot环境:</para>
 <screen><userinput>logout</userinput></screen>
 
+<!--E
   <para>Then unmount the virtual files systems:</para>
+-->
+  <para>卸载虚拟文件系统:</para>
 
 <screen><userinput>umount -v $LFS/dev/pts
 umount -v $LFS/dev/shm
@@ -38,25 +48,41 @@ umount -v $LFS/dev
 umount -v $LFS/proc
 umount -v $LFS/sys</userinput></screen>
 
+<!--E
   <para>Unmount the LFS file system itself:</para>
+-->
+  <para>卸载LFS本身的文件系统:</para>
 
 <screen><userinput>umount -v $LFS</userinput></screen>
 
+<!--E
   <para>If multiple partitions were created, unmount the other
   partitions before unmounting the main one, like this:</para>
+-->
+  <para>如果创建了多个分区，在卸载主分区之前要先卸载掉其它分区，例如:</para>
 
 <screen role="nodump"><userinput>umount -v $LFS/usr
 umount -v $LFS/home
 umount -v $LFS</userinput></screen>
 
+<!--E
   <para>Now, reboot the system with:</para>
+-->
+  <para>现在，重启系统:</para>
 
 <screen role="nodump"><userinput>shutdown -r now</userinput></screen>
 
+<!--E
   <para>Assuming the GRUB boot loader was set up as outlined earlier, the menu
   is set to boot <emphasis>LFS &version;</emphasis> automatically.</para>
+-->
+  <para>如果GRUB引导装载程序已经按早先的概述设置好了，那么菜单被设置为了可自动重启 <emphasis>LFS &version;</emphasis>。</para>
 
+<!--E
   <para>When the reboot is complete, the LFS system is ready for use and
   more software may be added to suit your needs.</para>
+-->
+  <para>当重启完毕，LFS系统已经可以使用，你可以根据需要安装更多的软件。</para>
+
 
 </sect1>
