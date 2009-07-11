@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -7,12 +7,15 @@
 
 <sect1 id="ch-system-creatingdirs">
   <?dbhtml filename="creatingdirs.html"?>
-
+<!--E
   <title>Creating Directories</title>
-
+-->
+  <title>创建系统目录结构</title>
+<!--E
   <para>It is time to create some structure in the LFS file system. Create a
   standard directory tree by issuing the following commands:</para>
-
+-->
+  <para>现在我们在 LFS 分区中创建目录树结构，用下列命令能创建一个标准的目录树：</para>
 <screen><userinput>mkdir -pv /{bin,boot,etc/opt,home,lib,mnt,opt}
 mkdir -pv /{media/{floppy,cdrom},sbin,srv,var}
 install -dv -m 0750 /root
@@ -26,13 +29,15 @@ for dir in /usr /usr/local; do
 done
 mkdir -v /var/{lock,log,mail,run,spool}
 mkdir -pv /var/{opt,cache,lib/{misc,locate},local}</userinput></screen>
-
+<!--E
   <para>Directories are, by default, created with permission mode 755, but
   this is not desirable for all directories. In the commands above, two
   changes are made&mdash;one to the home directory of user <systemitem
   class="username">root</systemitem>, and another to the directories for
   temporary files.</para>
-
+-->
+  <para>缺省的目录的权限模式为 755，但也并非所有的目录都是如此。以上的命令有两处有所不一样：一个是 <systemitem class="username">root</systemitem> 用户的目录，另外两个是临时文件目录。</para>
+<!--E
   <para>The first mode change ensures that not just anybody can enter
   the <filename class="directory">/root</filename> directory&mdash;the
   same as a normal user would do with his or her home directory. The
@@ -41,10 +46,15 @@ mkdir -pv /var/{opt,cache,lib/{misc,locate},local}</userinput></screen>
   class="directory">/var/tmp</filename> directories, but cannot remove
   another user's files from them. The latter is prohibited by the so-called
   <quote>sticky bit,</quote> the highest bit (1) in the 1777 bit mask.</para>
+-->
+  <para>设置第一个权限模式是保证不是任何人都能够进入到 <filename class="directory">/root</filename> 目录中。这个模式也适用于让其它的普通用户可以工作在自己的目录中。设置第二个权限模式是确保所有用户都可以写入数据到 <filename class="directory">/tmp</filename> 和 <filename class="directory">/var/tmp</filename> 目录，但不能从中删除其它用户的文件。这是由 <quote>sticky位</quote>，也就是 "1777" 中的最高位 "1" 来设定的。</para>
 
   <sect2>
+<!--E
     <title>FHS Compliance Note</title>
-
+-->
+    <title>FHS 兼容性说明</title>
+<!--E
     <para>The directory tree is based on the Filesystem Hierarchy Standard (FHS)
     (available at <ulink url="http://www.pathname.com/fhs/"/>). In addition to
     the FHS, we create compatibility symlinks for the <filename
@@ -63,7 +73,8 @@ mkdir -pv /var/{opt,cache,lib/{misc,locate},local}</userinput></screen>
     subdirectory, so we create only the directories that are needed. However,
     feel free to create these directories if you prefer to conform more strictly
     to the FHS.</para>
-
+-->
+    <para>我们的目录树是按照 FHS（Filesystem Hierarchy Standard）标准（<ulink url="http://www.pathname.com/fhs/"/>）。除了 FHS 外，我们还为 <filename class="directory">man</filename>，<filename class="directory">doc</filename> 和 <filename class="directory">info</filename> 目录建立了兼容性符号链接，以便于让这些软件包的文档装在 <filename class="directory">/usr/&lt;directory&gt;</filename> 或 <filename class="directory">/usr/local/&lt;directory&gt;</filename> 而不是 <filename class="directory">/usr/share/&lt;directory&gt;</filename> 或 <filename class="directory">/usr/local/share/&lt;directory&gt;</filename>。除了上面创建的目录外，LFS 标准还规定了必须有 <filename class="directory">/usr/local/games</filename> 和 <filename class="directory">/usr/share/games</filename> 两个目录，但是作为一个基本系统，我们并不需要这些。如果你要完全的遵守 FHS 标准的话，就自己建立这两个目录。至于 <filename class="directory">/usr/local/share</filename> 目录下的子目录，FHS 标准规定得并不严格，所以我们就创建了（在我们看来）需要的子目录。</para>
   </sect2>
 
 </sect1>
