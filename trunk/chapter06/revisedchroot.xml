@@ -16,7 +16,7 @@
   <para>From now on, when reentering the chroot environment after
   exiting, use the following modified chroot command:</para>
 -->
-  <para>从现在起，在退出后，每当重新进入chroot环境，请使用下面修改过的chroot命令:</para>
+  <para>从现在起，在退出后，每当重新进入 chroot 环境，请使用下面修改过的 chroot 命令:</para>
 
 <screen><userinput>chroot "$LFS" /usr/bin/env -i \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
