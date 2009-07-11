@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -7,20 +7,27 @@
 
 <sect1 id="ch-finish-theend">
   <?dbhtml filename="theend.html"?>
-
+<!--E
   <title>The End</title>
+-->
+  <title>结束</title>
 
   <indexterm zone="ch-finish-theend">
     <primary sortas="e-/etc/lfs-release">/etc/lfs-release</primary>
   </indexterm>
-
+<!--E
   <para>Well done! The new LFS system is installed! We wish you much
   success with your shiny new custom-built Linux system.</para>
+-->
+  <para>顺利结束了！新 LFS 系统已经安装完成！我们祝你在闪亮的自定义的 Linux 系统上有更多的成功。</para>
 
+<!--E
   <para>It may be a good idea to create an <filename>/etc/lfs-release</filename>
   file. By having this file, it is very easy for you (and for us if you need to
   ask for help at some point) to find out which LFS version is installed on the
   system. Create this file by running:</para>
+-->
+  <para>创建一个 <filename>/etc/lfs-release</filename> 文件是一个好主意。有了这个文件，你可以方便地(对我们也是如此，如果你需要在某些方面寻求帮助的话)找到系统上安装的LFS是哪个版本。运行下面语句创建文件：</para>
 
 <screen><userinput>echo &version; &gt; /etc/lfs-release</userinput></screen>
 
