@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -22,10 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Binutils package contains a linker, an assembler, and other
     tools for handling object files.</para>
-
+-->
+    <para>Binutils 是一组开发工具，包括连接器、汇编器和其他用于目标文件和档案的工具。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,8 +40,10 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Binutils</title>
-
+-->
+    <title>安装 Binutils</title>
     <para>Verify that the PTYs are working properly inside the chroot
     environment. Check that everything is set up correctly by performing a
     simple test:</para>
