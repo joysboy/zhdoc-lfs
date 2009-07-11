@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -23,9 +23,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Linux API Headers expose the kernel's API for use by Glibc.</para>
-
+-->
+    <para>Linux API Headers 是将内核的应用程序编程接口（API）提供给 Glibc 使用。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,23 +40,30 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Linux API Headers</title>
-
+-->
+    <title>安装 Linux API Headers</title>
+<!--E
     <para>The Linux kernel needs to expose an Application Programming Interface
     (API) for the system's C library (Glibc in LFS) to use.  This is done
     by way of sanitizing various C header files that are shipped in the Linux
     kernel source tarball.</para>
-
+-->
+    <para>Linux 内核需要将应用程序编程接口（API）提供给系统 C 语言库（LFS 中的 Glibc）使用。为了达到上述目的，方法是清除已经在 Linux 内核源码包中装载的各种 C 语言头文件。</para>
+<!--E
     <para>First, make sure there are no stale files and dependencies lying around
     from previous activity:</para>
-
+-->
+    <para>首先，确保没有陈旧的文件和依赖过去的正在运行：</para>
 <screen><userinput remap="install">make mrproper</userinput></screen>
-
+<!--E
     <para>Now test and extract the user-visible kernel headers from the source.
     They are placed in an intermediate local directory and copied to the needed
     location because the extraction process removes any existing files in 
     the target directory.</para>
-
+-->
+    <para>现在测试并从资源中提取用户可见的内核头文件。他们被放置在本地目录的中间位置，并需要复制到需要的地方。因为在提取的过程中会删除目标目录中所有存在的文件。</para>
 <screen><userinput remap="install">make headers_check
 make INSTALL_HDR_PATH=dest headers_install
 cp -rv dest/include/* /usr/include</userinput></screen>
