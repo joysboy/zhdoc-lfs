@@ -25,7 +25,7 @@
   <quote>What next?</quote> To answer that question, we have compiled a
   list of resources for you.</para>
 -->
-  <para>现在LFS系统已经安装完了，你可能会疑惑 "下一步怎么做?" 为了回答这个问题，我们为你编写了一个资源列表。</para>
+  <para>现在 LFS 系统已经安装完了，你可能会疑惑 "下一步怎么做?" 为了回答这个问题，我们为你编写了一个资源列表。</para>
 
   <itemizedlist>
 
@@ -53,12 +53,12 @@
           <para>Freshmeat can notify you (via email) of new versions of packages
           installed on your system.</para>
 -->
-          <para>Freshmeat 可以告知你(通过邮件)你的系统上安装的包的最新版本。</para>
+          <para>Freshmeat 可以告知你（通过邮件）你的系统上安装的包的最新版本。</para>
         </listitem>
 
         <listitem>
-          <para><ulink url="http://www.cert.org/">CERT</ulink> (Computer
-          Emergency Response Team)</para>
+          <para><ulink url="http://www.cert.org/">CERT</ulink>（Computer
+          Emergency Response Team）</para>
 <!--E
           <para>CERT has a mailing list that publishes security alerts concerning
           various operating systems and applications. Subscription information is
@@ -93,7 +93,7 @@
     </listitem>
 
     <listitem>
-      <para>LFS Hints</para>
+      <para>LFS 提示</para>
 <!--E
       <para>The LFS Hints are a collection of educational documents
       submitted by volunteers in the LFS community. The hints are available
@@ -129,7 +129,7 @@
       a large collection of HOWTOs, guides, and man pages.  It is located at
       <ulink url="http://www.tldp.org/"/>.</para>
 -->
-      <para>Linux 文档项目的目的（TLDP）是收集所有Linux发行版文档。TLDP 的特点是收集了大量的 HOWTOs，guides 和 man pages。这个计划在 <ulink url="http://www.tldp.org/"/>。</para>
+      <para>Linux 文档项目的目的（TLDP）是收集所有 Linux 发行版文档。TLDP 的特点是收集了大量的 HOWTOs，guides 和 man pages。这个计划在 <ulink url="http://www.tldp.org/"/>。</para>
 
     </listitem>
 
