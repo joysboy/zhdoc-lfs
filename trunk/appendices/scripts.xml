@@ -36,9 +36,10 @@
 <appendix id="scripts" xreflabel="Appendix D">
   <?dbhtml dir="scripts"?>
   <?dbhtml filename="scripts.html"?>
-
+<!--E
   <title>Boot and sysconfig scripts version-&lfs-bootscripts-version;</title>
-
+-->
+  <title>启动和系统配置脚本版本-&lfs-bootscripts-version;</title>
   <para>The scripts in this appendix are listed by the directory where they
   normally reside.  The order is <filename
   class='directory'>/etc/rc.d/init.d</filename>, <filename

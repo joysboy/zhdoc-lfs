@@ -18,14 +18,14 @@
     <secondary>configuring</secondary>
   </indexterm>
 
-  <para>你全新的 LFS 系统差不多要完成了。最后要做的事之一是确保系统可以正常启动。下面的指令仅适用于 IA-32 架构的计算机，也就是主流的 PC 机。关于其他架构计算机<quote>bo ot loading（引导装载）</quote>的信息可以在一般资源的具体位置里找到。</para>
+  <para>你全新的 LFS 系统差不多要完成了。最后要做的事之一是确保系统可以正常启动。下面的指令仅适用于 IA-32 架构的计算机，也就是主流的 PC 机。关于其他架构计算机 "boot loading"（引导装载）的信息可以在一般资源的具体位置里找到。</para>
   <!--E
   <para>Your shiny new LFS system is almost complete. One of the last things to do is to ensure that the system can be properly booted. The instructions below apply only to
 computers of IA-32 architecture, meaning mainstream PCs. Information on <quote>boot loading</quote> for other architectures should be available in the usual resource-specific
 locations for those architectures.</para>
   -->
 
-  <para>引导装载是一个很复杂的问题，因此接下来会有一些警告的话。要熟悉所需要能启动的当前引导装置和硬盘上其他操作系统。确保准备好能<quote>拯救</quote>计算机的应急启动盘以防计算机不能使用(不能启动)。</para>
+  <para>引导装载是一个很复杂的问题，因此接下来会有一些警告的话。要熟悉所需要能启动的当前引导装置和硬盘上其他操作系统。确保准备好能"拯救"计算机的应急启动盘以防计算机不能使用（不能启动）。</para>
   <!--E
   <para>Boot loading can be a complex area, so a few cautionary words are in order. Be familiar with the current boot loader and any other operating systems present on the hard
 drive(s) that need to be bootable. Make sure that an emergency boot disk is ready to <quote>rescue</quote> the computer if the computer becomes unusable (un-bootable).</para>
@@ -40,7 +40,7 @@ locations on the hard drive. We highly recommend creating a GRUB boot floppy dis
 <screen><userinput>dd if=/boot/grub/stage1 of=/dev/fd0 bs=512 count=1
 dd if=/boot/grub/stage2 of=/dev/fd0 bs=512 seek=1</userinput></screen>
 
-  <para>取出软盘存放在安全的地方。现在，运行 <command>grub</command> shell:</para>
+  <para>取出软盘存放在安全的地方。现在，运行 <command>grub</command> shell：</para>
   <!--E
   <para>Remove the diskette and store it somewhere safe. Now, run the <command>grub</command> shell:</para>
   -->
@@ -68,7 +68,7 @@ assumed that the root (or separate boot) partition is <filename class="partition
 <screen><userinput>root (hd0,3)</userinput></screen>
 
   <warning>
-    <para>下一个命令会覆盖当前的引导装载程序，如果不是特别需要就不要运行这个命令，例如，设想使用第三方启动管理器来管理主引导记录 (MBR)。现在的情形是，安装 GRUB 到 LFS 分区的 <quote>boot sector</quote> 更有意义。在这种情况下，下一个指令将会是 <userinput>setup (hd0,3)</userinput>。</para>
+    <para>下一个命令会覆盖当前的引导装载程序，如果不是特别需要就不要运行这个命令，例如，设想使用第三方启动管理器来管理主引导记录（MBR）。现在的情形是，安装 GRUB 到 LFS 分区的 <quote>boot sector</quote> 更有意义。在这种情况下，下一个指令将会是 <userinput>setup (hd0,3)</userinput>。</para>
   <!--E
   <para>The following command will overwrite the current boot loader. Do not run the command if this is not desired, for example, if using a third
 party boot manager to manage the Master Boot Record (MBR). In this scenario, it would make more sense to install GRUB into the <quote>boot
@@ -83,14 +83,14 @@ sector</quote> of the LFS partition. In this case, this next command would becom
 
 <screen><userinput>setup (hd0)</userinput></screen>
 
-  <para>如果一切顺利，GRUB 会报告在 <filename class="directory">/boot/grub</filename> 找到它的文件。就这么简单。退出 <command>grub</command> shell:</para>
+  <para>如果一切顺利，GRUB 会报告在 <filename class="directory">/boot/grub</filename> 找到它的文件。就这么简单。退出 <command>grub</command> shell：</para>
   <!--E
   <para>If all went well, GRUB will have reported finding its files in <filename class="directory">/boot/grub</filename>. That's all there is to it. Quit the <command>grub</command> shell:</para>
   -->
 
 <screen><userinput>quit</userinput></screen>
 
-  <para>创建一个 <quote>显示菜单</quote> 文件来定义 GRUB 的启动菜单:</para>
+  <para>创建一个"显示菜单"文件来定义 GRUB 的启动菜单：</para>
   <!--E
   <para>Create a <quote>menu list</quote> file defining GRUB's boot menu:</para>
   -->
@@ -141,7 +141,7 @@ EOF</userinput></screen>
   <para>If <command>info grub</command> does not provide all necessary material, additional information regarding GRUB is located on its website at: <ulink url="http://www.gnu.org/software/grub/"/>.</para>
   -->
 
-  <para>FHS 规定 GRUB 的 <filename>menu.lst</filename> 文件要链接到 <filename class="symlink">/etc/grub/menu.lst</filename>。为了符合上述要求，可以使用下面的命令:</para>
+  <para>FHS 规定 GRUB 的 <filename>menu.lst</filename> 文件要链接到 <filename class="symlink">/etc/grub/menu.lst</filename>。为了符合上述要求，可以使用下面的命令：</para>
   <!--E
   <para>The FHS stipulates that GRUB's <filename>menu.lst</filename> file should be symlinked to <filename class="symlink">/etc/grub/menu.lst</filename>. To satisfy this requirement, issue the following command:</para>
   -->

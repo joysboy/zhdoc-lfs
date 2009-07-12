@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -10,9 +10,10 @@
 <appendix id="rules" xreflabel="Appendix E">
   <?dbhtml dir="scripts"?>
   <?dbhtml filename="udev-rules.html"?>
-
+<!--E
   <title>Udev configuration rules</title>
-
+-->
+  <title>Udev 配置规则</title>
   <para>The rules from &udev-config;.tar.bz2 in this appendix are listed for
   convenience.  Installation is normally done via instructions in <xref
   linkend='ch-system-udev'/>.  </para>

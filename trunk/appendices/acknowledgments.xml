@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE appendix PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -8,9 +8,10 @@
 <appendix id="appendixb" xreflabel="Appendix B">
   <?dbhtml dir="appendices"?>
   <?dbhtml filename="acknowledgements.html"?>
-
+<!--E
   <title>Acknowledgments</title>
-
+-->
+  <title>致谢</title>
   <para>We would like to thank the following people and organizations
   for their contributions to the Linux From Scratch Project.</para>
 
