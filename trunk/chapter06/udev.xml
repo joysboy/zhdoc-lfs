@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -22,9 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Udev package contains programs for dynamic creation of device
     nodes.</para>
+-->
+    <para>Udev 软件包包含动态地创建设备节点的程序。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,16 +41,23 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Udev</title>
-
+-->
+    <title>安装 Udev</title>
+<!--E
     <para>The udev-config tarball contains LFS-specific files used to configure
     Udev. Unpack it into the Udev source directory:</para>
+-->
+    <para>udev-config 压缩包里面包含用配置 Udev 的 LFS-specific 文件。把它解压到 Udev 的源码目录：</para>
 
 <screen><userinput remap="pre">tar -xvf ../&udev-config;.tar.bz2</userinput></screen>
 
+<!--E
     <para>Create some devices and directories that Udev cannot handle due to
     them being required very early in the boot process, or by Udev itself:</para>
-
+-->
+    <para>创建一些Udev无法创建的设备和目录，因为这些会在系统启动的早些时候会不用到或者被 Udev 本身用到：</para>
 <screen><userinput remap="install">install -dv /lib/{firmware,udev/devices/{pts,shm}}
 mknod -m0666 /lib/udev/devices/null c 1 3
 mknod -m0600 /lib/udev/devices/kmsg c 1 11
@@ -58,30 +67,45 @@ ln -sv /proc/self/fd/1 /lib/udev/devices/stdout
 ln -sv /proc/self/fd/2 /lib/udev/devices/stderr
 ln -sv /proc/kcore /lib/udev/devices/core</userinput></screen>
 
+<!--E
     <para>Prepare the package for compilation:</para>
+-->
+    <para>为编译软件包做准备</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr \
             --exec-prefix= \
             --sysconfdir=/etc</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试套件</para>
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Udev has to be configured in order to work properly, as its default
     configuration does not cover all devices. First install two extra rules
     files from Udev to help support device-mapper and RAID setups:</para>
-
+-->
+    <para>Udev 要正常工作，需要配置才可以，因为默认是不安装任何配置文件的。首先安装 Udev 中两个额外的规则文件来支持 device-mapper 和 RAID 的装配：</para>
+ 
 <screen><userinput remap="install">install -m644 -v rules/packages/64-*.rules \
     /lib/udev/rules.d/</userinput></screen>
 
+<!--E
     <para>Now install a file to create symlinks for certain hand-held devices:</para>
+-->
+    <para>安装一个文件来为特定的手持设备创建符号链接</para>
 
 <screen><userinput remap="install">install -m644 -v rules/packages/40-pilot-links.rules \
     /lib/udev/rules.d/</userinput></screen>
@@ -91,23 +115,35 @@ ln -sv /proc/kcore /lib/udev/devices/core</userinput></screen>
          "alsa" isn't, but we already have those rules, using a better set of
          matches.  Most of the files in packages/ are for other architectures. -->
 
+<!--E
     <para>Now install the LFS-specific custom rules files:</para>
+-->
+    <para>安装 LFS-specific 的惯例规则的文档：</para>
 
 <screen><userinput remap="install">cd &udev-config;
 make install</userinput></screen>
 
+<!--E
     <para>Install the documentation that explains the LFS-specific rules
     files:</para>
+-->
+    <para>安装解释 LFS-specific 规则的文档：</para>
 
 <screen><userinput remap="install">make install-doc</userinput></screen>
 
+<!--E
     <para>Install the documentation that explains the commonly-used rules
     files provided by Udev:</para>
+-->
+    <para>安装解释由 Udev 提供的惯用规则的文档：</para>
 
 <screen><userinput remap="install">make install-extra-doc</userinput></screen>
 
+<!--E
     <para>Install the documentation that explains how to create custom Udev
     rules:</para>
+-->
+    <para>安装解释如何创建 Udev 规则的文档：</para>
 
 <screen><userinput remap="install">cd ..
 install -m644 -v -D docs/writing_udev_rules/index.html \
@@ -116,12 +152,19 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
   </sect2>
 
   <sect2 id="contents-udev" role="content">
+<!--E
     <title>Contents of Udev</title>
-
+-->
+    <title>Udev 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed libraries</segtitle>
       <segtitle>Installed directory</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
+      <segtitle>安装的目录</segtitle>
 
       <seglistitem>
         <seg>ata_id, cdrom_id, collect, create_floppy_devices, edd_id,
@@ -133,16 +176,22 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="ata_id">
         <term><command>ata_id</command></term>
         <listitem>
+<!--E
           <para>Provides Udev with a unique string and
           additional information (uuid, label) for an ATA drive</para>
-          <indexterm zone="ch-system-udev ata_id">
+-->
+          <para>为 Udev 提供关于 ATA 驱动器的一个唯一的字符串和一些附加信息（uuid，label等）</para>     
+     <indexterm zone="ch-system-udev ata_id">
             <primary sortas="b-ata_id">ata_id</primary>
           </indexterm>
         </listitem>
@@ -151,9 +200,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="cdrom_id">
         <term><command>cdrom_id</command></term>
         <listitem>
+<!--E
           <para>Provides Udev with the capabilities of a
           CD-ROM or DVD-ROM drive</para>
-          <indexterm zone="ch-system-udev cdrom_id">
+-->
+          <para>为 Udev 提供 CD-ROM 或 DVD-ROM 驱动器的性能</para>     
+     <indexterm zone="ch-system-udev cdrom_id">
             <primary sortas="b-cdrom_id">cdrom_id</primary>
           </indexterm>
         </listitem>
@@ -162,10 +214,13 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="collect">
         <term><command>collect</command></term>
         <listitem>
+<!--E
           <para>Given an ID for the current uevent and a list of
           IDs (for all target uevents), registers the current ID
           and indicates whether all target IDs have been registered</para>
-          <indexterm zone="ch-system-udev collect">
+-->
+          <para>给当前的组一个 ID 并给所有的目标组一组 ID 号，用当前的 ID 好登入，并显示所有的目标 ID 号是否登入</para>     
+     <indexterm zone="ch-system-udev collect">
             <primary sortas="b-collect">collect</primary>
           </indexterm>
         </listitem>
@@ -174,8 +229,11 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="create_floppy_devices">
         <term><command>create_floppy_devices</command></term>
         <listitem>
+<!--E
           <para>Creates all possible floppy devices based on the CMOS type</para>
-          <indexterm zone="ch-system-udev create_floppy_devices">
+-->
+          <para>创建所有可能的 CMOS 类型的 floppy 设备</para>     
+     <indexterm zone="ch-system-udev create_floppy_devices">
             <primary sortas="b-create_floppy_devices">create_floppy_devices</primary>
           </indexterm>
         </listitem>
@@ -184,8 +242,11 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="edd_id">
         <term><command>edd_id</command></term>
         <listitem>
+<!--E
           <para>Provides Udev with the EDD ID for a BIOS disk drive</para>
-          <indexterm zone="ch-system-udev edd_id">
+-->
+          <para>为 Udev 提供关于 BIOS 磁盘驱动器的 EDD ID</para>     
+     <indexterm zone="ch-system-udev edd_id">
             <primary sortas="b-edd_id">edd_id</primary>
           </indexterm>
         </listitem>
@@ -194,8 +255,11 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="firmware.sh">
         <term><command>firmware.sh</command></term>
         <listitem>
+<!--E
           <para>Uploads firmware to devices</para>
-          <indexterm zone="ch-system-udev firmware.sh">
+-->
+          <para>为设备加载 firmware</para>     
+     <indexterm zone="ch-system-udev firmware.sh">
             <primary sortas="b-firmware.sh">firmware.sh</primary>
           </indexterm>
         </listitem>
@@ -204,9 +268,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="fstab_import">
         <term><command>fstab_import</command></term>
         <listitem>
+<!--E
           <para>Finds an entry in <filename>/etc/fstab</filename> that
           matches the current device, and provides its information to
           Udev</para>
+-->
+          <para>在 <filename>/etc/fstab</filename> 目录下找到匹配当前设备的入口，并向 Udev 提供入口的信息</para>
           <indexterm zone="ch-system-udev fstab_import">
             <primary sortas="b-fstab_import">fstab_import</primary>
           </indexterm>
@@ -216,9 +283,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="path_id">
         <term><command>path_id</command></term>
         <listitem>
+<!--E
           <para>Provides the shortest possible unique hardware path to a
           device</para>
-          <indexterm zone="ch-system-udev path_id">
+-->
+          <para>提供设备的最短的唯一的硬件路径</para>      
+    <indexterm zone="ch-system-udev path_id">
             <primary sortas="b-path_id">path_id</primary>
           </indexterm>
         </listitem>
@@ -227,9 +297,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="scsi_id">
         <term><command>scsi_id</command></term>
         <listitem>
+<!--E
           <para>Provides Udev with a unique SCSI identifier
           based on the data returned from sending a SCSI INQUIRY command to
           the specified device</para>
+-->
+          <para>根据向特定设备发送SCSI INQUIRY命令的返回信息，为 Udev 提供一个唯一的 SCSI 标识符</para>
           <indexterm zone="ch-system-udev scsi_id">
             <primary sortas="b-scsi_id">scsi_id</primary>
           </indexterm>
@@ -239,10 +312,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="udevadm">
         <term><command>udevadm</command></term>
         <listitem>
+
           <para>Generic udev administration tool: controls the udevd daemon,
           provides info from the Udev database, monitors uevents, waits for
           uevents to finish, tests Udev configuration, and triggers uevents
           for a given device</para>
+
           <indexterm zone="ch-system-udev udevadm">
             <primary sortas="b-udevadm">udevadm</primary>
           </indexterm>
@@ -252,9 +327,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="udevd">
         <term><command>udevd</command></term>
         <listitem>
+<!--E
           <para>A daemon that listens for uevents on the netlink socket,
           creates devices and runs the configured external programs in
           response to these uevents</para>
+-->
+          <para>一个守护进程，侦听热插拔事件，并针对事件，创建设备，运行配置好的外部程序</para>
           <indexterm zone="ch-system-udev udevd">
             <primary sortas="b-udevd">udevd</primary>
           </indexterm>
@@ -264,8 +342,11 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="usb_id">
         <term><command>usb_id</command></term>
         <listitem>
+<!--E
           <para>Provides Udev with information about USB
           devices</para>
+-->
+          <para>为 Udev 提供关于 USB 设备的信息</para>
           <indexterm zone="ch-system-udev usb_id">
             <primary sortas="b-usb_id">usb_id</primary>
           </indexterm>
@@ -275,8 +356,11 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="vol_id">
         <term><command>vol_id</command></term>
         <listitem>
+<!--E
           <para>Provides Udev with the label and uuid of a
           filesystem</para>
+-->
+          <para>为 Udev 提供一个文件系统的 label 和 uuid</para>
           <indexterm zone="ch-system-udev vol_id">
             <primary sortas="b-vol_id">vol_id</primary>
           </indexterm>
@@ -286,9 +370,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="write_cd_rules">
         <term><command>write_cd_rules</command></term>
         <listitem>
+<!--E
           <para>A script which generates Udev rules to provide stable names for
           optical drives (see also <xref linkend="ch-scripts-symlinks"/>)</para>
-          <indexterm zone="ch-system-udev write_cd_rules">
+-->
+          <para>一个生成 Udev 规则来为光盘驱动器提供稳定命名的脚本（参见 <xref linkend="ch-scripts-symlinks"/>）</para>     
+     <indexterm zone="ch-system-udev write_cd_rules">
             <primary sortas="b-write_cd_rules">write_cd_rules</primary>
           </indexterm>
         </listitem>
