@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -22,12 +22,13 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Glibc package contains the main C library. This library provides
     the basic routines for allocating memory, searching directories, opening and
     closing files, reading and writing files, string handling, pattern matching,
     arithmetic, and so on.</para>
-
+-->
+    <para>Glibc 包含了主要的 C 语言库。这个库提供了基本例程，用于分配内存、搜索目录、打开关闭文件、读写文件、字串处理、模式匹配、数学计算等等。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -41,9 +42,12 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Glibc</title>
-
+-->
+    <title>安装 Glibc</title>
     <note>
+<!--E
       <para>Some packages outside of LFS suggest installing GNU libiconv in
       order to translate data from one encoding to another. The project's
       home page (<ulink url="http://www.gnu.org/software/libiconv/"/>) says
@@ -52,15 +56,18 @@
       implementation cannot convert from/to Unicode.</quote> Glibc provides
       an <function>iconv()</function> implementation and can convert from/to
       Unicode, therefore libiconv is not required on an LFS system.</para>
+-->
+      <para>一些 LFS 基本系统之外的软件包建议安装 GNU libiconv 以使得数据够能在不同编码之间进行转换。GNU libiconv 项目的主页（<ulink url="http://www.gnu.org/software/libiconv/"/>）说："这个库为那些没有 <function>iconv()</function> 的系统或者虽然有 <function>iconv()</function> 却不能与 Unicode 相互转换的系统提供了一个能够与 Unicode 相互转换的实现"。Glibc 库中有一个 <function>iconv()</function>，并且能够与 Unicode 相互转换，因此，LFS 系统不需要 GNU libiconv 。</para>
     </note>
-
+<!--E
     <para>The Glibc build system is self-contained and will install
     perfectly, even though the compiler specs file and linker are still
     pointing at <filename class="directory">/tools</filename>. The specs
     and linker cannot be adjusted before the Glibc install because the
     Glibc autoconf tests would give false results and defeat the goal
     of achieving a clean build.</para>
-
+-->
+    <para>Glibc 的编译系统是高度自给自足的，即使当前编译器 specs 文件和连接器还指向 <filename class="directory">/tools</filename> 目录，也能正确安装。我们在安装 Glibc 前不能调整 specs 文件和连接器，否则 Glibc 的 autoconf 测试会失败，从而妨碍我们创建一个干净系统的目标。</para>
     <!-- <para>The glibc-libidn tarball adds support for internationalized domain
     names (IDN) to Glibc. Many programs that support IDN require the full
     <filename class="libraryfile">libidn</filename> library, not this add-on (see
@@ -69,12 +76,13 @@
 
 <screen><userinput remap="pre">tar -xvf ../glibc-libidn-&glibc-version;.tar.bz2
 mv glibc-libidn-&glibc-version; libidn</userinput></screen>-->
-
+<!--E
     <para>In the vi_VN.TCVN locale, <command>bash</command> enters an infinite
     loop at startup. It is unknown whether this is a <command>bash</command>
     bug or a Glibc problem. Disable installation of this locale in order to
     avoid the problem:</para>
-
+-->
+    <para>在 vi_VN.TCVN locale 中，<command>bash</command> 一启动就进入无限循环当中。我们并不知道是 <command>bash</command> 中存在 bug 还是 Glibc 中有问题。所以，为了避免这个问题，我们不安装这个 locale。</para>
 <screen><userinput remap="pre">sed -i '/vi_VN.TCVN/d' localedata/SUPPORTED</userinput></screen>
 
     <!-- <para>When running <command>make install</command>, a script called
@@ -87,120 +95,157 @@ mv glibc-libidn-&glibc-version; libidn</userinput></screen>-->
 <screen><userinput remap="pre">sed -i \
 's|libs -o|libs -L/usr/lib -Wl,-dynamic-linker=/lib/ld-linux.so.2 -o|' \
         scripts/test-installation.pl</userinput></screen> -->
-
+<!--E
     <para>First apply two patches which correct failures in the test
     suite:</para>
-
+-->
+    <para>首先，应用两个修正测试中错误的补丁包：</para>
 <screen><userinput remap="pre">patch -Np1 -i ../&glibc-iconv-test-fixes-patch;
 patch -Np1 -i ../&glibc-ildoubl-test-fix-patch;</userinput></screen>
 
-
+<!--E
     <para>The <command>ldd</command> shell script contains Bash-specific
     syntax. Change its default program interpreter to <command>/bin/bash</command>
     in case another <command>/bin/sh</command> is installed as described in the
     <ulink url="&blfs-root;view/svn/postlfs/shells.html">Shells</ulink>
     chapter of the BLFS book:</para>
+-->
+    <para>在 <command>ldd</command> shell 脚本中包含了 Bash 特性的语句。在 BLFS <ulink url="&blfs-root;view/svn/postlfs/shells.html">Shells</ulink> 章节中描述到，将默认程序解释器设为 <command>/bin/bash</command> 以防止安装 <command>/bin/sh</command> 为程序解释器。</para>
 
 <screen><userinput remap="pre">sed -i 's|@BASH@|/bin/bash|' elf/ldd.bash.in</userinput></screen>
-
+<!--E
     <para>The Glibc documentation recommends building Glibc outside of the source
     directory in a dedicated build directory:</para>
-
+-->
+    <para>Glibc 文档推荐在源码目录之外的一个专门的编译目录下进行编译：</para>
 <screen><userinput remap="pre">mkdir -v ../glibc-build
 cd ../glibc-build</userinput></screen>
-
+<!--E
     <para>Again, add the needed compiler flag to CFLAGS:</para>
-
+-->
+    <para>添加必须的编译器标志 CFLAGS：</para>
 <screen><userinput remap="configure">echo "CFLAGS += -march=i486 -mtune=native" &gt; configparms</userinput></screen>
-
+<!--E
     <para>Prepare Glibc for compilation:</para>
-
+-->
+    <para>为编译 Glibc 做准备：</para>
 <screen><userinput remap="configure">../glibc-&glibc-version;/configure --prefix=/usr \
     --disable-profile --enable-add-ons \
     --enable-kernel=2.6.0 --libexecdir=/usr/lib/glibc</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the new configure options:</title>
-
+-->
+      <title>新配置选项的含义：</title>
       <varlistentry>
         <term><parameter>--libexecdir=/usr/lib/glibc</parameter></term>
         <listitem>
+<!--
           <para>This changes the location of the <command>pt_chown</command>
           program from its default of <filename
           class="directory">/usr/libexec</filename> to <filename
           class="directory">/usr/lib/glibc</filename>.</para>
+-->
+          <para>把 <command>pt_chown</command> 程序的位置从默认的 <filename class="directory">/usr/libexec</filename> 改为 <filename class="directory">/usr/lib/glibc</filename>。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
 
     <important>
+<!--E
       <para>In this section, the test suite for Glibc is considered critical.
       Do not skip it under any circumstance.</para>
+-->
+      <para>本节的 Glibc 测试很重要。在任何情况下都不要省略这一步。</para>
     </important>
-
+<!--E
     <para>Before running the tests, copy a file from the source tree into our
     build tree to prevent a couple of test failures, then test the
     results:</para>
-
+-->
+    <para>在运行测试之前，从源文件树拷贝一个文件到编译文件树中以防测试中出现一系列问题，然后再测试结果：</para>
 <screen><userinput remap="test">cp -v ../glibc-&glibc-version;/iconvdata/gconv-modules iconvdata
 make -k check 2&gt;&amp;1 | tee glibc-check-log
 grep Error glibc-check-log</userinput></screen>
-
+<!--E
     <para>You will probably see an expected (ignored) failure in the
     <emphasis>posix/annexc</emphasis> test.  In addition the Glibc test suite
     is somewhat dependent on the host system.  This is a list of the most
     common issues:</para>
-
+-->
+    <para>在 <emphasis>posix/annexc</emphasis> 中，你可能会看到一个预料的错误（可以忽略）。另外，在 Glibc 测试单元，测试结果多少会依赖于宿主系统。下面是一些常见的错误：</para>
     <itemizedlist>
       <!-- Check again after updating from gcc-4.1.x -->
       <listitem>
+<!--E
         <para>The <emphasis>nptl/tst-cancel1</emphasis> test will fail when
         using the 4.1 series of GCC.</para>
+-->
+        <para>如果使用 4.1 版本的 GCC 那么在 <emphasis>nptl/tst-cancel1</emphasis> 中会显示失败。</para>
       </listitem>
       <!-- Was true in glibc-2.3.6 -->
       <listitem>
+<!--E
         <para>The <emphasis>nptl/tst-clock2</emphasis> and
         <emphasis>tst-attr3</emphasis> tests sometimes
         fail.  The reason is not completely understood, but indications
         are that a heavy system load can trigger these failures.</para>
+-->
+        <para><emphasis>nptl/tst-clock2</emphasis> 和 <emphasis>tst-attr3</emphasis> 测试有时会出错。原因现在还不是很明白，可能是系统负载过重导致的。</para>
       </listitem>
       <listitem>
+<!--E
         <para>The math tests sometimes fail when running on
         systems where the CPU is not a relatively new genuine Intel or
         authentic AMD processor.</para>
+-->
+        <para>math 测试在一些使用较老的 Intel 或 AMD 的系统上会失败，某些优化设置也会导致该测试失败。</para>
       </listitem>
       <listitem>
+<!--E
         <para>If you have mounted the LFS partition with the
         <parameter>noatime</parameter> option, the <emphasis>atime</emphasis>
         test will fail. As mentioned in <xref linkend="space-mounting"/>, do not
         use the <parameter>noatime</parameter> option while building LFS.</para>
+-->
+        <para><emphasis>atime</emphasis> 会在使用 <parameter>noatime</parameter> 选项挂载 LFS 分区时失败（参见 <xref linkend="space-mounting"/>），在编译LFS过程中不要使用 <parameter>noatime</parameter> 选项。</para> 
       </listitem>
       <listitem>
+<!--E
         <para>When running on older and slower hardware or on systems under
         load, some tests can fail because of test timeouts being exceeded.</para>
+-->
+        <para>在一些很老很慢的机器上，一些测试会由于超时而失败。</para>
       </listitem>
     </itemizedlist>
-
+<!--E
     <para>Though it is a harmless message, the install stage of Glibc will
     complain about the absence of <filename>/etc/ld.so.conf</filename>.
     Prevent this warning with:</para>
+-->
+    <para>在安装 Glibc 的过程中，它会警告缺少 <filename>/etc/ld.so.conf</filename> 文件。其实这没什么关系，不过下面的命令能修正它：</para>
 
 <screen><userinput remap="install">touch /etc/ld.so.conf</userinput></screen>
-
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
-
+<!--E
     <para>The locales that can make the system respond in a different language
     were not installed by the above command. None of the locales are required,
     but if some of them are missing, testsuites of the future packages would
     skip important testcases.</para>
-
+-->
+    <para>locales 会让系统以一种上面命令没有安装语言的情况处理。要注意 locales 是必须的，如果他们中的一些丢失了，后面的测试单元会跳过重要测试。</para>
+<!--E
     <para>Individual locales can be installed using the
     <command>localedef</command> program. E.g., the first
     <command>localedef</command> command below combines the
@@ -211,6 +256,8 @@ grep Error glibc-check-log</userinput></screen>
     <filename>/usr/lib/locale/locale-archive</filename> file.
     The following instructions will install the minimum set of
     locales necessary for the optimal coverage of tests:</para>
+-->
+    <para>单个的 locale 可以通过使用 <command>localedef</command> 程序来安装。例如，下面的第一个 <command>localedef</command> 命令将 <filename>/usr/share/i18n/locales/de_DE</filename> 跟 <filename>/usr/share/i18n/charmaps/ISO-8859-1.gz</filename> 结合，并添加到 <filename>/usr/lib/locale/locale-archive</filename> 文件中。下面的说明将会安装一个所需 locale 的最小集合：</para>
 
 <screen role="nodump"><userinput remap="locale-test">mkdir -pv /usr/lib/locale
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
@@ -229,21 +276,26 @@ localedef -i fr_FR -f UTF-8 fr_FR.UTF-8
 localedef -i it_IT -f ISO-8859-1 it_IT
 localedef -i ja_JP -f EUC-JP ja_JP
 localedef -i tr_TR -f UTF-8 tr_TR.UTF-8</userinput></screen>
-
+<!--E
     <para>In addition, install the locale for your own country, language and
     character set.</para>
-
+-->
+    <para>另外，你可以安装你的国家、语言和字符集所对应的 locale。</para>
+<!--E
     <para>Alternatively, install all locales listed in the
     <filename>glibc-&glibc-version;/localedata/SUPPORTED</filename> file
     (it includes every locale listed above and many more) at once with the
     following time-consuming command:</para>
-
+-->
+    <para>当然，可以一次安装所有列在 <filename>glibc-&glibc-version;/localedata/SUPPORTED</filename> （目录里面包括所有的 locale）中的 locales，利用下面的命令：</para>
 <screen><userinput remap="locale-full">make localedata/install-locales</userinput></screen>
-
+<!--E
     <para>Then use the <command>localedef</command> command to create and
     install locales not listed in the
     <filename>glibc-&glibc-version;/localedata/SUPPORTED</filename> file
     in the unlikely case you need them.</para>
+-->
+    <para>接着使用 <command>localedef</command> 命令来创建和安装 locales 没有列在 <filename>glibc-&glibc-version;/localedata/SUPPORTED</filename> 中的（这种情况不太可能），如果你需要它们的话。</para>
     <!-- The Live CD patches the localedata/SUPPORTED file instead of
     running localedef, the results are equivalent -->
 
