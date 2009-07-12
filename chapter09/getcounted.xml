@@ -18,10 +18,10 @@
   register as an LFS user by entering your name and the first LFS version you
   have used.</para>
 -->
-   <para>现在你已经完成本书的全部步骤，你想知道作为LFS用户你是第几个吗? 登入 <ulink url="&lfs-root;cgi-bin/lfscounter.cgi"/> ，通过输入你的名字和你使用的第一个LFS版本注册为LFS用户。</para>
+   <para>现在你已经完成本书的全部步骤，你想知道作为 LFS 用户你是第几个吗? 登入 <ulink url="&lfs-root;cgi-bin/lfscounter.cgi"/> ，通过输入你的名字和你使用的第一个 LFS 版本注册为 LFS 用户。</para>
 
 <!--E
   <para>Let's reboot into LFS now.</para>
 -->
-  <para>现在让我们重启进入LFS系统。</para>
+  <para>现在让我们重启进入 LFS 系统。</para>
 </sect1>

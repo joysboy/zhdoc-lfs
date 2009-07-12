@@ -27,7 +27,7 @@
   ask for help at some point) to find out which LFS version is installed on the
   system. Create this file by running:</para>
 -->
-  <para>创建一个 <filename>/etc/lfs-release</filename> 文件是一个好主意。有了这个文件，你可以方便地(对我们也是如此，如果你需要在某些方面寻求帮助的话)找到系统上安装的LFS是哪个版本。运行下面语句创建文件：</para>
+  <para>创建一个 <filename>/etc/lfs-release</filename> 文件是一个好主意。有了这个文件，你可以方便地（对我们也是如此，如果你需要在某些方面寻求帮助的话）找到系统上安装的 LFS 是哪个版本。运行下面语句创建文件：</para>
 
 <screen><userinput>echo &version; &gt; /etc/lfs-release</userinput></screen>
 
