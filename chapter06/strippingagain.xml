@@ -29,7 +29,7 @@
   <command>strip</command> command, it is a good idea to make a
   backup of the LFS system in its current state.</para>
 -->
-  <para>大部分使用了下面命令的人没有遇到什么困难。但是，这很容易出错并致使新系统不可使用，所以在运行<command>strip</command> 命令以前，在当前状态下给 LFS 系统作一个备份是一个不错的主意。</para>
+  <para>大部分使用了下面命令的人没有遇到什么困难。但是，这很容易出错并致使新系统不可使用，所以在运行 <command>strip</command> 命令以前，在当前状态下给 LFS 系统作一个备份是一个不错的主意。</para>
 
 <!--E
   <para>Before performing the stripping, take special care to ensure that
@@ -38,7 +38,7 @@
   <xref linkend="ch-system-chroot" role=","/> first exit from
   chroot:</para>
 -->
-  <para>在执行清理命令之前，请特别注意确保没有任何将被清理的二进制文件正在运行。如果您不确定是否用户是用<xref linkend="ch-system-chroot" role=","/> 给出的命令进入了虚拟根环境，那么首先退出虚拟根环境:</para>
+  <para>在执行清理命令之前，请特别注意确保没有任何将被清理的二进制文件正在运行。如果您不确定是否用户是用<xref linkend="ch-system-chroot"/>，给出的命令进入了虚拟根环境，那么首先退出虚拟根环境:</para>
 
 <screen role="nodump"><userinput>logout</userinput></screen>
 

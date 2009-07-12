@@ -16,7 +16,7 @@
   <para>From now on, when reentering the chroot environment after
   exiting, use the following modified chroot command:</para>
 -->
-  <para>从现在起，在退出后，每当重新进入 chroot 环境，请使用下面修改过的 chroot 命令:</para>
+  <para>从现在起，在退出后，每当重新进入 chroot 环境，请使用下面修改过的 chroot 命令：</para>
 
 <screen><userinput>chroot "$LFS" /usr/bin/env -i \
     HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
@@ -29,7 +29,7 @@
   longer needed you can delete the <filename class="directory">/tools</filename>
   directory if so desired.</para>
 -->
-  <para>这样做的理由是起初在 <filename class="directory">/tools</filename> 目录下的程序已经不再需要了。既然已经不需要它们俄，那么你愿意的话可以删掉 <filename class="directory">/tools</filename> 目录。</para>
+  <para>这样做的理由是起初在 <filename class="directory">/tools</filename> 目录下的程序已经不再需要了。既然已经不需要它们了，那么你愿意的话可以删掉 <filename class="directory">/tools</filename> 目录。</para>
  
   <note>
 <!--E
@@ -39,7 +39,7 @@
     they will need to be recompiled and re-installed. The BLFS book has
     instructions for this (see <ulink url="&blfs-root;"/>).</para>
 -->
-    <para>删除 <filename class="directory">/tools</filename> 目录将也会删除临时文件夹中已拷贝的Tcl,Expect,DejaGNU等文件，而这些文件是那些正在运行的工具链接程序使用的。如果要在以后使用这些程序，它们需要重新编译和重新安装。BLFS手册介绍了如何重新安装(参见 <ulink url="&blfs-root;"/>)。</para>
+    <para>删除 <filename class="directory">/tools</filename> 目录将也会删除临时文件夹中已拷贝的Tcl，Expect，DejaGNU等文件，而这些文件是那些正在运行的工具链接程序使用的。如果要在以后使用这些程序，它们需要重新编译和重新安装。BLFS手册介绍了如何重新安装（参见 <ulink url="&blfs-root;"/>）。</para>
   </note>
 
 <!--E
