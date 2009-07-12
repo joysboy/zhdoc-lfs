@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -23,7 +23,10 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Vim package contains a powerful text editor.</para>
+-->
+    <para>Vim 软件包包含一个功能强大的文本编辑器。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -36,27 +39,43 @@
     </segmentedlist>
 
     <tip>
+<!--E
       <title>Alternatives to Vim</title>
+-->
+      <title>Vim 编辑器外的其他选择</title>
 
+<!--E
       <para>If you prefer another editor&mdash;such as Emacs, Joe, or
       Nano&mdash;please refer to <ulink
       url="&blfs-root;view/svn/postlfs/editors.html"/> for suggested
       installation instructions.</para>
+-->
+      <para>如果你更喜欢用其他的编辑器，比如 Emacs，Joe，Nano，请参考这里 <ulink
+      url="&blfs-root;view/svn/postlfs/editors.html"/> 以获取推荐的安装方法。</para>
     </tip>
 
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Vim</title>
+-->
+    <title>安装 Vim</title>
 
+<!--E
     <para>First, unpack both
     <filename>vim-&vim-version;.tar.bz2</filename> and (optionally)
     <filename>vim-&vim-version;-lang.tar.gz</filename> archives into the
     same directory.</para>
+-->
+    <para>首先，将 <filename>vim-&vim-version;.tar.bz2</filename> 和 <filename>vim-&vim-version;-lang.tar.gz</filename>（可选）解包到同一个目录下。</para>
 
+<!--E
     <para>Apply a patch which fixes various issues already found and fixed by
     the upstream maintainers since the inital release of Vim-&vim-version;:
     </para>
+-->
+    <para>运用一个补丁来修正已经发现的 Vim-7.2 的一些 bug：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&vim-fixes-patch;</userinput></screen>
 <!--
@@ -68,67 +87,97 @@
 
 <screen><userinput remap="pre">patch -Np1 -i ../&vim-mandir-patch;</userinput></screen>
 -->
+<!--E
     <para>Change the default location of the
     <filename>vimrc</filename> configuration file to <filename
     class="directory">/etc</filename>:</para>
+-->
+    <para>把配置文件 <filename>vimrc</filename> 的默认位置修改到 <filename class="directory">/etc</filename> 目录中：</para>
 
 <screen><userinput remap="pre">echo '#define SYS_VIMRC_FILE "/etc/vimrc"' &gt;&gt; src/feature.h</userinput></screen>
 
+<!--E
     <para>Now prepare Vim for compilation:</para>
+-->
+    <para>为编译 Vim 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --enable-multibyte</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--enable-multibyte</parameter></term>
         <listitem>
+<!--E
           <para>This switch enables support for editing files in multibyte
           character encodings.  This is needed if using a locale with a
           multibyte character set. This switch is also helpful to be able
           to edit text files initially created in Linux distributions like
           Fedora Core that use UTF-8 as a default character set.</para>
+-->
+          <para>这个选项使得 Vim 支持使用多字节字符编码的文件。在一个使用多字节字符集的 locale 上，这是必需的。该选项还有助于编辑在默认使用 UTF-8 字符集的其它 Linux 发行版（如 Fedora Core）上创建的文本文件。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>要测试结果，请运行：</para>
 
 <screen><userinput remap="test">make test</userinput></screen>
 
+<!--E
     <para>However, this test suite outputs a lot of binary data to the screen,
     which can cause issues with the settings of the current terminal. This can
     be resolved by redirecting the output to a log file.</para>
-
+-->
+    <para>注意，Vim 的测试套件会输出一大堆混乱的二进制字符到屏幕上，有时会把当前的终端设置搞乱。这个问题可以通过将其输出重定向到一个日志文件中解决。</para>
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Many users are used to using <command>vi</command> instead of
     <command>vim</command>. To allow execution of <command>vim</command>
     when users habitually enter <command>vi</command>, create a
     symlink for both the binary and the man page in the provided
     languages:</para>
+-->
+    <para>许多用户习惯于使用 vi 而不是 vim 。下面的命令为适应这种习惯创建一个二进制文件以及 man 文档的符号链接：</para>
 
 <screen><userinput remap="install">ln -sv vim /usr/bin/vi
 for L in  /usr/share/man/{,*/}man1/vim.1; do
     ln -sv vim.1 $(dirname $L)/vi.1
 done</userinput></screen>
 
+<!--E
     <para>By default, Vim's documentation is installed in <filename
     class="directory">/usr/share/vim</filename>. The following symlink
     allows the documentation to be accessed via <filename
     class="directory">/usr/share/doc/vim-&vim-version;</filename>, making
     it consistent with the location of documentation for other packages:</para>
+-->
+    <para>在默认情况下，Vim 的文档被安装在 <filename class="directory">/usr/share/vim</filename> 目录下。下面的符号链接允许通过 <filename class="directory">/usr/share/doc/vim-&vim-version;</filename> 来访问，使其与其他软件包的文档保持一致：</para>
 
 <screen><userinput remap="install">ln -sv ../&vim-docdir;/doc /usr/share/doc/vim-&vim-version;</userinput></screen>
 
+<!--E
     <para>If an X Window System is going to be installed on the LFS
     system, it may be necessary to recompile Vim after installing X. Vim
     comes with a GUI version of the editor that requires X and some
@@ -136,16 +185,22 @@ done</userinput></screen>
     process, refer to the Vim documentation and the Vim installation page
     in the BLFS book at <ulink
     url="&blfs-root;view/svn/postlfs/editors.html#postlfs-editors-vim"/>.</para>
+-->
+    <para>如果您计划在您的 LFS 系统上安装 X Windows 系统，那么您可能必须在安装 X 之后重新编译 Vim 。Vim 有带有图形用户接口的版本，但需要安装 X 和其它一些库。要了解更多关于这方面的信息请参考 Vim 的安装手册和 BLFS 中有关 Vim 安装指导的页面： <ulink url="&blfs-root;view/svn/postlfs/editors.html#postlfs-editors-vim"/>。</para>
 
   </sect2>
 
   <sect2 id="conf-vim" role="configuration">
+<!--E
     <title>Configuring Vim</title>
+-->
+    <title>配置 Vim</title>
 
     <indexterm zone="conf-vim">
       <primary sortas="e-/etc/vimrc">/etc/vimrc</primary>
     </indexterm>
 
+<!--E
     <para>By default, <command>vim</command> runs in vi-incompatible mode.
     This may be new to users who have used other editors in the past. The
     <quote>nocompatible</quote> setting is included below to highlight the
@@ -154,6 +209,8 @@ done</userinput></screen>
     setting in the configuration file. This is necessary because it changes
     other settings, and overrides must come after this setting. Create a default
     <command>vim</command> configuration file by running the following:</para>
+-->
+    <para>在默认情况下， <command>vim</command> 是以与 vi 兼容的模式运行，这可能对之前使用其它文本编辑器的人来说感到陌生。下面的配置文件明确的设置了 <quote>nocompatible</quote> 模式。这也提醒想修改为 <quote>compatible</quote> 模式的人，这应该是配置文件中第一个设置。这是很有必要的，因为如果要改变或覆盖其它设置，必须要在这个设置之后。使用下面的命令创建一个默认的 <command>vim</command> 配置文件：</para>
 
 <screen><userinput>cat &gt; /etc/vimrc &lt;&lt; "EOF"
 <literal>" Begin /etc/vimrc
@@ -168,6 +225,7 @@ endif
 " End /etc/vimrc</literal>
 EOF</userinput></screen>
 
+<!--E
     <para>The <parameter>set nocompatible</parameter> setting makes
     <command>vim</command> behave in a more useful way (the default) than
     the vi-compatible manner. Remove the <quote>no</quote> to keep the
@@ -180,37 +238,57 @@ EOF</userinput></screen>
     guess about the background color of some terminal emulators. This
     gives the highlighting a better color scheme for use on the black
     background of these programs.</para>
+-->
+    <para><parameter>set nocompatible</parameter> 将使 <command>vim</command> 以比默认的 vi 兼容模式功能更强的方式运行。你可以删除 <quote>no</quote> 来保持默认的 vi 模式。<parameter>set backspace=2</parameter>  让退格键能跨行、自动缩进、插入。<parameter>syntax on</parameter> 打开了 vim 的语法高亮功能。最后，带有 <parameter>set background=dark</parameter> 的 <emphasis>if</emphasis> 语句纠正了 <command>vim</command> 对对于终端背景颜色的猜测。对于那些使用黑色背景的用户这是一个较好的配色方案。</para> 
 
+<!--E
     <para>Documentation for other available options can be obtained by
     running the following command:</para>
+-->
+    <para>使用下面的命令可以得到其它可以使用的选项的说明文档：</para>
 
 <screen role="nodump"><userinput>vim -c ':options'</userinput></screen>
 
     <note>
+<!--E
       <para>By default, Vim only installs spell files for the English language.
       To install spell files for your preferred language, download the
       <filename>*.spl</filename> and optionally, the <filename>*.sug</filename>
       files for your language and character encoding from <ulink
       url="ftp://ftp.vim.org/pub/vim/runtime/spell/"/> and save them to
       <filename class='directory'>/usr/share/&vim-docdir;/spell/</filename>.</para>
+-->
+      <para>默认情况下，Vim仅会安装英文的拼写检查文件。要安装你熟悉的语言的拼写检查文件，从 <ulink url="ftp://ftp.vim.org/pub/vim/runtime/spell/"/> 下载与你的语言相关的 <filename>*.spl</filename> 文件和 <filename>*.sug</filename> 文件（可选），以及字符解码器。并把它们保存到<filename class='directory'>/usr/share/&vim-docdir;/spell/</filename> 目录下。</para>
 
+<!--E
       <para>To use these spell files, some configuration in
       <filename>/etc/vimrc</filename> is needed, e.g.:</para>
+-->
+      <para>要使用这些拼写检查文件，在 <filename>/etc/vimrc</filename> 需要一些配置选项，例如：</para>
 
 <screen><literal>set spelllang=en,ru
 set spell</literal></screen>
 
+<!--E
       <para>For more information, see the appropriate README file located
       at the URL above.</para>
+-->
+      <para>要获取更多的信息,可以查看上面 URL 上的 README 文件.</para>
     </note>
 
   </sect2>
 
   <sect2 id="contents-vim" role="content">
+<!--E
     <title>Contents of Vim</title>
+-->
+    <title>Vim 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
 
       <seglistitem>
         <seg>ex (link to vim), rview (link to vim), rvim (link to vim), 
@@ -220,14 +298,20 @@ set spell</literal></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="ex">
         <term><command>ex</command></term>
         <listitem>
+<!--E
           <para>Starts <command>vim</command> in ex mode</para>
+-->
+          <para>以 ex 模式启动 <command>vim</command></para>
           <indexterm zone="ch-system-vim ex">
             <primary sortas="b-ex">ex</primary>
           </indexterm>
@@ -237,9 +321,12 @@ set spell</literal></screen>
       <varlistentry id="rview">
         <term><command>rview</command></term>
         <listitem>
+<!--E
           <para>Is a restricted version of <command>view</command>; no shell
           commands can be started and <command>view</command> cannot be
           suspended</para>
+-->
+          <para>一个 <command>view</command> 的限制版本，它不能启动任何 shell 命令并且 <command>view</command> 不能被挂起。</para>
           <indexterm zone="ch-system-vim rview">
             <primary sortas="b-rview">rview</primary>
           </indexterm>
@@ -249,9 +336,12 @@ set spell</literal></screen>
       <varlistentry id="rvim">
         <term><command>rvim</command></term>
         <listitem>
+<!--E
           <para>Is a restricted version of <command>vim</command>; no shell
           commands can be started and <command>vim</command> cannot be
           suspended</para>
+-->
+          <para>一个<command>vim</command> 的限制版本，它不能启动任何 shell 命令并且 <command>vim</command> 不能被挂起。</para>
           <indexterm zone="ch-system-vim rvim">
             <primary sortas="b-rvim">rvim</primary>
           </indexterm>
@@ -261,7 +351,10 @@ set spell</literal></screen>
       <varlistentry id="vi">
         <term><command>vi</command></term>
         <listitem>
+<!--E
           <para>Link to <command>vim</command></para>
+-->
+          <para><command>vim</command> 的一个链接</para>
           <indexterm zone="ch-system-vim vi">
             <primary sortas="b-vi">vi</primary>
           </indexterm>
@@ -271,7 +364,10 @@ set spell</literal></screen>
       <varlistentry id="view">
         <term><command>view</command></term>
         <listitem>
+<!--E
           <para>Starts <command>vim</command> in read-only mode</para>
+-->
+          <para>以只读模式启动 <command>vim</command></para>
           <indexterm zone="ch-system-vim view">
             <primary sortas="b-view">view</primary>
           </indexterm>
@@ -281,7 +377,10 @@ set spell</literal></screen>
       <varlistentry id="vim">
         <term><command>vim</command></term>
         <listitem>
+<!--E
           <para>Is the editor</para>
+-->
+          <para>编辑器</para>
           <indexterm zone="ch-system-vim vim">
             <primary sortas="b-vim">vim</primary>
           </indexterm>
@@ -291,8 +390,11 @@ set spell</literal></screen>
       <varlistentry id="vimdiff">
         <term><command>vimdiff</command></term>
         <listitem>
+<!--E
           <para>Edits two or three versions of a file with <command>vim</command>
           and show differences</para>
+-->
+          <para>使用 <command>vim</command> 同时编辑一个文档的 2 或 3 个版本并显示它们的区别</para>
           <indexterm zone="ch-system-vim vimdiff">
             <primary sortas="b-vimdiff">vimdiff</primary>
           </indexterm>
@@ -302,8 +404,11 @@ set spell</literal></screen>
       <varlistentry id="vimtutor">
         <term><command>vimtutor</command></term>
         <listitem>
+<!--E
           <para>Teaches the basic keys and commands of
           <command>vim</command></para>
+-->
+          <para>教你使用 <command>vim</command> 的基本操作和命令</para>
           <indexterm zone="ch-system-vim vimtutor">
             <primary sortas="b-vimtutor">vimtutor</primary>
           </indexterm>
@@ -313,8 +418,11 @@ set spell</literal></screen>
       <varlistentry id="xxd">
         <term><command>xxd</command></term>
         <listitem>
+<!--E
           <para>Creates a hex dump of the given file; it can
           also do the reverse, so it can be used for binary patching</para>
+-->
+          <para>生成十六进制转储或者做相反的工作，因此它能给二进制文件打补丁</para>
           <indexterm zone="ch-system-vim xxd">
             <primary sortas="b-xxd">xxd</primary>
           </indexterm>
