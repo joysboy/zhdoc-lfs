@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -22,10 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Sysvinit package contains programs for controlling the startup,
     running, and shutdown of the system.</para>
-
+-->
+    <para>Sysvinit 软件包包含一些控制系统启动、运行、关闭的程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,8 +40,11 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Sysvinit</title>
-
+-->
+    <title>安装 Sysvinit</title>
+<!--E
     <para>When run-levels are changed (for example, when halting the
     system), <command>init</command> sends termination signals to those
     processes that <command>init</command> itself started and that should
@@ -51,32 +55,48 @@
     misinterpretation, modify the source so that these messages read like
     <quote>Sending processes configured via /etc/inittab the TERM signal</quote>
     instead:</para>
+-->
+    <para>当运行级别被改变（比如，正在关闭系统时），<command>init</command> 向那些由 <command>init</command> 自身开启的，并且将不会在新的运行级别里运行的线程发送终端信号。当 <command>init</command> 做上面这些事情时，会输出像 <quote>Sending processes the TERM signal</quote> 这样的信息，这看起来就像它正在向那些系统正在运行的程序发送上面这些信息一样。要避免错误地理解这个信息，可以修改源码以便可以代替为读起来像 <quote>Sending processes configured via /etc/inittab the TERM signal</quote> 的信息，可以用下面命令：</para>
+ 
 
 <screen><userinput remap="pre">sed -i 's@Sending processes@&amp; configured via /etc/inittab@g' \
     src/init.c</userinput></screen>
 
+<!--E
     <para>A maintained version of the <command>wall</command> program is
     installed later on during the Util-linux-ng installation. Suppress the
     installation of this program and its man page:</para>
+-->
+    <para>一个 <command>wall</command> 程序的保持版本会在后续 the Util-linux-ng 的安装中被安装。隐藏这个程序和它的 man 手册页的安装：</para>
 
 <screen><userinput remap="make">sed -i -e 's/utmpdump wall/utmpdump/' \
        -e 's/mountpoint.1 wall.1/mountpoint.1/' src/Makefile</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make -C src</userinput></screen>
 
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试套件。</para>
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make -C src install</userinput></screen>
 
   </sect2>
 
   <sect2 id="conf-sysvinit" role="configuration">
+<!--E
     <title>Configuring Sysvinit</title>
-
+-->
+    <title>配置 Sysvinit</title>
     <indexterm zone="conf-sysvinit">
       <primary sortas="a-Sysvinit">Sysvinit</primary>
       <secondary>configuring</secondary>
@@ -86,13 +106,16 @@
       <primary sortas="e-/etc/inittab">/etc/inittab</primary>
     </indexterm>
 
+<!--E
     <para>Create a new file <filename>/etc/inittab</filename> by running the
     following:</para>
+-->
+    <para>运行下面的命令，创建一个新的 <filename>/etc/inittab</filename> 文件：</para>
 
 <screen><userinput>cat &gt; /etc/inittab &lt;&lt; "EOF"
 <literal># Begin /etc/inittab
 
-id:3:initdefault:
+id:3:initdefaul
 
 si::sysinit:/etc/rc.d/init.d/rc sysinit
 
@@ -121,11 +144,15 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 id="contents-sysvinit" role="content">
+<!--E
     <title>Contents of Sysvinit</title>
-
+-->
+    <title>Sysvinit 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>bootlogd, halt, init, killall5, last, lastb (link to last), mesg,
         mountpoint, pidof (link to killall5), poweroff (link to halt),
@@ -142,8 +169,11 @@ EOF</userinput></screen>
       <varlistentry id="bootlogd">
         <term><command>bootlogd</command></term>
         <listitem>
+<!--E
           <para>Logs boot messages to a log file</para>
-          <indexterm zone="ch-system-sysvinit bootlogd">
+-->
+          <para>把启动信息记录到一个日志文件</para>     
+     <indexterm zone="ch-system-sysvinit bootlogd">
             <primary sortas="b-bootlogd">bootlogd</primary>
           </indexterm>
         </listitem>
@@ -152,11 +182,14 @@ EOF</userinput></screen>
       <varlistentry id="halt">
         <term><command>halt</command></term>
         <listitem>
+<!--E
           <para>Normally invokes <command>shutdown</command> with the
           <parameter>-h</parameter> option, except when already in run-level 0,
           then it tells the kernel to halt the system; it notes in the
           file <filename>/var/log/wtmp</filename> that the system is being
           brought down</para>
+-->
+          <para>正常情况下等效于 <command>shutdown</command> 加上 <parameter>-h</parameter> 参数（当前系统运行级别是 0 时除外）。它将告诉内核去中止系统，并在系统正在关闭的过程中将日志记录到 <filename>/var/log/wtmp</filename> 文件里</para>
           <indexterm zone="ch-system-sysvinit halt">
             <primary sortas="b-halt">halt</primary>
           </indexterm>
@@ -166,9 +199,12 @@ EOF</userinput></screen>
       <varlistentry id="init">
         <term><command>init</command></term>
         <listitem>
+<!--E
           <para>The first process to be started when the kernel has initialized
           the hardware which takes over the boot process and starts all the
           proceses it is instructed to</para>
+-->
+          <para>当内核已经初始化硬件，接管引导程序，开启指令线程时，init 会被第一个启动</para>
           <indexterm zone="ch-system-sysvinit init">
             <primary sortas="b-init">init</primary>
           </indexterm>
@@ -178,9 +214,12 @@ EOF</userinput></screen>
       <varlistentry id="killall5">
         <term><command>killall5</command></term>
         <listitem>
+<!--E
           <para>Sends a signal to all processes, except the processes in its own
           session so it will not kill the shell running the script that called
           it</para>
+-->
+          <para>发送一个信号到所有进程，但那些在它自己设定级别的进程将不会被这个运行的脚本所中断</para>
           <indexterm zone="ch-system-sysvinit killall5">
             <primary sortas="b-killall5">killall5</primary>
           </indexterm>
@@ -190,10 +229,13 @@ EOF</userinput></screen>
       <varlistentry id="last">
         <term><command>last</command></term>
         <listitem>
+<!--E
           <para>Shows which users last logged in (and out), searching back
           through the <filename>/var/log/wtmp</filename> file; it also shows
           system boots, shutdowns, and run-level changes</para>
-          <indexterm zone="ch-system-sysvinit last">
+-->
+          <para>它通过搜索 <filename>/var/log/wtmp</filename> 文件显示哪一个用户最后一次登录（和退出）；它也会显示出系统引导、关闭、运行级别改变等信息</para>     
+    <indexterm zone="ch-system-sysvinit last">
             <primary sortas="b-last">last</primary>
           </indexterm>
         </listitem>
@@ -202,9 +244,12 @@ EOF</userinput></screen>
       <varlistentry id="lastb">
         <term><command>lastb</command></term>
         <listitem>
+<!--E
           <para>Shows the failed login attempts, as logged in
           <filename>/var/log/btmp</filename></para>
-          <indexterm zone="ch-system-sysvinit lastb">
+-->
+          <para>给出登失败的尝试，并写入日志 <filename>/var/log/btmp</filename></para>      
+    <indexterm zone="ch-system-sysvinit lastb">
             <primary sortas="b-lastb">lastb</primary>
           </indexterm>
         </listitem>
@@ -213,8 +258,11 @@ EOF</userinput></screen>
       <varlistentry id="mesg">
         <term><command>mesg</command></term>
         <listitem>
+<!--E
           <para>Controls whether other users can send messages to the current
           user's terminal</para>
+-->
+          <para>控制是否允许其他用户有向当前用户的终端发送信息的权限</para>
           <indexterm zone="ch-system-sysvinit mesg">
             <primary sortas="b-mesg">mesg</primary>
           </indexterm>
@@ -224,8 +272,11 @@ EOF</userinput></screen>
       <varlistentry id="mountpoint">
         <term><command>mountpoint</command></term>
         <listitem>
+<!--E
           <para>Checks if the directory is a mountpoint</para>
-          <indexterm zone="ch-system-sysvinit mountpoint">
+-->
+          <para>检查给定的目录是否是一个挂载点</para>     
+     <indexterm zone="ch-system-sysvinit mountpoint">
             <primary sortas="b-mountpoint">mountpoint</primary>
           </indexterm>
         </listitem>
@@ -234,8 +285,11 @@ EOF</userinput></screen>
       <varlistentry id="pidof">
         <term><command>pidof</command></term>
         <listitem>
+<!--E
           <para>Reports the PIDs of the given programs</para>
-          <indexterm zone="ch-system-sysvinit pidof">
+-->
+          <para>报告给定程序的 PID 号</para>    
+     <indexterm zone="ch-system-sysvinit pidof">
             <primary sortas="b-pidof">pidof</primary>
           </indexterm>
         </listitem>
@@ -244,8 +298,11 @@ EOF</userinput></screen>
       <varlistentry id="poweroff">
         <term><command>poweroff</command></term>
         <listitem>
+<!--E
           <para>Tells the kernel to halt the system and switch off the computer
           (see <command>halt</command>)</para>
+-->
+          <para>告诉内核中止系统并且关闭系统（参见 <command>halt</command>）</para>
           <indexterm zone="ch-system-sysvinit poweroff">
             <primary sortas="b-poweroff">poweroff</primary>
           </indexterm>
@@ -255,8 +312,11 @@ EOF</userinput></screen>
       <varlistentry id="reboot">
         <term><command>reboot</command></term>
         <listitem>
+<!--E
           <para>Tells the kernel to reboot the system (see
           <command>halt</command>)</para>
+-->
+          <para>告诉内核重启系统（参见 <command>halt</command>）</para>
           <indexterm zone="ch-system-sysvinit reboot">
             <primary sortas="b-reboot">reboot</primary>
           </indexterm>
@@ -266,9 +326,12 @@ EOF</userinput></screen>
       <varlistentry id="runlevel">
         <term><command>runlevel</command></term>
         <listitem>
+<!--E
           <para>Reports the previous and the current run-level, as noted in the
           last run-level record in <filename>/var/run/utmp</filename></para>
-          <indexterm zone="ch-system-sysvinit runlevel">
+-->
+          <para>报告前一个和当前的系统运行级别，并且将最后一个运行级别写入 <filename>/var/run/utmp</filename></para>     
+     <indexterm zone="ch-system-sysvinit runlevel">
             <primary sortas="b-runlevel">runlevel</primary>
           </indexterm>
         </listitem>
@@ -277,8 +340,11 @@ EOF</userinput></screen>
       <varlistentry id="shutdown">
         <term><command>shutdown</command></term>
         <listitem>
+<!--E
           <para>Brings the system down in a secure way, signaling all processes
           and notifying all logged-in users</para>
+-->
+          <para>使系统安全关闭，向所有线程发送关闭信号并且通知所有已经登录的系统用户系统即将关闭</para>
           <indexterm zone="ch-system-sysvinit shutdown">
             <primary sortas="b-shutdown">shutdown</primary>
           </indexterm>
@@ -288,9 +354,12 @@ EOF</userinput></screen>
       <varlistentry id="sulogin">
         <term><command>sulogin</command></term>
         <listitem>
+<!--E
           <para>Allows <systemitem class="username">root</systemitem> to log in;
           it is normally invoked by <command>init</command> when the system goes
           into single user mode</para>
+-->
+          <para>允许 <systemitem class="username">root</systemitem> 登录，它通常情况下是在系统在单用户模式下运行时，由 <command>init</command> 所派生</para>
           <indexterm zone="ch-system-sysvinit sulogin">
             <primary sortas="b-sulogin">sulogin</primary>
           </indexterm>
@@ -300,8 +369,11 @@ EOF</userinput></screen>
       <varlistentry id="telinit">
         <term><command>telinit</command></term>
         <listitem>
+<!--E
           <para>Tells <command>init</command> which run-level to change to</para>
-          <indexterm zone="ch-system-sysvinit telinit">
+-->
+          <para>告诉 <command>init</command> 将切换到那一个运行级</para>     
+     <indexterm zone="ch-system-sysvinit telinit">
             <primary sortas="b-telinit">telinit</primary>
           </indexterm>
         </listitem>
@@ -310,8 +382,11 @@ EOF</userinput></screen>
       <varlistentry id="utmpdump">
         <term><command>utmpdump</command></term>
         <listitem>
+<!--E
           <para>Displays the content of the given login file in a more
           user-friendly format</para>
+-->
+          <para>以一个多用户友好的方式列出已经给出的登录文件的目录</para>
           <indexterm zone="ch-system-sysvinit utmpdump">
             <primary sortas="b-utmpdump">utmpdump</primary>
           </indexterm>
