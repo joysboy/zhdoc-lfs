@@ -21,33 +21,38 @@
   <sect2>
 <!--E
     <title>Part I - Introduction</title>
+-->
+    <title>第一部分 - 介绍</title>
 
+<!--E
     <para>Part I explains a few important notes on how to proceed with the
     LFS installation.  This section also provides meta-information about
     the book.</para>
 -->
-    <title>第一部分 - 介绍</title>
-
-    <para> 第一部分说明了在怎样安装LFS过程中需要注意的事项，还提供了关于本书的一些要点信息。</para>
+    <para>第一部分说明了在安装 LFS 过程中需要注意的事项，还提供了关于本书的一些要点信息。</para>
   </sect2>
 
   <sect2>
 <!--E
     <title>Part II - Preparing for the Build</title>
+-->
+    <title>第二部分 - 为构建做准备</title>
 
+<!--E
     <para>Part II describes how to prepare for the building process&mdash;making
     a partition, downloading the packages, and compiling temporary
     tools.</para>
 -->
-    <title>第二部分 - 为构建做准备</title>
-
-    <para>第二部分描述了怎么为开始构建做准备—创建新的分区，下载所需的软件包以及建立临时编译工具。</para>
+    <para>第二部分描述了怎么为开始构建做准备：建新的分区，下载所需的软件包以及建立临时编译工具。</para>
   </sect2>
 
   <sect2>
 <!--E
     <title>Part III - Building the LFS System</title>
+-->
+    <title>第三部分 - 构建 LFS 系统</title>
 
+<!--E
     <para>Part III guides the reader through the building of the LFS
     system&mdash;compiling and installing all the packages one by one,
     setting up the boot scripts, and installing the kernel. The resulting
@@ -56,9 +61,7 @@
     easy to use reference listing all of the programs, libraries, and
     important files that have been installed.</para>
 -->
-    <title>第三部分 - 构建LFS系统</title>
-
-    <para>第三部分指引读者构建整个LFS系统—顺序编译安装所有的软件包，设置启动脚本，安装内核。在构建完成Linux系统基础上，我们可以根据自己需要安装其他软件。本书的结尾给出了所有安装了的程序，库文件及重要的文件的清单。</para>
+    <para>第三部分指引读者构建整个 LFS 系统：顺序编译安装所有的软件包、设置启动脚本、安装内核。在构建完成 Linux 系统基础上，我们可以根据自己需要安装其它软件。本书的结尾给出了所有安装了的程序、库文件及重要的文件的清单。</para>
   </sect2>
 
 </sect1>
