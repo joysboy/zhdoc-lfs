@@ -26,7 +26,7 @@
     <para>The Sysklogd package contains programs for logging system messages,
     such as those given by the kernel when unusual things happen.</para>
 -->
-    <para>Sysklogd 包含记录系统日志信息的程序，比如内核处理意外事务的日志。</para>
+    <para>Sysklogd 软件包包含记录系统日志信息（如发生异常事件时内核发出的消息）的程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -110,7 +110,10 @@ EOF</userinput></screen>
 -->
       <segtitle>安装的程序</segtitle>
       <seglistitem>
+<!--E
         <seg>klogd and syslogd</seg>
+-->
+        <seg>klogd 和 syslogd</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -118,7 +121,7 @@ EOF</userinput></screen>
 <!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
 -->
-      <bridgehead renderas="sect3">简要描述</bridgehead>     
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
@@ -128,7 +131,7 @@ EOF</userinput></screen>
 <!--E
           <para>A system daemon for intercepting and logging kernel messages</para>
 -->
-          <para>一个系统守护进程，截获并且记录下 LINUX 内核日志信息</para>     
+          <para>一个系统守护进程，截获并且记录下内核日志信息</para>     
           <indexterm zone="ch-system-sysklogd klogd">
             <primary sortas="b-klogd">klogd</primary>
           </indexterm>
@@ -144,7 +147,7 @@ EOF</userinput></screen>
           normally the program's name too, but that depends on how trusting the
           logging daemon is told to be</para>
 -->
-          <para>记录下系统里所有提供日志记录的程序给出的日志和信息内容。每一个被记录的消息至少包含时间戳和主机名，但是这取决于登录的守护进程被设定的信任度</para>
+          <para>记录下系统里所有提供日志记录的程序给出的日志和信息内容。每一条日志消息至少包含时间戳和主机名，通常还会包括发出该消息的程序名，但是这取决于该程序对日志守护进程的信任度。</para>
           <indexterm zone="ch-system-sysklogd syslogd">
             <primary sortas="b-syslogd">syslogd</primary>
           </indexterm>
