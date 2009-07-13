@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Notes:
      For empty *-home entities use " " not ""
@@ -13,7 +13,7 @@
 <!ENTITY autoconf-md5 "7565809ed801bb5726da0631ceab3699">
 <!ENTITY autoconf-home "&gnu-software;autoconf/">
 <!ENTITY autoconf-ch6-du "14.3 MB testsuite included">
-<!ENTITY autoconf-ch6-sbu "less than 0.1 SBU">
+<!ENTITY autoconf-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY automake-version "1.10.1">
 <!ENTITY automake-size "897 KB">
@@ -21,7 +21,7 @@
 <!ENTITY automake-md5 "4510391e6b3edaa4cffb3ced87c9560c">
 <!ENTITY automake-home "&gnu-software;automake/">
 <!ENTITY automake-ch6-du "7.9 MB">
-<!ENTITY automake-ch6-sbu "less than 0.1 SBU">
+<!ENTITY automake-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY bash-version "3.2">
 <!ENTITY bash-size "2,471 KB">
@@ -68,9 +68,9 @@
 <!ENTITY bzip2-md5 "3c15a0c8d1d3ee1c46a1634d00617b1a">
 <!ENTITY bzip2-home "http://www.bzip.org/">
 <!ENTITY bzip2-ch5-du "4.8 MB">
-<!ENTITY bzip2-ch5-sbu "less than 0.1 SBU">
+<!ENTITY bzip2-ch5-sbu "少于 0.1 SBU">
 <!ENTITY bzip2-ch6-du "6.5 MB">
-<!ENTITY bzip2-ch6-sbu "less than 0.1 SBU">
+<!ENTITY bzip2-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY coreutils-version "6.12">
 <!ENTITY coreutils-size "9,001 KB">
@@ -96,7 +96,7 @@
 <!ENTITY dejagnu-md5 "053f18fd5d00873de365413cab17a666">
 <!ENTITY dejagnu-home "&gnu-software;dejagnu/">
 <!ENTITY dejagnu-ch5-du "6.2 MB">
-<!ENTITY dejagnu-ch5-sbu "less than 0.1 SBU">
+<!ENTITY dejagnu-ch5-sbu "少于 0.1 SBU">
 
 <!ENTITY diffutils-version "2.8.1">
 <!ENTITY diffutils-size "762 KB">
@@ -249,9 +249,9 @@
 <!ENTITY gzip-md5 "b5bac2d21840ae077e0217bc5e4845b1">
 <!ENTITY gzip-home "http://www.gzip.org/">
 <!ENTITY gzip-ch5-du "2.2 MB">
-<!ENTITY gzip-ch5-sbu "less than 0.1 SBU">
+<!ENTITY gzip-ch5-sbu "少于 0.1 SBU">
 <!ENTITY gzip-ch6-du "2.2 MB">
-<!ENTITY gzip-ch6-sbu "less than 0.1 SBU">
+<!ENTITY gzip-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY iana-etc-version "2.30">
 <!ENTITY iana-etc-size "204 KB">
@@ -259,7 +259,7 @@
 <!ENTITY iana-etc-md5 "3ba3afb1d1b261383d247f46cb135ee8">
 <!ENTITY iana-etc-home "http://sethwklein.net/iana-etc">
 <!ENTITY iana-etc-ch6-du "2.1 MB">
-<!ENTITY iana-etc-ch6-sbu "less than 0.1 SBU">
+<!ENTITY iana-etc-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY inetutils-version "1.5">
 <!ENTITY inetutils-size "1,357 KB">
@@ -283,7 +283,7 @@
 <!ENTITY kbd-md5 "0f4e474032c992c05650924f29a06a92">
 <!ENTITY kbd-home " ">
 <!ENTITY kbd-ch6-du "12.5 MB">
-<!ENTITY kbd-ch6-sbu "less than 0.1 SBU">
+<!ENTITY kbd-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY less-version "418">
 <!ENTITY less-size "292 KB">
@@ -299,7 +299,7 @@
 <!ENTITY lfs-bootscripts-md5 "BOOTSCRIPTS-MD5SUM">           <!-- Updated in Makefile -->
 <!ENTITY lfs-bootscripts-home " ">
 <!ENTITY lfs-bootscripts-ch7-du "BOOTSCRIPTS-INSTALL-KB KB"> <!-- Updated in Makefile -->
-<!ENTITY lfs-bootscripts-ch7-sbu "less than 0.1 SBU">
+<!ENTITY lfs-bootscripts-ch7-sbu "少于 0.1 SBU">
 
 <!ENTITY libtool-version "2.2.6a">
 <!ENTITY libtool-size "2,870 KB">
@@ -360,7 +360,7 @@
 <!ENTITY man-pages-md5 "f66e01df3a22e18d25c5865925dd9288">
 <!ENTITY man-pages-home " ">
 <!ENTITY man-pages-ch6-du "21 MB">
-<!ENTITY man-pages-ch6-sbu "less than 0.1 SBU">
+<!ENTITY man-pages-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY mktemp-version "1.5">
 <!ENTITY mktemp-size "69 KB">
@@ -368,7 +368,7 @@
 <!ENTITY mktemp-md5 "9a35c59502a228c6ce2be025fc6e3ff2">
 <!ENTITY mktemp-home "http://www.mktemp.org/">
 <!ENTITY mktemp-ch6-du "0.4 MB">
-<!ENTITY mktemp-ch6-sbu "less than 0.1 SBU">
+<!ENTITY mktemp-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY module-init-tools-version "3.4.1">
 <!ENTITY module-init-tools-size "195 KB">
@@ -376,7 +376,7 @@
 <!ENTITY module-init-tools-md5 "e253b066a1bab1d727ca0d54f001b49c">
 <!ENTITY module-init-tools-home "http://www.kerneltools.org/KernelTools.org">
 <!ENTITY module-init-tools-ch6-du "8 MB">
-<!ENTITY module-init-tools-ch6-sbu "less than 0.1 SBU">
+<!ENTITY module-init-tools-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY mpfr-version "2.3.2">
 <!ENTITY mpfr-size "986 KB">
@@ -405,9 +405,9 @@
 <!ENTITY patch-md5 "ee5ae84d115f051d87fcaaef3b4ae782">
 <!ENTITY patch-home "&gnu-software;patch/">
 <!ENTITY patch-ch5-du "1.6 MB">
-<!ENTITY patch-ch5-sbu "less than 0.1 SBU">
+<!ENTITY patch-ch5-sbu "少于 0.1 SBU">
 <!ENTITY patch-ch6-du "1.6 MB">
-<!ENTITY patch-ch6-sbu "less than 0.1 SBU">
+<!ENTITY patch-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY perl-version "5.10.0">
 <!ENTITY perl-size "15,595 KB">
@@ -433,7 +433,7 @@
 <!ENTITY psmisc-md5 "2e81938855cf5cc38856bd4a31d79a4c">
 <!ENTITY psmisc-home "http://psmisc.sourceforge.net/">
 <!ENTITY psmisc-ch6-du "2.2 MB">
-<!ENTITY psmisc-ch6-sbu "less than 0.1 SBU">
+<!ENTITY psmisc-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY readline-version "5.2">
 <!ENTITY readline-size "1,990 KB">
@@ -467,7 +467,7 @@
 <!ENTITY sysklogd-md5 "e053094e8103165f98ddafe828f6ae4b">
 <!ENTITY sysklogd-home "http://www.infodrom.org/projects/sysklogd/">
 <!ENTITY sysklogd-ch6-du "0.6 MB">
-<!ENTITY sysklogd-ch6-sbu "less than 0.1 SBU">
+<!ENTITY sysklogd-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY sysvinit-version "2.86">
 <!ENTITY sysvinit-size "97 KB">
@@ -475,7 +475,7 @@
 <!ENTITY sysvinit-md5 "7d5d61c026122ab791ac04c8a84db967">
 <!ENTITY sysvinit-home " ">
 <!ENTITY sysvinit-ch6-du "1 MB">
-<!ENTITY sysvinit-ch6-sbu "less than 0.1 SBU">
+<!ENTITY sysvinit-ch6-sbu "少于 0.1 SBU">
 
 <!ENTITY tar-version "1.20">
 <!ENTITY tar-size "1,912 KB">
@@ -526,7 +526,7 @@
 <!ENTITY util-linux-ng-md5 "9aab772ee9b1f4e67dff98169f3cb380">
 <!ENTITY util-linux-ng-home "http://userweb.kernel.org/~kzak/util-linux-ng/">
 <!ENTITY util-linux-ng-ch5-du "19 MB">
-<!ENTITY util-linux-ng-ch5-sbu "less than 0.1 SBU">
+<!ENTITY util-linux-ng-ch5-sbu "少于 0.1 SBU">
 <!ENTITY util-linux-ng-ch6-du "29 MB">
 <!ENTITY util-linux-ng-ch6-sbu "0.3 SBU">
 
@@ -550,5 +550,5 @@
 <!ENTITY zlib-md5 "dee233bf288ee795ac96a98cc2e369b6">
 <!ENTITY zlib-home "http://www.zlib.net/">
 <!ENTITY zlib-ch6-du "3.1 MB">
-<!ENTITY zlib-ch6-sbu "less than 0.1 SBU">
+<!ENTITY zlib-ch6-sbu "少于 0.1 SBU">
 
