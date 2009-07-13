@@ -21,7 +21,7 @@
   and install an existing one?</quote> That is a good question and is the
   impetus for this section of the book.</para>
 -->
-  <para>有很多原因让人们想来读此书，最主要的原因就是为了从源代码开始安装 Linux 系统。很多人就会问，<quote>当你完全可以下载安装一个现有的发行版，为什么要费力的从头开始手动的构建一个 Linux 系统呢?</quote>这个问题很好，这也是本节所要回答的。</para>
+  <para>有很多原因让人们想来读此书，最主要的原因就是为了从源代码开始安装 Linux 系统。很多人就会问，<quote>当你完全可以下载安装一个已有的发行版，为什么要费力的从头开始手动构建一个 Linux 系统呢？</quote>这个问题很好，这也是本节所要回答的。</para>
 
 <!--E
   <para>One important reason for LFS's existence is to help people learn
@@ -40,7 +40,7 @@
   every aspect of the system, such as the directory layout and bootscript
   setup. You also dictate where, why, and how programs are installed.</para>
 -->
-  <para>LFS 最关键的优点就是让用户拥有更多的系统控制权，而不是依赖其他人的 Linux 实现。使用 LFS，<emphasis>你</emphasis>在驾驶员的位置上，控制这系统的各个方面，比如目录层次，启动脚本设置等。你还能指定软件安装在哪，怎么安装。</para>
+  <para>LFS 最关键的优点就是让用户拥有更多的系统控制权，而不是依赖其他人的 Linux 实现。使用 LFS，<emphasis>你</emphasis>在驾驶员的位置上，控制这系统的各个方面，比如目录层次、启动脚本设置等。你还能指定软件安装在哪，怎么安装。</para>
 
 <!--E
   <para>Another benefit of LFS is the ability to create a very compact Linux
@@ -56,7 +56,7 @@
   regular distribution! This is only one of the many benefits of designing
   your own Linux implementation.</para>
 -->
-  <para>LFS 的另一个好处就是创建一个非常简洁的 Linux 系统。安装一个常规的发行版会被迫安装一些从不使用的软件，这些软件占有磁盘空间，甚至占用 CPU。构建一个小于 100M 的 LFS系统并非难事，这比大多数的发行版要小的多。这还不够小？有些人在努力创建一个非常小的嵌入式的 LFS 系统。我们已经成功的构建一个只占 8M 磁盘空间，专门运行 Apache 网页服务器的系统，进一步的精简可以小到 5M 甚至更小。试试常规的版本，谁能做到！这只是设计属于自己的 Linux 实现的众多优点之一。</para>
+  <para>LFS 的另一个好处就是创建一个非常简洁的 Linux 系统。安装一个常规的发行版会被迫安装一些从不使用的软件，这些软件占用磁盘空间甚至 CPU。构建一个小于 100M 的 LFS 系统并非难事，这比大多数的发行版要小的多。这还不够小？有些人在努力创建一个非常小的嵌入式的 LFS 系统。我们已经成功的构建一个只占 8M 磁盘空间，专门运行 Apache 网页服务器的系统，进一步的精简可以小到 5M 甚至更小。试试常规的版本，谁能做到！这只是设计属于自己的 Linux 实现的众多优点之一。</para>
 
 <!--E
   <para>We could compare Linux distributions to a hamburger purchased at a
@@ -68,7 +68,7 @@
   with the recipe, move on to preparing it. It can be made to exact
   specifications&mdash;broil it, bake it, deep-fry it, or barbecue it.</para>
 -->
-  <para>我们可以把 Linux 发行版比作在快餐店买的汉堡— 你不知道吃到嘴里的都有什么。与此不同，LFS 不是给你一个汉堡，而是提供做汉堡的配方。用户可以参考配方，去除不想要的配料，添加自己的配料来增加汉堡的风味。当感到满意时就可以动手做了。烤、炸、烧——随便什么样子。</para>
+  <para>我们可以把 Linux 发行版比作在快餐店买的汉堡— 你不知道吃到嘴里的都有什么。与此不同，LFS 不是给你一个汉堡，而是提供做汉堡的配方。用户可以参考配方，去除不想要的配料，添加自己的配料来增加汉堡的风味。当感到满意时就可以动手做了。烤、炸、烧──随便什么样子。</para>
 
 <!--E
   <para>Another analogy that we can use is that of comparing LFS with a
@@ -76,7 +76,7 @@
   to you to build it. LFS maintains the freedom to adjust plans throughout
   the process, customizing it to the user's needs and preferences.</para>
 -->
-  <para>另如，我们可以拿建好的房子和 LFS 比较，LFS 提供的是建房子的草案，房子本身则需要你自己去建造，LFS 提供在建造过程中调整方案以满足用户需要的自由，</para>
+  <para>另如，我们可以拿建好的房子和 LFS 比较，LFS 提供的是建房子的草案，房子本身则需要你自己去建造，LFS 提供在建造过程中调整方案以满足用户需要的自由。</para>
 
 <!--E
   <para>An additional advantage of a custom built Linux system is security.
@@ -103,7 +103,7 @@
   Consider your objective. If you wish to build a Linux system while learning
   along the way, then this book is your best choice.</para>
 -->
-  <para>Linux Form Scratch 的目标是构建一个完整的，可用的基础系统。不想从头开始构建自己的系统的读者不会从本书中获益。如果你只是想知道一台计算机启动时发生来什么，我们推荐位于 <ulink url="http://axiom.anu.edu.au/~okeefe/p2b/" /> 或者 Linux 文档项目（TLDP）站点 <ulink url="http://www.tldp.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO.html"/> 的 <quote>From Power Up To Bash Prompt</quote> HOWTO 文档。它构建一个一个与本书类似的系统，但更专注于构建一个可以启动到 BASH 提示符的系统。考虑下你的目标，如果想构建一个 Linux 系统并从中学习，这本书是你的最佳选择。</para> 
+  <para>Linux Form Scratch 的目标是构建一个完整的，可用的基础系统。不想从头开始构建自己的系统的读者不会从本书中获益。如果你只是想知道一台计算机启动时发生来什么，我们推荐位于 <ulink url="http://axiom.anu.edu.au/~okeefe/p2b/" /> 或者 Linux 文档项目（TLDP）站点 <ulink url="http://www.tldp.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO.html"/> 的 <quote>From Power Up To Bash Prompt</quote> HOWTO 文档。它构建一个与本书类似的系统，但更专注于构建一个可以启动到 BASH 提示符的系统。考虑下你的目标，如果想构建一个 Linux 系统并从中学习，这本书是你的最佳选择。</para> 
 
 <!--E
   <para>There are too many good reasons to build your own LFS system to

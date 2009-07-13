@@ -22,24 +22,33 @@
     <quote>&lt;package-name&gt;-dev</quote>. Be sure to install those if
     your distribution provides them.</para>
 -->
-    <para>你的宿主系统应该有下列软件，并满足其最低版本要求。对于现在大部分 Linux 发行版都不是问题。需要指出的是，多数的发行版将软件的头文件放在不同的软件包中，常以<quote>&lt;package-name&gt;-devel</quote> 或 <quote>&lt;package-name&gt;-dev</quote>的形式。如果你的发行版提供这些软件包，请确保安装了它们。</para>
+    <para>你的宿主系统应该有下列软件，并满足其最低版本要求。对于现在大部分 Linux 发行版都不是问题。需要指出的是，多数的发行版将软件的头文件放在不同的软件包中，这些软件包的名字通常是<quote>&lt;package-name&gt;-devel</quote>或<quote>&lt;package-name&gt;-dev</quote>的形式。如果你的发行版提供这些软件包，请确保安装了它们。</para>
 
   <itemizedlist spacing="compact">
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Bash-2.05a</emphasis> (/bin/sh
       should be a symbolic or hard link to bash)</para>
+-->
+      <para><emphasis role="strong">Bash-2.05a</emphasis> （/bin/sh 应当是指向 bash 的符号链接或硬链接）</para>
     </listitem>
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Binutils-2.12</emphasis> (Versions
       greater than &binutils-version; are not recommended as they have
       not been tested)</para>
+-->
+      <para><emphasis role="strong">Binutils-2.12</emphasis> （最好不要使用高于 &binutils-version; 的版本，因为尚未测试过。）</para>
     </listitem>
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Bison-1.875</emphasis> (/usr/bin/yacc
       should be a link to bison or small script that executes bison)</para>
+-->
+      <para><emphasis role="strong">Bison-1.875</emphasis> （/usr/bin/yacc 应当是指向 bison 或一个执行 bison 的小脚本的链接）</para>
     </listitem>
 
     <listitem>
@@ -47,8 +56,11 @@
     </listitem>
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Coreutils-5.0</emphasis> (or Sh-Utils-2.0,
       Textutils-2.0, and Fileutils-4.1)</para>
+-->
+      <para><emphasis role="strong">Coreutils-5.0</emphasis> （或 Sh-Utils-2.0、Textutils-2.0 和 Fileutils-4.1）</para>
     </listitem>
 
     <listitem>
@@ -60,22 +72,31 @@
     </listitem>
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Gawk-3.0</emphasis> (/usr/bin/awk
       should be a link to gawk)</para>
+-->
+      <para><emphasis role="strong">Gawk-3.0</emphasis> （/usr/bin/awk 应当是指向 gawk 的链接）</para>
     </listitem>
 
     <listitem>
       <!-- Gcc-2.95.3 breaks feature tests when using CC="gcc -B/usr/bin/"
            in the *-pass1 sections -->
+<!--E
       <para><emphasis role="strong">Gcc-3.0.1</emphasis> (Versions
       greater than &gcc-version; are not recommended as they have not
       been tested)</para>
+-->
+      <para><emphasis role="strong">Gcc-3.0.1</emphasis> （最好不要使用高于 &gcc-version; 的版本，因尚未测试过）</para>
     </listitem>
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Glibc-2.2.5</emphasis> (Versions
       greater than &glibc-version; are not recommended as they have
       not been tested)</para>
+-->
+      <para><emphasis role="strong">Glibc-2.2.5</emphasis> （最好不要使用高于 &glibc-version; 的版本，因尚未测试过）</para>
     </listitem>
 
     <listitem>
@@ -87,8 +108,11 @@
     </listitem>
 
     <listitem>
+<!--E
       <para><emphasis role="strong">Linux Kernel-2.6.x</emphasis>
       (having been compiled with GCC-3.0 or greater)</para>
+-->
+      <para><emphasis role="strong">Linux Kernel-2.6.x</emphasis> （用 GCC-3.0 或更高版本编译）</para>
 
 <!--E
       <para>The reason for the kernel version requirement is that thread-local
@@ -166,13 +190,13 @@
   deviation from the instructions or additional patches to some
   packages.</para>
 -->
-  <para>请注意在本书指令中提及到的符号链接（symlinks），这些是为构建 LFS 系统所需。指向其他软件的符号链接（比如 dash、mawk 等等）能够工作，但没有没有 LFS 开发团队的测试和支持，不能有任何命令差错或一些软件的其他补丁。</para>
+  <para>请注意上文中提到的符号链接对于使用本书中的指令来构建 LFS 系统是必须的。指向其它软件的符号链接（比如 dash、mawk 等）能够工作，但它们未经测试，也没有 LFS 开发团队的支持，要想让它们正确执行，可能需要对命令略加修改或对源代码打上额外的补丁。</para>
 
 <!--E
   <para>To see whether your host system has all the appropriate versions, and
   the ability to compile programs, run the following:</para>
 -->
-  <para>为了查看你的宿主系统是否能满足所有的版本要求，并且能够编译程序，运行下面指令：</para>
+  <para>要查看你的宿主系统是否能满足所有的软件包版本要求，并且能够编译程序，运行下面指令：</para>
 
 <screen role="nodump"><userinput>cat &gt; version-check.sh &lt;&lt; "EOF"
 <literal>#!/bin/bash

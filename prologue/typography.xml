@@ -34,7 +34,7 @@
   <para>In some cases, a logical line is extended to two or more physical lines
   with a backslash at the end of the line.</para>
 -->
-  <para>在某些情况下，一个逻辑行使用反斜杠"\"扩展为二个或更多物理行</para>
+  <para>在某些情况下，一个逻辑行使用反斜杠 <quote><userinput>\</userinput></quote> 扩展为两个或更多物理行</para>
 
 <screen role="nodump"><userinput>CC="gcc -B/usr/bin/" ../binutils-2.18/configure \
   --prefix=/tools --disable-nls --disable-werror</userinput></screen>
@@ -44,7 +44,7 @@
   whitespace characters like spaces or tab characters will create incorrect
   results.</para>
 -->
-  <para>需要指出的是，反斜杠"\"后面必须立即跟上一个回车(Enter),其它空白字符，比如空格或制表符会导致错误的输出。</para>
+  <para>需要指出的是，反斜杠 <quote><userinput>\</userinput></quote> 后面必须立即跟上一个回车。其它空白字符，如空格或制表符会导致错误的输出。</para>
 
 <screen><computeroutput>install-info: unknown option '--dir-file=/mnt/lfs/usr/info/dir'</computeroutput></screen>
 
