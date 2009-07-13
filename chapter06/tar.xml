@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -22,9 +22,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Tar package contains an archiving program.</para>
-
+-->
+    <para>Tar 包含一个归档程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -38,21 +39,34 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Tar</title>
-
+-->
+    <title>安装 Tar</title>
+<!--E
     <para>Prepare Tar for compilation:</para>
+-->
+    <para>为编译 Tar 做准备</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --bindir=/bin --libexecdir=/usr/sbin</userinput></screen>
-
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results (about 1 SBU), issue:</para>
+-->
+    <para>要测试结果（大约 1 SBU ），请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -60,27 +74,37 @@
 
 
   <sect2 id="contents-tar" role="content">
+<!--E
     <title>Contents of Tar</title>
-
+-->
+    <title>Tar 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>rmt and tar</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
+ <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="rmt">
         <term><command>rmt</command></term>
         <listitem>
+<!--E
           <para>Remotely manipulates a magnetic
           tape drive through an interprocess communication connection</para>
-          <indexterm zone="ch-system-tar rmt">
+-->
+          <para>通过一个 Internet 连接线程实施远程操作一个磁带驱动器</para>     
+     <indexterm zone="ch-system-tar rmt">
             <primary sortas="b-rmt">rmt</primary>
           </indexterm>
         </listitem>
@@ -89,9 +113,12 @@
       <varlistentry id="tar">
         <term><command>tar</command></term>
         <listitem>
+<!--E
           <para>Creates, extracts files from, and lists the contents of archives,
           also known as tarballs</para>
-          <indexterm zone="ch-system-tar tar">
+-->
+          <para>从压缩档案里创建和解压文件，也可理解为压缩包（tarball）</para>     
+     <indexterm zone="ch-system-tar tar">
             <primary sortas="b-tar">tar</primary>
           </indexterm>
         </listitem>
