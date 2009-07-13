@@ -219,7 +219,7 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
           IDs (for all target uevents), registers the current ID
           and indicates whether all target IDs have been registered</para>
 -->
-          <para>给当前的组一个 ID 并给所有的目标组一组 ID 号，用当前的 ID 好登入，并显示所有的目标 ID 号是否登入</para>     
+          <para>给当前的 uevent 一个 ID 并给所有的目标 uevent 一组 ID 号，用当前的 ID 号注册，并显示所有的目标 ID 号是否注册</para>     
      <indexterm zone="ch-system-udev collect">
             <primary sortas="b-collect">collect</primary>
           </indexterm>
@@ -312,12 +312,13 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="udevadm">
         <term><command>udevadm</command></term>
         <listitem>
-
+<!--E
           <para>Generic udev administration tool: controls the udevd daemon,
           provides info from the Udev database, monitors uevents, waits for
           uevents to finish, tests Udev configuration, and triggers uevents
           for a given device</para>
-
+-->
+          <para>通用的 udev 管理工具：控制 udevd 守护进程，提供 Udev 数据库的报告，监视热插拔事件，等待热插拔事件结束，测试 Udev 的配置，用给定设备触发 uevent</para>
           <indexterm zone="ch-system-udev udevadm">
             <primary sortas="b-udevadm">udevadm</primary>
           </indexterm>
@@ -384,9 +385,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="write_net_rules">
         <term><command>write_net_rules</command></term>
         <listitem>
+<!--E
           <para>A script which generates rules to provide stable names for
           network interfaces (see also <xref linkend="ch-scripts-network"/>)
           </para>
+-->
+          <para>一个脚本，设置了为网络接口提供稳定名称的规则</para>
           <indexterm zone="ch-system-udev write_net_rules">
             <primary sortas="b-write_net_rules">write_net_rules</primary>
           </indexterm>
@@ -396,8 +400,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="libudev">
         <term><command>libudev</command></term>
         <listitem>
+<!--E
           <para>A library interface to udev device information</para>
-          <indexterm zone="ch-system-udev libudev">
+-->
+          <para>一个连向 udev 设备信息的库接口</para>
+     
+     <indexterm zone="ch-system-udev libudev">
             <primary sortas="c-libudev">libudev</primary>
           </indexterm>
         </listitem>
@@ -406,7 +414,10 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="libvolume_id">
         <term><command>libvolume_id</command></term>
         <listitem>
+<!--E
           <para>A library interface to read volume labels and uuids</para>
+-->
+          <para>读取磁盘卷标和 uuid 的库接口</para>     
           <indexterm zone="ch-system-udev libvolume_id">
             <primary sortas="c-libvolume_id">libvolume_id</primary>
           </indexterm>
@@ -416,9 +427,12 @@ install -m644 -v -D docs/writing_udev_rules/index.html \
       <varlistentry id="etc-udev">
         <term><filename class="directory">/etc/udev</filename></term>
         <listitem>
+<!--E
           <para>Contains Udev configuration files,
           device permissions, and rules for device naming</para>
-          <indexterm zone="ch-system-udev etc-udev">
+-->
+          <para>包含配置文件，设备许可及设备命名的规则</para>     
+     <indexterm zone="ch-system-udev etc-udev">
             <primary sortas="e-/etc/udev">/etc/udev</primary>
           </indexterm>
         </listitem>
