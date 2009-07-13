@@ -15,8 +15,8 @@ $Date: 2007-07-06 05:18:33 +0800 (五, 06  7月 2007) $
     <!-- Upstream XHTML presentation templates -->
   <xsl:import href="docbook-xsl-snapshot/xhtml/docbook.xsl"/>
 
-    <!-- Use ISO-8859-1 for output instead of default UTF-8 -->
-  <xsl:param name="chunker.output.encoding" select="'ISO-8859-1'"/>
+    <!-- Use UTF-8 for output -->
+  <xsl:param name="chunker.output.encoding" select="'UTF-8'"/>
 
     <!-- Including our customized elements templates -->
   <xsl:include href="common.xsl"/>

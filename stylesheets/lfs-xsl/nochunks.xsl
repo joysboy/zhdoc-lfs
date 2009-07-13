@@ -15,8 +15,8 @@ $Date: 2007-07-11 03:06:15 +0800 (三, 11  7月 2007) $
     <!-- Upstream XHTML templates -->
   <xsl:import href="docbook-xsl-snapshot/xhtml/docbook.xsl"/>
 
-    <!-- Fix encoding issues with default UTF-8 output of the xhtml stylesheet -->
-  <xsl:output method="html" encoding="ISO-8859-1" indent="no" />
+    <!-- Use UTF-8 for output -->
+  <xsl:output method="html" encoding="UTF-8" indent="no" />
 
    <!-- Including our others customized templates -->
   <xsl:include href="common.xsl"/>
