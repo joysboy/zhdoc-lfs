@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../general.ent">
@@ -22,10 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Sysklogd package contains programs for logging system messages,
     such as those given by the kernel when unusual things happen.</para>
-
+-->
+    <para>Sysklogd 包含记录系统日志信息的程序，比如内核处理意外事务的日志。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,23 +40,35 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Sysklogd</title>
-
+-->
+    <title>安装 Sysklogd</title>
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试套件。</para>
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="conf-sysklogd" role="configuration">
+<!--E
     <title>Configuring Sysklogd</title>
-
+-->
+    <title>配置 Sysklogd</title>
     <indexterm zone="conf-sysklogd">
       <primary sortas="a-Sysklogd">Sysklogd</primary>
       <secondary>configuring</secondary>
@@ -64,9 +77,11 @@
     <indexterm zone="conf-sysklogd">
       <primary sortas="e-/etc/syslog.conf">/etc/syslog.conf</primary>
     </indexterm>
-
+<!--E
     <para>Create a new <filename>/etc/syslog.conf</filename> file by running the
     following:</para>
+-->
+    <para>运行下面的命令，创建一个新的 <filename>/etc/syslog.conf</filename> 文件：</para>
 
 <screen><userinput>cat &gt; /etc/syslog.conf &lt;&lt; "EOF"
 <literal># Begin /etc/syslog.conf
@@ -85,25 +100,35 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 id="contents-sysklogd" role="content">
-    <title>Contents of Sysklogd</title>
-
+<!--E 
+   <title>Contents of Sysklogd</title>
+-->
+   <title>Sysklogd 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>klogd and syslogd</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="klogd">
         <term><command>klogd</command></term>
         <listitem>
+<!--E
           <para>A system daemon for intercepting and logging kernel messages</para>
+-->
+          <para>一个系统守护进程，截获并且记录下 LINUX 内核日志信息</para>     
           <indexterm zone="ch-system-sysklogd klogd">
             <primary sortas="b-klogd">klogd</primary>
           </indexterm>
@@ -113,10 +138,13 @@ EOF</userinput></screen>
       <varlistentry id="syslogd">
         <term><command>syslogd</command></term>
         <listitem>
+<!--E
           <para>Logs the messages that system programs offer for logging. Every
           logged message contains at least a date stamp and a hostname, and
           normally the program's name too, but that depends on how trusting the
           logging daemon is told to be</para>
+-->
+          <para>记录下系统里所有提供日志记录的程序给出的日志和信息内容。每一个被记录的消息至少包含时间戳和主机名，但是这取决于登录的守护进程被设定的信任度</para>
           <indexterm zone="ch-system-sysklogd syslogd">
             <primary sortas="b-syslogd">syslogd</primary>
           </indexterm>
