@@ -35,8 +35,7 @@ lfs: maketar validxml profile-html
 	  tidy -config tidy.conf $$filename; \
 	  true; \
 	  /bin/bash obfuscate.sh $$filename; \
-	  sed -i -e "s@text/html@application/xhtml+xml@g" \
-                 -e "s@�@ @g" $$filename; \
+	  sed -i -e "s@text/html@application/xhtml+xml@g" $$filename; \
 	done;
 
 	$(Q)$(MAKE) wget-list
