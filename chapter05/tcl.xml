@@ -132,8 +132,12 @@
     <title>Tcl 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed library</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
 <!--E

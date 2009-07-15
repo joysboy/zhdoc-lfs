@@ -32,7 +32,7 @@
   process has been designed to minimize the risks for new readers and provide
   maximum educational value at the same time.</para>
 -->
-  <para><xref linkend="chapter-temporary-tools"/> 的总体目标是提供一个临时环境，您可以 chroot 到这个环境，在里面构建一个<xref linkend="chapter-building-system"/>中的干净、没有问题的目标 LFS 系统。为了尽量的与宿主系统分开，我们一步步创建了一个自包含、自依赖的工具链。要注意的是，这个创建过程被设计为尽量减少新手犯错误的可能，同时尽可能多的提供教育价值。</para>
+  <para><xref linkend="chapter-temporary-tools"/>的总体目标是提供一个临时环境，您可以通过 <command>chroot</command> 进入到这个环境，在里面构建一个<xref linkend="chapter-building-system"/>的干净、没有问题的目标 LFS 系统。为了尽量的与宿主系统分开，我们一步步构建了一个自包含、自依赖的工具链。这个构建过程对于新手而言犯错误的风险已被降到最低，同时它也提供了尽量大的学习价值。</para>
 
   <important>
 <!--E
@@ -71,7 +71,7 @@
   <para>Some key technical points of how the <xref
   linkend="chapter-temporary-tools"/> build method works:</para>
 -->
-  <para><xref linkend="chapter-temporary-tools"/>中构建方法是如何工作的一些技术要点：</para>
+  <para>以下是关于<xref linkend="chapter-temporary-tools"/>中构建方法的一些技术要点：</para>
 
   <itemizedlist>
     <listitem>
@@ -80,7 +80,7 @@
       tools installed in the same prefix work in cooperation, and thus utilize
       a little GNU <quote>magic</quote></para>
 -->
-      <para>这个过程在原理上与交叉编译类似，通过安装在同一个目录的工具的协同工作。还利用了一点 GNU 的<quote>魔术</quote>。</para>
+      <para>这个过程在原理上与交叉编译类似，通过安装在同一个目录的工具的协同工作，它还利用了一点 GNU 的<quote>魔术</quote>。</para>
     </listitem>
     <listitem>
 <!--E
@@ -125,7 +125,7 @@
   <userinput>gcc dummy.c -Wl,&hyphen;-verbose 2&gt;&amp;1 | grep succeeded</userinput>
   will show all the files successfully opened during the linking.</para>
 -->
-  <para>Binutils 的汇编器和连接器安装在两个位置： <filename class="directory">/tools/bin</filename> 和 <filename class="directory">/tools/$TARGET_TRIPLET/bin</filename>。其中一个程序是另外一个的硬连接。连接器的一个重要方面是它的库搜索顺序，将 <parameter>--verbose</parameter> 选项传递给 <command>ld</command> 可以获得详细的信息。比如：<userinput>ld --verbose | grep SEARCH</userinput> 将显示当前搜索路径和顺序。要显示 <command>ld</command> 连接的是哪个文件，可以编译一个伪(dummy )程序并把 <parameter>--verbose</parameter> 传递给连接器。例如：<userinput>gcc dummy.c -Wl,--verbose 2&gt;&amp;1 | grep succeeded</userinput> 将显示所有连接成功的文件。</para>
+  <para>Binutils 的汇编器和连接器安装在两个位置： <filename class="directory">/tools/bin</filename> 和 <filename class="directory">/tools/$TARGET_TRIPLET/bin</filename>。其中一个程序是另外一个的硬连接。连接器的一个重要方面是它的库搜索顺序，将 <parameter>--verbose</parameter> 选项传递给 <command>ld</command> 可以获得详细的信息。比如：<userinput>ld --verbose | grep SEARCH</userinput> 将显示当前搜索路径和顺序。要显示 <command>ld</command> 连接的是哪个文件，可以编译一个伪（dummy）程序并把 <parameter>--verbose</parameter> 传递给连接器。例如：<userinput>gcc dummy.c -Wl,--verbose 2&gt;&amp;1 | grep succeeded</userinput> 将显示所有连接成功的文件。</para>
 
 <!--E
   <para>The next package installed is GCC. An example of what can be
@@ -154,7 +154,7 @@ checking what linker to use... /tools/i686-pc-linux-gnu/bin/ld</computeroutput><
   detailed information about the preprocessor, compilation, and assembly stages,
   including <command>gcc</command>'s included search paths and their order.</para>
 -->
-  <para>通过在编译一个伪(dummy)程序传递参数 <parameter>-v</parameter> 给 <command>gcc</command> 可以获得详细的信息。举例来说，<command>gcc -v dummy.c</command>将会给出在预处理，编译和汇编各个阶段的详细信息，包括 <command>gcc</command> 包含的搜索路径及其顺序。</para>
+  <para>通过在编译一个伪程序传递参数 <parameter>-v</parameter> 给 <command>gcc</command> 可以获得详细的信息。举例来说，<command>gcc -v dummy.c</command>将会给出在预处理、编译和汇编各个阶段的详细信息，包括 <command>gcc</command> 包含的搜索路径及其顺序。</para>
 
 <!--E
   <para>The next package installed is Glibc. The most important considerations
@@ -173,7 +173,7 @@ checking what linker to use... /tools/i686-pc-linux-gnu/bin/ld</computeroutput><
   package&mdash;it is very self-sufficient in terms of its build machinery and
   generally does not rely on toolchain defaults.</para>
 -->
-  <para>下一个安装的包是 Glibc。编译 Glibc 的时候，最需要注意的地方是编译器、二进制工具(Binutils)和内核头文件。编译器一般不是问题，因为 Glibc 总是使用在 <envar>PATH</envar> 目录里找到的 <command>gcc</command>。二进制工具和和内核头文件要复杂点。因此，为慎重起见，明确使用配置开关(选项)来强制进行正确的选择。在运行 <command>configure</command> 脚本之后，检查在 <filename class="directory">glibc-build</filename> 目录下的 <filename>config.make</filename> 文件，注意所有重要的细节信息。<parameter>CC="gcc -B/tools/bin/"</parameter> 控制着使用哪一个二进制工具，而用选项 <parameter>-nostdinc</parameter> 和 <parameter>-isystem</parameter> 来控制编译器的库文件的搜索路径。这些说明了 Glibc 的一个重要方面—在编译方法上它是高度自给自足的，通常不依赖于工具链的默认值。</para>
+  <para>下一个安装的包是 Glibc。编译 Glibc 的时候，最需要注意的地方是编译器、Binutils 和内核头文件。编译器一般不是问题，因为 Glibc 总是使用在 <envar>PATH</envar> 目录里找到的 <command>gcc</command>；Binutils 和内核头文件要复杂点。因此，为慎重起见，明确使用配置开关（选项）来强制进行正确的选择。在运行 <command>configure</command> 脚本之后，检查在 <filename class="directory">glibc-build</filename> 目录下的 <filename>config.make</filename> 文件，注意所有重要的细节信息。<parameter>CC="gcc -B/tools/bin/"</parameter> 控制着使用哪一个 Binutils，而用选项 <parameter>-nostdinc</parameter> 和 <parameter>-isystem</parameter> 用来控制编译器的库文件的搜索路径。这些说明了 Glibc 的一个重要方面——在编译方法上它是高度自给自足的，通常不依赖于工具链的默认值。</para>
 
 <!--E
   <para>After the Glibc installation, make some adjustments to ensure that

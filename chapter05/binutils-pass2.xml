@@ -138,7 +138,7 @@ cp -v ld/ld-new /tools/bin</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-binutils" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于 <xref linkend="contents-binutils" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于 <xref linkend="contents-binutils"/>。</para>
 
   </sect2>
 

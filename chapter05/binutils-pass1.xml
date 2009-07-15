@@ -133,7 +133,7 @@ cd ../binutils-build</userinput></screen>
           <para>This disables internationalization as i18n is not needed for the
           temporary tools.</para>
 -->
-          <para>这个参数禁用国际化(通常简称 i18n)，临时工具不需要国际化的特性。</para>
+          <para>这个参数禁用国际化（通常简称 i18n），临时工具不需要国际化的特性。</para>
         </listitem>
       </varlistentry>
 
@@ -144,7 +144,7 @@ cd ../binutils-build</userinput></screen>
           <para>This prevents the build from stopping in the event that there
           are warnings from the host's compiler.</para>
 -->
-          <para>该参数防止在使用某些宿主系统的编译器给出警告信息时停止编译。</para>
+          <para>该参数防止编译工作在使用某些宿主系统的编译器给出警告信息时停止。</para>
         </listitem>
       </varlistentry>
 
@@ -184,7 +184,10 @@ make -C ld LIB_PATH=/tools/lib
 cp -v ld/ld-new /tools/bin</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the make parameters:</title>
+-->
+      <title>make 选项的含义：</title>
 
       <varlistentry>
         <term><parameter>-C ld clean</parameter></term>
@@ -225,7 +228,7 @@ cp -v ld/ld-new /tools/bin</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-binutils" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-binutils" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-binutils"/>。</para>
 
   </sect2>
 

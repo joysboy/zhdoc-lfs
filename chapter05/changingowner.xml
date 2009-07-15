@@ -69,6 +69,6 @@
   </caution>
 -->
   <caution>
-    <para>如果你打算保留临时工具用来建立今后的 LFS 系统，那么<emphasis>现在</emphasis>是把它备份的时候了。在接下来第6章的命令会改变工具目前的位置，工具是为了以后的编译作准备。</para>
+    <para>如果你打算保留临时工具用来建立今后的 LFS 系统，那么<emphasis>现在</emphasis>是把它备份的时候了。在接下来<xref linkend="chapter-building-system"/>的命令会改变工具目前的位置，工具是为了以后的编译作准备。</para>
   </caution>
 </sect1>

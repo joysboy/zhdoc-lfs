@@ -113,7 +113,7 @@ make -C text-utils more</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-utillinux" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-utillinux" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-utillinux"/>。</para>
 
   </sect2>
 

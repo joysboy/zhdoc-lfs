@@ -51,7 +51,7 @@
     by Gzip is incompatible with the version that current
     Glibc provides, so we'll rename the function:</para>
 -->
-    <para>该版本的 Gzip 使用的函数<quote>futimens</quote> 和我们提供的 Glibc 版本不兼容。所以我们要重命名该函数：</para>
+    <para>该版本的 Gzip 使用的函数<quote>futimens</quote>和我们提供的 Glibc 版本不兼容。所以我们要重命名该函数：</para>
 
 <screen><userinput remap="pre">for file in gzip.c lib/utimens.{c,h} ; do \
    cp -v $file{,.orig}
@@ -97,7 +97,7 @@ done</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-gzip" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-gzip" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gzip"/>。</para>
 
   </sect2>
 

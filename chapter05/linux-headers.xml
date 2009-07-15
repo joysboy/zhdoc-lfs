@@ -55,7 +55,7 @@
     by way of sanitizing various C header files that are shipped in the Linux
     kernel source tarball.</para>
 -->
-    <para>Linux 内核需要向系统 C 语言库（LFS 中为 Glibc）使用的应用程序接口(API)。我们通过安装 Linux 内核源码包中的 C 语言头文件来实现。</para>
+    <para>Linux 内核需要向系统 C 语言库（LFS 中为 Glibc）使用的应用程序接口（API）。我们通过安装 Linux 内核源码包中的 C 语言头文件来实现。</para>
 
 <!--E
     <para>First, make sure there are no stale files and dependencies lying around
@@ -86,7 +86,7 @@ cp -rv dest/include/* /tools/include</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-linux-headers" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-linux-headers" role="."/>。</para> 
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-linux-headers"/>。</para> 
 
   </sect2>
 

@@ -55,7 +55,10 @@
     --without-debug --without-ada --enable-overwrite</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--without-ada</parameter></term>
@@ -117,7 +120,7 @@
     <para>Details on this package are located in
     <xref linkend="contents-ncurses" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-ncurses" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-ncurses"/>。</para>
 
   </sect2>
 

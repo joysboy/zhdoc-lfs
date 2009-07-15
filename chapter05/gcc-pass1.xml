@@ -143,7 +143,7 @@ cd ../gcc-build</userinput></screen>
           <para>This option ensures that only the C compiler is built.
           This is the only language needed now.</para>
 -->
-          <para>该选项确保只编译 C 语言的编译器，现在我们只需要 C 。</para>
+          <para>该选项确保只编译 C 语言的编译器，现在我们只需要 C。</para>
         </listitem>
       </varlistentry>
 
@@ -213,7 +213,7 @@ cd ../gcc-build</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-gcc" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-gcc" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gcc"/>。</para>
 
   </sect2>
 

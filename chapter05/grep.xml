@@ -82,7 +82,7 @@
           building against glibc-2.8.  This switch forces the use of glibc's
           regex library.</para>
 -->
-          <para>该选项强制使用 glibc 的正则表达式库，并检查编译时是否破坏了glibc 的正则表达式库(??)。</para>
+          <para>configure 脚本会检查在用 glibc-2.8 时，glibc 的正则表达式（regex）库是否损坏了。此选项强制使用 glibc 的正则表达式库。</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -119,7 +119,7 @@
     <para>Details on this package are located in
     <xref linkend="contents-grep" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-grep" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-grep"/>。</para>
 
   </sect2>
 
