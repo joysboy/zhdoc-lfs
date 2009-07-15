@@ -211,16 +211,15 @@ EOF</userinput></screen>
   8-bit</quote>). So you can use the <quote>C</quote> locale only if you are sure that
   you will never need 8-bit characters.</para>
 -->
-  <para> <quote>C</quote> （默认）和 <quote>en_US</quote> （美国英语用户的推荐值）这两个 locale 是不同的。<quote>C</quote> 用 US-ASCII 7字节字符设置，并且把高位字节当作无效字符。这就是为什么，例如， <command>ls</command> 命令在这样的 locale 下把它们用问号来代替。 Also, an attempt to send
-  mail with such characters from Mutt or Pine results in non-RFC-conforming
-  messages being sent (the charset in the outgoing mail is indicated as <quote>unknown
-  8-bit</quote>). So you can use the <quote>C</quote> locale only if you are sure that
-  you will never need 8-bit characters.</para>
-
+  <para> <quote>C</quote> （默认）和 <quote>en_US</quote> （美国英语用户的推荐值）这两个 locale 是不同的。<quote>C</quote> 用 US-ASCII 7字节字符设置，并且把高位字节当作无效字符。这就是为什么，例如， <command>ls</command> 命令在这样的 locale 下把它们用问号来代替。 同样，用 Mutt 或 Ping 发送的邮件中包含这样的字符会导致 non-RFC-conforming
+信息的发送（发出邮件中的映射字符集被显示为 <quote>unknown 8-bit</quote> ）。所以，只有在你确保永不会用到 8 字节的字符的时候，你可以用 <quote>C</quote> locale。</para>
+<!--E
   <para>UTF-8 based locales are not supported well by many programs. E.g., the
   <command>watch</command> program displays only ASCII characters in UTF-8
   locales and has no such restriction in traditional 8-bit locales like en_US.
   Work is in progress to document and, if possible, fix such problems, see
   <ulink url="&blfs-root;view/svn/introduction/locale-issues.html"/>.</para>
+-->
+  <para>基于 UTF-8 的 locales 不能很好地被很多程序支持。例如， <command>watch</command> 程序在 UTF-8 locale 只能显示 ASCII 字符，并且在传统 8 位 locale 像 en_US里没有这种限制。 文档上的工作有所进步，如果有可能，修复这样的问题，参见 <ulink url="&blfs-root;view/svn/introduction/locale-issues.html"/> 。</para>
 
 </sect1>

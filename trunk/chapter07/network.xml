@@ -86,49 +86,76 @@ done</userinput></screen>
 
     <itemizedlist>
       <listitem>
+<!--E
         <para><literal>SUBSYSTEM=="net"</literal> - This tells Udev to ignore
         devices that are not network cards.</para>
+-->
+        <para><literal>SUBSYSTEM=="net"</literal> - 告诉 Udev 忽略不是网卡的设备。</para>
+
       </listitem>
       <listitem>
+<!--E
         <para><literal>ACTION=="add"</literal> - This tells Udev to ignore this
         rule for a uevent that isn't an add ("remove" and "change" uevents also
         happen, but don't need to rename network interfaces).</para>
+-->
+        <para><literal>ACTION=="add"</literal> - 告诉 Udev 忽略不作为 "add" 的 uevent 的规则 （移除和改变 uevents 也会发生，但不需要重命名网络接口）。</para>
       </listitem>
       <listitem>
+<!--E
         <para><literal>DRIVERS=="?*"</literal> - This exists so that Udev will
         ignore VLAN or bridge sub-interfaces (because these sub-interfaces do
         not have drivers). These sub-interfaces are skipped because the name
         that would be assigned would collide with their parent devices.</para>
+-->
+        <para><literal>DRIVERS=="?*"</literal> - 这个存在，以至于 Udev 会忽略 VLAN 或 桥接器子接口（ bridge sub-interfaces ）（ 因为这些子接口没有驱动）。这些子接口被跳过因为已经被分配的名字会和父设备冲突。</para>
       </listitem>
       <listitem>
+<!--E
         <para><literal>ATTR{address}</literal> - The value of this key is the
         NIC's MAC address.</para>
+-->
+        <para><literal>ATTR{address}</literal> - 这个关键字的值是 NIC 的 MAC 地址。</para>
       </listitem>
       <listitem>
+<!--E
         <para><literal>ATTR{type}=="1"</literal> - This ensures the rule only
         matches the primary interface in the case of certain wireless drivers,
         which create multiple virtual interfaces. The secondary interfaces are
         skipped for the same reason that VLAN and bridge sub-interfaces are
         skipped: there would be a name collision otherwise.</para>
+-->
+        <para><literal>ATTR{type}=="1"</literal> - 就某些无线驱动（它们创建多个虚拟接口）来说，这个保证了只匹配主要接口的规则。次要的接口被忽略，原因和 VLAN 与  桥接器子接口被忽略的原因一样：有名字冲突。</para>
+
       </listitem>
       <listitem>
+<!--E
         <para><literal>KERNEL=="eth*"</literal> - This key was added to the
         Udev rule generator to handle machines that have multiple network
         interfaces, all with the same MAC address (the PS3 is one such
         machine).  If the independent interfaces have different basenames,
         this key will allow Udev to tell them apart.  This is generally not
         necessary for most Linux From Scratch users, but does not hurt.</para>
+-->
+        <para><literal>KERNEL=="eth*"</literal> - 这个键被添加进 Udev 规则产生器中以处理有多个网络接口（都有同一个 MAC 地址， PS3就是这种机器）的机器。如果独立的接口有不同的基极名称，这个键允许 Udev 把它们分开。一般来说，它对大多数的 LFS 用户不是必须的，但用了也无害。</para>
+
       </listitem>
       <listitem>
+<!--E
         <para><literal>NAME</literal> - The value of this key is the name that
         Udev will assign to this interface.</para>
+-->
+        <para><literal>NAME</literal> - 这个值是 Udev 将分配给这个接口的名字。</para>
+
       </listitem>
     </itemizedlist>
-
+<!--E
     <para>The value of <literal>NAME</literal> is the important part. Make sure
     you know which name has been assigned to each of your network cards before
     proceeding, and be sure to use that <literal>NAME</literal> value when
     creating your configuration files below.</para>
+-->
+    <para><literal>NAME</literal> 的值很重要。在继续之前确保你知道哪个名字该分配给哪个网卡，并在创建如下的配置文件时确定 <literal>NAME</literal> 的值。</para>
 
   </sect2>
 
