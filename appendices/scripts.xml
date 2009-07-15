@@ -40,6 +40,8 @@
   <title>Boot and sysconfig scripts version-&lfs-bootscripts-version;</title>
 -->
   <title>启动和系统配置脚本版本-&lfs-bootscripts-version;</title>
+
+<!--E
   <para>The scripts in this appendix are listed by the directory where they
   normally reside.  The order is <filename
   class='directory'>/etc/rc.d/init.d</filename>, <filename
@@ -48,15 +50,19 @@
   class='directory'>/etc/sysconfig/network-devices/services</filename>.  Within
   each section, the files are listed in the order they are normally called.
   </para>
+-->
+  <para>本附录中的脚本，按照它们通常所在的目录列出。顺序是 <filename class='directory'>/etc/rc.d/init.d</filename>、<filename class='directory'>/etc/sysconfig</filename>、<filename class='directory'>/etc/sysconfig/network-devices</filename> 和 <filename class='directory'>/etc/sysconfig/network-devices/services</filename>。在每个部分中，文件以它们被调用的先后次序列出。</para>
 
   <sect1 id="rc" role="wrap">
     <title>/etc/rc.d/init.d/rc</title>
 
+<!--E
     <para>The <systemitem>rc</systemitem> script is the first script called by 
     <application>init</application> and initiates the boot process.</para>
+-->
+    <para>脚本 <systemitem>rc</systemitem> 是 <application>init</application> 调用的第一个脚本，它初始化了启动过程。</para>
 
-    <screen>&rc;</screen> 
-  </sect1>
+    <screen>&rc;</screen> </sect1>
 
   <sect1 id="functions" role="wrap">
     <title>/etc/rc.d/init.d/functions</title>

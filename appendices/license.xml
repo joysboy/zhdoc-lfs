@@ -5,18 +5,28 @@
   %general-entities;
 ]>
 
+<!--E
 <appendix id="Licenses" xreflabel="Appendix E">
+-->
+<appendix id="Licenses" xreflabel="附录 F">
   <?dbhtml dir="appendices"?>
   <?dbhtml filename="licenses.html"?>
 <!--E
   <title>LFS Licenses</title>
 -->
   <title>LFS 许可证</title>
+
+<!--E
   <para>This book is licensed under the Creative Commons
   Attribution-NonCommercial-ShareAlike 2.0 License.</para>
+-->
+  <para>本手册以 Creative Commons Attribution-NonCommercial-ShareAlike 2.0 许可证发布。</para>
 
+<!--E
   <para>Computer instructions may be extracted from the book under the MIT
   License.</para>
+-->
+  <para>本手册中的计算机指令以 MIT 许可证发布。</para>
 
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="creat-comm.xml"/>
