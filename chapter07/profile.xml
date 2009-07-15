@@ -15,6 +15,7 @@
   <indexterm zone="ch-scripts-profile">
     <primary sortas="e-/etc/profile">/etc/profile</primary>
   </indexterm>
+
 <!--
   <para>The shell program <command>/bin/bash</command> (hereafter referred to
   as <quote>the shell</quote>) uses a collection of startup files to help
@@ -24,7 +25,7 @@
   equivalent file exists in the home directory, it may override the global
   settings.</para>
 -->
-  <para>Shell 程序 <command>/bin/bash</command> （此后以 <quote>shell</quote> 称呼）使用了一个启动文件集合，来帮助创造一个运行的环境。每个文件都有特定的用处，有的文件还能使登入与交互环境有所不同。 <filename class="directory">/etc</filename> 目录下的一些文件提供了全局设置。如果相类似的设置出现在某个用户的起始文件夹下，那么在登入该用户时，它将代替该全局设置。</para>
+  <para>Shell 程序 <command>/bin/bash</command>（此后以 <quote>shell</quote> 称呼）通过一个启动文件集合创个运行环境。每个文件都有特定的用处，有些文件在登录模式和交互模式不同时还有所不同。<filename class="directory">/etc</filename> 目录下的一些文件提供了全局设置。如果相类似的设置出现在某个用户的起始文件夹下，那么在该用户登入时，它将代替该全局设置。</para>
 
 <!--E
   <para>An interactive login shell is started after a successful login, using
@@ -35,7 +36,7 @@
   because it is processing a script and not waiting for user input between
   commands.</para>
 -->
-  <para>使用 <command>/bin/login</command> 读取 <filename>/etc/passwd</filename> 文件成功登录后，启动了一个交互式登录 shell 。用命令行可以启动一个交互式非登录 shell （例如<prompt>[prompt]$</prompt><command>/bin/bash</command> ）。非交互 shell 通常出现在 shell 脚本运行的时候。之所以称为非交互的，因为它正在运行一个脚本，并且命令与命令之间并不等待用户的输入。</para>
+  <para>使用 <command>/bin/login</command> 读取 <filename>/etc/passwd</filename> 文件成功登录后，启动了一个交互式登录 shell。用命令行可以启动一个交互式非登录 shell（例如<prompt>[prompt]$</prompt><command>/bin/bash</command>）。非交互 shell 通常出现在 shell 脚本运行的时候。之所以称为非交互的，因为它正在运行一个脚本，并且命令与命令之间并不等待用户的输入。</para>
 
 <!--E
   <para>For more information, see <command>info bash</command> under the
@@ -49,6 +50,7 @@
   invoked as an interactive login shell.</para>
 -->
   <para>当以交互登录方式运行 shell 的时候，会读取 <filename>/etc/profile</filename> 和 <filename>~/.bash_profile</filename> 文件。</para>
+
 <!--E
   <para>The base <filename>/etc/profile</filename> below sets some
   environment variables necessary for native language support. Setting
@@ -158,7 +160,7 @@ LC_ALL=&lt;locale name&gt; locale int_prefix</userinput></screen>
   Further instructions assume that there are no such error messages from
   Glibc.</para>
 -->
-  <para>在这种情况下，您应当要么使用 <command>localedef</command> 命令安装相应的 locale ，要么选择一个其他的 locale 。接下来的指令都将假定 Glibc 没有出现上述错误信息。</para>
+  <para>在这种情况下，您应当要么使用 <command>localedef</command> 命令安装相应的 locale，要么选择一个其他的 locale。接下来的指令都将假定 Glibc 没有出现上述错误信息。</para>
 
   <!-- FIXME: the xlib example will became obsolete real soon -->
 <!--E
@@ -167,9 +169,10 @@ LC_ALL=&lt;locale name&gt; locale int_prefix</userinput></screen>
   following error message if the locale does not exactly match one of the character
   map names in its internal files:</para>
 -->
-  <para>一些 LFS 基本系统之外的软件包可能并不支持你选择的 locale 。一个例子就是 X 库(X Window System 的一部分)。如果 locale 在它的内部文件里没有准确匹配上一个字符映射，它会输出如下错误信息：</para>
+  <para>一些 LFS 基本系统之外的软件包可能并不支持你选择的 locale 。其中之一就是 X 库（X Window System 的一部分）。如果 locale 在它的内部文件里没有准确匹配上一个字符映射，它会输出如下错误信息：</para>
 
 <screen><computeroutput>Warning: locale not supported by Xlib, locale set to C</computeroutput></screen>
+
 <!--E
   <para>In several cases Xlib expects that the character map will be listed in
   uppercase notation with canonical dashes. For instance, "ISO-8859-1" rather
@@ -179,14 +182,16 @@ LC_ALL=&lt;locale name&gt; locale int_prefix</userinput></screen>
   For example, one would have to change "de_DE.ISO-8859-15@euro" to
   "de_DE@euro" in order to get this locale recognized by Xlib.</para>
 -->
-  <para>在某些情况下， Xlib 希望字符映射会以带破折号的大写字母方式列出。比如应该写 "ISO-8859-1" 而不是 "iso88591"。有时可以通过移除该 locale 的字符映射(charmap)定义部分来解决这个问题——只要这样做不会改变 Glibc 中与该 locale 关联的字符映射关系(这个可以通过对两个 locale 运行 <command>locale charmap</command> 命令来检查)。例如将"de_DE.ISO-8859-15@euro"修改为"de_DE@euro"即可让这个 locale 被 Xlib 正确识别。</para>
+  <para>在某些情况下，Xlib 希望字符集会以带破折号的大写字母方式列出。比如应该写 "ISO-8859-1" 而不是 "iso88591"。通过去掉 locale 中的 charmap 部分可以解决这一问题。在两种不同的设置下执行命令 <command>locale charmap</command> 可以检查它。例如，将 "de_DE.ISO-8859-15@euro" 修改为 "de_DE@euro" 即可让这个 locale 被 Xlib 正确识别。</para>
+
 <!--E
   <para>Other packages can also function incorrectly (but may not necessarily
   display any error messages) if the locale name does not meet their expectations.
   In those cases, investigating how other Linux distributions support your locale
   might provide some useful information.</para>
 -->
-  <para>其他一些软件包在你选择的 locale 出其意料的情况下可能即使运行异常也不会显示错误信息。在这种情况下，研究一下其他 Linux 发行版是如何支持你选择的 locale 可能会得到更加有用的信息。 </para>
+  <para>如果您选择 locale 与它们的期望不符，有些软件包可能不能正常工作（但可能不会显示出任何错误信息）。在这种情况下，研究一下其他 Linux 发行版是如何支持你选择的 locale 可能会得到有用的信息。</para>
+
 <!--E
   <para>Once the proper locale settings have been determined, create the
   <filename>/etc/profile</filename> file:</para>
@@ -211,8 +216,8 @@ EOF</userinput></screen>
   8-bit</quote>). So you can use the <quote>C</quote> locale only if you are sure that
   you will never need 8-bit characters.</para>
 -->
-  <para> <quote>C</quote> （默认）和 <quote>en_US</quote> （美国英语用户的推荐值）这两个 locale 是不同的。<quote>C</quote> 用 US-ASCII 7字节字符设置，并且把高位字节当作无效字符。这就是为什么，例如， <command>ls</command> 命令在这样的 locale 下把它们用问号来代替。 同样，用 Mutt 或 Ping 发送的邮件中包含这样的字符会导致 non-RFC-conforming
-信息的发送（发出邮件中的映射字符集被显示为 <quote>unknown 8-bit</quote> ）。所以，只有在你确保永不会用到 8 字节的字符的时候，你可以用 <quote>C</quote> locale。</para>
+  <para><quote>C</quote>（默认）和 <quote>en_US</quote>（美国英语用户的推荐值）这两个 locale 是不同的。<quote>C</quote>用 US-ASCII 7 字节字符设置，并且把高位字节当作无效字符。这就是为什么<command>ls</command>命令在这样的 locale 下把非 ASCII 字符它们用问号来代替。同样，用 Mutt 或 Ping 发送的邮件中包含这样的字符会导致不符合 RFC 标准的信息被发送（发出邮件中的映射字符集被显示为<quote>unknown 8-bit</quote>）。所以，只有在你确信永不会用到 8 位字符时，才可以用 <quote>C</quote> locale。</para>
+
 <!--E
   <para>UTF-8 based locales are not supported well by many programs. E.g., the
   <command>watch</command> program displays only ASCII characters in UTF-8
@@ -220,6 +225,6 @@ EOF</userinput></screen>
   Work is in progress to document and, if possible, fix such problems, see
   <ulink url="&blfs-root;view/svn/introduction/locale-issues.html"/>.</para>
 -->
-  <para>基于 UTF-8 的 locales 不能很好地被很多程序支持。例如， <command>watch</command> 程序在 UTF-8 locale 只能显示 ASCII 字符，并且在传统 8 位 locale 像 en_US里没有这种限制。 文档上的工作有所进步，如果有可能，修复这样的问题，参见 <ulink url="&blfs-root;view/svn/introduction/locale-issues.html"/> 。</para>
+  <para>基于 UTF-8 的 locales 不能很好地被很多程序支持。例如，<command>watch</command> 程序在 UTF-8 locale 只能显示 ASCII 字符，并且在传统 8 位 locale 像 en_US里没有这种限制。人们正在记录并在可能时修复这些问题，详情请参考 <ulink url="&blfs-root;view/svn/introduction/locale-issues.html"/>。</para>
 
 </sect1>

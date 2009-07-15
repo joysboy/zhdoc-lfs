@@ -10,14 +10,15 @@
 <!--E
   <title>Introduction</title>
 --> 
-  <title> 简介 </title>
+  <title>简介</title>
 <!--E
   <para>This chapter details how to install and configure the LFS-Bootscripts
   package. Most of these scripts will work without modification, but a few require
   additional configuration files because they deal with hardware-dependent
   information.</para>
 -->
-  <para>本章详细描述了如何安装并恰当配置启动脚本（ LFS-Bootscripts ），大多数脚本无需修改就可运行，但少数需要附加配置文件，因为它们与硬件相关。</para>
+  <para>本章详细描述了如何安装并恰当配置启动脚本包（LFS-Bootscripts），大多数脚本无需修改就可运行，但少数需要附加配置文件，因为它们与硬件相关。</para>
+
 <!--E
   <para>System-V style init scripts are employed in this book because they are
   widely used. For additional options, a hint detailing the BSD style init setup
@@ -25,11 +26,12 @@
   Searching the LFS mailing lists for <quote>depinit</quote> will also offer
   additional choices.</para>
 --> 
-  <para> 因为 System-V 风格的初始化脚本被广泛使用，因此本书使用这种风格的脚本。作为补充选项，在 <ulink url="&hints-root;bsd-init.txt"/> 可以找到一个详细设计 BSD 风格启动初始化的提示。在 LFS 邮件列表里搜索 <quote>depinit</quote> 还可以找到更多选择。</para>
+  <para>因为 System-V 风格的初始化脚本被广泛使用，因此本书使用这种风格的脚本。作为补充选择，在 <ulink url="&hints-root;bsd-init.txt"/> 可以找到一个详细设计的 BSD 风格启动初始化的提示。在 LFS 邮件列表里搜索 <quote>depinit</quote> 还可以找到更多选择。</para>
+
 <!--E
   <para>If using an alternative style of init scripts, skip this chapter
   and move on to <xref linkend="chapter-bootable"/>.</para>
 -->
-  <para> 如果您使用其它风格的初始化脚本，请跳过本章继续进行 <xref linkend="chapter-bootable"/>。</para>
+  <para>如果您使用其它风格的初始化脚本，请跳过本章继续进行<xref linkend="chapter-bootable"/>。</para>
 
 </sect1>

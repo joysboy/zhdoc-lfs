@@ -12,7 +12,10 @@
   <?dbhtml dir="chapter07"?>
   <?dbhtml filename="chapter07.html"?>
 
+<!--E
   <title>Setting Up System Bootscripts</title>
+-->
+  <title>设置系统启动脚本</title>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="introduction.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="bootscripts.xml"/>

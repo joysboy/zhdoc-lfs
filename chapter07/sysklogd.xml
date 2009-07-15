@@ -16,6 +16,7 @@
     <primary sortas="d-sysklogd">sysklogd</primary>
     <secondary>configuring</secondary>
   </indexterm>
+
 <!--E
   <para>The <filename>sysklogd</filename> script invokes the
   <command>syslogd</command> program with the <parameter>-m 0</parameter> option.
