@@ -23,7 +23,7 @@
   will be developed and stabilized in the development version of the
   book.</para>
 -->
-  <para>本章包含了一个构建基本 Linux 系统需要下载的软件包清单，列出的版本号是已知可以正常工作的版本，本书就是建立在这些软件包之上的。我们强烈建议不要使用新的版本，因为用于前一个版本的编译安装命令可能并不适用于新的版本。最新版本的软件包也许需要一个与旧版本不同的工作环境而可能会出现问题。在本书的开发版本中将会建立这种新的工作环境。</para>
+  <para>本章包含了一个构建基本 Linux 系统需要下载的软件包清单，列出的版本号是已知可以正常工作的版本，本书就是建立在这些软件包之上的。我们强烈建议不要使用新的版本，因为用于前一个版本的编译安装命令可能并不适用于新的版本。最新版本的软件包也许需要一个与旧版本不同的工作环境而可能会出现问题。在本书的开发版中将会建立这种新的工作环境。</para>
 
 <!--E
   <para>Download locations may not always be accessible. If a download
@@ -52,7 +52,7 @@
   <systemitem class="username">root</systemitem>, before starting the download
   session:</para>
 -->
-  <para>要创建该目录，在下载前用root 用户运行下面的命令：</para>
+  <para>要创建该目录，在下载前用 <systemitem class="username">root</systemitem> 用户运行下面的命令：</para>
 
 <screen role="nodump"><userinput>mkdir -v $LFS/sources</userinput></screen>
 
@@ -63,7 +63,7 @@
   sticky directory. The following command will enable the write and
   sticky modes:</para>
 -->
-  <para>把该目录设置为所有用户可写和 sticky 模式，<quote>Sticky</quote>表示虽然多个用户对该目录有写的权限，但是只有文件的所有者才能删除。下面的命令将该目录设置可写和sticky模式：</para>
+  <para>把该目录设置为所有用户可写和 sticky 模式，<quote>Sticky</quote>表示虽然多个用户对该目录有写的权限，但是只有文件的所有者才能删除。下面的命令将该目录设置可写和 sticky 模式：</para>
 
 <screen role="nodump"><userinput>chmod -v a+wt $LFS/sources</userinput></screen>
 
