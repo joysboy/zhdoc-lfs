@@ -52,7 +52,7 @@
     features, upgrade your e2fsprogs</quote>. To check if your host system
     uses custom enhancements, run the following command:</para>
 -->
-    <para>有些发行版的宿主系统中的文件系统创建工具(E2fsprogs)增加了某些自定义的特性。这可能导致在第九章重启进入新的 LFS 系统时出现问题，因为 LFS 安装的 E2fsprogs 不支持这些特性。因此可能会出现类似 <quote>unsupported filesystem features, upgrade your e2fsprogs</quote> 的错误。请运行下面的命令，检查你的宿主系统是否使用了这些自定义的特性。</para>
+    <para>有些发行版的宿主系统中的文件系统创建工具（E2fsprogs）增加了某些自定义的特性。这可能导致在第九章重启进入新的 LFS 系统时出现问题，因为 LFS 安装的 E2fsprogs 不支持这些特性。因此可能会出现类似 <quote>unsupported filesystem features, upgrade your e2fsprogs</quote> 的错误。请运行下面的命令，检查你的宿主系统是否使用了这些自定义的特性。</para>
 
 <screen role="nodump"><userinput>debugfs -R feature /dev/<replaceable>&lt;xxx&gt;</replaceable></userinput></screen>
 
@@ -86,7 +86,7 @@ rm -rfv e2fsprogs-&e2fsprogs-version;</userinput></screen>
   <systemitem class="filesystem"> swap</systemitem> partition was created,
   it will need to be initialized with this command:</para>
 -->
-  <para>如果你已经使用了一个现有的 <systemitem class="filesystem">swap</systemitem> 分区，就没有必要下面一步了。如果没有，请运行下面命令格式化你的交换分区。</para>
+  <para>如果你的硬盘上已经有 <systemitem class="filesystem">swap</systemitem> 分区，并正在使用，就无需格式化它了。否则，新建的 <systemitem class="filesystem">swap</systemitem> 分区需要格式化，请运行下面命令格式化它：</para>
 
 <screen role="nodump"><userinput>mkswap /dev/<replaceable>&lt;yyy&gt;</replaceable></userinput></screen>
 

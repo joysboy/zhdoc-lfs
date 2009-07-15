@@ -27,7 +27,7 @@
   <para>Choose a mount point and assign it to the <envar>LFS</envar>
   environment variable by running:</para>
 -->
-  <para>选择一个挂载点，并运行下面命令将其指定到 LFS环境变量：</para>
+  <para>选择一个挂载点，并运行下面命令将其指定到 <envar>LFS</envar> 环境变量：</para>
 
 <screen role="nodump"><userinput>export LFS=/mnt/lfs</userinput></screen>
 
@@ -35,7 +35,7 @@
   <para>Next, create the mount point and mount the LFS file system by
   running:</para>
 -->
-  <para>接下来的命令，创建挂载点并挂载LFS文件系统：</para>
+  <para>接下来的命令，创建挂载点并挂载 LFS 文件系统：</para>
 
 <screen role="nodump"><userinput>mkdir -pv $LFS
 mount -v -t ext3 /dev/<replaceable>&lt;xxx&gt;</replaceable> $LFS</userinput></screen>
