@@ -19,7 +19,7 @@
   these libraries. In order to accomplish this, the linker and the
   compiler's specs file need to be adjusted.</para>
 -->
-  <para>现在，安装好了 C 语言的临时库，本章中剩余章节所有要编译的工具都要链接到这些库文件上。为此，需要调整连接器和编译器的工程设计(specs)文件。</para>
+  <para>现在，安装好了 C 语言的临时库，本章中剩余章节所有要编译的工具都要链接到这些库文件上。为此，需要调整连接器和编译器的工程设计（specs）文件。</para>
 
 <!--E
   <para>The linker, adjusted at the end of the first pass of Binutils, needs
@@ -47,7 +47,7 @@ ln -sv /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld</userinput></screen>
   by default. A simple <command>sed</command> substitution then alters the
   dynamic linker that GCC will use.</para>
 -->
-  <para>下面的任务是修改 GCC 的 <quote>specs</quote> 文件，使 GCC 可以默认指向新的动态链接器。一个简单的 <command>sed</command> 代换就可以做到：</para>
+  <para>下面的任务是修改 GCC 的<quote>specs</quote>文件，使 GCC 可以默认指向新的动态链接器。一个简单的 <command>sed</command> 代换就可以做到：</para>
 
 <!--E
   <para>For the sake of accuracy, it is recommended to use a copy-and-paste
@@ -65,7 +65,7 @@ ln -sv /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld</userinput></screen>
     dynamic linker in the following commands. Refer to <xref
     linkend="ch-tools-toolchaintechnotes" role=","/> if necessary.</para>
 -->
-    <para>如果你的系统平台上的动态链接器名字不是 <filename class="libraryfile">ld-linux.so.2</filename>，请将下面命令中的<quote>ld-linux.so.2</quote>替换为相应的动态链接器名称。如果需要，请参阅<xref linkend="ch-tools-toolchaintechnotes" role=","/>。</para>
+    <para>如果你的系统平台上的动态链接器名字不是 <filename class="libraryfile">ld-linux.so.2</filename>，请将下面命令中的<quote>ld-linux.so.2</quote>替换为相应的动态链接器名称。如果需要，请参阅<xref linkend="ch-tools-toolchaintechnotes"/>。</para>
   </important>
 
 <!-- Ampersands are needed to allow copy and paste -->
@@ -140,7 +140,7 @@ readelf -l a.out | grep ': /tools'</userinput></screen>
     specs file amendment above. In this case, redo the specs file amendment,
     being careful to copy-and-paste the commands.</para>
 -->
-    <para>如果输出和上面的不一样，或者根本没有输出，就一定是出错了。返回前面的步骤查找为标题所在，在纠正这个问题之前不要继续往下做。首先，重新做上一个检查，但用 <command>gcc</command> 替换 <command>cc</command>，如果这次输出正确了，说明链接到 <command>cc</command> 的符号链接有问题，返回<xref linkend="ch-tools-gcc-pass1" role=","/>创建符号链接。下一步，确保 <envar>PATH</envar> 变量的正确，这可以通过运行 <command>echo $PATH</command>，验证 <filename class="directory">/tools/bin</filename>是否在输出列表的最开头。如果 <envar>PATH</envar> 变量出错，可能是因为你不是作为 <systemitem class="username">lfs</systemitem> 用户登入，也可能是在做<xref linkend="ch-tools-settingenviron" role="."/>出错了。另外一个原因可能是上面修正 specs 文件时出错，如果这样，重新修改 specs 文件，复制粘贴时要小心仔细。</para>
+    <para>如果输出和上面的不一样，或者根本没有输出，就一定是出错了。返回前面的步骤查找问题所在，在纠正这个问题之前不要继续往下做。首先，重新做上一个检查，但用 <command>gcc</command> 替换 <command>cc</command>，如果这次输出正确了，说明链接到 <command>cc</command> 的符号链接有问题，返回<xref linkend="ch-tools-gcc-pass1"/>创建符号链接。下一步，确保 <envar>PATH</envar> 变量的正确，这可以通过运行 <command>echo $PATH</command>，验证 <filename class="directory">/tools/bin</filename>是否在输出列表的最开头。如果 <envar>PATH</envar> 变量出错，可能是因为你不是作为 <systemitem class="username">lfs</systemitem> 用户登入，也可能是在做<xref linkend="ch-tools-settingenviron"/>时出错了。另外一个原因可能是上面修正 specs 文件时出错，如果这样，重新修改 specs 文件，复制粘贴时要小心仔细。</para>
 
 <!--E
     <para>Once all is well, clean up the test files:</para>

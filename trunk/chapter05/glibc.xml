@@ -50,7 +50,7 @@
     <para>Fix a potential issue if <filename>/etc/ld.so.preload</filename> is
     used on the host system.</para>
 -->
-    <para>如果宿主系统使用 <filename>/etc/ld.so.preload</filename>，运行下面命令修正可能出现的问题。</para>
+    <para>如果宿主系统使用 <filename>/etc/ld.so.preload</filename>，运行下面命令修正可能会出现的问题。</para>
 
 <screen><userinput remap="pre">sed -i 's@/etc/ld.so.preload@/tools/etc/ld.so.preload@' elf/rtld.c</userinput></screen>
 
@@ -250,7 +250,7 @@ touch /tools/etc/ld.so.conf</userinput></screen>
       To install the Glibc locales anyway, use instructions from
       <xref linkend="ch-system-glibc" role="."/></para>
 -->
-      <para>如果没有运行测试套件（正如我们推荐的），现在就没有必要安装 locales。在下一章我们会安装合适的 locales，如果想要现在安装，请参考<xref linkend="ch-system-glibc" role="."/>里的说明。</para>
+      <para>如果没有运行测试套件（正如我们推荐的），现在就没有必要安装 locales。在下一章我们会安装合适的 locales，如果想要现在安装，请参考<xref linkend="ch-system-glibc"/>里的说明。</para>
     </note>
 
   </sect2>
@@ -262,7 +262,7 @@ touch /tools/etc/ld.so.conf</userinput></screen>
     <para>Details on this package are located in
     <xref linkend="contents-glibc" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-glibc" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-glibc"/>。</para>
 
   </sect2>
 

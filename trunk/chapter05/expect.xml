@@ -42,7 +42,10 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Expect</title>
+-->
+    <title>安装 Expect</title>
 
 <!--E
     <para>First, fix a bug that can result in false failures during the GCC test
@@ -177,11 +180,18 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</userinput></screen>
   </sect2>
 
   <sect2 id="contents-expect" role="content">
+<!--E
     <title>Contents of Expect</title>
+-->
+    <title>Expect 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed program</segtitle>
       <segtitle>Installed library</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>expect</seg>
@@ -218,7 +228,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</userinput></screen>
           <para>Contains functions that allow Expect to be used as a Tcl
           extension or to be used directly from C or C++ (without Tcl)</para>
 -->
-          <para>包含的函数可以让 Expert 作为一个 Tcl 扩展来使用，或直接被 C 或 C++使用（不通过 Tcl）。</para>
+          <para>此库文件包含的函数可以让 Expert 作为一个 Tcl 扩展来使用，或直接被 C 或 C++使用（不通过 Tcl）。</para>
           <indexterm zone="ch-tools-expect libexpect">
             <primary sortas="c-libexpect-&expect-lib-version;">libexpect-&expect-lib-version;</primary>
           </indexterm>

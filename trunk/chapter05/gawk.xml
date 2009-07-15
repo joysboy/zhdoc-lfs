@@ -67,7 +67,7 @@
           and uses the version in glibc. The is necessary due to a change in
           gcc that has not been incorporated into this package yet.</para>
 -->
-          <para>这个参数是在配置过程中绕过对 mktime 的搜索，改为使用在 glibc 中的版本。这样做的需要的原因是，有一个 gcc 的变化，但本软件包还没有包括进来。</para>
+          <para>这个参数是在配置过程中不搜索 mktime，改为使用在 glibc 中的版本。这样做的原因是对 gcc 的一些修改尚未整合到该软件包中。</para>
         </listitem>
       </varlistentry>
 
@@ -105,7 +105,7 @@
     <para>Details on this package are located in
     <xref linkend="contents-gawk" role="."/></para>
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-gawk" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-gawk"/>。</para>
 
   </sect2>
 

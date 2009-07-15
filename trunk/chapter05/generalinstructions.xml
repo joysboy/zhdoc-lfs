@@ -44,7 +44,7 @@
     fairly often, and some packages still use the older standard. This is not a
     problem, but does prompt the warning.</para>
 -->
-    <para>在编译大多数软件包的时候，会出现一些警告信息。这是很正常的，可以安全的忽略掉。这些警告大都分是关于警告 C 或 C++ 使用了不推荐(deprecated)但仍有效的语法。C 语言的标准会经常更改，某些软件包使用了旧的标准，这不算问题，但是会给出警告信息。</para>
+    <para>在编译大多数软件包的时候，会出现一些警告信息。这是很正常的，可以安全的忽略掉。这些警告大都分是关于警告 C 或 C++ 使用了不推荐（deprecated）但仍有效的语法。C 语言的标准会经常更改，某些软件包使用了旧的标准，这不算问题，但是会给出警告信息。</para>
 
     <important>
 <!--E
@@ -89,7 +89,7 @@
       performed.  The build instructions assume that the
       <command>bash</command> shell is in use.</para>
 -->
-      <para>在安照说明编译安装软件包之前，每个源码包应该作为 <systemitem class="username">lfs</systemitem> 用户解压，而且进入(cd)到新生成的目录中。编译说明假设使用 <command>bash</command> Shell。</para>
+      <para>在安照说明编译安装软件包之前，每个源码包应该作为 <systemitem class="username">lfs</systemitem> 用户解压，而且进入（<command>cd</command>）到新生成的目录中。编译说明假设使用 <command>bash</command> Shell。</para>
     </important>
   </listitem>
 

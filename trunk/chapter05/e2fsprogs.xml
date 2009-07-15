@@ -91,7 +91,7 @@ cd build</userinput></screen>
 <!--E
     <para>Details on this package are located in
 -->
-    <para>关于这个软件包的详细资料位于<xref linkend="contents-e2fsprogs" role="."/>。</para>
+    <para>关于这个软件包的详细资料位于<xref linkend="contents-e2fsprogs"/>。</para>
   </sect2>
 
 </sect1>

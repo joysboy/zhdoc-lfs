@@ -60,7 +60,7 @@
     to see if the host system is set up correctly in this regard by
     performing a quick test:</para>
 -->
-    <para>用于测试 GCC 和 Binutils 的工具 &mdash; Tcl、Expect 以及 DejaGUN &mdash; 已经安装好了。现在可以重新安装 GCC 和 Binutils，将它们连接到新的Glibc上，并做相关的测试（如果做本章的测试）。请注意，这些测试套件严重依赖于正常运作的伪终端(PTY)，这些伪终端通常是由宿主系统的 devpts 文件系统提供。因此请运行下面的小测试，检查宿主系统的devpts文件系统是否设置正确：</para>
+    <para>用于测试 GCC 和 Binutils 的工具 &mdash; Tcl、Expect 以及 DejaGUN &mdash; 已经安装好了。现在可以重新安装 GCC 和 Binutils，将它们连接到新的 Glibc 上，并做相关的测试（如果做本章的测试）。请注意，这些测试套件严重依赖于正常运作的伪终端（PTY），这些伪终端通常是由宿主系统的 <systemitem class="filesystem">devpts</systemitem> 文件系统提供。因此请运行下面的小测试，检查宿主系统的 <systemitem class="filesystem">devpts</systemitem> 文件系统是否设置正确：</para>
 
 <screen><userinput remap="test">expect -c "spawn ls"</userinput></screen>
 
@@ -231,7 +231,7 @@ cd ../gcc-build</userinput></screen>
           the C++ ABI, and therefore results in C++ shared libraries and C++
           programs that are interoperable with other Linux distributions.</para>
 -->
-          <para>为本地静态和全局函数注册 C++ 析构函数时使用 <function>__cxa_atexit</function> 而不是 <function>atexit</function>，这是为了完全符合标准对析构函数的处理规定。这还会影响 C++ 的 ABI，从而使 C++ 共享库和 C++ 程序可以在其他 Linux 发行版中使用。</para>
+          <para>为本地静态和全局函数注册 C++ 析构函数时使用 <function>__cxa_atexit</function> 而不是 <function>atexit</function>，这是为了使对析构函数的处理完全符合标准规定。这还会影响 C++ 的 ABI，从而使 C++ 共享库和 C++ 程序可以在其他 Linux 发行版中使用。</para>
         </listitem>
       </varlistentry>
 
@@ -300,7 +300,7 @@ cd ../gcc-build</userinput></screen>
     <para>For a discussion of test failures that are of particular
     importance, please see <xref linkend="ch-system-gcc" role="."/></para>
 -->
-    <para>关于特别重要的测试的出错讨论，请参考<xref linkend="ch-system-gcc" role="."/>。</para>
+    <para>关于特别重要的测试的出错讨论，请参考<xref linkend="ch-system-gcc"/>。</para>
 
 <!--E
     <para>Install the package:</para>
@@ -318,9 +318,11 @@ cd ../gcc-build</userinput></screen>
   <sect2 role="content">
     <title/>
 
+<!--E
     <para>Details on this package are located in
     <xref linkend="contents-gcc" role="."/></para>
-
+-->
+    <para>关于此软件包的详细信息，位于<xref linkend="contents-gcc"/>。</para>
   </sect2>
 
 </sect1>
