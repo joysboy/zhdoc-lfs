@@ -23,15 +23,16 @@
   <indexterm zone="ch-scripts-hosts">
     <primary sortas="d-network">network</primary>
   <secondary>/etc/hosts</secondary></indexterm>
+
 <!--E
   <para>If a network card is to be configured, decide on the IP address,
   fully-qualified domain name (FQDN), and possible aliases for use in the
   <filename>/etc/hosts</filename> file. The syntax is:</para>
 -->
-  <para>要在 <filename>/etc/hosts</filename> 文件里配置网卡的 IP 地址、 FQDN 和可能会用的别名，语法如下：</para>
-
+  <para>要在 <filename>/etc/hosts</filename> 文件里配置网卡的 IP 地址、FQDN 和可能会用的别名，语法如下：</para>
 
 <screen><literal>IP_address myhost.example.org aliases</literal></screen>
+
 <!--E
   <para>Unless the computer is to be visible to the Internet (i.e.,
   there is a registered domain and a valid block of assigned IP
@@ -39,27 +40,31 @@
   address is in the private network IP address range. Valid ranges
   are:</para>
 -->
-  <para>除非您的计算机在 Internet 上是可访问的（例如，有一个注册的域名并分配到了一个合法的 IP 地址（块）&mdash;大多数用户没有），请确保 IP 地址在私有网络 IP 地址范围内，正确的范围是：</para>
+  <para>除非您的计算机在 Internet 上是可访问的（例如有一个注册的域名并分配到了一个合法的 IP 地址&mdash;大多数用户没有），请确保 IP 地址在私有网络地址范围内。正确的范围是：</para>
 
 <screen><literal>Private Network Address Range      Normal Prefix
 10.0.0.1 - 10.255.255.254           8
 172.x.0.1 - 172.x.255.254           16
 192.168.y.1 - 192.168.y.254         24</literal></screen>
+
 <!--E
   <para>x can be any number in the range 16-31. y can be any number in
   the range 0-255.</para>
 -->
   <para>x 可以是 16-31 中的任何一个数。y 可以是 0-255 中的任何一个数。</para>
+
 <!--E
   <para>A valid private IP address could be 192.168.1.1. A valid FQDN for this
   IP could be lfs.example.org.</para>
 -->
   <para>一个合法的 IP 地址可能是 192.168.1.1 ，这个 IP 的合法 FQDN 可能是 lfs.example.org。</para>
+
 <!--E
   <para>Even if not using a network card, a valid FQDN is still required.
   This is necessary for certain programs to operate correctly.</para>
 -->
   <para>即使没有网卡，您仍然需要一个合法的 FQDN 。某些程序需要这个才能正常工作。</para>
+
 <!--E
   <para>Create the  <filename>/etc/hosts</filename> file by running:</para>
 -->
@@ -73,6 +78,7 @@
 
 # End /etc/hosts (network card version)</literal>
 EOF</userinput></screen>
+
 <!--E
   <para>The <replaceable>&lt;192.168.1.1&gt;</replaceable> and
   <replaceable>&lt;HOSTNAME.example.org&gt;</replaceable>
@@ -82,6 +88,7 @@ EOF</userinput></screen>
   name(s) can be omitted.</para>
 -->
   <para>把<replaceable>&lt;192.168.1.1&gt;</replaceable> 和 <replaceable>&lt;HOSTNAME.example.org&gt;</replaceable> 更改为特定用户或特别要求所需要的值（如果这台机器要连入一个已知的网络，并且网络/系统管理员已经给您分配了一个 IP 地址）。可选的别名可以被省略。</para>
+
 <!--E
   <para>If a network card is not going to be configured, create the
   <filename>/etc/hosts</filename> file by running:</para>

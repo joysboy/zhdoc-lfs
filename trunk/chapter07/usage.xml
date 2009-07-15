@@ -10,12 +10,13 @@
 <!--E
   <title>How Do These Bootscripts Work?</title>
 -->
-  <title> 启动脚本是如何工作的？ </title>
+  <title>启动脚本是如何工作的？</title>
 
   <indexterm zone="ch-scripts-usage">
     <primary sortas="a-Bootscripts">Bootscripts</primary>
     <secondary>usage</secondary>
   </indexterm>
+
 <!--E
   <para>Linux uses a special booting facility named SysVinit that is based on a
   concept of <emphasis>run-levels</emphasis>. It can be quite different from one
@@ -23,7 +24,8 @@
   particular Linux distribution, they should work the same in LFS too. LFS has its
   own way of doing things, but it respects generally accepted standards.</para>
 -->
-  <para>Linux 使用的是基于 <emphasis> 运行级（run-levels）</emphasis> 概念的称为 SysVinit 的专用启动工具。它在不同的系统上可能是完全不一样的，所以不能认为一个脚本在某个 Linux 发行版上工作正常，于是在 LFS 中也会正常工作。LFS 有自己的一套规则，当然，LFS 也遵守一些公认的标准。 </para>
+  <para>Linux 使用的是基于<emphasis>运行级（run-levels）</emphasis>概念的称为 SysVinit 的专用启动工具。它在不同的系统上可能是完全不一样的，所以不能认为一个脚本在某个 Linux 发行版上工作正常，于是在 LFS 中也会正常工作。LFS 有自己的一套规则，当然，LFS 也遵守一些公认的标准。</para>
+
 <!--E
   <para>SysVinit (which will be referred to as <quote>init</quote> from now on)
   works using a run-levels scheme. There are seven (numbered 0 to 6) run-levels
@@ -33,7 +35,7 @@
   perform when it starts up. The default run-level is 3. Here are the
   descriptions of the different run-levels as they are implemented:</para>
 -->
-  <para>SysVinit（从现在开始我们称之为 <quote>init</quote> ）以运行级的模式来工作，一般有 7 个运行级(从 0 到 6，实际上可以有更多的运行级，但都是用于特殊情况而且一般使用不到。参加 <filename>init(8)</filename>以获得更多信息，每个运行级对应于一套设定好的任务，当启动一个运行级的时候，计算机就需要执行相应的任务。默认的运行级是 3，下面是对不同运行级的描述： </para> 
+  <para>SysVinit（从现在开始我们称之为 <quote>init</quote>）以运行级的模式来工作。一般有 7 个运行级（从 0 到 6，实际上可以有更多的运行级，但都是用于特殊情况而且一般使用不到。参考 <filename>init(8)</filename>以获得更多信息），每个运行级对应于一套设定好的任务，当启动一个运行级的时候，计算机就需要执行相应的任务。默认的运行级是 3，下面是对不同运行级的描述：</para> 
 
 <!--E
 <literallayout>0: halt the computer
@@ -44,7 +46,6 @@
 5: same as 4, it is usually used for GUI login (like X's <command>xdm</command> or KDE's <command>kdm</command>)
 6: reboot the computer</literallayout>
 -->
-
 <literallayout>0: 停止计算机
 1: 单用户模式
 2: 无网络多用户模式 
@@ -62,8 +63,7 @@
   <command>init 0</command> is an alias for the <command>halt</command>
   command.</para>
 -->
-
-  <para>用来改变运行级的命令是 <command>init <replaceable>&lt;runlevel&gt;</replaceable></command>, 这里的 <replaceable>&lt;runlevel&gt;</replaceable> 是目标运行级。 例如要重启计算机，用户可以运行 <command>init 6</command> 命令， <command>reboot</command> 其实只是这个命令的别名。同样 <command>halt</command> 也只是 <command>init 0</command> 的一个别名。</para>
+  <para>用来改变运行级的命令是 <command>init <replaceable>&lt;runlevel&gt;</replaceable></command>，这里的 <replaceable>&lt;runlevel&gt;</replaceable> 是目标运行级。例如要重启计算机，用户可以运行 <command>init 6</command> 命令，<command>reboot</command> 其实只是这个命令的别名。同样 <command>halt</command> 也只是 <command>init 0</command> 的一个别名。</para>
 
 <!--E
   <para>There are a number of directories under <filename
@@ -78,7 +78,7 @@
   <command>init</command> switches to another run-level, the appropriate services
   are either started or stopped, depending on the runlevel chosen.</para>
 -->
-    <para> 在 <filename class="directory">/etc/rc.d</filename> 目录下有一些类似于 <filename  class="directory">rc?.d</filename> 的目录(这里 ? 是运行级的数字)以及 <filename class="directory">rcsysinit.d</filename> ，里面都包含许多符号链接，其中一些以  <emphasis>K</emphasis> 字母开头，另外一些以 <emphasis>S</emphasis> 字母开头，这些链接名在首字母后面都跟着两个数字。K 字母的含义是停止(杀死)一个服务，S 字母的含义是启动一个服务。而数字则确定这些脚本的启动顺序，从 00 到 99(数字越小执行的越早)。当 <command>init</command> 转换到其它运行级时，一些相应的服务会停止，而另一些服务则会启动。 </para>
+  <para>在 <filename class="directory">/etc/rc.d</filename> 目录下有一些类似于 <filename class="directory">rc?.d</filename> 的目录（这里 ? 是运行级的数字）以及 <filename class="directory">rcsysinit.d</filename>，里面都包含许多符号链接，其中一些以 <emphasis>K</emphasis> 字母开头，另外一些以 <emphasis>S</emphasis> 字母开头，这些链接名在首字母后面都跟着两个数字。K 字母的含义是停止（杀死）一个服务，S 字母的含义是启动一个服务。而数字则确定这些脚本的启动顺序，从 00 到 99（数字越小执行的越早）。当 <command>init</command> 转换到其它运行级时，一些相应的服务会停止，而另一些服务则会启动。</para>
 
 <!--E
   <para>The real scripts are in <filename
@@ -93,7 +93,7 @@
   is encountered, the appropriate script is run with the
   <parameter>start</parameter> argument.</para>
 -->
-  <para>真正的脚本则在 <filename  class="directory">/etc/rc.d/init.d</filename> 目录下，它们完成实际工作，符号链接都是指向它们的。停止脚本的链接和启动脚本的链接都指向 <filename class="directory">/etc/rc.d/init.d</filename> 目录下同一个脚本，这是因为调用这些脚本时可以使用不同的参数，例如 <parameter>start</parameter>， <parameter>stop</parameter>，   <parameter>restart</parameter>， <parameter>reload</parameter> 和   <parameter>status</parameter>。 当调用 K 链接时，相应的脚本用 <parameter>stop</parameter> 参数运行；当调用 S 链接时，相应的脚本用 <parameter>start</parameter> 参数运行。</para>
+  <para>真正的脚本则在 <filename  class="directory">/etc/rc.d/init.d</filename> 目录下，它们完成实际工作，符号链接都是指向它们的。停止脚本的链接和启动脚本的链接都指向 <filename class="directory">/etc/rc.d/init.d</filename> 目录下同一个脚本，这是因为调用这些脚本时可以使用不同的参数，例如 <parameter>start</parameter>、<parameter>stop</parameter>、<parameter>restart</parameter>、<parameter>reload</parameter> 和 <parameter>status</parameter>。当调用 K 链接时，相应的脚本用 <parameter>stop</parameter> 参数运行；当调用 S 链接时，相应的脚本用 <parameter>start</parameter> 参数运行。</para>
 
 <!--E
   <para>There is one exception to this explanation. Links that start
@@ -105,23 +105,23 @@
   is that when a user is going to reboot or halt the system, nothing
   needs to be started.  The system only needs to be stopped.</para>
 -->
-  <para>上面的说明有一个例外，在 <filename  class="directory">rc0.d</filename> 和 <filename  class="directory">rc6.d</filename> 目录下以 <emphasis>S</emphasis> 开头的链接不会启动任何东西，而是用 <parameter>stop</parameter> 参数调用，来停止某些服务。这背后的逻辑是，当用户要重启或关闭系统的时候，不会要启动什么服务，只会要系统停止。 </para>
+  <para>上面的说明有一个例外，在 <filename class="directory">rc0.d</filename> 和 <filename  class="directory">rc6.d</filename> 目录下以 <emphasis>S</emphasis> 开头的链接不会启动任何东西，而是用 <parameter>stop</parameter> 参数调用，来停止某些服务。这背后的逻辑是，当用户要重启或关闭系统的时候，不会要启动什么服务，只会要系统停止。 </para>
 
 <!--E
   <para>These are descriptions of what the arguments make the scripts
   do:</para>
 -->
-  <para> 以下是脚本参数的描述： </para>
+  <para>以下是脚本参数的描述：</para>
 
   <variablelist>
 
     <varlistentry>
       <term><parameter>start</parameter></term>
-      <listitem>	
+      <listitem>        
 <!--E
         <para>The service is started.</para>
 -->
-	<para> 启动服务。 </para>
+        <para>启动服务。</para>
       </listitem>
     </varlistentry>
 
@@ -131,7 +131,7 @@
 <!--E
         <para>The service is stopped.</para>
 -->
-	<para> 停止服务。 </para>
+        <para>停止服务。</para>
       </listitem>
     </varlistentry>
 
@@ -141,7 +141,7 @@
 <!--
         <para>The service is stopped and then started again.</para>
 -->
-	<para> 停止服务，然后再启动。 </para>
+        <para>停止服务，然后再启动。</para>
       </listitem>
     </varlistentry>
 
@@ -153,7 +153,7 @@
         This is used after the configuration file of a service was modified, when
         the service does not need to be restarted.</para>
 -->
-	<para> 该服务的配置已更新。如果修改了某个服务的配置文件，又不必重启这个服务的时候，可以使用这个参数。</para>
+        <para>该服务的配置已更新。如果修改了某个服务的配置文件，又不必重启这个服务的时候，可以使用这个参数。</para>
       </listitem>
     </varlistentry>
 
@@ -163,7 +163,7 @@
 <!--E
         <para>Tells if the service is running and with which PIDs.</para>
 -->
-	<para>显示服务的状态，如果服务正在运行，会显示该服务进程的 PID。 </para>
+        <para>显示服务的状态，如果服务正在运行，会显示该服务进程的 PID。</para>
       </listitem>
     </varlistentry>
 
@@ -173,6 +173,6 @@
   it is your own LFS system). The files given here are an example of how
   it can be done.</para>
 -->
-  <para>您可以自由修改启动进程工作的方式(毕竟这是您自己的 LFS 系统)，我们这里给出的文件只是它们怎样工作的一个示例而已。</para>
+  <para>您可以自由修改启动进程工作的方式（毕竟这是您自己的 LFS 系统），我们这里给出的文件只是它们怎样工作的一个示例而已。</para>
 
 </sect1>

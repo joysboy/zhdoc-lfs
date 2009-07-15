@@ -10,18 +10,21 @@
 <!--E
   <title>Device and Module Handling on an LFS System</title>
 -->
-  <title> LFS 系统的设备和模块处理 </title>
+  <title>LFS 系统的设备和模块处理</title>
+
   <indexterm zone="ch-scripts-udev">
     <primary sortas="a-Udev">Udev</primary>
     <secondary>usage</secondary>
   </indexterm>
+
 <!--E
   <para>In <xref linkend="chapter-building-system"/>, we installed the Udev
   package. Before we go into the details regarding how this works,
   a brief history of previous methods of handling devices is in
   order.</para>
 -->
-  <para> 在 <xref linkend="chapter-building-system"/>里，我们安装了 Udev 软件包，在开始深入讨论它如何工作之前，我们先简要回顾一下以前处理设备的方法。</para>
+  <para>在<xref linkend="chapter-building-system"/>里，我们安装了 Udev 软件包，在开始深入讨论它如何工作之前，我们先简要回顾一下以前处理设备的方法。</para>
+
 <!--E
   <para>Linux systems in general traditionally use a static device creation
   method, whereby a great many device nodes are created under <filename
@@ -32,8 +35,7 @@
   major and minor device numbers for every possible device that might exist in
   the world.</para>
 -->
-
-  <para>传统上一般 Linux 系统使用创建静态设备的方法，因此在 <filename  class="directory">/dev</filename> 目录下创建了大量的设备节点(有时会有数千个节点)，而不管对应的硬件设备实际上是否存在。这通常是由 <command>MAKEDEV</command> 脚本完成的，这个脚本包含许多调用 <command>mknod</command> 程序的命令，为这个世界上可能存在的每个设备创建相应的主设备号和次设备号。</para>
+  <para>传统上一般 Linux 系统使用创建静态设备的方法，因此在 <filename  class="directory">/dev</filename> 目录下创建了大量的设备节点（有时会有数千个节点），而不管对应的硬件设备实际上是否存在。这通常是由 <command>MAKEDEV</command> 脚本完成的，这个脚本包含许多调用 <command>mknod</command> 程序的命令，为这个世界上可能存在的每个设备创建相应的主设备号和次设备号。</para>
 
 <!--E
   <para>Using the Udev method, only those devices which are detected by the
@@ -43,13 +45,14 @@
   resides entirely in system memory). Device nodes do not require much space, so
   the memory that is used is negligible.</para>
 -->
-  <para>而使用 udev 方式的时候，只有被内核检测到的设备才为其创建设备节点。因为每次系统启动的时候都要重新创建这些设备节点，所以它们被存储在 <systemitem class="filesystem">tmpfs</systemitem> 文件系统(一种完全存在于内存里，不占用任何磁盘空间的文件系统)上，设备节点不需要很多磁盘空间，所占用的内存可以忽略不计。 </para>
+  <para>而使用 Udev 方式的时候，只有被内核检测到的设备才为其创建设备节点。因为每次系统启动的时候都要重新创建这些设备节点，所以它们被存储在 <systemitem class="filesystem">tmpfs</systemitem> 文件系统（一种完全存在于内存里，不占用任何磁盘空间的文件系统）上，设备节点不需要很多磁盘空间，所占用的内存可以忽略不计。</para>
 
   <sect2>
 <!--E
     <title>History</title>
 -->
     <title>历史</title>
+
 <!--E
     <para>In February 2000, a new filesystem called <systemitem
     class="filesystem">devfs</systemitem> was merged into the 2.3.46 kernel
@@ -58,7 +61,8 @@
     dynamically never received overwhelming support from the core kernel
     developers.</para>
 -->
-    <para>2000 年 2 月的时候，2.3.46 版本的内核引入了一种称为 <systemitem  class="filesystem">devfs</systemitem> 的文件系统，在 2.4 系列稳定版本的内核中都是可用的。尽管它存在于内核源代码中，但这种动态创建设备的方法却从未得到核心内核开发者们的全力支持。</para>
+    <para>2000 年 2 月的时候，2.3.46 版本的内核引入了一种称为 <systemitem class="filesystem">devfs</systemitem> 的文件系统，在 2.4 系列稳定版本的内核中都是可用的。尽管它存在于内核源代码中，但这种动态创建设备的方法却从未得到核心内核开发者们的全力支持。</para>
+
 <!--E
     <para>The main problem with the approach adopted by <systemitem
     class="filesystem">devfs</systemitem> was the way it handled device
@@ -73,7 +77,7 @@
     period &ndash; due to a lack of maintenance &ndash; and was finally removed
     from the kernel in June, 2006.</para>
 -->
-    <para><systemitem  class="filesystem">devfs</systemitem> 存在的主要的问题是它处理设备检测、创建和命名的方式，其中设备节点的命名可能是最严重的问题。一般可接受的方式是，如果设备名是可配置的，那么设备命名策略应该由系统管理员决定，而不是由某些开发者强制规定。<systemitem    class="filesystem">devfs</systemitem> 文件系统还存在竞争条件(race conditions)的问题，这是它天生的设计缺陷，不对内核做彻底的修改就无法修正这个问题。因为长久以来它都被标记为 deprecated(反对的)，并且由于缺乏维护，最终在2006 年 6 月 从内核中移除。 </para>
+    <para><systemitem class="filesystem">devfs</systemitem> 存在的主要的问题是它处理设备检测、创建和命名的方式，其中设备节点的命名可能是最严重的问题。一般可接受的方式是，如果设备名是可配置的，那么设备命名策略应该由系统管理员决定，而不是由某些开发者强制规定。<systemitem class="filesystem">devfs</systemitem> 文件系统还存在竞争条件（race conditions）的问题，这是它天生的设计缺陷，不对内核做彻底的修改就无法修正这个问题。因为长久以来它都被标记为不推荐的（deprecated），并且由于缺乏维护，最终在2006 年 6 月 从内核中移除。</para>
 
 <!--E
     <para>With the development of the unstable 2.5 kernel tree, later released
@@ -85,19 +89,21 @@
     replacement for <systemitem class="filesystem">devfs</systemitem> became
     much more realistic.</para>
 -->
-    <para> 随着非稳定的 2.5 内核树的开发，即后来发布的 2.6 系列稳定版本内核，一种被称为 <systemitem class="filesystem">sysfs</systemitem> 的新虚拟文件系统诞生了。<systemitem class="filesystem">sysfs</systemitem> 的工作是把系统的硬件配置视图导出给用户空间的进程。由于有了这个用户空间可见的表示，代替 <systemitem class="filesystem">devfs</systemitem> 方案的时机就成熟了。  </para>
+    <para>随着非稳定的 2.5 内核树的开发，即后来发布的 2.6 系列稳定版本内核，一种被称为 <systemitem class="filesystem">sysfs</systemitem> 的新虚拟文件系统诞生了。<systemitem class="filesystem">sysfs</systemitem> 的工作是把系统的硬件配置视图导出给用户空间的进程。由于有了这个用户空间可见的表示，代替 <systemitem class="filesystem">devfs</systemitem> 方案的时机就成熟了。</para>
   </sect2>
 
   <sect2>
 <!--E
     <title>Udev Implementation</title>
 -->
-    <title>Udev 实现`</title>
+    <title>Udev 实现</title>
+
     <sect3>
 <!--E
       <title>Sysfs</title>
 -->
       <title>Sysfs 文件系统</title>
+
 <!--E
       <para>The <systemitem class="filesystem">sysfs</systemitem> filesystem was
       mentioned briefly above. One may wonder how <systemitem
@@ -113,9 +119,7 @@
       available to userspace processes and to <command>udevd</command> for device
       node creation.</para>
 -->
-      <para>上面简单的提到了 <systemitem class="filesystem">sysfs</systemitem> 文件系统，您可能想知道 <systemitem class="filesystem">sysfs</systemitem> 是怎么认出系统中存在的设备以及应该使用什么设备号。对于已经编入内核的驱动程序，当被内核检测到的时候，会直接在 <systemitem class="filesystem">sysfs</systemitem> 中注册其对象；对于编译成模块的驱动程序，当模块载入的时候才会这样做。一旦挂载了 <systemitem class="filesystem">sysfs</systemitem> 文件系统(挂载到 <filename   class="directory">/sys</filename>)，内建的驱动程序在 <systemitem class="filesystem">sysfs</systemitem> 注册的数据就可以被用户空间的进程使用，并提供给 <command>udevd</command> 以创建设备节点。 </para>
-
-
+      <para>上面简单的提到了 <systemitem class="filesystem">sysfs</systemitem> 文件系统，您可能想知道 <systemitem class="filesystem">sysfs</systemitem> 是怎么认出系统中存在的设备以及应该使用什么设备号。对于已经编入内核的驱动程序，当被内核检测到的时候，会直接在 <systemitem class="filesystem">sysfs</systemitem> 中注册其对象；对于编译成模块的驱动程序，当模块载入的时候才会这样做。一旦挂载了 <systemitem class="filesystem">sysfs</systemitem> 文件系统（挂载到 <filename   class="directory">/sys</filename>），内建的驱动程序在 <systemitem class="filesystem">sysfs</systemitem> 注册的数据就可以被用户空间的进程使用，并提供给 <command>udevd</command> 以创建设备节点。 </para>
 
     </sect3>
 
@@ -124,6 +128,7 @@
       <title>Udev Bootscript</title>
 -->
       <title>Udev 启动脚本</title>
+
 <!--E
       <para>The <command>S10udev</command> initscript takes care of creating
       device nodes when Linux is booted. The script unsets the uevent handler
@@ -145,9 +150,7 @@
       any devices that have already been registered and then waits for
       <command>udevd</command> to handle them.</para>
 -->
-      <para><command>S10udev</command> 初始化脚本负责在 Linux 启动的时候创建设备节点。该脚本首先将 <command>/sbin/hotplug</command> 注册为热插拔事件处理程序.  这样做是因为内核不再需要运行一个外部的二进制程序。相反 <command>udevd</command> 将会为内核传送的 uevents 信号听从 socket 网络链接。然后，这个启动脚本复制 <filename class="directory">/lib/udev/devices</filename> 里面的静态设备节点号到 <filename  class="directory">/dev</filename>里面。 这是必要的，因为，动态设备在处理系统启动早期的可用程序，或者是 <command>udevd</command> 自身需要的程序之前需要一些设备、目录和符号链接。在 <filename class="directory">/lib/udev/devices</filename> 里面创建静态的的设备节点也为设备创建了一个简单的工作区，而这些设备不被动态设备支持。之后启动脚本开始 Udev 守护进程 <command>udevd</command> 。守护进程将会对它接收到的任何一个 uevent 有用。最终，启动脚本强制内核对任意一个已经注册的设备重试 uevent ，并等待 <command>udevd</command> 来解决它们。</para>
-
-
+      <para><command>S10udev</command> 初始化脚本负责在 Linux 启动的时候创建设备节点。该脚本首先将 <command>/sbin/hotplug</command> 注册为热插拔事件处理程序。这样做是因为内核不再需要运行一个外部的二进制程序，相反 <command>udevd</command> 将会为内核传送的 uevents 信号听从 socket 网络链接。然后，这个启动脚本复制 <filename class="directory">/lib/udev/devices</filename> 里面的静态设备节点号到 <filename  class="directory">/dev</filename>里面。 这是必要的，因为动态设备在处理系统启动早期的可用程序，或者是 <command>udevd</command> 自身需要的程序之前需要一些设备、目录和符号链接。在 <filename class="directory">/lib/udev/devices</filename> 里面创建静态的的设备节点也为设备创建了一个简单的工作区，而这些设备不被动态设备支持。之后启动脚本开启 Udev 守护进程 <command>udevd</command>。守护进程将会对它接收到的任何一个 uevent 有用。最终，启动脚本强制内核对任意一个已经注册的设备重试 uevent，并等待 <command>udevd</command> 来解决它们。</para>
 
     </sect3>
 
@@ -156,6 +159,7 @@
       <title>Device Node Creation</title>
 -->
       <title>设备节点创建</title>
+
 <!--
       <para>To obtain the right major and minor number for a device, Udev relies
       on the information provided by <systemitem
@@ -175,7 +179,7 @@
       rules configuration files are available in
       <filename>/usr/share/doc/udev-&udev-version;/index.html</filename></para>
 -->
-      <para>为了得到正确的主次设备号，Udev 依赖于 <filename   class="directory">/sys</filename>目录下的<systemitem  class="filesystem">sysfs</systemitem> 提供的信息。例如， <filename>/sys/class/tty/vcs/dev</filename> 包含字符串 <quote>7:0</quote>。 这个字符串是被 <command>udevd</command>  用来创建主设备号是<emphasis>7</emphasis> 、次设备号是 <emphasis>0</emphasis> 的设备节点。 在<filename class="directory">/dev</filename> 目录下创建的设备节点的名字和权限由 <filename class="directory">/etc/udev/rules.d/</filename> 目录下相应的规则决定。这些以类似的形式包含在 LFS-Bootscripts 包中。 如果 <command>udevd</command> 不能为它现在创建的设备发现一个规则，它会默认把权限设置为 <emphasis>660</emphasis> ， 属主设置为 <emphasis>root:root</emphasis> 。 Udev 规则语法的文档可以查看 <filename>/usr/share/doc/udev-&udev-version;/index.html</filename> 。 </para>
+      <para>为了得到正确的主次设备号，Udev 依赖于 <filename class="directory">/sys</filename>目录下的<systemitem class="filesystem">sysfs</systemitem> 提供的信息。例如，<filename>/sys/class/tty/vcs/dev</filename> 包含字符串 <quote>7:0</quote>。这个字符串是被 <command>udevd</command> 用来创建主设备号是<emphasis>7</emphasis>、次设备号是 <emphasis>0</emphasis> 的设备节点。在 <filename class="directory">/dev</filename> 目录下创建的设备节点的名字和权限由 <filename class="directory">/etc/udev/rules.d/</filename> 目录下相应的规则决定。这些以类似的形式包含在 LFS-Bootscripts 包中。如果 <command>udevd</command> 不能为它现在创建的设备发现一个规则，它会默认把权限设置为 <emphasis>660</emphasis>，属主设置为 <emphasis>root:root</emphasis>。Udev 规则语法的文档可以查看 <filename>/usr/share/doc/udev-&udev-version;/index.html</filename>。</para>
 
     </sect3>
 
@@ -184,6 +188,7 @@
       <title>Module Loading</title>
 -->
       <title> 模块加载 </title>
+
 <!--E
       <para>Device drivers compiled as modules may have aliases built into them.
       Aliases are visible in the output of the <command>modinfo</command>
@@ -204,7 +209,7 @@
       thus loading all modules whose aliases match this string after wildcard
       expansion.</para>
 -->
-      <para>被编译成模块的设备驱动可能有编译进去的别名。别名可以通过 <command>modinfo</command> 程序的输出来查看，通常与设备总线特有的标识有关（模块要支持）。例如， <emphasis>snd-fm801</emphasis> 驱动支持 PCI 设备，通过生产厂商 ID 0x1319 和设备 ID 0x0801，有一个别名<quote>pci:v00001319d00000801sv*sd*bc04sc01i*</quote>。对于大多数的设备，总线驱动通过 <systemitem class="filesystem">sysfs</systemitem> 导出可能会处理的设备驱动的别名。 例如 <filename>/sys/bus/pci/devices/0000:00:0d.0/modalias</filename> 文件可能包含字符串    <quote>pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</quote> 。为 Udev 提供的默认规则会导致 <command>udevd</command> 调用 <command>/sbin/modprobe</command> 处理热插拔事件环境变量 <envar>MODALIAS</envar> 的内容（应该与 sysfs 中的 <filename>modalias</filename> 文件的内容一样）。因此在通配符扩展之后，加载所有的别名匹配这个字符串的模块。</para>
+      <para>被编译成模块的设备驱动可能有编译进去的别名。别名可以通过 <command>modinfo</command> 程序的输出来查看，通常与设备总线特有的标识有关（模块要支持）。例如，<emphasis>snd-fm801</emphasis> 驱动支持 PCI 设备，通过生产厂商 ID 0x1319 和设备 ID 0x0801，有一个别名<quote>pci:v00001319d00000801sv*sd*bc04sc01i*</quote>。对于大多数的设备，总线驱动通过 <systemitem class="filesystem">sysfs</systemitem> 导出可能会处理的设备驱动的别名。例如 <filename>/sys/bus/pci/devices/0000:00:0d.0/modalias</filename> 文件可能包含字符串<quote>pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</quote>。为 Udev 提供的默认规则会导致 <command>udevd</command> 调用 <command>/sbin/modprobe</command> 处理热插拔事件环境变量 <envar>MODALIAS</envar> 的内容（应该与 sysfs 中的 <filename>modalias</filename> 文件的内容一样）。因此在通配符扩展之后，加载所有的别名匹配这个字符串的模块。</para>
 
 <!--E
       <para>In this example, this means that, in addition to
@@ -213,13 +218,13 @@
       available. See below for ways in which the loading of unwanted drivers can
       be prevented.</para>
 -->
-      <para>在这个例子中，除了 <emphasis>snd-fm801</emphasis> ， 荒废的（不想要的） <emphasis>forte</emphasis> 驱动会被加载（如果它可用）。 查看下面的方法来避免加载不想要的模块。</para>
+      <para>在这个例子中，除了 <emphasis>snd-fm801</emphasis>，荒废的（不想要的）<emphasis>forte</emphasis> 驱动会被加载（如果它可用）。查看下面的方法来避免加载不想要的模块。</para>
 
 <!--E
       <para>The kernel itself is also able to load modules for network
       protocols, filesystems and NLS support on demand.</para>
 -->
-      <para>内核自身能在后台加载有关网络协议、文件系统和 NLS （国际语言支持） 支持的模块。 </para>
+      <para>内核自身能在后台加载有关网络协议、文件系统和 NLS（国际语言支持）支持的模块。</para>
 
     </sect3>
 
@@ -228,6 +233,7 @@
       <title>Handling Hotpluggable/Dynamic Devices</title>
 -->
       <title>处理可热插拔/动态设备</title>
+
 <!--E
       <para>When you plug in a device, such as a Universal Serial Bus (USB) MP3
       player, the kernel recognizes that the device is now connected and
@@ -244,6 +250,7 @@
     <title>Problems with Loading Modules and Creating Devices</title>
 -->
     <title>创建设备的问题</title>
+
 <!--E
     <para>There are a few possible problems when it comes to automatically
     creating device nodes.</para>
@@ -255,6 +262,7 @@
       <title>A kernel module is not loaded automatically</title>
 -->
       <title>内核模块没有自动加载</title>
+
 <!--E
       <para>Udev will only load a module if it has a bus-specific alias and the
       bus driver properly exports the necessary aliases to <systemitem
@@ -263,8 +271,8 @@
       known to load properly-written drivers for INPUT, IDE, PCI, USB, SCSI,
       SERIO and FireWire devices.</para>
 -->
-      <para>如果有一个总线特有的别名，并且总线驱动器导出必需的别名到 <systemitem
-      class="filesystem">sysfs</systemitem> ，那么 Udev 将只会加载一个模块。在其他情况下，需要安排其它的模块加载方式。在 Linux-&linux-version; 中，Udev 为 INPUT， IDE， PCI， USB， SCSI， SERIO 和 FireWire 设备加载适当的驱动。</para>
+      <para>如果有一个总线特有的别名，并且总线驱动器导出必需的别名到 <systemitem class="filesystem">sysfs</systemitem>，那么 Udev 将只会加载一个模块。在其他情况下，需要安排其它的模块加载方式。在 Linux-&linux-version; 中，Udev 为 INPUT、IDE、PCI、USB、SCSI、SERIO 和 FireWire 设备加载适当的驱动。</para>
+
 <!--E
       <para>To determine if the device driver you require has the necessary
       support for Udev, run <command>modinfo</command> with the module name as
@@ -281,7 +289,8 @@
       driver. Load the driver without the help from Udev and expect the issue
       to be fixed later.</para>
 -->
-      <para>如果 <filename>modalias</filename> 文件存在于 <systemitem     class="filesystem">sysfs</systemitem> 中，驱动程序支持设备并且可以直接通信，但是没有别名，这是驱动中的一个 bug 。不要利用 Udev 的帮助加载驱动，希望在以后这个问题会被修正。</para>
+      <para>如果 <filename>modalias</filename> 文件存在于 <systemitem class="filesystem">sysfs</systemitem> 中，驱动程序支持设备并且可以直接通信，但是没有别名，这是驱动中的一个 bug。不要利用 Udev 的帮助加载驱动，希望在以后这个问题会被修正。</para>
+
 <!--E
       <para>If there is no <filename>modalias</filename> file in the relevant
       directory under <filename class="directory">/sys/bus</filename>, this
@@ -289,13 +298,14 @@
       this bus type. With Linux-&linux-version;, this is the case with ISA
       busses. Expect this issue to be fixed in later kernel versions.</para>
 -->
-      <para>如果 <filename class="directory">/sys/bus</filename> 的相应目录内没有 <filename>modalias</filename> 文件，这就意为着内核开发者还没有添加对这种总线类型的模块别名的支持。在 Linux-&linux-version; 中， ISA 总线就是这种情况。希望在下一个内核版本中会修正这个问题。</para>
+      <para>如果 <filename class="directory">/sys/bus</filename> 的相应目录内没有 <filename>modalias</filename> 文件，这就意为着内核开发者还没有添加对这种总线类型的模块别名的支持。在 Linux-&linux-version; 中，ISA 总线就是这种情况。希望在下一个内核版本中会修正这个问题。</para>
+
 <!--E
       <para>Udev is not intended to load <quote>wrapper</quote> drivers such as
       <emphasis>snd-pcm-oss</emphasis> and non-hardware drivers such as
       <emphasis>loop</emphasis> at all.</para>
 -->
-      <para>Udev 根本不会加载像 <emphasis>snd-pcm-oss</emphasis> 和像非硬件驱动 <emphasis>loop</emphasis> 的 <quote>wrapper （封装）</quote> 驱动。</para>
+      <para>Udev 根本不会加载像 <emphasis>snd-pcm-oss</emphasis> 的<quote>包装</quote>驱动和像 <emphasis>loop</emphasis> 的非硬件驱动。</para>
 
     </sect3>
 
@@ -315,8 +325,7 @@
       wrapped module. To do this, add an <quote>install</quote> line in
       <filename>/etc/modprobe.conf</filename>. For example:</para>
 -->
-      <para>如果 <quote>wrapper （封装）</quote> 增强其它模块提供的功能 （例如， <emphasis>snd-pcm-oss</emphasis> 使声卡对于 OSS 程序可用来增强 <emphasis>snd-pcm</emphasis> ），配置 <command>modprobe</command> 使其在加载了相应模块后加载其封装模块。在<filename>/etc/modprobe.conf</filename> 中添加一行 <quote>install</quote> 来实现，例如：</para>
-
+      <para>如果<quote>包装</quote>模块只是增强其它模块提供的功能（例如 <emphasis>snd-pcm-oss</emphasis> 增强了 <emphasis>snd-pcm</emphasis>，它使声卡对于 OSS 程序可用），可以配置 <command>modprobe</command> 使其在加载了相应模块后加载其包装模块。着可以通过在<filename>/etc/modprobe.conf</filename> 中添加一行 <quote>install</quote> 来实现，例如：</para>
 
 <screen role="nodump"><literal>install snd-pcm /sbin/modprobe -i snd-pcm ; \
     /sbin/modprobe snd-pcm-oss ; true</literal></screen>
@@ -327,7 +336,7 @@
       <filename>/etc/sysconfig/modules</filename> file on a separate line.
       This works for wrapper modules too, but is suboptimal in that case.</para>
 -->
-      <para>如果模块不是一个封装，而是对自己本身有用，配置 <command>S05modules</command> 启动脚本使其在系统启动的时候加载。要实现这个，在 <filename>/etc/sysconfig/modules</filename> 文件的相应行上添加模块的名字。这对于封装模块也有用，但不是最优的。</para>
+      <para>如果模块不是一个包装，而是对自己本身有用，配置 <command>S05modules</command> 启动脚本使其在系统启动的时候加载。要完成此任务，可以在 <filename>/etc/sysconfig/modules</filename> 文件的相应行上添加模块的名字。包装模块也可以按照这种方式处理，但并不是最适合的。</para>
 
     </sect3>
 
@@ -342,10 +351,10 @@
       <filename>/etc/modprobe.conf</filename> file as done with the
       <emphasis>forte</emphasis> module in the example below:</para>
 -->
-      <para>在下面例子中，对于 <emphasis>forte</emphasis> 模块， 可以不编译它或者把它列入文件 <filename>/etc/modprobe.conf</filename> 的黑名单里。</para>
-
+      <para>在下面例子中，对于 <emphasis>forte</emphasis> 模块，可以不编译它或者把它列入文件 <filename>/etc/modprobe.conf</filename> 的黑名单里。</para>
 
 <screen role="nodump"><literal>blacklist forte</literal></screen>
+
 <!--E
       <para>Blacklisted modules can still be loaded manually with the
       explicit <command>modprobe</command> command.</para>
@@ -359,6 +368,7 @@
       <title>Udev creates a device incorrectly, or makes a wrong symlink</title>
 -->
       <title>Udev 错误地创建了设备或创建了错误的符号链接</title>
+
 <!--E
       <para>This usually happens if a rule unexpectedly matches a device. For
       example, a poorly-writen rule can match both a SCSI disk (as desired)
@@ -375,6 +385,7 @@
       <title>Udev rule works unreliably</title>
 -->
       <title>Udev 规则不可靠</title>
+
 <!--E
       <para>This may be another manifestation of the previous problem. If not,
       and your rule uses <systemitem class="filesystem">sysfs</systemitem>
@@ -394,12 +405,14 @@
       <title>Udev does not create a device</title>
 -->
       <title>Udev 没有创建设备</title>
+
 <!--E
       <para>Further text assumes that the driver is built statically into the
       kernel or already loaded as a module, and that you have already checked
       that Udev doesn't create a misnamed device.</para>
 -->
       <para>后面的文本假设驱动已经被静态地编译进了内核或者是已经作为模块被加载，你已经确认了 Udev 没有创建错误的设备。</para>
+
 <!--E
       <para>Udev has no information needed to create a device node if a kernel
       driver does not export its data to <systemitem
@@ -413,7 +426,7 @@
       <filename class="directory">/dev</filename> by the
       <command>S10udev</command> bootscript.</para>
 -->
-      <para>如果内核驱动没有将其数据导出到 <systemitem class="filesystem">sysfs</systemitem> ， Udev 就没有足够信息来创建设备节点。这个问题在内核源代码树之外的第三方驱动程序上尤为常见。用恰当的主/次设备号在 <filename>/lib/udev/devices</filename> 中创建一个静态的设备节点（参考内核文档里的 <filename>devices.txt</filename> 或者 第三驱动厂商提供的文档）。 静态的设备节点将被 <command>S10udev</command> 启动脚本拷贝到 <filename class="directory">/dev</filename> 。</para>
+      <para>如果内核驱动没有将其数据导出到 <systemitem class="filesystem">sysfs</systemitem>，Udev 就没有足够信息来创建设备节点。这个问题在内核源代码树之外的第三方驱动程序上尤为常见。用恰当的主/次设备号在 <filename>/lib/udev/devices</filename> 中创建一个静态的设备节点（参考内核文档里的 <filename>devices.txt</filename> 或者第三驱动厂商提供的文档）。静态的设备节点将被 <command>S10udev</command> 启动脚本拷贝到 <filename class="directory">/dev</filename> 目录中。</para>
 
     </sect3>
 
@@ -422,6 +435,7 @@
       <title>Device naming order changes randomly after rebooting</title>
 -->
       <title>重启后设备名字顺序变化</title>
+
 <!--E
       <para>This is due to the fact that Udev, by design, handles uevents and
       loads modules in parallel, and thus in an unpredictable order. This will
@@ -432,7 +446,7 @@
       See <xref linkend="ch-scripts-symlinks"/> and
       <xref linkend="ch-scripts-network"/> for examples.</para>
 -->
-      <para>这是由于 Udev 设计的问题，它以并行方式处理热插拔事件和加载模块，因此名字的顺序就会不可预测。这将不会被<quote>修正</quote>。您不应当依赖内核设备名字会稳定。相应的，根据设备稳定的属性（比如，序列号或者 Udev 安装的各种*_id工具的输出）写自己的规则来创建符号链接。例子请参见 <xref linkend="ch-scripts-symlinks"/> 和 <xref linkend="ch-scripts-network"/> 。</para>
+      <para>这是由于 Udev 设计的问题，它以并行方式处理热插拔事件和加载模块，因此名字的顺序就会不可预测。这将不会被<quote>修正</quote>。不要期望内核设备的名字是稳定的，而是应当根据设备稳定的属性（比如，序列号或者 Udev 安装的各种 *_id 工具的输出）写自己的规则来创建符号链接。例子请参见<xref linkend="ch-scripts-symlinks"/>和<xref linkend="ch-scripts-network"/>。</para>
 
     </sect3>
 
@@ -443,6 +457,7 @@
     <title>Useful Reading</title>
 -->
     <title>有用的读物</title>
+
 <!--E
     <para>Additional helpful documentation is available at the following
     sites:</para>

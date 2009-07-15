@@ -15,12 +15,14 @@
   <indexterm zone="ch-scripts-inputrc">
     <primary sortas="e-/etc/inputrc">/etc/inputrc</primary>
   </indexterm>
+
 <!--E
   <para>The <filename>inputrc</filename> file handles keyboard mapping for
   specific situations. This file is the startup file used by Readline &mdash; the
   input-related library &mdash; used by Bash and most other shells.</para>
 -->
   <para><filename>inputrc</filename> 文件为特定的情况处理键盘映射，这个文件被 Readline 用作启动文件，Readline 是 Bash 和其它大多数 shell 使用的与输入相关的库。</para>
+
 <!--E
   <para>Most people do not need user-specific keyboard mappings so the command
   below creates a global <filename>/etc/inputrc</filename> used by everyone who
@@ -28,7 +30,6 @@
   basis, you can create a <filename>.inputrc</filename> file in the user's home
   directory with the modified mappings.</para>
 -->
-
   <para>大多数人并不需要自定义键盘映射，所以下面的命令将创建一个适用于所有登陆用户的全局 <filename>/etc/inputrc</filename> 文件。如果你需要为某个用户覆盖默认的设置，你可以在该用户的主目录中创建一个包含自定义键盘映射的 <filename>.inputrc</filename> 文件。</para>
 
 <!--E

@@ -26,7 +26,7 @@
     <para>The LFS-Bootscripts package contains a set of scripts to start/stop the
     LFS system at bootup/shutdown.</para>
 -->
-	<para> LFS-Bootscripts 软件包包含一套在启动和关闭时 LFS 的启动和停止脚本。</para>
+	<para>LFS-Bootscripts 软件包包含一套在启动/关闭 LFS 时的开机/关机脚本。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -43,21 +43,28 @@
 <!--E 
     <title>Installation of LFS-Bootscripts</title>
 -->
-    <title> 安装 LFS-Bootscripts</title>
+    <title>安装 LFS-Bootscripts</title>
+
 <!--E
     <para>Install the package:</para>
 -->
-    <para> 安装软件包：</para>
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-bootscripts" role="content">
+<!--E
     <title>Contents of LFS-Bootscripts</title>
+-->
+    <title>LFS-Bootscripts 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed scripts</segtitle>
+-->
+      <segtitle>安装的脚本</segtitle>
 
       <seglistitem>
         <seg>checkfs, cleanfs, console, consolelog, functions, halt, ifdown,
@@ -71,7 +78,7 @@
 <!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
 -->
-      <bridgehead renderas="sect3"> 简要描述 </bridgehead>
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
@@ -246,7 +253,7 @@
           <para>Mounts virtual kernel file systems, such as <systemitem
           class="filesystem">proc</systemitem></para>
 -->
-          <para>用来挂载内核提供的文件系统，例如 <systemitem class="filesystem">proc</systemitem></para>
+          <para>用来挂载内核提供的文件系统，例如 <systemitem class="filesystem">proc</systemitem>。</para>
 
           <indexterm zone="ch-scripts-bootscripts mountkernfs-bootscripts">
             <primary sortas="d-mountkernfs">mountkernfs</primary>
@@ -261,7 +268,7 @@
           <para>Sets up network interfaces, such as network cards, and sets up
           the default gateway (where applicable)</para>
 -->
-          <para>设置网络连接，例如网卡等。设置默认网关（如果可用）。 </para>
+          <para>设置网络连接，例如网卡等。设置默认网关（如果可用）。</para>
 
           <indexterm zone="ch-scripts-bootscripts network-bootscripts">
             <primary sortas="d-network">network</primary>
@@ -277,7 +284,7 @@
           running all the other bootscripts one-by-one, in a sequence determined
           by the name of the symbolic links being processed</para>
 -->
-          <para>主要的运行级控制脚本，负责让所有其它脚本按符号链接名确定的顺序一个接一个的运行。 </para>
+          <para>主要的运行级控制脚本，负责让所有其它脚本按符号链接名确定的顺序一个接一个的运行。</para>
 
           <indexterm zone="ch-scripts-bootscripts rc-bootscripts">
             <primary sortas="d-rc">rc</primary>
@@ -306,7 +313,7 @@
           <para>Makes sure every process is terminated before the system reboots
           or halts</para>
 -->
-          <para>在系统重启或关闭系统之前，确保每一个进程都已经终止了。 </para>
+          <para>在系统重启或关闭系统之前，确保每一个进程都已经终止了。</para>
 
           <indexterm zone="ch-scripts-bootscripts sendsignals-bootscripts">
             <primary sortas="d-sendsignals">sendsignals</primary>
@@ -321,7 +328,7 @@
           <para>Resets the kernel clock to local time in case the hardware clock
           is not set to UTC time</para>
 -->
-          <para>如果硬件时钟没有设置为 UTC 时间，将内核时钟重置为本地时间。 </para>
+          <para>如果硬件时钟没有设置为 UTC 时间，将内核时钟重置为本地时间。</para>
 
           <indexterm zone="ch-scripts-bootscripts setclock-bootscripts">
             <primary sortas="d-setclock">setclock</primary>
@@ -336,7 +343,7 @@
           <para>Provides the functionality needed to assign a static Internet
           Protocol (IP) address to a network interface</para>
 -->
-          <para>提供为网络接口指派静态 IP 地址的功能 </para>
+          <para>提供为网络接口指派静态 IP 地址的功能。</para>
 
           <indexterm zone="ch-scripts-bootscripts static-bootscripts">
             <primary sortas="d-static">static</primary>
@@ -350,7 +357,7 @@
 <!--E
           <para>Enables and disables swap files and partitions</para>
 -->
-          <para>启用或禁用交换文件和交换分区</para>
+          <para>启用或禁用交换文件和交换分区。</para>
           <indexterm zone="ch-scripts-bootscripts swap-bootscripts">
             <primary sortas="d-swap">swap</primary>
           </indexterm>
@@ -365,7 +372,7 @@
           <filename>/etc/sysctl.conf</filename>, if that file exists,
           into the running kernel</para>
 -->
-          <para>从 <filename>/etc/sysctl.conf</filename> 文件（如果存在）中读取系统配置变量到内核</para>
+          <para>从 <filename>/etc/sysctl.conf</filename> 文件（如果存在）中读取系统配置变量到内核。</para>
 
           <indexterm zone="ch-scripts-bootscripts sysctl-bootscripts">
             <primary sortas="d-sysctl">sysctl</primary>
@@ -379,7 +386,7 @@
 <!--E
           <para>Starts and stops the system and kernel log daemons</para>
 -->
-          <para>启动或停止系统和内核日志守护进程</para>
+          <para>启动或停止系统和内核日志守护进程。</para>
 
           <indexterm zone="ch-scripts-bootscripts sysklogd-bootscripts">
             <primary sortas="d-sysklogd">sysklogd</primary>
@@ -394,7 +401,7 @@
           <para>A template to create custom bootscripts for other
           daemons</para>
 -->
-          <para>为其它守护进程创建自定义启动脚本的模板</para>
+          <para>为其它守护进程创建自定义启动脚本的模板。</para>
 
           <indexterm zone="ch-scripts-bootscripts template-bootscripts">
             <primary sortas="d-template">template</primary>
@@ -409,7 +416,7 @@
           <para>Prepares the <filename class="directory">/dev</filename>
           directory and starts Udev</para>
 -->
-          <para>准备好 <filename class="directory">/dev</filename> 目录并启动 Udev 。</para>
+          <para>准备好 <filename class="directory">/dev</filename> 目录并启动 Udev。</para>
 
           <indexterm zone="ch-scripts-bootscripts udev-bootscripts">
             <primary sortas="d-udev">udev</primary>
@@ -425,7 +432,7 @@
           files from <filename class="directory">/dev/.udev</filename> to
           <filename class="directory">/etc/udev/rules.d</filename> if required</para>
 -->
-          <para>重试失败的 udev uevents 。如果需要则从 <filename class="directory">/dev/.udev</filename> 拷贝已经生成的规则文件到 <filename class="directory">/etc/udev/rules.d</filename> 。</para>
+          <para>重试失败的 udev uevents。如果需要则从 <filename class="directory">/dev/.udev</filename> 拷贝已经生成的规则文件到 <filename class="directory">/etc/udev/rules.d</filename>。</para>
 
           <indexterm zone="ch-scripts-bootscripts udev-retry-bootscripts">
             <primary sortas="d-udev-retry">udev_retry</primary>
