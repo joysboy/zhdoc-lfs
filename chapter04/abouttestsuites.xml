@@ -21,7 +21,7 @@
   functioning as the developer intended. It does not, however, guarantee
   that the package is totally bug free.</para>
 -->
-  <para>大多数软件包提供了测试程序集。编译完一个软件包之后立即运行一下它提供的测试程序是个好主意，因为测试程序将进行一次<quote>健全检查</quote>健全检查来确认所有的代码是否都正确编译了。通过了测试程序集的一系列检查，通常意味着软件包在按照开发者的预期工作，但是这并不保证这个软件包就完全没有 bug 了。</para>
+  <para>大多数软件包提供了测试套件。编译完一个软件包之后立即运行一下它提供的测试程序是个好主意，因为测试程序将进行一次<quote>健全检查</quote>来确认所有的代码是否都正确编译了。通过了测试套件的一系列检查，通常意味着软件包在按照开发者的预期工作，但是这并不保证这个软件包就完全没有 bug 了。</para>
 
 <!--E
   <para>Some test suites are more important than others. For example,
@@ -45,7 +45,7 @@
     instructions for running those test suites are provided for the benefit of
     testers and developers, but they are strictly optional.</para>
 -->
-    <para>经验显示，运行<xref linkend="chapter-temporary-tools"/>的测试包收获很小。宿主系统会不可避免的对第五章的测试造成影响，经常会有不能解释的错误。因为<xref linkend="chapter-temporary-tools"/>中编译的工具是临时的，会最终被丢弃，因此我们推荐一般水平的读者不需再做那一章的测试。这些测试程序的指令是为开发和测试人员准备的，它们不是必需的。</para>
+    <para>经验显示，运行<xref linkend="chapter-temporary-tools"/>的测试套件收获很小。宿主系统会不可避免的对该章中的测试造成影响，经常会有不能解释的错误。因为<xref linkend="chapter-temporary-tools"/>中编译的工具是临时的，会最终被丢弃，因此我们推荐一般水平的读者不需再做该章的测试。这些测试程序的指令是为开发和测试人员准备的，它们不是必需的。</para>
   </note>
 
 <!--E
@@ -57,7 +57,7 @@
   correctly. This issue is discussed in greater detail in <xref
   linkend="chapter-temporary-tools"/>.</para>
 -->
-  <para>Binutils 和 GCC 的测试程序一个常见的问题就是没有可用的伪终端(PTY)，这样可能会出现大量的测试失败。可能的原因有几个，但最可能的原因是宿主系统没有正确的设置好 <systemitem class="filesystem">devpts</systemitem> 文件系统，这个问题会在<xref linkend="chapter-temporary-tools"/>详细讨论。</para>
+  <para>Binutils 和 GCC 的测试程序一个常见的问题就是没有可用的伪终端（PTY），这样可能会出现大量的测试失败。可能的原因有几个，但最可能的原因是宿主系统没有正确的设置好 <systemitem class="filesystem">devpts</systemitem> 文件系统，这个问题会在<xref linkend="chapter-temporary-tools"/>详细讨论。</para>
 
 <!--E
   <para>Sometimes package test suites will fail, but for reasons which the

@@ -19,7 +19,7 @@
   <systemitem class="username">lfs</systemitem>, issue the following command
   to create a new <filename>.bash_profile</filename>:</para>
 -->
-  <para>通过给 <command>bash</command> shell 创建两个新的启动文件来设置一个良好的工作环境。作为 <systemitem class="username">lfs</systemitem> 用户登入，输入下面的命令生成新的 <filename>.bash_profile</filename> 文件：</para>
+  <para>通过给 <command>bash</command> shell 创建两个新的启动文件可以设置一个良好的工作环境。以 <systemitem class="username">lfs</systemitem> 用户登入，输入下面的命令创建新的 <filename>.bash_profile</filename> 文件：</para>
 
 <screen><userinput>cat &gt; ~/.bash_profile &lt;&lt; "EOF"
 <literal>exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash</literal>
@@ -38,7 +38,7 @@ EOF</userinput></screen>
   leak into the build environment. The technique used here achieves the goal of
   ensuring a clean environment.</para>
 -->
-  <para>当作为 <systemitem class="username">lfs</systemitem> 用户登入时，初始 Shell 一般是<emphasis>登入</emphasis>Shell，它会从宿主系统的 <filename>/etc/profile</filename> 文件（通常包含一些设置和环境变量），然后读取读入 <filename>.bash_profile</filename> 文件来完成初始化。<filename>.bash_profile</filename> 中的 <command>exec env -i.../bin/bash</command> 命令用完全空的环境（除了<envar>HOME</envar>、<envar>TERM</envar> 和 <envar>PS1</envar> 变量外）来启动 Shell。这样能保证我们的编译环境不会被宿主系统中不必要的或者有潜在危险的环境变量所影响，从而确保获得一个干净的工作环境。</para>
+  <para>当以 <systemitem class="username">lfs</systemitem> 用户登入时，会使用前面设定的 Bash Shell，它会首先读取宿主系统的 <filename>/etc/profile</filename> 文件（通常包含一些设置和环境变量），然后读取 <filename>.bash_profile</filename> 文件来完成初始化。<filename>.bash_profile</filename> 中的 <command>exec env -i.../bin/bash</command> 命令用完全空的环境（除了<envar>HOME</envar>、<envar>TERM</envar> 和 <envar>PS1</envar> 变量外）来启动 Shell。这样能保证我们的编译环境不会被宿主系统中不必要的或者有潜在危险的环境变量所影响，从而确保获得一个干净的工作环境。</para>
 
 <!--E
   <para>The new instance of the shell is a <emphasis>non-login</emphasis>
@@ -47,7 +47,7 @@ EOF</userinput></screen>
   <filename>.bashrc</filename> file instead. Create the
   <filename>.bashrc</filename> file now:</para>
 -->
-  <para>另一个 Shell 实例是<emphasis>非登入</emphasis>Shell，它不读取 <filename>/etc/profile</filename> 或 <filename>.bash_profile</filename>，而是 <filename>.bashrc</filename>，利用下面命令生成 <filename>.bashrc</filename>：</para>
+  <para>这个新创建的 bash 是<emphasis>非登入</emphasis> Shell，它不读取 <filename>/etc/profile</filename> 或 <filename>.bash_profile</filename> 文件，而是读取 <filename>.bashrc</filename> 文件。用下面命令创建 <filename>.bashrc</filename>：</para>
 
 <screen><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
 <literal>set +h
@@ -80,13 +80,13 @@ EOF</userinput></screen>
   <function>open(2)</function> system call, new files will end up with permission
   mode 644 and directories with mode 755).</para>
 -->
-  <para>将用户文件创建掩码(umask)设置为 022 保证了新生成的文件和目录只对其所有者可写，但其他人都可读和可执行。（假定 <function>open(2)</function> 系统调用使用默认模式，新文件权限模式为 644，目录为 755）。</para>
+  <para>将用户文件创建掩码（umask）设置为 022 保证了新生成的文件和目录只对其所有者可写，但其它人都可读和可执行。（假定 <function>open(2)</function> 系统调用使用默认模式，新文件权限模式为 644，目录为 755）。</para>
 
 <!--E
   <para>The <envar>LFS</envar> variable should be set to the chosen mount
   point.</para>
 -->
-  <para>LFS变量应当设置为所选择的挂载点。</para>
+  <para><envar>LFS</envar> 变量应当设置为所选择的挂载点。</para>
 
 <!--E
   <para>The <envar>LC_ALL</envar> variable controls the localization of certain
@@ -98,7 +98,7 @@ EOF</userinput></screen>
   <quote>POSIX</quote> or <quote>C</quote> (the two are equivalent) ensures that
   everything will work as expected in the chroot environment.</para>
 -->
-  <para><envar>LC_ALL</envar> 变量控制着某些程序的本地化，使其显示的信息复合指定国家的规范。如果宿主系统使用早于 2.2.4 版本的 Glibc，<envar>LC_ALL</envar> 使用除<quote>POSIX</quote> 或 <quote>C</quote> 外其他的值可能导致在退出 chroot 环境再返回继续时出现问题。</para>
+  <para><envar>LC_ALL</envar> 变量控制着某些程序的本地化，使其显示的信息复合指定国家（地区）的规范。如果宿主系统使用早于 2.2.4 版本的 Glibc，<envar>LC_ALL</envar> 使用除<quote>POSIX</quote> 或 <quote>C</quote> 外其它的值可能导致在退出 chroot 环境再返回继续时出现问题。</para>
 
 <!--E
   <para>By putting <filename class="directory">/tools/bin</filename> ahead of the
@@ -108,7 +108,7 @@ EOF</userinput></screen>
   that old programs are used from the host when the same programs are available in
   the chapter 5 environment.</para>
 -->
-  <para>将 <filename class="directory">/tools/bin</filename>  置于 <envar>PATH</envar> 变量的开头，可以使在<xref linkend="chapter-temporary-tools"/>安装的程序安装后可以立即被 Shell 使用。再加上关闭 shell 哈希功能，在<xref linkend="chapter-temporary-tools"/>的环境中，使得宿主系统中的相同名字的程序被使用的可能降到最小。</para>
+  <para>将 <filename class="directory">/tools/bin</filename> 置于 <envar>PATH</envar> 变量的开头，可以使在<xref linkend="chapter-temporary-tools"/>中安装的程序安装后立即被 shell 使用。再加上关闭 shell 哈希功能，在<xref linkend="chapter-temporary-tools"/>的环境中，使得宿主系统中的相同名字的程序被使用的可能降到最小。</para>
 
 <!--E
   <para>Finally, to have the environment fully prepared for building the

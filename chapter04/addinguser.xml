@@ -108,7 +108,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</userinput></screen>
   <filename class="directory">$LFS/tools</filename> by making
   <systemitem class="username">lfs</systemitem> the directory owner:</para>
 -->
-  <para>把 <systemitem class="username">lfs</systemitem>  用户设置为 <filename class="directory">$LFS/tools</filename> 目录的所有者来赋予 <systemitem class="username">lfs</systemitem> 用户对该目录的完全访问权限：</para>
+  <para>把 <systemitem class="username">lfs</systemitem> 用户设置为 <filename class="directory">$LFS/tools</filename> 目录的所有者来赋予 <systemitem class="username">lfs</systemitem> 用户对该目录的完全访问权限：</para>
 
 <screen><userinput>chown -v lfs $LFS/tools</userinput></screen>
 
