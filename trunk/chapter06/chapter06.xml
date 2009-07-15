@@ -5,7 +5,10 @@
   %general-entities;
 ]>
 
+<!--E
 <chapter id="chapter-building-system" xreflabel="Chapter 6">
+-->
+<chapter id="chapter-building-system" xreflabel="第六章">
   <?dbhtml dir="chapter06"?>
   <?dbhtml filename="chapter06.html"?>
 

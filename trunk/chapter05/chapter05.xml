@@ -5,7 +5,10 @@
   %general-entities;
 ]>
 
+<!--E
 <chapter id="chapter-temporary-tools" xreflabel="Chapter 5">
+-->
+<chapter id="chapter-temporary-tools" xreflabel="第五章">
   <?dbhtml dir="chapter05"?>
   <?dbhtml filename="chapter05.html"?>
 
