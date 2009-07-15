@@ -5,10 +5,16 @@
   %general-entities;
 ]>
 
+<!--E
 <sect1 id="CC" xreflabel="Creative Commons License">
+-->
+<sect1 id="CC" xreflabel="Creative Commons 许可证">
   <?dbhtml filename="creat-comm.html"?>
 
+<!--E
   <title>Creative Commons License</title>
+-->
+  <title>Creative Commons 许可证</title>
 
   <para role='title'>Creative Commons Legal Code</para>
 
