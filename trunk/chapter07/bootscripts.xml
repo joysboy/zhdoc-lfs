@@ -22,10 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The LFS-Bootscripts package contains a set of scripts to start/stop the
     LFS system at bootup/shutdown.</para>
-
+-->
+	<para> LFS-Bootscripts 软件包包含一套在启动和关闭时 LFS 的启动和停止脚本。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,9 +40,14 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E 
     <title>Installation of LFS-Bootscripts</title>
-
+-->
+    <title> 安装 LFS-Bootscripts</title>
+<!--E
     <para>Install the package:</para>
+-->
+    <para> 安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -62,15 +68,21 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3"> 简要描述 </bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="checkfs-bootscripts">
         <term><command>checkfs</command></term>
         <listitem>
+<!--E
           <para>Checks the integrity of the file systems before they are mounted
           (with the exception of journal and network based file systems)</para>
+-->
+          <para>在挂载之前检查文件系统完整性（日志文件系统和基于网络的文件系统除外）</para>
           <indexterm zone="ch-scripts-bootscripts checkfs-bootscripts">
             <primary sortas="d-checkfs">checkfs</primary>
           </indexterm>
@@ -80,12 +92,16 @@
       <varlistentry id="cleanfs-bootscripts">
         <term><command>cleanfs</command></term>
         <listitem>
+<!--E
           <para>Removes files that should not be preserved between reboots, such
           as those in <filename class="directory">/var/run/</filename> and
           <filename class="directory">/var/lock/</filename>; it re-creates
           <filename>/var/run/utmp</filename> and removes the possibly present
           <filename>/etc/nologin</filename>, <filename>/fastboot</filename>, and
           <filename>/forcefsck</filename> files</para>
+-->
+          <para>删除系统重启后就不需要保存的文件。例如在 <filename class="directory">/var/run/</filename> 和 <filename class="directory">/var/lock/</filename> 目录下的文件；重新创建 <filename>/var/run/utmp</filename> 并删除可能存在的 <filename>/etc/nologin</filename> ， <filename>/fastboot</filename> 和 <filename>/forcefsck</filename> 文件。</para>
+
           <indexterm zone="ch-scripts-bootscripts cleanfs-bootscripts">
             <primary sortas="d-cleanfs">cleanfs</primary>
           </indexterm>
@@ -95,8 +111,12 @@
       <varlistentry id="console-bootscripts">
         <term><command>console</command></term>
         <listitem>
+<!--E
           <para>Loads the correct keymap table for the desired keyboard layout;
           it also sets the screen font</para>
+-->
+          <para>为指定的键盘布局读入正确的键盘映射表，并设置屏幕字体。 </para>
+
           <indexterm zone="ch-scripts-bootscripts console-bootscripts">
             <primary sortas="d-console">console</primary>
           </indexterm>
@@ -106,8 +126,12 @@
       <varlistentry id="consolelog-bootscripts">
         <term><command>consolelog</command></term>
         <listitem>
+<!--E
           <para>Sets the kernel log level to control messages reaching the
           console.</para>
+-->
+          <para>设置内核日志级别来控制 console 信息。</para>
+
           <indexterm zone="ch-scripts-bootscripts consolelog-bootscripts">
             <primary sortas="d-consolelog">consolelog</primary>
           </indexterm>
@@ -117,8 +141,12 @@
       <varlistentry id="functions-bootscripts">
         <term><command>functions</command></term>
         <listitem>
+<!--E
           <para>Contains common functions, such as error and status checking,
           that are used by several bootscripts</para>
+-->
+          <para>包含不同脚本中共用的一些函数，例如错误和状态检查函数。 </para>
+
           <indexterm zone="ch-scripts-bootscripts functions-bootscripts">
             <primary sortas="d-functions">functions</primary>
           </indexterm>
@@ -128,7 +156,11 @@
       <varlistentry id="halt-bootscripts">
         <term><command>halt</command></term>
         <listitem>
+<!--E
           <para>Halts the system</para>
+-->
+          <para> 关闭系统 </para>
+
           <indexterm zone="ch-scripts-bootscripts halt-bootscripts">
             <primary sortas="d-halt">halt</primary>
           </indexterm>
@@ -138,7 +170,11 @@
       <varlistentry id="ifdown-bootscripts">
         <term><command>ifdown</command></term>
         <listitem>
+<!--E
           <para>Assists the network script with stopping network devices</para>
+-->
+          <para>协助 network 脚本停止网络设备</para>
+
           <indexterm zone="ch-scripts-bootscripts ifdown-bootscripts">
             <primary sortas="d-ifdown">ifdown</primary>
           </indexterm>
@@ -148,7 +184,10 @@
       <varlistentry id="ifup-bootscripts">
         <term><command>ifup</command></term>
         <listitem>
+<!--E
           <para>Assists the network script with starting network devices</para>
+-->
+          <para> 协助 network 脚本启动网络设备 </para>
           <indexterm zone="ch-scripts-bootscripts ifup-bootscripts">
             <primary sortas="d-ifup">ifup</primary>
           </indexterm>
@@ -158,7 +197,11 @@
       <varlistentry id="localnet-bootscripts">
         <term><command>localnet</command></term>
         <listitem>
+<!--E
           <para>Sets up the system's hostname and local loopback device</para>
+-->
+          <para>设置系统主机名和本地回环（ loopback ）设备 </para>
+
           <indexterm zone="ch-scripts-bootscripts localnet-bootscripts">
             <primary sortas="d-localnet">localnet</primary>
           </indexterm>
@@ -168,9 +211,13 @@
       <varlistentry id="modules-bootscripts">
         <term><command>modules</command></term>
         <listitem>
+<!--E
           <para>Loads kernel modules listed in
           <filename>/etc/sysconfig/modules</filename>, using arguments
           that are also given there</para>
+-->
+          <para>用 <filename>/etc/sysconfig/modules</filename> 里面的地址来加载列于其中的内核模块。</para>
+
           <indexterm zone="ch-scripts-bootscripts modules-bootscripts">
             <primary sortas="d-modules">modules</primary>
           </indexterm>
@@ -180,8 +227,12 @@
       <varlistentry id="mountfs-bootscripts">
         <term><command>mountfs</command></term>
         <listitem>
+<!--E
           <para>Mounts all file systems, except ones that are marked
           <emphasis>noauto</emphasis> or are network based</para>
+-->
+          <para>挂载所有文件系统，有 <emphasis>noauto</emphasis> 标记或者基于网络的文件系统除外。 </para>
+
           <indexterm zone="ch-scripts-bootscripts mountfs-bootscripts">
             <primary sortas="d-mountfs">mountfs</primary>
           </indexterm>
@@ -191,8 +242,12 @@
       <varlistentry id="mountkernfs-bootscripts">
         <term><command>mountkernfs</command></term>
         <listitem>
+<!--E
           <para>Mounts virtual kernel file systems, such as <systemitem
           class="filesystem">proc</systemitem></para>
+-->
+          <para>用来挂载内核提供的文件系统，例如 <systemitem class="filesystem">proc</systemitem></para>
+
           <indexterm zone="ch-scripts-bootscripts mountkernfs-bootscripts">
             <primary sortas="d-mountkernfs">mountkernfs</primary>
           </indexterm>
@@ -202,8 +257,12 @@
       <varlistentry id="network-bootscripts">
         <term><command>network</command></term>
         <listitem>
+<!--E
           <para>Sets up network interfaces, such as network cards, and sets up
           the default gateway (where applicable)</para>
+-->
+          <para>设置网络连接，例如网卡等。设置默认网关（如果可用）。 </para>
+
           <indexterm zone="ch-scripts-bootscripts network-bootscripts">
             <primary sortas="d-network">network</primary>
           </indexterm>
@@ -213,9 +272,13 @@
       <varlistentry id="rc-bootscripts">
         <term><command>rc</command></term>
         <listitem>
+<!--E
           <para>The master run-level control script; it is responsible for
           running all the other bootscripts one-by-one, in a sequence determined
           by the name of the symbolic links being processed</para>
+-->
+          <para>主要的运行级控制脚本，负责让所有其它脚本按符号链接名确定的顺序一个接一个的运行。 </para>
+
           <indexterm zone="ch-scripts-bootscripts rc-bootscripts">
             <primary sortas="d-rc">rc</primary>
           </indexterm>
@@ -225,7 +288,11 @@
       <varlistentry id="reboot-bootscripts">
         <term><command>reboot</command></term>
         <listitem>
+<!--E
           <para>Reboots the system</para>
+-->
+          <para>重新启动系统</para>
+
           <indexterm zone="ch-scripts-bootscripts reboot-bootscripts">
             <primary sortas="d-reboot">reboot</primary>
           </indexterm>
@@ -235,8 +302,12 @@
       <varlistentry id="sendsignals-bootscripts">
         <term><command>sendsignals</command></term>
         <listitem>
+<!--E
           <para>Makes sure every process is terminated before the system reboots
           or halts</para>
+-->
+          <para>在系统重启或关闭系统之前，确保每一个进程都已经终止了。 </para>
+
           <indexterm zone="ch-scripts-bootscripts sendsignals-bootscripts">
             <primary sortas="d-sendsignals">sendsignals</primary>
           </indexterm>
@@ -246,8 +317,12 @@
       <varlistentry id="setclock-bootscripts">
         <term><command>setclock</command></term>
         <listitem>
+<!--E
           <para>Resets the kernel clock to local time in case the hardware clock
           is not set to UTC time</para>
+-->
+          <para>如果硬件时钟没有设置为 UTC 时间，将内核时钟重置为本地时间。 </para>
+
           <indexterm zone="ch-scripts-bootscripts setclock-bootscripts">
             <primary sortas="d-setclock">setclock</primary>
           </indexterm>
@@ -257,8 +332,12 @@
       <varlistentry id="static-bootscripts">
         <term><command>static</command></term>
         <listitem>
+<!--E
           <para>Provides the functionality needed to assign a static Internet
           Protocol (IP) address to a network interface</para>
+-->
+          <para>提供为网络接口指派静态 IP 地址的功能 </para>
+
           <indexterm zone="ch-scripts-bootscripts static-bootscripts">
             <primary sortas="d-static">static</primary>
           </indexterm>
@@ -268,7 +347,10 @@
       <varlistentry id="swap-bootscripts">
         <term><command>swap</command></term>
         <listitem>
+<!--E
           <para>Enables and disables swap files and partitions</para>
+-->
+          <para>启用或禁用交换文件和交换分区</para>
           <indexterm zone="ch-scripts-bootscripts swap-bootscripts">
             <primary sortas="d-swap">swap</primary>
           </indexterm>
@@ -278,9 +360,13 @@
       <varlistentry id="sysctl-bootscripts">
         <term><command>sysctl</command></term>
         <listitem>
+<!--E
           <para>Loads system configuration values from
           <filename>/etc/sysctl.conf</filename>, if that file exists,
           into the running kernel</para>
+-->
+          <para>从 <filename>/etc/sysctl.conf</filename> 文件（如果存在）中读取系统配置变量到内核</para>
+
           <indexterm zone="ch-scripts-bootscripts sysctl-bootscripts">
             <primary sortas="d-sysctl">sysctl</primary>
           </indexterm>
@@ -290,7 +376,11 @@
       <varlistentry id="sysklogd-bootscripts">
         <term><command>sysklogd</command></term>
         <listitem>
+<!--E
           <para>Starts and stops the system and kernel log daemons</para>
+-->
+          <para>启动或停止系统和内核日志守护进程</para>
+
           <indexterm zone="ch-scripts-bootscripts sysklogd-bootscripts">
             <primary sortas="d-sysklogd">sysklogd</primary>
           </indexterm>
@@ -300,8 +390,12 @@
       <varlistentry id="template-bootscripts">
         <term><command>template</command></term>
         <listitem>
+<!--E
           <para>A template to create custom bootscripts for other
           daemons</para>
+-->
+          <para>为其它守护进程创建自定义启动脚本的模板</para>
+
           <indexterm zone="ch-scripts-bootscripts template-bootscripts">
             <primary sortas="d-template">template</primary>
           </indexterm>
@@ -311,8 +405,12 @@
       <varlistentry id="udev-bootscripts">
         <term><command>udev</command></term>
         <listitem>
+<!--E
           <para>Prepares the <filename class="directory">/dev</filename>
           directory and starts Udev</para>
+-->
+          <para>准备好 <filename class="directory">/dev</filename> 目录并启动 Udev 。</para>
+
           <indexterm zone="ch-scripts-bootscripts udev-bootscripts">
             <primary sortas="d-udev">udev</primary>
           </indexterm>
@@ -322,9 +420,13 @@
       <varlistentry id="udev-retry-bootscripts">
         <term><command>udev_retry</command></term>
         <listitem>
+<!--E
           <para>Retries failed udev uevents, and copies generated rules
           files from <filename class="directory">/dev/.udev</filename> to
           <filename class="directory">/etc/udev/rules.d</filename> if required</para>
+-->
+          <para>重试失败的 udev uevents 。如果需要则从 <filename class="directory">/dev/.udev</filename> 拷贝已经生成的规则文件到 <filename class="directory">/etc/udev/rules.d</filename> 。</para>
+
           <indexterm zone="ch-scripts-bootscripts udev-retry-bootscripts">
             <primary sortas="d-udev-retry">udev_retry</primary>
           </indexterm>

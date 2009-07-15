@@ -7,20 +7,24 @@
 
 <sect1 id="ch-scripts-sysklogd">
   <?dbhtml filename="sysklogd.html"?>
-
+<!--E
   <title>Configuring the sysklogd Script</title>
+-->
+  <title>配置 sysklogd 脚本</title>
 
   <indexterm zone="ch-scripts-sysklogd">
     <primary sortas="d-sysklogd">sysklogd</primary>
     <secondary>configuring</secondary>
   </indexterm>
-
+<!--E
   <para>The <filename>sysklogd</filename> script invokes the
   <command>syslogd</command> program with the <parameter>-m 0</parameter> option.
   This option turns off the periodic timestamp mark that
-  <command>syslogd</command> writes to the log files every 20 minutes by default.
+   writes to the log files every 20 minutes by default.
   If you want to turn on this periodic timestamp mark, edit the
-  <filename>sysklogd</filename> script and make the changes accordingly. See
-  <userinput>man syslogd</userinput> for more information.</para>
+   script and make the changes accordingly. See
+   for more information.</para>
+-->
+  <para><filename>sysklogd</filename> 脚本用 <parameter>-m 0</parameter> 选项调用 <command>syslogd</command> 程序，该选项关闭了周期时间戳标记，这个标记默认让 <command>syslogd</command> 每 20 分钟写入一次 log 文件。要打开周期时间戳标记，请编辑 <filename>sysklogd</filename> 脚本做相应修改。请运行 <userinput>man syslogd</userinput> 以获得更多信息。</para>
 
 </sect1>

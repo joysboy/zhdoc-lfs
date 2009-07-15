@@ -7,25 +7,35 @@
 
 <sect1 id="ch-scripts-network">
   <?dbhtml filename="network.html"?>
-
+<!--E
   <title>Configuring the network Script</title>
+-->
+  <title>配置网络脚本</title>
 
   <indexterm zone="ch-scripts-network">
     <primary sortas="d-network">network</primary>
   <secondary>configuring</secondary></indexterm>
-
+<!--E
   <para>This section only applies if a network card is to be
   configured.</para>
-
+-->
+  <para>本节仅适用于需要配置网卡的情况。</para>
+<!--E
   <para>If a network card will not be used, there is likely no need to
   create any configuration files relating to network cards. If that is
   the case, remove the <filename class="symlink">network</filename>
   symlinks from all run-level directories (<filename
   class="directory">/etc/rc.d/rc*.d</filename>).</para>
+-->
+
+  <para>如果不使用网卡，就不必创建关联网卡的配置文件，这样的话在所有运行级目录（ <filename class="directory">/etc/rc.d/rc*.d</filename> ）删除 <filename class="symlink">network</filename> 符号链接。</para>
 
   <sect2>
+<!--E
     <title>Creating stable names for network interfaces</title>
-
+-->
+    <title>创建网络接口的稳定名称</title>
+<!--E
     <para>With Udev and modular network drivers, the network interface numbering
     is not persistent across reboots by default, because the drivers are loaded
     in parallel and, thus, in random order. For example, on a computer having
@@ -35,19 +45,27 @@
     cases, after a reboot the cards get renumbered the other way around. To
     avoid this, Udev comes with a script and some rules to assign stable names
     to network cards based on their MAC address.</para>
+-->
 
+    <para>由于 Udev 和网络驱动的模块化，网络设备接口的加载顺序在每次重启后可能不同，因为驱动是并行加载的，所以顺序会变成随机的。例如，在一台计算机上有两块由 Intel 和 Realtek 生产的网卡。 Intel 制造的网卡可能是 <filename class="devicefile">eth0</filename> ，Realtek 的网卡是 <filename class="devicefile">eth1</filename> ，在某些情况下，在重启后网卡的顺序可能反过来。为避免这种情况， 我们应该根据网卡的 MAC 地址或总线位置来为他们命名。</para>
+
+<!--E
     <para>Pre-generate the rules to ensure the same names get assigned to the
     same devices at every boot, including the first:</para>
+-->
+    <para>先指定的规则保证了在每次启动时同一设备分配到同一数字。包括第一个：</para>
 
 <screen><userinput>for NIC in /sys/class/net/* ; do
     INTERFACE=${NIC##*/} udevadm test --action=add --subsystem=net $NIC
 done</userinput></screen>
-
+<!--E
     <para>Now, inspect the <filename>/etc/udev/rules.d/70-persistent-net.rules</filename>
     file, to find out which name was assigned to which network device:</para>
+-->
+    <para>现在，检查 <filename>/etc/udev/rules.d/70-persistent-net.rules</filename> 文件，找到与网络设备对应的代号：</para>
 
 <screen><userinput>cat /etc/udev/rules.d/70-persistent-net.rules</userinput></screen>
-
+<!--E
     <para>The file begins with a comment block followed by two lines for each
     NIC. The first line for each NIC is a commented description showing its
     hardware IDs (e.g. its PCI vendor and device IDs, if it's a PCI card),
@@ -55,10 +73,16 @@ done</userinput></screen>
     the hardware ID nor the driver is used to determine which name to give an
     interface; this information is only for reference. The second line is the
     Udev rule that matches this NIC and actually assigns it a name.</para>
+-->
 
+    <para>这个文件开始的是一个注释块，紧跟注释块的是针对每个 NIC 的两行。第一行是显示它的硬件 ID 的描述性语句（例如，如果是一块 PCI ，它就的 PCI 生产商和设备 ID），如果驱动可用，圆括号里的是它的驱动。用来决定一个接口名字的既不是硬件 ID 也不是驱动。这里的信息仅作引用。第二行是匹配 NIC 的 Udev 规则，实际是为它命名。</para>
+
+<!--E
     <para>All Udev rules are made up of several keys, separated by commas and
     optional whitespace. This rule's keys and an explanation of each of them
     are as follows:</para>
+-->
+    <para>所有的 Udev 规则是由一连串的，由逗号和可选择的空格分开的 keys 组成这个规则的 keys 和解释如下：</para>
 
     <itemizedlist>
       <listitem>
@@ -109,8 +133,11 @@ done</userinput></screen>
   </sect2>
 
   <sect2>
+<!--E
     <title>Creating Network Interface Configuration Files</title>
-
+-->
+    <title>创建网络接口配置文件</title>
+<!--E
     <para>Which interfaces are brought up and down by the network script
     depends on the files and directories in the <filename
     class="directory">/etc/sysconfig/network-devices</filename> hierarchy.
@@ -119,9 +146,14 @@ done</userinput></screen>
     <quote>xyz</quote> is a network interface name. Inside this directory
     would be files defining the attributes to this interface, such as its IP
     address(es), subnet masks, and so forth.</para>
+-->
+    <para>network 脚本启用或关闭哪个接口由 <filename class="directory">/etc/sysconfig/network-devices</filename> 目录下的文件决定，这个目录应该包含有各个要配置的端口的子目录，比如 <filename>ifconfig.xyz</filename>。这里的 <quote>xyz</quote> 是网络接口名。目录里面将定义接口的属性，比如 IP 地址、子网掩码等等。</para>
 
+<!--E
     <para>The following command creates a sample <filename>ipv4</filename>
     file for the <emphasis>eth0</emphasis> device:</para>
+-->
+    <para>在这个目录下新建文件，下面是一个为 <emphasis>eth0</emphasis> 设备创建 <filename>ipv4</filename> 文件的示例：</para>
 
 <screen><userinput>cd /etc/sysconfig/network-devices
 mkdir -v ifconfig.eth0
@@ -133,14 +165,17 @@ GATEWAY=192.168.1.2
 PREFIX=24
 BROADCAST=192.168.1.255</literal>
 EOF</userinput></screen>
-
+<!--E
     <para>The values of these variables must be changed in every file to match
     the proper setup. If the <envar>ONBOOT</envar> variable is set to
     <quote>yes</quote> the network script will bring up the Network Interface
     Card (NIC) during booting of the system. If set to anything but
     <quote>yes</quote> the NIC will be ignored by the network script and not
     be brought up.</para>
+-->
+    <para>每个文件中的这些变量的值都要更改成合适的设置。如果 <envar>ONBOOT</envar> 变量设置成 <quote>yes</quote> ，network 脚本会在系统启动的时候启动 NIC（Network Interface Card 网络接口卡，简称网卡）如果设置为 <quote>yes</quote> 以为的值，网卡会被 network 脚本忽略而没有启动。</para>
 
+<!--E
     <para>The <envar>SERVICE</envar> variable defines the method used for
     obtaining the IP address. The LFS-Bootscripts package has a modular IP
     assignment format, and creating additional files in the <filename
@@ -148,11 +183,16 @@ EOF</userinput></screen>
     directory allows other IP assignment methods. This is commonly used for
     Dynamic Host Configuration Protocol (DHCP), which is addressed in the
     BLFS book.</para>
+-->
+    <para><envar>SERVICE</envar> 变量定义获取 IP 地址的方式。LFS-Bootscripts 包有一套模块化的 IP 地址分配格式，并在 <filename class="directory">/etc/sysconfig/network-devices/services</filename>目录下为其他的 IP 分配方式创建了附加的文件，这通常用做 DHCP （ Dynamic Host Configuration Protocol ）方式，在 BLFS 里有详细介绍。</para>
 
+<!--E
     <para>The <envar>GATEWAY</envar> variable should contain the default
     gateway IP address, if one is present. If not, then comment out the
     variable entirely.</para>
-
+-->
+    <para><envar>GATEWAY</envar> 变量应该设置为默认网关的 IP 地址。如果没有默认网关，就把这个变量完全注释掉。</para>
+<!--E
     <para>The <envar>PREFIX</envar> variable needs to contain the number of
     bits used in the subnet. Each octet in an IP address is 8 bits. If the
     subnet's netmask is 255.255.255.0, then it is using the first three octets
@@ -161,16 +201,21 @@ EOF</userinput></screen>
     commonly used by DSL and cable-based Internet Service Providers (ISPs).
     In this example (PREFIX=24), the netmask is 255.255.255.0. Adjust the
     <envar>PREFIX</envar> variable according to your specific subnet.</para>
+-->
+    <para><envar>PREFIX</envar> PREFIX 变量设置为子网使用的位数。IP 地址的每个字节是 8 bit 。如果子网掩码是 255.255.255.0 ，那么它使用前三个字节（24 bit）指定网络号；如果网络掩码是 255.255.255.240 ，它用前 28 bit 来指定网络号。长于 24 bits 的前缀一般由 DSL 和 cable-based ISP（Internet Service Providers）使用，这里的例子里（ PREFIX=24 ），子网掩码是 255.255.255.0。请根绝您的网络情况调整 <envar>PREFIX</envar> 变量。</para>
 
   </sect2>
 
   <sect2 id="resolv.conf">
+<!--E
     <title>Creating the /etc/resolv.conf File</title>
+-->
+    <title>创建 /etc/resolv.conf 文件</title>
 
     <indexterm zone="resolv.conf">
       <primary sortas="e-/etc/resolv.conf">/etc/resolv.conf</primary>
     </indexterm>
-
+<!--E
     <para>If the system is going to be connected to the Internet, it will
     need some means of Domain Name Service (DNS) name resolution to
     resolve Internet domain names to IP addresses, and vice versa. This is
@@ -178,23 +223,31 @@ EOF</userinput></screen>
     from the ISP or network administrator, into
     <filename>/etc/resolv.conf</filename>. Create the file by running the
     following:</para>
+-->
+    <para>如果系统要连接到 Internet 上，就需要 DNS(Domain Name Service 域名服务)名称解析的手段，来把 Internet 域名解析为 IP 地址，反之亦然。在 <filename>/etc/resolv.conf</filename> 文件里设置 ISP 或网络管理员提供的域名服务器的 IP 地址就可以达到这个目的了，运行下面的命令创建这个文件：</para>
 
 <screen><userinput>cat &gt; /etc/resolv.conf &lt;&lt; "EOF"
 <literal># Begin /etc/resolv.conf
-
+<!--E
 domain <replaceable>&lt;Your Domain Name&gt;</replaceable>
 nameserver <replaceable>&lt;IP address of your primary nameserver&gt;</replaceable>
 nameserver <replaceable>&lt;IP address of your secondary nameserver&gt;</replaceable>
+-->
+domain <replaceable>&lt;域名&gt;</replaceable>
+nameserver <replaceable>&lt;主域名服务区 IP 地址&gt;</replaceable>
+nameserver <replaceable>&lt;副域名服务器 IP 地址&gt;</replaceable>
 
 # End /etc/resolv.conf</literal>
 EOF</userinput></screen>
-
+<!--E
     <para>Replace <replaceable>&lt;IP address of the nameserver&gt;</replaceable>
     with the IP address of the DNS most appropriate for the setup. There will
     often be more than one entry (requirements demand secondary servers for
     fallback capability). If you only need or want one DNS server, remove the
     second <emphasis>nameserver</emphasis> line from the file. The IP address
     may also be a router on the local network.</para>
+-->
+    <para>把 <replaceable>&lt;域名服务器 IP 地址&gt;</replaceable> 替换为您的域名服务器的 IP 地址。域名服务器常常不止一项（作为备份用途）。如果您只需要一个域名服务器，把文件里的第二行  <emphasis>nameserver</emphasis> 删除就可以了。在局域网里这个 IP 地址还可能是路由器。</para>
 
   </sect2>
 
