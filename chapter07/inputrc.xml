@@ -7,31 +7,44 @@
 
 <sect1 id="ch-scripts-inputrc">
   <?dbhtml filename="inputrc.html"?>
-
+<!--E
   <title>Creating the /etc/inputrc File</title>
+-->
+  <title>创建 /etc/inputrc 文字</title>
 
   <indexterm zone="ch-scripts-inputrc">
     <primary sortas="e-/etc/inputrc">/etc/inputrc</primary>
   </indexterm>
-
+<!--E
   <para>The <filename>inputrc</filename> file handles keyboard mapping for
   specific situations. This file is the startup file used by Readline &mdash; the
   input-related library &mdash; used by Bash and most other shells.</para>
-
+-->
+  <para><filename>inputrc</filename> 文件为特定的情况处理键盘映射，这个文件被 Readline 用作启动文件，Readline 是 Bash 和其它大多数 shell 使用的与输入相关的库。</para>
+<!--E
   <para>Most people do not need user-specific keyboard mappings so the command
   below creates a global <filename>/etc/inputrc</filename> used by everyone who
   logs in. If you later decide you need to override the defaults on a per-user
   basis, you can create a <filename>.inputrc</filename> file in the user's home
   directory with the modified mappings.</para>
+-->
 
+  <para>大多数人并不需要自定义键盘映射，所以下面的命令将创建一个适用于所有登陆用户的全局 <filename>/etc/inputrc</filename> 文件。如果你需要为某个用户覆盖默认的设置，你可以在该用户的主目录中创建一个包含自定义键盘映射的 <filename>.inputrc</filename> 文件。</para>
+
+<!--E
   <para>For more information on how to edit the <filename>inputrc</filename>
   file, see <command>info bash</command> under the <emphasis>Readline Init
   File</emphasis> section. <command>info readline</command> is also a good
   source of information.</para>
+-->
+  <para>要想了解更多关于如何编辑 <filename>inputrc</filename> 文件的信息，运行 <command>info bash</command> 以参考 bash 的 info 页的 <emphasis>Readline Init File</emphasis> 这一节。运行 <command>info readline</command> 也是一个好的信息资源。</para>
 
+<!--E
   <para>Below is a generic global <filename>inputrc</filename> along with comments
   to explain what the various options do. Note that comments cannot be on the same
   line as commands. Create the file using the following command:</para>
+-->
+  <para>下面是一个基本的全局 <filename>inputrc</filename> 文件，那些选项的注释也一起包括在文件里。请注意，注释不能和命令放在同一行里。用一下命令来创建文件：</para>
 
 <screen><userinput>cat &gt; /etc/inputrc &lt;&lt; "EOF"
 <literal># Begin /etc/inputrc

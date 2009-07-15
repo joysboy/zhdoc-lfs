@@ -7,8 +7,10 @@
 
 <sect1 id="ch-scripts-console">
   <?dbhtml filename="console.html"?>
-
+<!--E
   <title>Configuring the Linux Console</title>
+-->
+  <title>配置 Linux 控制台</title>
 
   <indexterm zone="ch-scripts-console">
     <primary sortas="d-console">console</primary>
@@ -19,7 +21,7 @@
     <primary sortas="d-consolelog">consolelog</primary>
     <secondary>configuring</secondary>
   </indexterm>
-
+<!--E
   <para>This section discusses how to configure the <command>console</command>
   and <command>consolelog</command> bootscripts that set up the keyboard map,
   console font and console kernel log level. If non-ASCII characters (e.g.,
@@ -27,7 +29,9 @@
   and the keyboard is a U.S. one, much of this section can be skipped. Without
   the configuration file, the <command>console</command> bootscript will do
   nothing.</para>
-
+-->
+  <para>本节讨论如何配置 <command>console</command> 和 <command>consolelog</command> 初始化脚本来设置键盘映射表、控制台字体和控制台内核日志级别。如果您不使用非 ASCII 字符（例如，版权符号、英镑和欧元符号就是非 ASCII 字符的例子），并且是美式键盘，这一节的大部分都可以跳过。没有配置文件的话， <command>console</command> 初始化脚本不会做任何事情。</para>
+<!--E
   <para>The <command>console</command>  and <command>consolelog</command>
   script reads the <filename>/etc/sysconfig/console</filename> file for
   configuration information.
@@ -38,59 +42,83 @@
   directory for valid keymaps and screen fonts. Read
   <filename>loadkeys(1)</filename> and <filename>setfont(8)</filename> manual
   pages to determine the correct arguments for these programs.</para>
-
+-->
+  <para><command>console</command> 和 <command>consolelog</command> 脚本读取 <filename>/etc/sysconfig/console</filename> 文件来获取配置信息以决定使用什么键盘映射表和屏幕字体。各种特定语言的 HOWTOs 能帮助您完成配置。参见 <ulink url="http://www.tldp.org/HOWTO/HOWTO-INDEX/other-lang.html"/>。如果仍然有疑问，请在 <filename class="directory">/lib/kbd</filename> 目录下查找正确的键盘映射和屏幕字体。阅读 <filename>loadkeys(1)</filename> 和 <filename>setfont(8)</filename> 来决定这些程序的正确参数。</para>
+<!--E
   <para>The <filename>/etc/sysconfig/console</filename> file should contain lines
   of the form: VARIABLE="value". The following variables are recognized:</para>
-
+-->
+  <para><filename>/etc/sysconfig/console</filename> 文件中可能包含这样的格式的行： VARIABLE="value"。变量如下：</para>
   <variablelist>
 
     <varlistentry>
       <term>LOGLEVEL</term>
       <listitem>
+<!--E
         <para>This variable specifies the log level for kernel messages sent
         to the console as set by <command>dmesg</command>. Valid levels are
         from "1" (no messages) to "8". The default level is "7".</para>
+-->
+        <para>这个变量指定了被 <command>dmesg</command> 设置并发送到控制台的内核信息的日志级别。有效级别从 "1" （无信息）到 "8" 。默认级别是 "7" 。</para>
+
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>KEYMAP</term>
       <listitem>
+<!--E
         <para>This variable specifies the arguments for the
         <command>loadkeys</command> program, typically, the name of keymap
         to load, e.g., <quote>es</quote>. If this variable is not set, the
         bootscript will not run the <command>loadkeys</command> program,
         and the default kernel keymap will be used.</para>
+-->
+        <para>这个变量指定 <command>loadkeys</command> 程序的参数。典型的像键盘映射的名字 <quote>es</quote>。如果不设定参数，启动脚本就不会运行 <command>loadkeys</command> 程序，而是使用默认的内核键盘映射。</para>
+
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>KEYMAP_CORRECTIONS</term>
       <listitem>
+<!--E
         <para>This (rarely used) variable
         specifies the arguments for the second call to the
         <command>loadkeys</command> program. This is useful if the stock keymap
         is not completely satisfactory and a small adjustment has to be made. E.g.,
         to include the Euro sign into a keymap that normally doesn't have it,
         set this variable to <quote>euro2</quote>.</para>
+-->
+        <para>这个参数很少用到，它可被用来指定再次调用 <command>loadkeys</command> 程序的参数。这对于提供的键盘映射不令人满意，要做一些小改动时很有用。例如，我们要把一些正常情况下不会出现的欧洲字符包含到在键盘映射中，那我们就需要把这个参数设为 <quote>euro2</quote>。</para>
+
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>FONT</term>
       <listitem>
+<!--E
         <para>This variable specifies the arguments for the
         <command>setfont</command> program. Typically, this includes the font
         name, <quote>-m</quote>, and the name of the application character
         map to load. E.g., in order to load the <quote>lat1-16</quote> font
         together with the <quote>8859-1</quote> application character map
-        (as it is appropriate in the USA), 
+        (as it is appropriate in the USA),     
+-->
         <!-- because of the copyright sign -->
-        set this variable to <quote>lat1-16 -m 8859-1</quote>.
+<!--E   
+	set this variable to <quote>lat1-16 -m 8859-1</quote>.
         In UTF-8 mode, the kernel uses the application character map for
         conversion of composed 8-bit key codes in the keymap to UTF-8, and thus
         the argument of the "-m" parameter should be set to the encoding of the
         composed key codes in the keymap.</para>
+-->
+	<para>这个变量是为 <command>setfont</command> 程序设定的。通常情况下包括字体名字， <quote>-m</quote>，以及需要载入的应用程序字符映射名字。比如，要调用 <quote>lat1-16</quote> 字体以及 <quote>8859-1</quote> 应用程序字符映射，就把这个参数设为 <quote>lat1-16 -m 8859-1</quote>。在 UTF-8模式，内核用应用程序字符映射来 for
+        conversion of composed 8-bit key codes in the keymap to UTF-8, and thus
+        the argument of the "-m" parameter should be set to the encoding of the
+        composed key codes in the keymap.</para>
+
 
       </listitem>
     </varlistentry>
@@ -98,32 +126,46 @@
     <varlistentry>
       <term>UNICODE</term>
       <listitem>
+<!--E
         <para>Set this variable to <quote>1</quote>, <quote>yes</quote> or
         <quote>true</quote> in order to put the
         console into UTF-8 mode. This is useful in UTF-8 based locales and
         harmful otherwise.</para>
+-->
+
+        <para>要把控制台设为 UTF-8 模式，此变量设成 <quote>1</quote>， <quote>yes</quote> 或 <quote>true</quote> 。在 UTF-8 的 locale 下比较有用，其他情况都是有害的。</para>
+
       </listitem>
     </varlistentry>
 
     <varlistentry>
       <term>LEGACY_CHARSET</term>
       <listitem>
+<!--E
         <para>For many keyboard layouts, there is no stock Unicode keymap in
         the Kbd package. The <command>console</command> bootscript will
         convert an available keymap to UTF-8 on the fly if this variable is
         set to the encoding of the available non-UTF-8 keymap.</para>
+-->
+        <para>对于许多的键盘布局，在 Kbd 包中没有提供 Unicode 键盘映射。如果这个变量被设置为一个有效的非 UTF-8 编码的键盘映射，<command>console</command> 启动脚本会把它转换成 UTF-8 编码。</para>
+
       </listitem>
     </varlistentry>
 
   </variablelist>
-
+<!--E
   <para>Some examples:</para>
+-->
+  <para>一些例子：</para>
 
   <itemizedlist>
 
     <listitem>
+<!--E
       <para>For a non-Unicode setup, only the KEYMAP and FONT variables are
       generally needed. E.g., for a Polish setup, one would use:</para>
+-->
+      <para>对于一个非 Unicode 的安装，只有 KEYMAP 和 FONT 变量是必需的。例如，在波兰语安装中，应当使用：</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -136,9 +178,12 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
+<!--E
       <para>As mentioned above, it is sometimes necessary to adjust a
       stock keymap slightly. The following example adds the Euro symbol to the
       German keymap:</para>
+-->
+      <para>正如上面的方法，有时需要对对提供的键盘映射进行稍微的调整。下面的例子在德国键盘映射中添加欧洲符号：</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -152,8 +197,11 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
+<!--E
       <para>The following is a Unicode-enabled example for Bulgarian, where a
       stock UTF-8 keymap exists:</para>
+-->
+      <para>下面是一个保加利亚的 Unicode 例子，存在一个 UTF-8 键盘映射：</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -167,12 +215,15 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
+<!--E
       <para>Due to the use of a 512-glyph LatArCyrHeb-16 font in the previous
       example, bright colors are no longer available on the Linux console unless
       a framebuffer is used. If one wants to have bright colors without
       framebuffer and can live without characters not belonging to his language,
       it is still possible to use a language-specific 256-glyph font, as
       illustrated below:</para>
+-->
+      <para>由于在前面的例子中使用了 512-字符 的 LatArCyrHeb-16 字体，在控制台上不能再显示明亮的颜色，除非使用 framebuffer。如果你想不利用 framebuffer 来显示明亮的颜色，并使用本语种字符，像下面的说明，通过使用相应语言的 256-字符 字体，这仍然是可能实现的。</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -186,8 +237,11 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
+<!--E
       <para>The following example illustrates keymap autoconversion from
       ISO-8859-15 to UTF-8 and enabling dead keys in Unicode mode:</para>
+-->
+      <para>下面的例子解释了键盘映射从 ISO-8859-15 到 UTF-8 的自动转变和在 Unicode 模式下打开无效键：</para>
 
 <screen role="nodump"><userinput>cat &gt; /etc/sysconfig/console &lt;&lt; "EOF"
 <literal># Begin /etc/sysconfig/console
@@ -203,6 +257,7 @@ EOF</userinput></screen>
     </listitem>
 
     <listitem>
+<!--E
       <para>Some keymaps have dead keys (i.e., keys that don't produce a
       character by themselves, but put an accent on the character produced
       by the next key) or define composition rules (such as: <quote>press
@@ -217,14 +272,21 @@ EOF</userinput></screen>
       The solution is either to avoid the use of UTF-8, or to install the
       X window system that doesn't have this limitation in its input
       handling.</para>
+-->
+      <para>一些键盘映射有无效键（例如本身不产生字符，但下一个键产生的字符有着重号）或者定义组成规则（比如在默认的键盘映射上 <quote>按 Ctrl+. A E 得到 &AElig;</quote> ）。 Linux-&linux-version; 只有在字符组成的源不是多字节的时候能够正确解释无效键和组成规则。这个缺点并不影响欧洲语言的键盘映射，因为那里的着重符号是加在无重音的 ASCII 码或两个组合 ASCII 上的。然而在 UTF-8 模式，这是一个问题。例如，希腊语，有的时候需要在字母 <quote>alpha</quote> 上面加着重。或者避免用 UTF-8， 或者装上在输入上没有这个限制的 X window 系统来解决这个问题。</para>
+
     </listitem>
 
     <listitem>
+<!--E
       <para>For Chinese, Japanese, Korean and some other languages, the Linux
       console cannot be configured to display the needed characters. Users
       who need such languages should install the X Window System, fonts that
       cover the necessary character ranges, and the proper input method (e.g.,
       SCIM, it supports a wide variety of languages).</para>
+-->
+      <para>对于中文、日文、韩文和其他语言， Linux 控制台不能显示所想要的字符。想用这些语言的用户应该装 X Window 系统、 包含所需字符的字体和适合的输入法（如： SCIM ，它支持众多的语言）。</para>
+
     </listitem>
 
   </itemizedlist>
@@ -232,10 +294,14 @@ EOF</userinput></screen>
   <!-- Added because folks keep posting their console file with X questions
   to blfs-support list -->
   <note>
+<!--E
     <para>The <filename>/etc/sysconfig/console</filename> file only controls the    Linux text console localization. It has nothing to do with setting the
     proper keyboard layout and terminal fonts in the X Window System, with ssh
     sessions or with a serial console. In such situations, limitations mentioned
     in the last two list items above do not apply.</para>
+-->
+    <para><filename>/etc/sysconfig/console</filename> 文件只能控制 Linux 文本控制台。在 X Windows、SSH 会话以及串口控制台中，设置键盘布局和终端字体是没有用的。</para>
+
   </note>
 
 </sect1>
