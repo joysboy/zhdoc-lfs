@@ -147,7 +147,7 @@
           version available can also be found at: <ulink
           url="http://www.linuxfromscratch.org/lfs/download.html#ftp"/>.</para>
 -->
-          <para>(&file-version;) 版本的 File 软件包在所列的位置可能下载不到，主下载站点的管理员有时候会在新版本发布之后，删除旧的版本。替代的下载位置是 <ulink url="http://www.linuxfromscratch.org/lfs/download.html#ftp"/>，这里可以下载到所需的版本。</para>
+          <para>File (&file-version;) 软件包在所列的位置可能下载不到，主下载站点的管理员有时候会在新版本发布之后，删除旧的版本。替代的下载位置是 <ulink url="http://www.linuxfromscratch.org/lfs/download.html#ftp"/>，这里可以下载到所需的版本。</para>
         </note>
       </listitem>
     </varlistentry>
@@ -337,7 +337,7 @@
           &linux-major-version;.&linux-minor-version;.x kernel version should be
           used, unless the errata page says otherwise.</para>
 -->
-          <para>由于经常发现安全漏洞，Linux 内核更新很快。除非勘误表上指出，读者应当下载使用最新的 &linux-major-version;.&linux-minor-version;.x 版本。</para>
+          <para>由于经常发现安全漏洞，Linux 内核更新很快。除非勘误表上指出，读者应当下载使用最新的 &linux-major-version;.&linux-minor-version;.x 版本内核。</para>
 
 <!--E
           <para>For users with limited speed or expensive bandwidth who wish to
