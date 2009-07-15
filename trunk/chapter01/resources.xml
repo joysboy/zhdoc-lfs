@@ -29,7 +29,10 @@
 
   </sect2>
 
+<!--E
   <sect2 id="ch-intro-maillists" xreflabel="Chapter 1 - Mailing Lists">
+-->
+  <sect2 id="ch-intro-maillists" xreflabel="第一章 - 邮件列表">
 <!--E
     <title>Mailing Lists</title>
 -->
@@ -93,7 +96,10 @@
 
   </sect2>  -->
 
+<!--E
   <sect2 id="ch-intro-mirrors" xreflabel="Chapter 1 - Mirror sites">
+-->
+  <sect2 id="ch-intro-mirrors" xreflabel="第一章 - 镜像站点">
 <!--E
     <title>Mirror Sites</title>
 -->
