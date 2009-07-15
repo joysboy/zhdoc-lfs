@@ -17,7 +17,7 @@
 <!--E
     <title>FAQ</title>
 -->
-    <title>常见问题</title>
+    <title>FAQ</title>
 
 <!--E
     <para>If during the building of the LFS system you encounter any
@@ -25,7 +25,7 @@
     please start by consulting the Frequently Asked Questions (FAQ)
     that is located at <ulink url="&faq-root;"/>.</para>
 -->
-    <para>如果您在构建 LFS 系统的过程中遇到错误、有什么问题、或者认为书中有排版错误，请首先查看在 <ulink url="&faq-root;"/> 上的常见问题回答（FAQ）。</para>
+    <para>如果您在构建 LFS 系统的过程中遇到错误、有什么问题、或者认为书中有排版错误，请首先查看在 <ulink url="&faq-root;"/> 上的常见问题及解答（FAQ）。</para>
 
   </sect2>
 

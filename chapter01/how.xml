@@ -116,7 +116,7 @@
   After the steps in this book have been implemented, the computer will be
   ready to reboot into the new LFS system.</para>
 -->
-  <para>为了完成安装，<xref linkend="chapter-bootscripts"/>设置系统启动脚本。<xref linkend="chapter-finalizing"/>设置完成内核和启动引导程序。第九章包含在本书之外获得进一步 LFS 体验的信息。在本书中所有步骤都完成之后，计算机就已经准备好重启进入新的 LFS 系统了。</para>
+  <para>为了完成安装，<xref linkend="chapter-bootscripts"/>介绍了如何设置系统启动脚本。<xref linkend="chapter-bootable"/>介绍了如何设置内核和启动引导程序。<xref linkend="chapter-finalizing"/>包含了在本书之外获得进一步 LFS 体验的信息。在本书中所有步骤都完成之后，计算机就已经准备好重启进入新的 LFS 系统了。</para>
 
 <!--E
   <para>This is the process in a nutshell. Detailed information on each
