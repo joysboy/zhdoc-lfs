@@ -21,7 +21,7 @@
   following hint will give you some guidance for troubleshooting:
   <ulink url="&hints-root;errors.txt"/>.</para>
 -->
-  <para>如果您在本书中遇到困难或者问题，请查看 FAQ 页 <ulink url="&faq-root;#generalfaq"/>。您所遇到的问题往往这里已经有解答了。如果 FAQ 没有解决您的问题，请尝试找到问题的根源。<ulink url="&hints-root;errors.txt"/> 上的提示将给您提供一些故障诊断的指导。</para>
+  <para>如果您在本书中遇到困难或者问题，请查看 FAQ <ulink url="&faq-root;#generalfaq"/>。您所遇到的问题往往这里已经有解答了。如果 FAQ 没有解决您的问题，请尝试找到问题的根源。<ulink url="&hints-root;errors.txt"/> 上的提示将给您提供一些故障诊断的指导。</para>
 
 <!--E
   <para>If you cannot find your problem listed in the FAQ, search the mailing
@@ -116,7 +116,7 @@
     not printed to the screen. Include the <emphasis>relevant</emphasis> lines
     if you need to ask for help.</para>
 -->
-    <para>如果执行 <command>configure</command> 脚本的时候，某个地方出错了，请检查 <filename>config.log</filename> 文件，这个文件可能包含 <command>configure</command> 过程中没有输出到屏幕的错误，如果您需要请求帮助，请把<emphasis>这里面的相关信息</emphasis>也包含进去。</para>
+    <para>如果执行 <command>configure</command> 脚本的时候，某个地方出错了，请检查 <filename>config.log</filename> 文件，这个文件可能包含 <command>configure</command> 过程中没有输出到屏幕的错误。如果您需要请求帮助，请把<emphasis>该文件中的相关信息</emphasis>也包含进去。</para>
 
   </sect2>
 
