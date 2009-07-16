@@ -22,10 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Psmisc package contains programs for displaying information about
     running processes.</para>
-
+-->
+    <para>Psmisc 包含有用于显示进程信息的程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,62 +40,84 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Psmisc</title>
-
+-->
+    <title>安装 Psmisc</title>
+<!--E 
     <para>Prepare Psmisc for compilation:</para>
-
+-->
+    <para>为编译 Psmisc 做准备：</para>
 <screen><userinput remap="configure">./configure --prefix=/usr --exec-prefix=""</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
-
+-->
+      <title>配置选项的含义：</title>
       <varlistentry>
         <term><parameter>--exec-prefix=""</parameter></term>
         <listitem>
+<!--E
           <para>This ensures that the Psmisc binaries will install into
           <filename class="directory">/bin</filename> instead of <filename
           class="directory">/usr/bin</filename>. This is the correct location
           according to the FHS, because some of the Psmisc binaries are used
           by the LFS-Bootscripts package.</para>
-        </listitem>
+-->
+          <para>这个确保 Psmisc 二进制文件被安装在<filename class="directory">/bin</filename> 而不是 <filename class="directory">/usr/bin</filename>。这是根据 FHS 标准安装的正确位置，因为有一些 Psmisc 二进制文件将被 LFS-Bootscripts 包使用。</para>     
+   </listitem>
       </varlistentry>
 
     </variablelist>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个包没有附带测试套件。</para>
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>There is no reason for the <command>pstree</command> and
     <command>pstree.x11</command> programs to reside in <filename
     class="directory">/bin</filename>. Therefore, move them to <filename
     class="directory">/usr/bin</filename>:</para>
+-->
+    <para>没有理由把 <command>pstree</command> 和 <command>pstree.x11</command> 程序安装在 <filename class="directory">/bin</filename> 中。所以，把它们移动到 <filename class="directory">/usr/bin</filename> 中：</para>
 
 <screen><userinput remap="install">mv -v /bin/pstree* /usr/bin</userinput></screen>
-
+<!--E
     <para>By default, Psmisc's <command>pidof</command> program is not
     installed. This usually is not a problem because it is installed later
     in the Sysvinit package, which provides a better
     <command>pidof</command> program. If Sysvinit will not be used for a
     particular system, complete the installation of Psmisc by creating the
     following symlink:</para>
+-->
+    <para>在默认情况下，Psmisc 的 <command>pidof</command> 程序未被安装。这通常情况下不是问题，因为它将在这之后的 Sysvinit 包中被安装，而且这个包提供了一个更好的 <command>pidof</command> 程序。如果你打算不使用 Sysvinit，则可通过创建下面的符号连接来安装完整的 Psmis：</para>
 
 <screen><userinput remap="install">ln -sv killall /bin/pidof</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-psmisc" role="content">
+<!--E
     <title>Contents of Psmisc</title>
-
+-->
+    <title>Psmisc 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>fuser, killall, oldfuser, peekfd, pstree, and pstree.x11
         (link to pstree)</seg>
@@ -102,16 +125,22 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
+ <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="fuser">
         <term><command>fuser</command></term>
         <listitem>
+<!--E
           <para>Reports the Process IDs (PIDs) of processes that use the given
           files or file systems</para>
-          <indexterm zone="ch-system-psmisc fuser">
+-->
+          <para>报告使用所给文件或文件系统的进程的进程 ID(PID)</para>     
+     <indexterm zone="ch-system-psmisc fuser">
             <primary sortas="b-fuser">fuser</primary>
           </indexterm>
         </listitem>
@@ -120,9 +149,12 @@
       <varlistentry id="killall">
         <term><command>killall</command></term>
         <listitem>
+<!--E
           <para>Kills processes by name; it sends a signal to all processes
           running any of the given commands</para>
-          <indexterm zone="ch-system-psmisc killall">
+-->
+          <para>通过进程名来终止进程，它发送消息到所有正在运行任意所给指令的进程</para>     
+     <indexterm zone="ch-system-psmisc killall">
             <primary sortas="b-killall">killall</primary>
           </indexterm>
         </listitem>
@@ -131,9 +163,12 @@
       <varlistentry id="oldfuser">
         <term><command>oldfuser</command></term>
         <listitem>
+<!--E
           <para>Reports the Process IDs (PIDs) of processes that use the given
           files or file systems</para>
-          <indexterm zone="ch-system-psmisc oldfuser">
+-->
+          <para>报告使用所给文件或文件系统的进程的进程 ID(PID)</para>     
+     <indexterm zone="ch-system-psmisc oldfuser">
             <primary sortas="b-oldfuser">oldfuser</primary>
           </indexterm>
         </listitem>
@@ -142,9 +177,12 @@
       <varlistentry id="peekfd">
         <term><command>peekfd</command></term>
         <listitem>
+<!--E
           <para>Peek at file descriptors of a running process, given its
           PID</para>
-          <indexterm zone="ch-system-psmisc peekfd">
+-->
+          <para>通过给定 PID 号，浏览一个进程的信息</para>     
+     <indexterm zone="ch-system-psmisc peekfd">
             <primary sortas="b-peekfd">peekfd</primary>
           </indexterm>
         </listitem>
@@ -153,8 +191,11 @@
       <varlistentry id="pstree">
         <term><command>pstree</command></term>
         <listitem>
+<!--E
           <para>Displays running processes as a tree</para>
-          <indexterm zone="ch-system-psmisc pstree">
+-->
+          <para>以目录树的形式显示所有正在运行的进程</para>     
+     <indexterm zone="ch-system-psmisc pstree">
             <primary sortas="b-pstree">pstree</primary>
           </indexterm>
         </listitem>
@@ -163,9 +204,12 @@
       <varlistentry id="pstree.x11">
         <term><command>pstree.x11</command></term>
         <listitem>
+<!--E
           <para>Same as <command>pstree</command>, except that it waits for
           confirmation before exiting</para>
-          <indexterm zone="ch-system-psmisc pstree.x11">
+-->
+          <para>同 <command>pstree</command> 一样，只是它在退出前要求确认</para>     
+     <indexterm zone="ch-system-psmisc pstree.x11">
             <primary sortas="b-pstree.x11">pstree.x11</primary>
           </indexterm>
         </listitem>
