@@ -12,8 +12,11 @@
   <title>Acknowledgments</title>
 -->
   <title>致谢</title>
+<!--E
   <para>We would like to thank the following people and organizations
   for their contributions to the Linux From Scratch Project.</para>
+-->
+  <para>我们非常感谢以下的个人和组织对 Linux From Scratch 项目所作出的贡献。</para>
 
   <itemizedlist>
 
@@ -95,15 +98,21 @@
     </listitem>
 
     <listitem>
+<!--E
       <para>Countless other people on the various LFS and BLFS mailing lists
       who helped make this book possible by giving their suggestions, testing
       the book, and submitting bug reports, instructions, and their
       experiences with installing various packages.</para>
+-->
+      <para>还有很多其它人，他们在各种 LFS 和 BLFS 邮件列表上帮助我们撰写此书，他们提出建议、协助测试、提交 Bug 报告、命令并分享了他们安装各种不同软件包的经验。</para>
     </listitem>
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect2">Translators</bridgehead>
+-->
+  <bridgehead renderas="sect2">翻译</bridgehead>
 
   <itemizedlist>
 
@@ -133,9 +142,15 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect2">Mirror Maintainers</bridgehead>
+-->
+  <bridgehead renderas="sect2">镜像维护</bridgehead>
 
+<!--E
   <bridgehead renderas="sect3">North American Mirrors</bridgehead>
+-->
+  <bridgehead renderas="sect3">北美镜像</bridgehead>
 
   <itemizedlist>
 
@@ -161,7 +176,10 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect3">South American Mirrors</bridgehead>
+-->
+  <bridgehead renderas="sect3">南美镜像</bridgehead>
 
   <itemizedlist>
 
@@ -178,7 +196,10 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect3">European Mirrors</bridgehead>
+-->
+  <bridgehead renderas="sect3">欧洲镜像</bridgehead>
 
   <itemizedlist>
 
@@ -250,7 +271,10 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect3">Asian Mirrors</bridgehead>
+-->
+  <bridgehead renderas="sect3">亚洲镜像</bridgehead>
 
   <itemizedlist>
 
@@ -271,7 +295,10 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect3">Australian Mirrors</bridgehead>
+-->
+  <bridgehead renderas="sect3">澳洲镜像</bridgehead>
 
   <itemizedlist>
 
@@ -282,7 +309,10 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect2">Former Project Team Members</bridgehead>
+-->
+  <bridgehead renderas="sect2">项目正式成员</bridgehead>
 
   <itemizedlist>
 
@@ -393,8 +423,11 @@
 
   </itemizedlist>
 
+<!--E
   <bridgehead renderas="sect2">A very special thank you to our
   donators</bridgehead>
+-->
+  <bridgehead renderas="sect2">特别感谢以下各位的资助</bridgehead>
 
   <itemizedlist>
 
