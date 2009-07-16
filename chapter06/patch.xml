@@ -22,11 +22,12 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Patch package contains a program for modifying or creating files
     by applying a <quote>patch</quote> file typically created by the
     <command>diff</command> program.</para>
-
+-->
+    <para>Patch包含一个 根据 <quote>patch</quote> 文件的内容来修改或创建文件的程序。补丁文件通常是用 <command>diff</command> 程序创建的。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -40,48 +41,67 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Patch</title>
-
+-->
+    <title>安装 Patch</title>
+<!--E
     <para>Prepare Patch for compilation:</para>
-
+-->
+    <para>为编译 Patch 做准备：</para>
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试套件。</para>
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-patch" role="content">
+<!--E   
     <title>Contents of Patch</title>
-
+-->
+    <title>Patch 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed program</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>patch</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
+ <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="patch">
         <term><command>patch</command></term>
         <listitem>
+<!--E
           <para>Modifies files according to a patch file. A patch file is
           normally a difference listing created with the <command>diff</command>
           program. By applying these differences to the original files,
           <command>patch</command> creates the patched versions.</para>
-          <indexterm zone="ch-system-patch patch">
+-->
+          <para>根据一个 patch 文件来对文件进行修改。通常情况下，一个 patch 文件是一个差别清单，这个清单用 <command>diff</command> 程序创建。通过将这些差别应用到原始文件，patch 创建出修订版本。</para>
+      
+     <indexterm zone="ch-system-patch patch">
             <primary sortas="b-patch">patch</primary>
           </indexterm>
         </listitem>
