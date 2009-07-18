@@ -22,9 +22,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Less package contains a text file viewer.</para>
-
+-->
+    <para>Less 软件包包含一个文本文件查看器。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -38,60 +39,84 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Less</title>
-
+-->
+    <title>安装 Less</title>
+<!--E
     <para>Prepare Less for compilation:</para>
-
+-->
+    <para>为编译 Less 做准备：</para>
 <screen><userinput remap="configure">./configure --prefix=/usr --sysconfdir=/etc</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
-
+-->
+      <title>配置选项的含义：</title>
+     
       <varlistentry>
         <term><parameter>--sysconfdir=/etc</parameter></term>
         <listitem>
+<!--E
           <para>This option tells the programs created by the package to look
           in <filename class="directory">/etc</filename> for the configuration
           files.</para>
+-->
+          <para>这个选项告诉程序建立软件包时在 <filename class="directory">/etc</filename> 里查找配置文件。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试套件。</para>
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-less" role="content">
+<!--E
     <title>Contents of Less</title>
-
+-->
+    <title>Less 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>less, lessecho, and lesskey</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
+ <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="less">
         <term><command>less</command></term>
         <listitem>
+<!--E
           <para>A file viewer or pager; it displays the contents of the given
           file, letting the user scroll, find strings, and jump to marks</para>
-          <indexterm zone="ch-system-less less">
+-->
+          <para>一个文件显示或分页程序。它显示某文件的内容，并可以分卷、寻找字符串、跳转到某一标记</para>     
+     <indexterm zone="ch-system-less less">
             <primary sortas="b-less">less</primary>
           </indexterm>
         </listitem>
@@ -100,9 +125,13 @@
       <varlistentry id="lessecho">
         <term><command>lessecho</command></term>
         <listitem>
+<!--E
           <para>Needed to expand meta-characters, such as <emphasis>*</emphasis>
           and <emphasis>?</emphasis>, in filenames on Unix systems</para>
-          <indexterm zone="ch-system-less lessecho">
+-->
+          <para>在 Unix 系统中，可以用来扩展元字符，比如 <emphasis>*</emphasis>
+ 和 <emphasis>?</emphasis></para>     
+     <indexterm zone="ch-system-less lessecho">
             <primary sortas="b-lessecho">lessecho</primary>
           </indexterm>
         </listitem>
@@ -111,8 +140,11 @@
       <varlistentry id="lesskey">
         <term><command>lesskey</command></term>
         <listitem>
+<!--E
           <para>Used to specify the key bindings for <command>less</command></para>
-          <indexterm zone="ch-system-less lesskey">
+-->
+          <para>为 <command>less</command> 定义按键</para>     
+     <indexterm zone="ch-system-less lesskey">
             <primary sortas="b-lesskey">lesskey</primary>
           </indexterm>
         </listitem>
