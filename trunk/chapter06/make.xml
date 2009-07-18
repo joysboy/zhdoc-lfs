@@ -22,9 +22,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Make package contains a program for compiling packages.</para>
-
+-->
+    <para>Make 软件包包含编译包的程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -38,49 +39,66 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Make</title>
-
+-->
+    <title>安装 Make</title>
+<!--E
     <para>Prepare Make for compilation:</para>
-
+-->
+    <para>为编译 Make 做准备：</para>
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>To test the results, issue:</para>
-
+-->
+    <para>要测试结果，请运行：</para>
 <screen><userinput remap="test">make check</userinput></screen>
-
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
 
   <sect2 id="contents-make" role="content">
+<!--E
     <title>Contents of Make</title>
-
+-->
+    <title>Make 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed program</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>make</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
+ <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="make">
         <term><command>make</command></term>
         <listitem>
+<!--E
           <para>Automatically determines which pieces of a package need to
           be (re)compiled and then issues the relevant commands</para>
-          <indexterm zone="ch-system-make make">
+-->
+          <para>自动地确定一个大型程序的哪些片段需要重新编译，并且发出命令去重新编译它们</para>     
+     <indexterm zone="ch-system-make make">
             <primary sortas="b-make">make</primary>
           </indexterm>
         </listitem>
