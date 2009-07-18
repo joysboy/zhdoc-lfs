@@ -440,8 +440,11 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>     
+ <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <!-- <varlistentry id="accessdb">
