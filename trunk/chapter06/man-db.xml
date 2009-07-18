@@ -22,10 +22,11 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Man-DB package contains programs for finding and viewing man
     pages.</para>
-
+-->
+    <para>Man-DB 包含查找和显示 man 手册页的程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -39,16 +40,23 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Man-DB</title>
-
+-->
+    <title>安装 Man-DB</title>
+<!--E
     <para>LFS creates <filename>/usr/man</filename> and
     <filename>/usr/local/man</filename> as symlinks.   Remove them from the
     <filename>man_db.conf</filename> file to prevent redundant
     results when using programs such as <command>whatis</command>:</para>
-
+-->
+    <para>LFS 创建了 <filename>/usr/man</filename> 和 <filename>/usr/local/man</filename> 作为符号连接。把它们从 <filename>man_db.conf</filename> 文件中删除，以防当使用如 <command>whatis</command> 之类的程序时会出现多余的结果：</para>
 <screen><userinput remap="pre">sed -i -e '\%\t/usr/man%d' -e '\%\t/usr/local/man%d' src/man_db.conf.in</userinput></screen>
 
+<!--E
     <para>Prepare Man-DB for compilation:</para>
+-->
+    <para>为编译 Man-DB 作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --libexecdir=/usr/lib \
     --sysconfdir=/etc --disable-setuid \
@@ -57,28 +65,38 @@
     --with-grap=/usr/bin/grap</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--disable-setuid</parameter></term>
         <listitem>
+<!--E
           <para>This disables making the <command>man</command> program setuid
           to user <systemitem class="username">man</systemitem>.</para>
-        </listitem>
+-->
+          <para>使 <command>man</command> 不能给用户 <systemitem class="username">man</systemitem> 设置 uid 位。</para>     
+   </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--enable-mb-groff</parameter></term>
         <listitem>
+<!--E
           <para>This switch tells <application>man-db</application> to expect
           the Debian multibyte patched version of
           <application>groff</application>.</para>  
-        </listitem>
+-->
+          <para>通知 <application>man-db</application> 使用 Debian 打过补丁的多字节版本的 <application>groff</application>。</para>     
+   </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--with-...</parameter></term>
         <listitem>
+<!--E
           <para>These four parameters are used to set some default programs.
           The <command>col</command> program is a part of the Util-linux-ng
           package, <command>lynx</command> is a text-based web browser (see
@@ -89,33 +107,44 @@
           not normally needed for viewing manual pages. They are not part of
           LFS or BLFS, but you should be able to install them yourself after
           finishing LFS if you wish to do so.</para>
-        </listitem>
+-->
+          <para>这四个参数是用来设定某些默认程序的。<command>col</command> 程序是 Util-linux-ng 包的一部分，<command>lynx</command> 是基于文本的网络浏览器（参考 BLFS 获得安装指导），<command>vgrind</command> 把源代码转换成 Groff 输入格式，<command>grap</command> 对于在 Groff 文件中图表排版很有用。<command>vgrind</command> 和 <command>grap</command> 对于浏览手册页的一般需求不是必须的。它们不是 LFS 或 BLFS 的必要步骤，但是如果你在安装完 LFS 后想要安装它们，你应该要能够做到。</para>     
+   </listitem>
       </varlistentry>
 
     </variablelist>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试套件。</para>
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2>
+<!--E
     <title>Non-English Manual Pages in LFS</title>
-
+-->
+    <title>LFS 中的非英文手册页</title>
+<!--E
     <para>Some packages provide non-English manual pages. They are displayed 
     correctly only if their location and encoding matches the expectation of 
     the "man" program. However, different Linux distributions have different 
     policies (expressed in the choice of the <command>man</command> program,
     its configuration and patches applied to it) concerning the character 
     encoding in which manual pages are stored in the filesystem.</para>
-
+-->
+    <para>有一些包提供非英语的手册页。只有在它们的位置和编码匹配 "man" 程序的时候，才能用其他语言正常显示。但是不同的 Linux 发行版本关于在文件系统中手册页用何种字符编码存储有不同的政策（<command>man</command> 程序的相关选择，如它的编译方式和所运用的补丁等）。</para>
+<!--E
     <para>E.g., Debian previously required Russian manual pages to be encoded
     in KOI8-R and to be placed in
     <filename class="directory">/usr/share/man/ru</filename>. Now, in addition,
@@ -133,7 +162,9 @@
     it will display the contents as configured, resulting in completely
     unreadable text if the on disk encoding is not what is expected for that
     configuration.</para>
-
+-->
+    <para>例如，Debian 先前要求俄罗斯语的手册页应该用 KOI8-R 字符编码并放置在 <filename class="directory">/usr/share/man/ru</filename> 中。现在，他们的 <command>man</command> 程序（<application>Man-DB</application>）还可以在 <filename class="directory">/usr/share/man/ru.UTF-8</filename> 查找用 UTF-8 编码的俄罗斯语手册页。而 Fedora 只允许使用用 UTF-8 编码的手册页。俄罗斯于的手册页被放在 <filename class="directory">/usr/share/man/ru</filename> 中，他们的 <command>man</command> 程序不承认 <filename class="directory">/usr/share/man/ru.UTF-8</filename>。许多发行版本完全忽略磁盘上的编码，使最终的用户在编译时会尽可能少地遇到不正确的编码手册页。当 <command>man</command> 运行所需页的时候，如果磁盘编码与它所需的编译形式不符的话，它将在编译的时候显示出完全不可读的内容。</para>
+<!--E   
     <para>Disagreement about the expected encoding of manual pages amongst
     distribution vendors, has led to confusion for upstream package
     maintainers. One package may contain UTF-8 manual pages, while another
@@ -148,11 +179,16 @@
     encoded and, according to the built-in table, expects all manual pages
     residing in <filename class="directory">/usr/share/man/ru</filename> to
     be encoded using KOI8-R.</para>
+-->
+    <para>不同版本发行商关于手册页编码的分歧导致了维护 upstream 包的混乱。一个包可能包含 UTF-8 手册页，而另一个包可能包含以前其他编码形式的手册页。<command>man</command> 查找手册页的方式是基于用户 locale 的设置。<application>Man-DB</application> 使用内置的表（如下所示）来决定基于用户 locale 设置的手册页在磁盘上的编码形式，但是这只在所找到的目录的拓展名中没有关于编码描述的情况下。例如，如果目录名中有 ".UTF-8"，那么 <application>Man-DB</application> 就会知道所有存在于 <filename class="directory">/usr/share/man/fr.UTF-8</filename> 中的手册页都是用 UTF-8 编码的，并根据内置表，应将所有放置在 <filename class="directory">/usr/share/man/ru</filename> 中的手册页用 KOI8-R 编码。</para>
 
     <!-- Origin: man-db-2.5.2/src/encodings.c -->
     <table>
+<!--E
       <title>Expected character encoding of legacy 8-bit manual pages</title>
-      <?dbfo table-width="2.5in" ?>
+-->
+      <title>manual 页的字符编码表</title>     
+ <?dbfo table-width="2.5in" ?>
 
       <tgroup cols="2">
 
@@ -298,14 +334,17 @@
     </table>
 
     <note>
+<!--E
       <para>Manual pages in languages not in the list are not supported.
       Norwegian does not work because of the transition from no_NO to
       nb_NO locale, and will be fixed in the next release of 
       <application>Man-DB</application>.  Korean is currently non functional
       because of incomplete fixes in the Debian
       <application>Groff</application> patch applied in LFS.</para>
+-->
+      <para>不在上面列表中的语言的 Manual 页是不支持的。由于 no_NO 到 nb_NO 的转变，挪威语无法使用，并且在 <application>Man-DB</application> 的后续版本中，nb_NO locale 将固定不变。韩语目前也是不具功能的，因为 LFS 中运用的是不完整的 Debian 的 <application>Groff</application> 补丁。</para>
     </note>
-
+<!--E
     <para>Packages may install manual pages into an improperly named directory,
     depending on which distributions the author develops the package for. To
     assist in the conversion of the manual pages to the proper encoding for the
@@ -313,6 +352,9 @@
     script was written. It will convert manual pages to another encoding before
     (or after) installation.  Install the <command>convert-mans</command>
     script with the following instructions:</para>
+-->
+    <para>软件包可能会被安装一个没有正确命名的目录下，这取决于包的开发者是为那个发行版本设计的软件包。为了支持手册页能在它被安装在的目录下转变成正确的编码，运用
+<command>convert-mans</command> 脚本。它会使手册页在安装之前（或之后）转变成另一种编码。用下面的脚本安装 <command>convert-mans</command>：</para>
 
 <screen><userinput remap="install">cat &gt;&gt; convert-mans &lt;&lt; "EOF"
 <literal>#!/bin/sh -e
@@ -329,7 +371,7 @@ done</literal>
 EOF
 install -m755 convert-mans  /usr/bin</userinput></screen>
 
-
+<!--E
     <para>If upstream distributes the manual pages in a legacy encoding, the
     manual pages can simply be copied to
     <filename class="directory">/usr/share/man/<replaceable>&lt;language
@@ -337,44 +379,60 @@ install -m755 convert-mans  /usr/bin</userinput></screen>
     url="http://www.infodrom.org/projects/manpages-de/download/manpages-de-0.5.tar.gz">
     German manual pages</ulink> can be installed with the following
     commands:</para>
+-->
+    <para>如果 upstream 分散了以前编码的手册也，手册页会被拷贝到<filename class="directory">/usr/share/man/<replaceable>&lt;language code&gt;</replaceable></filename>。例如德语的网页（<ulink url="http://www.infodrom.org/projects/manpages-de/download/manpages-de-0.5.tar.gz"> German manual pages</ulink>）可以用下面的命令安装：</para>
 
 <screen role="nodump"><userinput>mkdir -p /usr/share/man/de
 cp -rv man? /usr/share/man/de</userinput></screen>
-
+<!--E
     <para>If upstream distributes manual pages in UTF-8 (i.e., <quote>for
     RedHat</quote>) instead of the encoding listed in the table above, they
     can either be converted from UTF-8 to the encoding listed in the table
     above, or they can be installed directly into
     <filename class="directory">/usr/share/man/<replaceable>&lt;language
     code&gt;</replaceable>.UTF-8</filename>.</para>
-
+-->
+    <para>如果manual 页是 UTF-8 编码的（例如，针对 "RedHat" 的），而不是上面列表中的，他们可能从 UTF-8 转变为列表中的编码，或者他们会被之后安装在 <filename class="directory">/usr/share/man/<replaceable>&lt;language code&gt;</replaceable>.UTF-8</filename>。</para>
+<!--E
     <para>For example, to install <ulink
     url="http://manpagesfr.free.fr/download/man-pages-fr-2.40.0.tar.bz2">
     French manual pages</ulink> in the legacy encoding, use the following
     commands:</para>
+-->
+    <para>例如，法语的 manual 页（<ulink url="http://manpagesfr.free.fr/download/man-pages-fr-2.40.0.tar.bz2"> French manual pages </ulink>）可以使用下面的命令安装：</para>
 
 <screen role="nodump"><userinput>convert-mans UTF-8 ISO-8859-1 man?/*.?
 mkdir -p /usr/share/man/fr
 cp -rv man? /usr/share/man/fr</userinput></screen>
 
-    <note><para>The French manual pages ship with ready made scripts to do the
+    <note>
+<!--E   
+    <para>The French manual pages ship with ready made scripts to do the
     same conversion. The above instructions are used only as an example for
-    use of the <command>convert-mans</command> script.</para></note>
-
+    use of the <command>convert-mans</command> script.</para>
+-->
+    <para>法语手册页已经包含转换的脚本。上面的介绍仅仅是作为例子来说明 <command>convert-mans</command> 脚本的使用方法。</para>
+</note>
+<!--E
     <para>Finally, as an example installation of UTF-8 manual pages, again, the
     French manual pages could be installed with the following commands:</para>
-
+-->
+    <para>最后作为举例说明 UTF-8 编码的手册页的安装，法语手册页可以用下面的命令安装：</para>
 <screen role="nodump"><userinput>mkdir -p /usr/share/man/fr.UTF-8
 cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-man-db" role="content">
+<!--E
     <title>Contents of Man-DB</title>
-
+-->
+    <title>Man-DB 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>apropos, catman, convert-mans, lexgrog, man, mandb,
         manpath, whatis, and zsoelim</seg>
@@ -400,9 +458,12 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="apropos">
         <term><command>apropos</command></term>
         <listitem>
+<!--E
           <para>Searches the <command>whatis</command> database and displays
           the short descriptions of system commands that contain a given
           string</para>
+-->
+          <para>搜索 <command>whatis</command> 数据库，显示包含给定字符串的系统命令的简短描述</para>
           <indexterm zone="ch-system-man-db apropos">
             <primary sortas="b-apropos">apropos</primary>
           </indexterm>
@@ -412,8 +473,11 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="catman">
         <term><command>catman</command></term>
         <listitem>
+<!--E
           <para>Creates or updates the pre-formatted manual pages</para>
-          <indexterm zone="ch-system-man-db catman">
+-->
+          <para>创建或更新预格式化的 manual 页</para>     
+     <indexterm zone="ch-system-man-db catman">
             <primary sortas="b-catman">catman</primary>
           </indexterm>
         </listitem>
@@ -422,8 +486,11 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="convert-mans">
         <term><command>convert-mans</command></term>
         <listitem>
+<!--E
           <para>Reformats manual pages into the chosen encoding.</para>
-          <indexterm zone="ch-system-man-db convert-mans">
+-->
+          <para>用选定的编码重新格式化手册页。</para>     
+     <indexterm zone="ch-system-man-db convert-mans">
             <primary sortas="b-convert-mans">convert-mans</primary>
           </indexterm>
         </listitem>
@@ -432,8 +499,11 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="lexgrog">
         <term><command>lexgrog</command></term>
         <listitem>
+<!--E
           <para>Displays one-line summary information about a given manual
           page</para>
+-->
+          <para>显示一行给定 manual 页的摘要信息</para>
           <indexterm zone="ch-system-man-db lexgrog">
             <primary sortas="b-lexgrog">lexgrog</primary>
           </indexterm>
@@ -443,8 +513,11 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="man">
         <term><command>man</command></term>
         <listitem>
+<!--E
           <para>Formats and displays the requested manual page</para>
-          <indexterm zone="ch-system-man-db man">
+-->
+          <para>格式化并显示请求的 manual 页</para>     
+     <indexterm zone="ch-system-man-db man">
             <primary sortas="b-man">man</primary>
           </indexterm>
         </listitem>
@@ -453,8 +526,11 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="mandb">
         <term><command>mandb</command></term>
         <listitem>
+<!--E
           <para>Creates or updates the <command>whatis</command> database</para>
-          <indexterm zone="ch-system-man-db mandb">
+-->
+          <para>创建或更新 <command>whatis</command> 数据库</para>     
+     <indexterm zone="ch-system-man-db mandb">
             <primary sortas="b-mandb">mandb</primary>
           </indexterm>
         </listitem>
@@ -463,10 +539,13 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="manpath">
         <term><command>manpath</command></term>
         <listitem>
+<!--E
           <para>Displays the contents of $MANPATH or (if $MANPATH is not set)
           a suitable search path based on the settings in man.conf and the
           user's environment</para>
-          <indexterm zone="ch-system-man-db manpath">
+-->
+          <para>显示 $MANPATH 的内容或在man.conf中设置的搜索路径（如果 $MANPATH 没有设置），以及用户的环境变量</para>     
+     <indexterm zone="ch-system-man-db manpath">
             <primary sortas="b-manpath">manpath</primary>
           </indexterm>
         </listitem>
@@ -475,9 +554,12 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="whatis">
         <term><command>whatis</command></term>
         <listitem>
+<!--E
           <para>Searches the <command>whatis</command> database and displays
           the short descriptions of system commands that contain the given
           keyword as a separate word</para>
+-->
+          <para>搜索 <command>whatis</command> 数据库，显示包含给定关键字的系统命令的简短描述</para>
           <indexterm zone="ch-system-man-db whatis">
             <primary sortas="b-whatis">whatis</primary>
           </indexterm>
@@ -487,9 +569,12 @@ cp -rv man? /usr/share/man/fr.UTF-8</userinput></screen>
       <varlistentry id="zsoelim">
         <term><command>zsoelim</command></term>
         <listitem>
+<!--E
           <para>Reads files and replaces lines of the form <emphasis>.so
           file</emphasis> by the contents of the mentioned
           <emphasis>file</emphasis></para>
+-->
+          <para>读取文件并用提到的 <emphasis>file</emphasis> 的内容来替换 <emphasis>.so file</emphasis> 格式的行</para>
           <indexterm zone="ch-system-man-db zsoelim">
             <primary sortas="b-zsoelim">zsoelim</primary>
           </indexterm>
