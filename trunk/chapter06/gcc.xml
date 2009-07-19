@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The GCC package contains the GNU compiler collection, which includes
     the C and C++ compilers.</para>
+-->
+    <para>GCC 软件包包含 GNU 编译器，其中有 C 和 C++ 编译器。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,38 +42,56 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of GCC</title>
+-->
+    <title>安装 GCC</title>    
 
+<!--E
     <para>Apply a <command>sed</command> substitution that will suppress the
     installation of <filename class="libraryfile">libiberty.a</filename>. The
     version of <filename class="libraryfile">libiberty.a</filename> provided by
     Binutils will be used instead:</para>
+-->
+    <para>使用一个 <command>sed</command> 命令来禁止 GCC 安装它自己的 <filename class="libraryfile">libiberty.a</filename> 。我们将使用 Binutils 附带的 libiberty.a 来代替：</para>
 
 <screen><userinput remap="pre">sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in</userinput></screen>
 
+<!--E
     <para>The bootstrap build performed in <xref linkend="ch-tools-gcc-pass1"/>
     built GCC with the <option>-fomit-frame-pointer</option> compiler flag.
     Non-bootstrap builds omit this flag by default, so apply the following
     <command>sed</command> to use it in order to ensure consistent compiler
     builds:</para>
+-->
+    <para>在 <xref linkend="ch-tools-gcc-pass1"/> 里面应用的 bootstrap 编译中，编译器会有 <option>-fomit-frame-pointer</option> 的标志。非 bootstrap 编译默认是忽略这个标志的，可以应用下面的 <command>sed</command> 命令来确保编译的可靠性：</para>
 
 <screen><userinput remap="pre">sed -i 's/^XCFLAGS =$/&amp; -fomit-frame-pointer/' gcc/Makefile.in</userinput></screen>
 
+<!--E
     <para>The <command>fixincludes</command> script is known to occasionally
     erroneously attempt to &quot;fix&quot; the system headers installed so far. As
     the headers installed by GCC-&gcc-version; and Glibc-&glibc-version; are known
     to not require fixing, issue the following command to prevent the
     <command>fixincludes</command> script from running:</para>
+-->
+    <para><command>fixincludes</command> 脚本偶尔会因为修改系统的头文件而出错。因为 GCC-&gcc-version; 和 Glibc-&glibc-version; 是不需要修改的，运行下面的命令可以避免 <command>fixincludes</command> 脚本运行：</para>
 
 <screen><userinput remap="pre">sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in</userinput></screen>
 
+<!--E
     <para>The GCC documentation recommends building GCC outside of the source
     directory in a dedicated build directory:</para>
+-->
+    <para>GCC 的安装指南推荐用一个新建的目录来编译它，而不是在源码目录中：</para>
 
 <screen><userinput remap="pre">mkdir -v ../gcc-build
 cd ../gcc-build</userinput></screen>
 
+<!--E
     <para>Prepare GCC for compilation:</para>
+-->
+    <para>为编译 GCC 做准备：</para>
 
 <screen><userinput remap="configure">../gcc-&gcc-version;/configure --prefix=/usr \
     --libexecdir=/usr/lib --enable-shared \
@@ -78,33 +99,55 @@ cd ../gcc-build</userinput></screen>
     --enable-clocale=gnu --enable-languages=c,c++ \
     --disable-bootstrap</userinput></screen>
 
+<!--E
     <para>Note that for other languages, there are some prerequsites that
     are not available.  See the BLFS Book for instructions on how to
     build all the GCC supported languages.</para>
+-->
+    <para>给其他语言的建议，这里有一些必要条件并不可用。看 BLFS 说明手册上关于如何编译所有 GCC 支持的语言</para>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
     <important>
+<!--E
       <para>In this section, the test suite for GCC is considered
       critical. Do not skip it under any circumstance.</para>
+-->
+      <para>本节的 GCC 测试套件很重要。在任何情况下都不要省略这一步。</para>
     </important>
 
+<!--E
     <para>Test the results, but do not stop at errors:</para>
+-->
+    <para>运行测试套件，但遇到错误不停止：</para>
 
 <screen><userinput remap="test">make -k check</userinput></screen>
 
+<!--E
     <para>To receive a summary of the test suite results, run:</para>
+-->
+    <para>要查看测试单元的测试结果，可以运行：</para>
 
 <screen><userinput remap="test">../gcc-&gcc-version;/contrib/test_summary</userinput></screen>
 
+<!--E
     <para>For only the summaries, pipe the output through
     <userinput>grep -A7 Summ</userinput>.</para>
+-->
+    <para>如果只想看概要，可以把输出通过管道传递给 <userinput>grep -A7 Summ</userinput>。</para>
 
+<!--E
     <para>Results can be compared with those located at <ulink
     url="&test-results;"/>.</para>
+-->
+    <para>结果可以跟 <ulink url="&test-results;"/> 的内容进行比较。</para>
 
+<!--E
     <para>A few unexpected failures cannot always be avoided. The GCC developers
     are usually aware of these issues, but have not resolved them yet. In
     particular, the <filename class="libraryfile">libmudflap</filename> tests
@@ -112,25 +155,39 @@ cd ../gcc-build</userinput></screen>
     (<ulink url="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=20003"/>).
     Unless the test results are vastly different from those at the above URL,
     it is safe to continue.</para>
+-->
+    <para>一些预想不到的错误总是无法避免的。虽然GCC的开发者经常留意这些问题，但是有些还是没有得到解决。通常，<filename class="libraryfile">libmudflap</filename> 测试尤其被认为是有问题的，这是一个 bug （参见 <ulink url="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=20003"/>）。除非测试结果给上面 URL 的有很多不同，一般是可以安全继续的。</para>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Some packages expect the C preprocessor to be installed in the
     <filename class="directory">/lib</filename> directory.
     To support those packages, create this symlink:</para>
+-->
+    <para>有的软件包希望 C PreProcessor （预处理器）安装在 <filename class="directory">/lib</filename> 目录下，为了满足它们的要求，我们创建如下符号链接：</para>
 
 <screen><userinput remap="install">ln -sv ../usr/bin/cpp /lib</userinput></screen>
 
+<!--E
     <para>Many packages use the name <command>cc</command> to call the C
     compiler. To satisfy those packages, create a symlink:</para>
+-->
+    <para>许多软件包使用 <command>cc</command> 作为 C 编译器的名字，为了满足它们的要求，创建如下符号链接：</para>
 
 <screen><userinput remap="install">ln -sv gcc /usr/bin/cc</userinput></screen>
 
+<!--E
     <para>Now that our final toolchain is in place, it is important to again ensure
     that compiling and linking will work as expected. We do this by performing
     the same sanity checks as we did earlier in the chapter:</para>
+-->
+    <para>现在，我们的最终工具链已经形成了，我们需要做的就是确保编译、链接按照我们希望的完成。我们可以通过本章前面的简册方法来实现：</para>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="readjusting.xml"
@@ -245,11 +302,18 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
   </sect2>
 
   <sect2 id="contents-gcc" role="content">
+<!--E
     <title>Contents of GCC</title>
+-->
+    <title>GCC 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed libraries</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>c++, cc (link to gcc), cpp, g++, gcc, gccbug, and gcov</seg>
@@ -259,14 +323,20 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="c">
         <term><command>c++</command></term>
         <listitem>
+<!--E
           <para>The C++ compiler</para>
+-->
+          <para>C++ 编译器</para>
           <indexterm zone="ch-system-gcc c">
             <primary sortas="b-c++">c++</primary>
           </indexterm>
@@ -276,7 +346,10 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="cc">
         <term><command>cc</command></term>
         <listitem>
+<!--E
           <para>The C compiler</para>
+-->
+          <para>C 编译器</para>
           <indexterm zone="ch-system-gcc cc">
             <primary sortas="b-cc">cc</primary>
           </indexterm>
@@ -286,8 +359,11 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="cpp">
         <term><command>cpp</command></term>
         <listitem>
+<!--E
           <para>The C preprocessor; it is used by the compiler to expand the
           #include, #define, and similar statements in the source files</para>
+-->
+          <para>C 预处理器。编译器用它来将 #include 和 #define 这类声明在源文件中展开。</para>
           <indexterm zone="ch-system-gcc cpp">
             <primary sortas="b-cpp">cpp</primary>
           </indexterm>
@@ -297,7 +373,10 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="g">
         <term><command>g++</command></term>
         <listitem>
+<!--E
           <para>The C++ compiler</para>
+-->
+          <para>C++ 编译器</para>
           <indexterm zone="ch-system-gcc g">
             <primary sortas="b-g++">g++</primary>
           </indexterm>
@@ -307,7 +386,10 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="gcc">
         <term><command>gcc</command></term>
         <listitem>
+<!--E
           <para>The C compiler</para>
+-->
+          <para>C 编译器</para>
           <indexterm zone="ch-system-gcc gcc">
             <primary sortas="b-gcc">gcc</primary>
           </indexterm>
@@ -317,7 +399,10 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="gccbug">
         <term><command>gccbug</command></term>
         <listitem>
+<!--E
           <para>A shell script used to help create useful bug reports</para>
+-->
+          <para>一个 shell 脚本，帮助创建有价值的 bug 报告。</para>
           <indexterm zone="ch-system-gcc gccbug">
             <primary sortas="b-gccbug">gccbug</primary>
           </indexterm>
@@ -327,8 +412,11 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="gcov">
         <term><command>gcov</command></term>
         <listitem>
+<!--E
           <para>A coverage testing tool; it is used to analyze programs to
           determine where optimizations will have the most effect</para>
+-->
+          <para>覆盖测试工具，用来分析在程序的哪里做优化的效果最好。</para>
           <indexterm zone="ch-system-gcc gcov">
             <primary sortas="b-gcov">gcov</primary>
           </indexterm>
@@ -338,7 +426,10 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="libgcc">
         <term><filename class="libraryfile">libgcc</filename></term>
         <listitem>
+<!--E
           <para>Contains run-time support for <command>gcc</command></para>
+-->
+          <para><command>gcc</command> 的运行时库</para>
           <indexterm zone="ch-system-gcc libgcc">
             <primary sortas="c-libgcc*">libgcc*</primary>
           </indexterm>
@@ -348,8 +439,11 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="libmudflap">
         <term><filename class="libraryfile">libmudflap</filename></term>
         <listitem>
+<!--E
           <para>Contains routines that support GCC's bounds checking
           functionality</para>
+-->
+          <para>包含支持 GCC 指针检查的常规函数功能</para>
           <indexterm zone="ch-system-gcc libmudflap">
             <primary sortas="c-libmudflap*">libmudflap*</primary>
           </indexterm>
@@ -359,8 +453,11 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="libssp">
         <term><filename class="libraryfile">libssp</filename></term>
         <listitem>
+<!--E
           <para>Contains routines supporting GCC's stack-smashing protection
           functionality</para>
+-->
+          <para>包含支持 GCC 堆栈溢出保护的常规函数功能</para>
           <indexterm zone="ch-system-gcc libssp">
             <primary sortas="c-libssp*">libssp*</primary>
           </indexterm>
@@ -370,7 +467,10 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="libstdc">
         <term><filename class="libraryfile">libstdc++</filename></term>
         <listitem>
+<!--E
           <para>The standard C++ library</para>
+-->
+          <para>准 C++ 库，包含许多常用的函数。</para>
           <indexterm zone="ch-system-gcc libstdc">
             <primary sortas="c-libstdc++">libstdc++</primary>
           </indexterm>
@@ -380,8 +480,11 @@ SEARCH_DIR("/usr/lib");</computeroutput></screen>
       <varlistentry id="libsupc">
         <term><filename class="libraryfile">libsupc++</filename></term>
         <listitem>
+<!--E
           <para>Provides supporting routines for the C++ programming
           language</para>
+-->
+          <para>为 C++ 语言提供支持的库函数。</para>
           <indexterm zone="ch-system-gcc libsupc">
             <primary sortas="c-libsupc++">libsupc++</primary>
           </indexterm>
