@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The GMP package contains math libraries. These have useful functions
     for arbitrary precision arithmetic.</para>
+-->
+    <para>GMP 软件包中包含数学库。库中有用于专门计算精确数值的函数。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -44,45 +47,71 @@
 -->
     <title>安装GMP</title>
 
+<!--E
     <para>Prepare GMP for compilation:</para>
+-->
+    <para>为编译 GMP 作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --enable-cxx --enable-mpbsd</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the new configure option:</title>
-
+-->
+      <title>新配置选项的含义：</title>
       <varlistentry>
         <term><parameter>--enable-cxx</parameter></term>
         <listitem>
+<!--E
           <para>This parameter enables C++ support</para>
+-->
+          <para>这些参数用于开启对 C++ 的支持</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>    
 
 <screen><userinput remap="make">make</userinput></screen>
 
     <important>
+<!--E
       <para>The test suite for GMP in this section is considered critical.
       Do not skip it under any circumstances.</para>
+-->
+      <para>本节的 GMP 测试套件很重要。在任何情况下都不要省略这一步。</para>
     </important>
 
+<!--E
     <para>Test the results:</para>
+-->
+    <para>对结果进行测试：</para>
 
 <screen><userinput remap="test">make check 2>&amp;1 | tee gmp-check-log</userinput></screen>
 
+<!--E
     <para>Ensure that all 139 tests in the test suite ran successfully by
     issuing the following command:</para>
+-->
+    <para>用下面的命令来确保测试套件中 139 个测试都运行成功：</para>
 
 <screen><userinput remap="test">awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>If desired, install the documentation:</para>
+-->
+    <para>如果有需求安装文档：</para>
 
 <screen><userinput remap="install">mkdir -v /usr/share/doc/gmp-&gmp-version;
 cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
@@ -94,7 +123,10 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
     <title>Contents of GMP</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed Libraries</segtitle>
+-->
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>libgmp.{a,so}, libgmpxx.{a,so}, and libmp.{a,so}</seg>
@@ -109,7 +141,10 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
       <varlistentry id="libgmp">
         <term><command>libgmp</command></term>
         <listitem>
+<!--E
           <para>Contains precision math functions.</para>
+-->
+          <para>包含精确的数学函数。</para>
           <indexterm zone="ch-system-gmp libgmp">
             <primary sortas="c-libgmp">libgmp</primary>
           </indexterm>
@@ -119,7 +154,10 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
       <varlistentry id="libgmpxx">
         <term><command>libgmpxx</command></term>
         <listitem>
+<!--E
           <para>Contains C++ precision math functions.</para>
+-->
+          <para>包含 C++ 精确的数学函数。</para>
           <indexterm zone="ch-system-gmp libgmpxx">
             <primary sortas="c-libgmpxx">libgmpxx</primary>
           </indexterm>
@@ -129,7 +167,10 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
       <varlistentry id="libmp">
         <term><command>libmp</command></term>
         <listitem>
+<!--E
           <para>Contains the Berkeley MP math functions.</para>
+-->
+          <para>包含 Brerkley MP 数学函数。</para>
           <indexterm zone="ch-system-gmp libmp">
             <primary sortas="c-libmp">libmp</primary>
           </indexterm>
