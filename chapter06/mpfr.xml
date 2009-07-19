@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The MPFR package contains functions for multiple precision
     math.</para>
+-->
+    <para>MPFR 包中包含高精度数学函数</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -41,24 +44,39 @@
   <sect2 role="installation">
     <title>Installation of MPFR</title>
 
+<!--E
     <para>Prepare MPFR for compilation:</para>
+-->
+    <para>为 MPFR 的编译作准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --enable-thread-safe</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
     <important>
+<!--E
       <para>The test suite for MPFR in this section is considered critical.
       Do not skip it under any circumstances.</para>
+-->
+      <para>本节的 MPFR 测试套件很重要。在任何情况下都不要省略这一步。</para>
     </important>
 
+<!--E
     <para>Test the results and ensure that all 134 tests passed:</para>
+-->
+    <para>对结果进行测试，并确保全部 134 个测试都通过：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -66,10 +84,15 @@
 
 
   <sect2 id="contents-mpfr" role="content">
+<!--E
     <title>Contents of MPFR</title>
-
+-->
+    <title>MPFR 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed Libraries</segtitle>
+-->
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>mpfr.so</seg>
@@ -77,14 +100,20 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="mpfr">
         <term><command>mpfr</command></term>
         <listitem>
+<!--E
           <para>Contains multiple-precision math functions.</para>
+-->
+          <para>包含高精度数学函数。</para>
           <indexterm zone="ch-system-mpfr mpfr">
             <primary sortas="c-mpfr">mpfr</primary>
           </indexterm>

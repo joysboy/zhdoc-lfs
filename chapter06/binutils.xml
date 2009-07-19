@@ -178,8 +178,10 @@ cd ../binutils-build</userinput></screen>
 
 
   <sect2 id="contents-binutils" role="content">
+<!--E
     <title>Contents of Binutils</title>
-
+-->
+    <title>Binutils 的内容</title>
     <segmentedlist>
 <!--E
       <segtitle>Installed programs</segtitle>
@@ -197,7 +199,10 @@ cd ../binutils-build</userinput></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
