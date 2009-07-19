@@ -27,7 +27,7 @@
     <para>The GMP package contains math libraries. These have useful functions
     for arbitrary precision arithmetic.</para>
 -->
-    <para>GMP 软件包中包含数学库。库中有用于专门计算精确数值的函数。</para>
+    <para>GMP 软件包中包含数学库。库中有用于专门计算单精度数值的函数。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -120,7 +120,10 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
   </sect2>
 
   <sect2 id="contents-gmp" role="content">
+<!--E
     <title>Contents of GMP</title>
+-->
+    <title>GMP 的内容</title>    
 
     <segmentedlist>
 <!--E
@@ -134,7 +137,10 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
@@ -144,7 +150,7 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
 <!--E
           <para>Contains precision math functions.</para>
 -->
-          <para>包含精确的数学函数。</para>
+          <para>包含单精度数学函数。</para>
           <indexterm zone="ch-system-gmp libgmp">
             <primary sortas="c-libgmp">libgmp</primary>
           </indexterm>
@@ -157,7 +163,7 @@ cp    -v doc/{isa_abi_headache,configuration} doc/*.html \
 <!--E
           <para>Contains C++ precision math functions.</para>
 -->
-          <para>包含 C++ 精确的数学函数。</para>
+          <para>包含 C++ 单精度数学函数。</para>
           <indexterm zone="ch-system-gmp libgmpxx">
             <primary sortas="c-libgmpxx">libgmpxx</primary>
           </indexterm>

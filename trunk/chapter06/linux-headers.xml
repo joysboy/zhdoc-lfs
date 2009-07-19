@@ -71,25 +71,36 @@ cp -rv dest/include/* /usr/include</userinput></screen>
   </sect2>
 
   <sect2 id="contents-linux-headers" role="content">
+<!--E
     <title>Contents of Linux API Headers</title>
+-->
+    <title>Linux API Headers 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed headers</segtitle>
-
+-->
+      <segtitle>安装的头文件</segtitle>
       <seglistitem>
         <seg>/usr/include/{asm{,-generic},linux,mtd,rdma,sound,video}/*.h</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="linux-headers">
         <term><filename class="headerfile">/usr/include/{asm{,-generic},linux,mtd,rdma,sound}/*.h</filename></term>
         <listitem>
+<!--E
           <para>The Linux API headers</para>
+-->
+          <para>是 Linux API headers</para>
           <indexterm zone="ch-system-linux-headers linux-headers">
             <!-- No /*.h here to prevent a PDF line overflow -->
             <primary sortas="e-/usr/include/{asm{,-generic},linux,mtd,rdma,sound}">/usr/include/{asm{,-generic},linux,mtd,rdma,sound,video}</primary>

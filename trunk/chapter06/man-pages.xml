@@ -52,10 +52,16 @@
   </sect2>
 
   <sect2 id="contents-manpages" role="content">
+<!--E
     <title>Contents of Man-pages</title>
+-->
+    <title>Man-pages 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed files</segtitle>
+-->
+      <segtitle>安装的文件</segtitle>
 
       <seglistitem>
 <!--E
@@ -66,7 +72,10 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 

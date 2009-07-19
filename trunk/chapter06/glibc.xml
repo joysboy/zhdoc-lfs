@@ -435,12 +435,18 @@ EOF</userinput></screen>
   </sect2>
 
   <sect2 id="contents-glibc" role="content">
+<!--E
     <title>Contents of Glibc</title>
+-->
+    <title>Glibc 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed libraries</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
       <seglistitem>
         <seg>catchsegv, gencat, getconf, getent, iconv, iconvconfig, ldconfig,
         ldd, lddlibc4, locale, localedef, mtrace, nscd, pcprofiledump,
@@ -457,7 +463,10 @@ EOF</userinput></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
