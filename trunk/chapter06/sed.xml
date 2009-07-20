@@ -23,7 +23,10 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Sed package contains a stream editor.</para>
+-->
+    <para>Sed 软件包中包含一个流编辑器</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -38,42 +41,69 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Sed</title>
+-->
+    <title>安装 Sed</title>
 
+<!--E
     <para>Prepare Sed for compilation:</para>
+-->
+    <para>为编译 Sed 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --bindir=/bin --enable-html</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the new configure option:</title>
+-->
+      <title>新配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--enable-html</parameter></term>
         <listitem>
+<!--E
           <para>This builds the HTML documentation.</para>
+-->
+          <para>这是用作编译 HTML 文档。</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包： </para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>对结果进行测试：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-sed" role="content">
+<!--E
     <title>Contents of Sed</title>
+-->
+    <title>Sed 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed program</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
 
       <seglistitem>
         <seg>sed</seg>
@@ -81,14 +111,20 @@
     </segmentedlist>
 
     <variablelist>
+<!--
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="sed">
         <term><command>sed</command></term>
         <listitem>
+<!--E
           <para>Filters and transforms text files in a single pass</para>
+-->
+          <para>单线程的文本文件过滤和转换器</para>
           <indexterm zone="ch-system-sed sed">
             <primary sortas="b-sed">sed</primary>
           </indexterm>
