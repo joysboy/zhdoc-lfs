@@ -124,7 +124,7 @@
 <!--E
           <para>Filters and transforms text files in a single pass</para>
 -->
-          <para>单线程的文本文件过滤和转换器</para>
+          <para>单线程的文本文件过滤和改变工具</para>
           <indexterm zone="ch-system-sed sed">
             <primary sortas="b-sed">sed</primary>
           </indexterm>

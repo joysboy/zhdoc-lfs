@@ -23,10 +23,13 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The E2fsprogs package contains the utilities for handling the
     <systemitem class="filesystem">ext2</systemitem> file system. It also
     supports the <systemitem class="filesystem">ext3</systemitem> journaling
     file system.</para>
+-->
+    <para>E2fsprogs 提供用于 <systemitem class="filesystem">ext2</systemitem> 文件系统的工具。它还支持 <systemitem class="filesystem">ext3</systemitem> 日志文件系统。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -41,30 +44,46 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of E2fsprogs</title>
+-->
+    <title>安装 E2fsprogs</title>
 
+<!--E
     <para>Fix a hardcoded path to <filename>/bin/rm</filename> in E2fsprogs'
     testsuite:</para>
+-->
+    <para>在 E2fsprogs 的测试套件中，修复一个硬编码路径到 <filename>/bin/rm</filename>：</para>
 
     <screen><userinput remap="pre">sed -i 's@/bin/rm@/tools&amp;@' lib/blkid/test_probe.in</userinput></screen>
 
+<!--E
     <para>The E2fsprogs documentation recommends that the package be built in
     a subdirectory of the source tree: </para>
+-->
+    <para>E2fsprogs 安装文档推荐在 E2fsprogs 的源码目录外面来编译它：</para>
 
 <screen><userinput remap="pre">mkdir -v build
 cd build</userinput></screen>
 
+<!--E
     <para>Prepare E2fsprogs for compilation:</para>
+-->
+    <para>为编译 E2fsprogs 做准备：</para>
 
 <screen><userinput remap="configure">../configure --prefix=/usr --with-root-prefix="" \
     --enable-elf-shlibs</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--with-root-prefix=""</parameter></term>
         <listitem>
+<!--E
           <para>Certain programs (such as the <command>e2fsck</command>
           program) are considered essential programs.  When, for example,
           <filename class="directory">/usr</filename> is not mounted, these
@@ -73,59 +92,88 @@ cd build</userinput></screen>
           class="directory">/sbin</filename>. If this option is not passed
           to E2fsprogs' configure, the programs are installed into the
           <filename class="directory">/usr</filename> directory.</para>
+-->
+          <para>有的程序（如 <command>e2fsck</command>）对系统来说是非常重要的，例如，在 <filename class="directory">/usr</filename> 没有挂载的情况下。这些程序和库就应放在像 <filename class="directory">/lib</filename> 和 <filename class="directory">/sbin</filename> 这些目录中。如果没有把上面的参数传递给 E2fsprogs 的 configure 脚本，它就会把程序放在 <filename class="directory">/usr</filename> 目录下。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--enable-elf-shlibs</parameter></term>
         <listitem>
+<!--E
           <para>This creates the shared libraries which some programs
           in this package use.</para>
+-->
+          <para>这会创建共享的库，供 E2fsprogs 包中的一些程序使用。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>要测试结果，请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>One of the E2fsprogs tests will attempt to allocate 256 MB
     of memory. If you do not have significantly more RAM than this, it
     is recommended to enable sufficient swap space for the test. See
     <xref linkend="space-creatingfilesystem"/> and
     <xref linkend="space-mounting"/> for details on creating and enabling
     swap space.</para>
+-->
+    <para>E2fsprogs 的一个测试会尝试分配 256 MB 内存。如果你没有充足的 RAM 空间，推荐打开足够的交换分区。参见 <xref linkend="space-creatingfilesystem"/> 和 <xref linkend="space-mounting"/> 获取关于创建和激活交换分区的细节。</para>
 
+<!--E
     <para>Install the binaries, documentation, and shared libraries:</para>
+-->
+    <para>安装二进制文件、文档和共享库：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Install the static libraries and headers:</para>
+-->
+    <para>安装静态库和头文件：</para>
 
 <screen><userinput remap="install">make install-libs</userinput></screen>
 
+<!--E
     <para>Make the installed static libraries writable so debugging symbols can 
     be removed later.</para>
+-->
+    <para>使安装的静态库可写以便调试符号一会儿可以被移除。</para>
 
 <screen><userinput remap="install">chmod -v u+w /usr/lib/{libblkid,libcom_err,libe2p,libext2fs,libss,libuuid}.a</userinput></screen>
 
+<!--E
     <para>This package installs a gzipped
     <filename class="extension">.info</filename> file but doesn't update the
     system-wide <filename>dir</filename> file. Unzip this file and then update
     the system <filename>dir</filename> file using the following
     commands.</para>
+-->
+    <para>这个软件包安装一个被 gzip 压缩过的 <filename class="extension">.info</filename> 文件，但并不更新系统<filename>目录</filename>文件。用下面的命令解压缩这个文件并更新<filename>目录</filename>文件。</para>
 
 <screen><userinput remap="install">gunzip -v /usr/share/info/libext2fs.info.gz
 install-info --dir-file=/usr/share/info/dir \
              /usr/share/info/libext2fs.info</userinput></screen>
 
+<!--E
     <para>If desired, create and install some additional documentation by
     issuing the following commands:</para>
+-->
+    <para>如果有需要，可以运行下面的命令创建并安装一些附加的文档</para>
 
 <screen><userinput remap="install">makeinfo -o      doc/com_err.info ../lib/et/com_err.texinfo
 install -v -m644 doc/com_err.info /usr/share/info
@@ -138,11 +186,18 @@ install -v -m644 -D ../doc/libblkid.txt \
   </sect2>
 
   <sect2 id="contents-e2fsprogs" role="content">
+<!--E
     <title>Contents of E2fsprogs</title>
+-->
+    <title>E2fsprogs 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed libraries</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>badblocks, blkid, chattr, compile_et, debugfs, dumpe2fs, e2fsck,
@@ -156,15 +211,21 @@ install -v -m644 -D ../doc/libblkid.txt \
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="badblocks">
         <term><command>badblocks</command></term>
         <listitem>
+<!--E
           <para>Searches a device (usually a disk partition) for bad
           blocks</para>
+-->
+          <para>用来检查设备（通常是硬盘分区）上的坏块</para>
           <indexterm zone="ch-system-e2fsprogs badblocks">
             <primary sortas="b-badblocks">badblocks</primary>
           </indexterm>
@@ -174,8 +235,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="blkid">
         <term><command>blkid</command></term>
         <listitem>
+<!--E
           <para>A command line utility to locate and print block device
           attributes</para>
+-->
+          <para>定位并打印出块设备属性的命令行工具</para>
           <indexterm zone="ch-system-e2fsprogs blkid">
             <primary sortas="b-blkid">blkid</primary>
           </indexterm>
@@ -185,11 +249,14 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="chattr">
         <term><command>chattr</command></term>
         <listitem>
+<!--E
           <para>Changes the attributes of files on an <systemitem
           class="filesystem">ext2</systemitem> file system; it also
           changes <systemitem class="filesystem">ext3</systemitem>
           file systems, the journaling version of <systemitem
           class="filesystem">ext2</systemitem> file systems</para>
+-->
+          <para>在 <systemitem class="filesystem">ext2</systemitem> 和 <systemitem class="filesystem">ext3</systemitem> 文件系统上改变文件属性</para>
           <indexterm zone="ch-system-e2fsprogs chattr">
             <primary sortas="b-chattr">chattr</primary>
           </indexterm>
@@ -199,9 +266,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="compile_et">
         <term><command>compile_et</command></term>
         <listitem>
+<!--E
           <para>An error table compiler; it converts a table of error-code
           names and messages into a C source file suitable for use with the
           <filename class="libraryfile">com_err</filename> library</para>
+-->
+          <para>用来将错误代码（error-code）和相关出错信息的列表转化为适用于 <filename class="libraryfile">com_err</filename> 库的 C 语言文件</para>
           <indexterm zone="ch-system-e2fsprogs compile_et">
             <primary sortas="b-compile_et">compile_et</primary>
           </indexterm>
@@ -211,9 +281,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="debugfs">
         <term><command>debugfs</command></term>
         <listitem>
+<!--E
           <para>A file system debugger; it can be used to examine and change
           the state of an <systemitem class="filesystem">ext2</systemitem>
           file system</para>
+-->
+          <para>文件系统调试器。能用来检查和改变 <systemitem class="filesystem">ext2</systemitem> 文件系统的状态</para>
           <indexterm zone="ch-system-e2fsprogs debugfs">
             <primary sortas="b-debugfs">debugfs</primary>
           </indexterm>
@@ -223,8 +296,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="dumpe2fs">
         <term><command>dumpe2fs</command></term>
         <listitem>
+<!--E
           <para>Prints the super block and blocks group information for the
           file system present on a given device</para>
+-->
+          <para>打印特定设备上现存的文件系统的超级块（super block）和块群（blocks group）的信息</para>
           <indexterm zone="ch-system-e2fsprogs dumpe2fs">
             <primary sortas="b-dumpe2fs">dumpe2fs</primary>
           </indexterm>
@@ -234,9 +310,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="e2fsck">
         <term><command>e2fsck</command></term>
         <listitem>
+<!--E
           <para>Is used to check, and optionally repair <systemitem
           class="filesystem">ext2</systemitem> file systems and <systemitem
           class="filesystem">ext3</systemitem> file systems</para>
+-->
+          <para>用来检查和修复 <systemitem class="filesystem">ext2</systemitem> 和 <systemitem class="filesystem">ext3</systemitem> 文件系统</para>
           <indexterm zone="ch-system-e2fsprogs e2fsck">
             <primary sortas="b-e2fsck">e2fsck</primary>
           </indexterm>
@@ -246,8 +325,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="e2image">
         <term><command>e2image</command></term>
         <listitem>
+<!--E
           <para>Is used to save critical <systemitem
           class="filesystem">ext2</systemitem> file system data to a file</para>
+-->
+          <para>将关键的 <systemitem class="filesystem">ext2</systemitem> 文件系统数据保存到一个文件中</para>
           <indexterm zone="ch-system-e2fsprogs e2image">
             <primary sortas="b-e2image">e2image</primary>
           </indexterm>
@@ -257,9 +339,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="e2label">
         <term><command>e2label</command></term>
         <listitem>
+<!--E
           <para>Displays or changes the file system label on the <systemitem
           class="filesystem">ext2</systemitem> file system present on a given
           device</para>
+-->
+          <para>显示或者改变指定设备上的 <systemitem class="filesystem">ext2</systemitem> 文件系统标识</para>
           <indexterm zone="ch-system-e2fsprogs e2label">
             <primary sortas="b-e2label">e2label</primary>
           </indexterm>
@@ -269,9 +354,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="e2undo">
         <term><command>e2undo</command></term>
         <listitem>
+<!--E
           <para>Replays the undo log undo_log for an ext2/ext3/ext4 filesystem 
           found on a device. This can be used to undo a failed operation by an 
           e2fsprogs program.</para>
+-->
+          <para>当一个设备上建立 ext2/ext3/ext4 文件系统时要重建撤销日志。这样做的目的是，运行 e2fsprogs 程序操作失败时可以根据撤销日志进行恢复。</para>
           <indexterm zone="ch-system-e2fsprogs e2undo">
             <primary sortas="b-e2undo">e2undo</primary>
           </indexterm>
@@ -281,7 +369,10 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="filefrag">
         <term><command>filefrag</command></term>
         <listitem>
+<!--E
           <para>Reports on how badly fragmented a particular file might be</para>
+-->
+          <para>报告一个文件的碎片情况</para>
           <indexterm zone="ch-system-e2fsprogs filefrag">
             <primary sortas="b-filefrag">filefrag</primary>
           </indexterm>
@@ -291,8 +382,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="findfs">
         <term><command>findfs</command></term>
         <listitem>
+<!--E
           <para>Finds a file system by label or Universally Unique Identifier
           (UUID)</para>
+-->
+          <para>通过卷标或通用唯一标识符（UUID）寻找文件系统</para>
           <indexterm zone="ch-system-e2fsprogs findfs">
             <primary sortas="b-findfs">findfs</primary>
           </indexterm>
@@ -302,7 +396,10 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="fsck">
         <term><command>fsck</command></term>
         <listitem>
+<!--E
           <para>Is used to check, and optionally repair, file systems</para>
+-->
+          <para>用来检查或者修理文件系统</para>
           <indexterm zone="ch-system-e2fsprogs fsck">
             <primary sortas="b-fsck">fsck</primary>
           </indexterm>
@@ -312,8 +409,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="fsck.ext2">
         <term><command>fsck.ext2</command></term>
         <listitem>
+<!--E
           <para>By default checks <systemitem class="filesystem">ext2</systemitem>
           file systems. This is a hard link to <command>fsck</command>.</para>
+-->
+          <para>默认检查 <systemitem class="filesystem">ext2</systemitem> 文件系统。这是一个到 <command>fsck</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs fsck.ext2">
             <primary sortas="b-fsck.ext2">fsck.ext2</primary>
           </indexterm>
@@ -323,8 +423,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="fsck.ext3">
         <term><command>fsck.ext3</command></term>
         <listitem>
+<!--E
           <para>By default checks <systemitem class="filesystem">ext3</systemitem>
           file systems. This is a hard link to <command>fsck</command>.</para>
+-->
+          <para>默认检查 <systemitem class="filesystem">ext3</systemitem> 文件系统。这是一个到 <command>fsck</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs fsck.ext3">
             <primary sortas="b-fsck.ext3">fsck.ext3</primary>
           </indexterm>
@@ -334,8 +437,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="fsck.ext4">
         <term><command>fsck.ext4</command></term>
         <listitem>
+<!--E
           <para>By default checks <systemitem class="filesystem">ext4</systemitem>
           file systems. This is a hard link to <command>fsck</command>.</para>
+-->
+          <para>默认检查 <systemitem class="filesystem">ext4</systemitem> 文件系统。这是一个到 <command>fsck</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs fsck.ext4">
             <primary sortas="b-fsck.ext4">fsck.ext4</primary>
           </indexterm>
@@ -345,9 +451,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="fsck.ext4dev">
         <term><command>fsck.ext4dev</command></term>
         <listitem>
+<!--E
           <para>By default checks <systemitem class="filesystem">ext4</systemitem>
           development file systems. This is a hard link to 
           <command>fsck</command>.</para>
+-->
+          <para>默认检查 <systemitem class="filesystem">ext4</systemitem> 开发文件系统。这是一个到 <command>fsck</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs fsck.ext4dev">
             <primary sortas="b-fsck.ext4dev">fsck.ext4dev</primary>
           </indexterm>
@@ -357,7 +466,10 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="logsave">
         <term><command>logsave</command></term>
         <listitem>
+<!--E
           <para>Saves the output of a command in a log file</para>
+-->
+          <para>把一个命令的输出保存在日志文件中</para>
           <indexterm zone="ch-system-e2fsprogs logsave">
             <primary sortas="b-logsave">logsave</primary>
           </indexterm>
@@ -367,8 +479,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="lsattr">
         <term><command>lsattr</command></term>
         <listitem>
+<!--E
           <para>Lists the attributes of files on a second extended file
           system</para>
+-->
+          <para>列出在第二个扩展文件系统上的文件属性</para>
           <indexterm zone="ch-system-e2fsprogs lsattr">
             <primary sortas="b-lsattr">lsattr</primary>
           </indexterm>
@@ -378,9 +493,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mk_cmds">
         <term><command>mk_cmds</command></term>
         <listitem>
+<!--E
           <para>Converts a table of command names and help messages into a C
           source file suitable for use with the <filename
           class="libraryfile">libss</filename> subsystem library</para>
+-->
+          <para>将一个包含命令列表的文件转化为适用于子系统库 <filename class="libraryfile">libss</filename> 的 C 源文件</para> 
           <indexterm zone="ch-system-e2fsprogs mk_cmds">
             <primary sortas="b-mk_cmds">mk_cmds</primary>
           </indexterm>
@@ -390,9 +508,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mke2fs">
         <term><command>mke2fs</command></term>
         <listitem>
+<!--E
           <para>Creates an <systemitem class="filesystem">ext2</systemitem>
           or <systemitem class="filesystem">ext3</systemitem> file system on
           the given device</para>
+-->
+          <para>用来创建 <systemitem class="filesystem">ext2</systemitem> 或 <systemitem class="filesystem">ext3</systemitem> 文件系统</para>
           <indexterm zone="ch-system-e2fsprogs mke2fs">
             <primary sortas="b-mke2fs">mke2fs</primary>
           </indexterm>
@@ -402,8 +523,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mkfs.ext2">
         <term><command>mkfs.ext2</command></term>
         <listitem>
+<!--E
           <para>By default creates <systemitem class="filesystem">ext2</systemitem>
           file systems.  This is a hard link to <command>mke2fs</command>.</para>
+-->
+          <para>默认创建 <systemitem class="filesystem">ext2</systemitem> 文件系统。这是一个到 <command>mke2fs</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext2">
             <primary sortas="b-mkfs.ext2">mkfs.ext2</primary>
           </indexterm>
@@ -413,8 +537,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mkfs.ext3">
         <term><command>mkfs.ext3</command></term>
         <listitem>
+<!--E
           <para>By default creates <systemitem class="filesystem">ext3</systemitem>
           file systems.  This is a hard link to <command>mke2fs</command>.</para>
+-->
+          <para>默认创建 <systemitem class="filesystem">ext3</systemitem> 文件系统。这是一个到 <command>mke2fs</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext3">
             <primary sortas="b-mkfs.ext3">mkfs.ext3</primary>
           </indexterm>
@@ -424,8 +551,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mkfs.ext4">
         <term><command>mkfs.ext4</command></term>
         <listitem>
+<!--E
           <para>By default creates <systemitem class="filesystem">ext4</systemitem>
           file systems.  This is a hard link to <command>mke2fs</command>.</para>
+-->
+          <para>默认创建 <systemitem class="filesystem">ext4</systemitem> 文件系统。这是一个到 <command>mke2fs</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext4">
             <primary sortas="b-mkfs.ext4">mkfs.ext4</primary>
           </indexterm>
@@ -435,8 +565,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mkfs.ext4dev">
         <term><command>mkfs.ext4dev</command></term>
         <listitem>
+<!--E
           <para>By default creates <systemitem class="filesystem">ext4</systemitem>
           development file systems.  This is a hard link to <command>mke2fs</command>.</para>
+-->
+          <para>默认创建 <systemitem class="filesystem">ext4</systemitem> 开发文件系统。这是一个到 <command>mke2fs</command> 的硬链接。</para>
           <indexterm zone="ch-system-e2fsprogs mkfs.ext4dev">
             <primary sortas="b-mkfs.ext4dev">mkfs.ext4dev</primary>
           </indexterm>
@@ -446,10 +579,13 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="mklost-found">
         <term><command>mklost+found</command></term>
         <listitem>
+<!--E
           <para>Used to create a <filename class="directory">lost+found</filename>
           directory on an <systemitem class="filesystem">ext2</systemitem> file
           system; it pre-allocates disk blocks to this directory to lighten the
           task of <command>e2fsck</command></para>
+-->
+          <para>在 <systemitem class="filesystem">ext2</systemitem> 文件系统上创建一个 <filename class="directory">lost+found</filename> 目录，并给该目录预分配磁盘数据块，以减轻 <command>e2fsck</command> 命令的负担。</para>
           <indexterm zone="ch-system-e2fsprogs mklost-found">
             <primary sortas="b-mklost+found">mklost+found</primary>
           </indexterm>
@@ -459,8 +595,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="resize2fs">
         <term><command>resize2fs</command></term>
         <listitem>
+<!--E
           <para>Can be used to enlarge or shrink an <systemitem
           class="filesystem">ext2</systemitem> file system</para>
+-->
+          <para>可以用来增大或缩小 <systemitem class="filesystem">ext2</systemitem> 文件系统</para>
           <indexterm zone="ch-system-e2fsprogs resize2fs">
             <primary sortas="b-resize2fs">resize2fs</primary>
           </indexterm>
@@ -470,8 +609,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="tune2fs">
         <term><command>tune2fs</command></term>
         <listitem>
+<!--E
           <para>Adjusts tunable file system parameters on an <systemitem
           class="filesystem">ext2</systemitem> file system</para>
+-->
+          <para>调整 <systemitem class="filesystem">ext2</systemitem> 文件系统的可调参数</para>
           <indexterm zone="ch-system-e2fsprogs tune2fs">
             <primary sortas="b-tune2fs">tune2fs</primary>
           </indexterm>
@@ -481,8 +623,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="uuidd">
         <term><command>uuidd</command></term>
         <listitem>
+<!--E
           <para>A daemon used by the UUID library to generate time-based
           UUIDs in a secure and guranteed-unique fashion.</para>
+-->
+          <para>在安全和 guranteed-unique fashion 中，一个 UUID 库所使用的守护进程被用于产生 time-based UUIDs </para>
           <indexterm zone="ch-system-e2fsprogs uuidd">
             <primary sortas="b-uuidd">uuidd</primary>
           </indexterm>
@@ -492,9 +637,12 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="uuidgen">
         <term><command>uuidgen</command></term>
         <listitem>
+<!--E
           <para>Creates new UUIDs. Each new UUID can reasonably be considered
           unique among all UUIDs created, on the local system and on other
           systems, in the past and in the future</para>
+-->
+          <para>创建一个新的通用唯一标识符（UUID）。这个新 UUID 可以被认为是在所有已创建的 UUID 中独一无二的，不论是在本地的系统或者别的系统，过去还是将来。</para>
           <indexterm zone="ch-system-e2fsprogs uuidgen">
             <primary sortas="b-uuidgen">uuidgen</primary>
           </indexterm>
@@ -504,8 +652,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="libblkid">
         <term><filename class="libraryfile">libblkid</filename></term>
         <listitem>
+<!--E
           <para>Contains routines for device identification and token
           extraction</para>
+-->
+          <para>包含设备识别和节点释放的库函数</para>
           <indexterm zone="ch-system-e2fsprogs libblkid">
             <primary sortas="c-libblkid">libblkid</primary>
           </indexterm>
@@ -515,7 +666,10 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="libcom_err">
         <term><filename class="libraryfile">libcom_err</filename></term>
         <listitem>
+<!--E
           <para>The common error display routine</para>
+-->
+          <para>通用错误显示库</para>
           <indexterm zone="ch-system-e2fsprogs libcom_err">
             <primary sortas="c-libcom_err">libcom_err</primary>
           </indexterm>
@@ -525,8 +679,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="libe2p">
         <term><filename class="libraryfile">libe2p</filename></term>
         <listitem>
+<!--E
           <para>Used by <command>dumpe2fs</command>, <command>chattr</command>,
           and <command>lsattr</command></para>
+-->
+          <para>用于 <command>dumpe2fs</command>、<command>chattr</command> 和 <command>lsattr</command></para>
           <indexterm zone="ch-system-e2fsprogs libe2p">
             <primary sortas="c-libe2p">libe2p</primary>
           </indexterm>
@@ -536,8 +693,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="libext2fs">
         <term><filename class="libraryfile">libext2fs</filename></term>
         <listitem>
+<!--E
           <para>Contains routines to enable user-level programs to manipulate an
           <systemitem class="filesystem">ext2</systemitem> file system</para>
+-->
+          <para>允许用户级的程序操作 <systemitem class="filesystem">ext2</systemitem> 文件系统</para>
           <indexterm zone="ch-system-e2fsprogs libext2fs">
             <primary sortas="c-libext2fs">libext2fs</primary>
           </indexterm>
@@ -547,7 +707,10 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="libss">
         <term><filename class="libraryfile">libss</filename></term>
         <listitem>
+<!--E
           <para>Used by <command>debugfs</command></para>
+-->
+          <para>用于 <command>debugfs</command></para>
           <indexterm zone="ch-system-e2fsprogs libss">
             <primary sortas="c-libss">libss</primary>
           </indexterm>
@@ -557,8 +720,11 @@ install -v -m644 -D ../doc/libblkid.txt \
       <varlistentry id="libuuid">
         <term><filename class="libraryfile">libuuid</filename></term>
         <listitem>
+<!--E
           <para>Contains routines for generating unique identifiers for objects
           that may be accessible beyond the local system</para>
+-->
+          <para>用来给对象产生通用唯一标识符（UUID）使之可以在本地系统之外引用</para>
           <indexterm zone="ch-system-e2fsprogs libuuid">
             <primary sortas="c-libuuid">libuuid</primary>
           </indexterm>
