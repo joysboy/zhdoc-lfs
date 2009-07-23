@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Coreutils package contains utilities for showing and setting the
     basic system characteristics.</para>
+-->
+    <para>Coreutils 软件包包括一套显示、设置基本系统属性的工具。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -44,97 +47,148 @@
         <title>Installation of Coreutils</title>
     -->
 
+<!--E
     <para>A known issue with the <command>uname</command> program from
     this package is that the <parameter>-p</parameter> switch always
     returns <computeroutput>unknown</computeroutput>. The following patch
     fixes this behavior for Intel architectures:</para>
+-->
+    <para>通常 <command>uname</command> 程序总是有点毛病的，比如 <parameter>-p</parameter> 选项总是返回 <computeroutput>unknown</computeroutput> 的结果。下面的补丁对 Intel 平台的机器能修正这个问题：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&coreutils-uname-patch;</userinput></screen>
 
+<!--E
     <para>There's an internal issue with Coreutils which makes some of the
     programs behave abnormally if you build using an older kernel. Apply a
     patch to fix the issue:</para>
+-->
+    <para>这里有一个内部的问题，当你用旧的内核编译时会使得一些 Coreutils 的程序行为异常。应用下面的补丁来解决这个问题：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&coreutils-old-kernel-patch;</userinput></screen>
 
+<!--E
     <para>POSIX requires that programs from Coreutils recognize character
     boundaries correctly even in multibyte locales. The following patch
     fixes this non-compliance and other internationalization-related bugs:</para>
+-->
+    <para>POSIX 要求 Coreutils 的程序即使在多字节环境下也能够识别出字符的边界。下面的这个补丁能够解决这个问题以及其他的一些国际化相关的问题：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&coreutils-i18n-patch;</userinput></screen>
 
     <note>
+<!--E
       <para>In the past, many bugs were found in this patch. When reporting new
       bugs to Coreutils maintainers, please check first if they are reproducible
       without this patch.</para>
+-->
+      <para>过去，在这个补丁包里面发现了很多 bug。当你向 Coreutils 的维护者发送错误报告的时候，首先确认不应用这个补丁包错误会不会出现。</para>
     </note>
 
+<!--E
     <para>Now prepare Coreutils for compilation:</para>
+-->
+    <para>为编译 Coreutils 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --enable-install-program=hostname --enable-no-install-program=kill,uptime</userinput></screen>
 
-    <variablelist>
+    <variablelist
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--enable-no-install-program=kill,uptime</parameter></term>
         <listitem>
+<!--E
           <para>The purpose of this switch is to prevent Coreutils from
           installing binaries that will be installed by other packages later.
           </para>
+-->
+          <para>这个选项的目的是阻止 Coreutils 安装要以后从其他软件包中的二进制文件。</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>Skip down to <quote>Install the
     package</quote> if not running the test suite.</para>
+-->
+    <para>如果不运行测试套件，直接跳至"安装软件包"。</para>
 
+<!--E
     <para>Now the test suite is ready to be run. First, run the tests that are
     meant to be run as user <systemitem class="username">root</systemitem>:</para>
+-->
+    <para>现在已经准备好可以运行测试套件了，首先运行那些需要以 <systemitem class="username">root</systemitem> 运行的测试：</para>
 
 <screen><userinput remap="test">make NON_ROOT_USERNAME=nobody check-root</userinput></screen>
 
+<!--E
     <para>We're going to run the remainder of the tests as the
     <systemitem class="username">nobody</systemitem> user. Certain tests,
     however, require that the user be a member of more than one group. So that
     these tests are not skipped we'll add a temporary group and make the
     user <systemitem class="username">nobody</systemitem> a part of it:</para>
+-->
+    <para>我们将要用 <systemitem class="username">nobody</systemitem> 用户运行接下来的测试。当然，在测试中更需要的是这个用户必须加入多个组。这使得测试不会因为我们新建一个临时组并且让 <systemitem class="username">nobody</systemitem> 用户作为该组一员而跳过：</para>
 
 <screen><userinput remap="test">echo "dummy:x:1000:nobody" &gt;&gt; /etc/group</userinput></screen>
 
+<!--E
     <para>Fix some of the permissions so that the non-root user can compile and
     run the tests:</para>
+-->
+    <para>修改一个权限使得非 root 用户也可以编译并运行测试：</para>
 
 <screen><userinput remap="test">chown -Rv nobody config.log {gnulib-tests,lib,src}/.deps</userinput></screen>
 
+<!--E
     <para>Now run the tests:</para>
+-->
+    <para>现在运行测试：</para>
 
 <screen><userinput remap="test">su-tools nobody -s /bin/bash -c "make RUN_EXPENSIVE_TESTS=yes check"</userinput></screen>
 
+<!--E
     <para>Remove the temporary group:</para>
+-->
+    <para>删除临时组：</para>
 
 <screen><userinput remap="test">sed -i '/dummy/d' /etc/group</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Move programs to the locations specified by the FHS:</para>
+-->
+    <para>把一些程序移动到合适的位置以符合 FHS 标准：</para>
 
 <screen><userinput remap="install">mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin
 mv -v /usr/bin/{false,hostname,ln,ls,mkdir,mknod,mv,pwd,readlink,rm} /bin
 mv -v /usr/bin/{rmdir,stty,sync,true,uname} /bin
 mv -v /usr/bin/chroot /usr/sbin</userinput></screen>
 
+<!--E
     <para>Some of the scripts in the LFS-Bootscripts package depend on
     <command>head</command>, <command>sleep</command>, and
     <command>nice</command>.  As <filename class="directory">/usr</filename>
     may not be available during the early stages of booting, those binaries
     need to be on the root partition:</para>
+-->
+    <para>一些 LFS-Bootscripts 包中的脚本依赖于 <command>head</command>、<command>sleep</command> 和 <command>nice</command> 。由于 <filename class="directory">/usr</filename> 目录有可能在系统启动过程的早期不可用（比如尚未挂载），所以这些二进制程序需要放置在根分区上：</para>
 
 <screen><userinput remap="install">mv -v /usr/bin/{head,sleep,nice} /bin</userinput></screen>
 
@@ -142,10 +196,16 @@ mv -v /usr/bin/chroot /usr/sbin</userinput></screen>
 
 
   <sect2 id="contents-coreutils" role="content">
+<!--E
     <title>Contents of Coreutils</title>
+-->
+    <title>Coreutils 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
 
       <seglistitem>
         <seg>base64, basename, cat, chgrp, chmod, chown, chroot, cksum, comm,
@@ -161,7 +221,10 @@ mv -v /usr/bin/chroot /usr/sbin</userinput></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
