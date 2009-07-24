@@ -22,9 +22,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Inetutils package contains programs for basic networking.</para>
-
+-->
+    <para>Inetutils 包含基本的网络程序。</para>
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
       <segtitle>&diskspace;</segtitle>
@@ -38,22 +39,31 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Inetutils</title>
-
+-->
+    <title>安装 Inetutils</title>
+<!--E
     <para>All programs that come with Inetutils will not be installed.
     However, the Inetutils build system will insist on installing all the
     man pages anyway. The following patch will correct this
     situation:</para>
+-->
+    <para>Inetutils 附带的所有程序都不会被安装。然而，Inetutils 会默认把所有程序的 man 文档都装上。下面的补丁能解决这个问题：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&inetutils-man_pages-patch;</userinput></screen>
-
+<!--E
     <para>Inetutils has a minor issue with GCC-&gcc-version;. Fix it by
     issuing the following command:</para>
+-->
+    <para>Inetutils 在 GCC-&gcc-version; 上有一个小问题。用下面的命令来修复它：</para>
 
 <screen><userinput remap="pre">sed -i 's@&lt;sys/types.h&gt;@&lt;sys/types.h&gt;\n#include &lt;stdlib.h&gt;@' \
     libicmp/icmp_timestamp.c</userinput></screen>
-
+<!--E
 <para>Prepare Inetutils for compilation:</para>
+-->
+<para>为编译 Inetutils 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --libexecdir=/usr/sbin \
     --sysconfdir=/etc --localstatedir=/var \
@@ -61,96 +71,134 @@
     --disable-whois --disable-servers</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the configure options:</title>
+-->
+      <title>配置选项的含义：</title>
 
       <varlistentry>
         <term><parameter>--disable-ifconfig</parameter></term>
         <listitem>
+<!--E
           <para>This option prevents Inetutils from installing the
           <command>ifconfig</command> program, which can be used to configure network
           interfaces. LFS uses <command>ip</command> from IPRoute2 to perform
           this task.</para>
+-->
+          <para>这个选项阻止 Inetutils 安装 <command>ifconfig</command> 程序。这个程序被用来配置网络接口。LFS 从 IPRoute2 用 <command>ip</command> 来完成这个任务。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--disable-logger</parameter></term>
         <listitem>
+<!--E
           <para>This option prevents Inetutils from installing the
           <command>logger</command> program, which is used by scripts to
           pass messages to the System Log Daemon. Do not install it because
           Util-linux installs a better version later.</para>
+-->
+          <para>这个选项组织 Inetutils 安装 <command>logger</command> 程序，脚本利用这个程序向系统日志守护进程传递消息。我们不安装它是因为 Util-linux 包含一个更好的版本。</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--disable-syslogd</parameter></term>
         <listitem>
+<!--E
           <para>This option prevents Inetutils from installing the System Log
           Daemon, which is installed with the Sysklogd package.</para>
+-->
+          <para>这个选项阻止 Inetutils 安装 System Log Daemon（系统日志守护进程）。 我们将在后面的 Sysklogd 软件包中安装它。</para>
+
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--disable-whois</parameter></term>
         <listitem>
+<!--E
           <para>This option disables the building of the Inetutils
           <command>whois</command> client, which is out of date. Instructions for
           a better <command>whois</command> client are in the BLFS book.</para>
+-->
+          <para>这个选项阻止 <command>whois</command> 客户端，因为它已经很陈旧了。在 BLFS book 里面有安装更好的 <command>whois</command> 客户端的指导。</para>
+
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term><parameter>--disable-servers</parameter></term>
         <listitem>
+<!--E
           <para>This disables the installation of the various network servers
           included as part of the Inetutils package. These servers are deemed not
           appropriate in a basic LFS system. Some are insecure by nature and are
           only considered safe on trusted networks. More information can be found
           at <ulink url="&blfs-root;view/svn/basicnet/inetutils.html"/>. Note that
           better replacements are available for many of these servers.</para>
+-->
+          <para>这个选项阻止安装几种包含在 Inetutils 包中的网络服务器。这些服务器对于基本的 LFS 系统是不合适的。有的本来就不安全，只在信任的网络上被认为是安全的。更多信息参见 <ulink url="&blfs-root;view/svn/basicnet/inetutils.html"/> 。注意很多服务器都有更好的替代者。</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
-
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>This package does not come with a test suite.</para>
-
+-->
+    <para>这个软件包没有附带测试程序。</para>
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
-
+<!--E
     <para>Move the <command>ping</command> program to its FHS-compliant
     place:</para>
+-->
+    <para>把 <command>ping</command> 程序移动到符合 FHS 标准的位置：</para>
 
 <screen><userinput remap="install">mv -v /usr/bin/ping /bin</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-inetutils" role="content">
+<!--E
     <title>Contents of Inetutils</title>
-
+-->
+    <title>Inetutils 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>ftp, ping, ping6, rcp, rlogin, rsh, talk, telnet, and tftp</seg>
       </seglistitem>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="ftp">
         <term><command>ftp</command></term>
         <listitem>
+<!--E
         <para>Is the file transfer protocol program</para>
+-->
+        <para>文件传输协议程序</para>
         <indexterm zone="ch-system-inetutils ftp">
           <primary sortas="b-ftp">ftp</primary>
         </indexterm>
@@ -160,8 +208,11 @@
       <varlistentry id="ping">
         <term><command>ping</command></term>
         <listitem>
+<!--E
           <para>Sends echo-request packets and reports how long the replies
           take</para>
+-->
+          <para>向网络主机发送请求应答包，并报告回复所需的时间</para>
           <indexterm zone="ch-system-inetutils ping">
             <primary sortas="b-ping">ping</primary>
           </indexterm>
@@ -171,7 +222,10 @@
       <varlistentry id="ping6">
         <term><command>ping6</command></term>
         <listitem>
+<!--E
           <para>A version of <command>ping</command> for IPv6 networks</para>
+-->
+          <para>针对 IPV6 网络的 <command>ping</command> 版本</para>
           <indexterm zone="ch-system-inetutils ping6">
             <primary sortas="b-ping6">ping6</primary>
           </indexterm>
@@ -181,7 +235,10 @@
       <varlistentry id="rcp">
         <term><command>rcp</command></term>
         <listitem>
+<!--E
           <para>Performs remote file copy</para>
+-->
+          <para>远程文件拷贝</para>
           <indexterm zone="ch-system-inetutils rcp">
             <primary sortas="b-rcp">rcp</primary>
           </indexterm>
@@ -191,7 +248,10 @@
       <varlistentry id="rlogin">
         <term><command>rlogin</command></term>
         <listitem>
+<!--E
           <para>Performs remote login</para>
+-->
+          <para>远程登录</para>
           <indexterm zone="ch-system-inetutils rlogin">
             <primary sortas="b-rlogin">rlogin</primary>
           </indexterm>
@@ -201,7 +261,10 @@
       <varlistentry id="rsh">
         <term><command>rsh</command></term>
         <listitem>
+<!--E
           <para>Runs a remote shell</para>
+-->
+          <para>运行远程 shell</para>
           <indexterm zone="ch-system-inetutils rsh">
             <primary sortas="b-rsh">rsh</primary>
           </indexterm>
@@ -211,7 +274,10 @@
       <varlistentry id="talk">
         <term><command>talk</command></term>
         <listitem>
+<!--E
           <para>Is used to chat with another user</para>
+-->
+          <para>用来和另一位用户对话</para>
           <indexterm zone="ch-system-inetutils talk">
             <primary sortas="b-talk">talk</primary>
           </indexterm>
@@ -221,7 +287,10 @@
       <varlistentry id="telnet">
         <term><command>telnet</command></term>
         <listitem>
+<!--E
           <para>An interface to the TELNET protocol</para>
+-->
+          <para> TELNET 协议接口</para>
           <indexterm zone="ch-system-inetutils telnet">
             <primary sortas="b-telnet">telnet</primary>
           </indexterm>
@@ -231,7 +300,10 @@
       <varlistentry id="tftp">
         <term><command>tftp</command></term>
         <listitem>
+<!--E
           <para>A trivial file transfer program</para>
+-->
+          <para>小文件传输程序</para>
           <indexterm zone="ch-system-inetutils tftp">
             <primary sortas="b-tftp">tftp</primary>
           </indexterm>
