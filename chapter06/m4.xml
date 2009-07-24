@@ -23,7 +23,10 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The M4 package contains a macro processor.</para>
+-->
+    <para>M4 软件包包含一个宏处理器。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -38,21 +41,36 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of M4</title>
+-->
+    <title>安装 M4</title>
 
+<!--E
     <para>Prepare M4 for compilation:</para>
+-->
+    <para>为编译 M4 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --enable-threads</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>要测试结果，请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -60,10 +78,16 @@
 
 
   <sect2 id="contents-m4" role="content">
+<!--E
     <title>Contents of M4</title>
+-->
+    <title>M4 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed program</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
 
       <seglistitem>
         <seg>m4</seg>
@@ -71,7 +95,10 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
@@ -79,6 +106,7 @@
          <!-- Don't remove the extra space, it prevet a FOP warning. -->
         <term><command>m4 </command></term>
         <listitem>
+<!--E
           <para>copies the given files while expanding the macros that they
           contain. These macros are either built-in or user-defined and can
           take any number of arguments. Besides performing macro expansion,
@@ -87,6 +115,8 @@
           manipulating text, recursion, etc. The <command>m4</command> program
           can be used either as a front-end to a compiler or as a macro processor
           in its own right.</para>
+-->
+          <para>M4 能够将宏展开并将输入拷贝到输出。宏可以是内嵌的也可以是用户定义的，并且可以接受很多参数。除了展开宏，<command>m4</command> 还有其它内置的功能，比如包含引用文件、运行 Unix 命令、进行整数运算、文本操作、循环等等。<command>m4</command> 可以被用作一个编译器的前端或作为自身的一个宏处理程序。</para>
           <indexterm zone="ch-system-m4 m4">
             <primary sortas="b-m4">m4</primary>
           </indexterm>
