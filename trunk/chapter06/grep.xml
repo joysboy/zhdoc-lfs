@@ -22,8 +22,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Grep package contains programs for searching through files.</para>
+-->
+    <para>Grep 安装包包含搜索文件的程序。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -38,68 +40,94 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E  
     <title>Installation of Grep</title>
-
+-->
+    <title>安装 Grep</title>
+<!--E
     <para>The current Grep package has many bugs, especially in the support of
     multibyte locales. The following consolidated patch from Debian fixes some of them,
     improves the number of individual tests which are passed, and much improves the
     speed in UTF-8 locales:</para>
+-->
+    <para>当前的 Grep 包有很多 bug ，尤其是对多字节的 locales 的支持。Debian 采用下面的这个补丁来解决部分问题，增加跳过的独立测试个数，也提高了在 UTF-8 locales 下的速度：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&grep-debian-patch;</userinput></screen>
-
+<!--E
     <para>Upstream have fixed some of the documentation, and changed some of the
     tests and the expected results in the newest test scripts.  This means that
     not so many of the individual tests fail:</para>
+-->
+    <para>上面的命令已经修复了一些文档，并且更改了在最新测试脚本中的一些测试和预期结果。这意味着没有那么多的独立测试会失败了：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&grep-fixes-patch;</userinput></screen>
-
+<!--E
     <para>Prepare Grep for compilation:</para>
-
+-->
+    <para>为编译 Grep 做准备：</para>
 <screen><userinput remap="configure">./configure --prefix=/usr \
     --bindir=/bin \
     --without-included-regex</userinput></screen>
 
 
     <variablelist>
+<!--E
       <title>The meaning of the configure switch:</title>
+-->
+      <title>配置选项的含义：</title>
+
       <varlistentry>
         <term><parameter>--without-included-regex</parameter></term>
         <listitem>
+<!--E
           <para>The configure check for glibc's regex library is broken when
           building against glibc-2.8.  This switch forces the use of glibc's
           regex library.</para>
+-->
+          <para>这个配置检查在依赖 glibc-2.8 编译时 glibc 的 regex 的损坏。这个选项强制 glibc 的 regex 库的使用。</para>
+
         </listitem>
       </varlistentry>
     </variablelist>
 
-
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>To test the results, issue:</para>
-
+-->
+    <para>测试结果的命令为：</para>
 <screen><userinput remap="test">make check || true</userinput></screen>
-
+<!--E
     <para>There are known test failures in the <command>foad1.sh</command> and
     <command>fmbtest.sh</command> tests.  The &quot;|| true&quot; construct is
     used to avoid build automated build scripts failing due to the test failures.
     A good run will show 2 failures from 14 tests, but if you look at the
     output you will see in excess of forty individual tests which failed - these
     are all in the new tests added since the previous version.</para>
-
+-->
+    <para>在 <command>foad1.sh</command> 和 <command>fmbtest.sh</command> 测试中有已知的测试错误。&quot;|| true&quot; 结构被用来避免由于测试错误导致的编译自动编译脚本的错误。正常运行将会在 14 个测试中显示 2 个错误，但如果你看输出则会有超过 40 个测试错误－这些都是继上个版本之后新添加的测试。</para>
+<!--E
     <para>Install the package:</para>
-
+-->
+    <para>安装软件包：</para>
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-grep" role="content">
+<!--E
     <title>Contents of Grep</title>
-
+-->
+    <title>Grep 的内容</title>
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序：</segtitle>
       <seglistitem>
         <seg>egrep, fgrep, and grep</seg>
       </seglistitem>
@@ -113,7 +141,10 @@
       <varlistentry id="egrep">
         <term><command>egrep</command></term>
         <listitem>
+<!--E
           <para>Prints lines matching an extended regular expression</para>
+-->
+          <para>打印出匹配扩展正则表达式模式的行</para>
           <indexterm zone="ch-system-grep egrep">
             <primary sortas="b-egrep">egrep</primary>
           </indexterm>
@@ -123,7 +154,10 @@
       <varlistentry id="fgrep">
         <term><command>fgrep</command></term>
         <listitem>
+<!--E
           <para>Prints lines matching a list of fixed strings</para>
+-->
+	  <para>对固定字符串列表进行匹配</para>
           <indexterm zone="ch-system-grep fgrep">
             <primary sortas="b-fgrep">fgrep</primary>
           </indexterm>
@@ -133,7 +167,11 @@
       <varlistentry id="grep">
         <term><command>grep</command></term>
         <listitem>
+<!--E
           <para>Prints lines matching a basic regular expression</para>
+-->
+          <para>对基本正则表达式进行匹配</para>
+
           <indexterm zone="ch-system-grep grep">
             <primary sortas="b-grep">grep</primary>
           </indexterm>
