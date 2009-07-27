@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Zlib package contains compression and decompression routines used by
     some programs.</para>
+-->
+    <para>Zlib 软件包包含 zlib 库，很多程序中的压缩或者解压缩程序都会用到这个库。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,66 +42,105 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Zlib</title>
+-->
+    <title>安装 Zlib</title>
 
     <note>
+<!--E
       <para>Zlib is known to build its shared library incorrectly if
       <envar>CFLAGS</envar> is specified in the environment. If using
       a specified <envar>CFLAGS</envar> variable, be sure to add the
       <parameter>-fPIC</parameter> directive to the <envar>CFLAGS</envar>
       variable for the duration of the configure command below, then
       remove it afterwards.</para>
+-->
+      <para>如果在环境变量中指定了 <envar>CFLAGS</envar> 的话，Zlib 就不能正常编译共享库。如果你想使用自定义的 <envar>CFLAGS</envar> 环境变量，请在下述整个编译选项命令的过程中始终把 <parameter>-fPIC</parameter> 指令加在 <envar>CFLAGS</envar> 的最前面，结束后还必须再撤销它。</para> 
     </note>
 
+<!--E
     <para>Prepare Zlib for compilation:</para>
+-->
+    <para>为编译 Zlib 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --shared --libdir=/lib</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>要测试结果，请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the shared library:</para>
+-->
+    <para>安装共享库：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>The previous command installed a <filename
     class="extension">.so</filename> file in <filename
     class="directory">/lib</filename>. We will remove it and relink it into
     <filename class="directory">/usr/lib</filename>:</para>
+-->
+    <para>上面的命令将会在 <filename class="directory">/lib</filename> 目录下安装一个 <filename class="extension">.so</filename> 文件。我们将要移除它并重新连接到 <filename class="directory">/usr/lib</filename> 目录下：</para>
 
 <screen><userinput remap="install">rm -v /lib/libz.so
 ln -sfv ../../lib/libz.so.&zlib-version; /usr/lib/libz.so</userinput></screen>
 
+<!--E
     <para>Build the static library:</para>
+-->
+    <para>编译静态库：</para>
 
 <screen><userinput remap="make">make clean
 ./configure --prefix=/usr
 make</userinput></screen>
 
+<!--E
     <para>To test the results again, issue:</para>
+-->
+    <para>要测试静态库可以用这个命令：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the static library:</para>
+-->
+    <para>安装静态库：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Fix the permissions on the static library:</para>
+-->
+    <para>修正静态库的权限：</para>
 
 <screen><userinput remap="install">chmod -v 644 /usr/lib/libz.a</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-zlib" role="content">
+<!--E
     <title>Contents of Zlib</title>
+-->
+    <title>Zlib 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed libraries</segtitle>
+-->
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>libz.{a,so}</seg>
@@ -106,15 +148,21 @@ make</userinput></screen>
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="libz">
         <term><filename class="libraryfile">libz</filename></term>
         <listitem>
+<!--E
           <para>Contains compression and decompression functions used by
           some programs</para>
+-->
+          <para>包含很多程序都用到的压缩和解压函数 </para>
           <indexterm zone="ch-system-zlib libz">
             <primary sortas="c-libz">libz</primary>
           </indexterm>

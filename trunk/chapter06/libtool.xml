@@ -23,9 +23,12 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Libtool package contains the GNU generic library support script.
     It wraps the complexity of using shared libraries in a consistent, portable
     interface.</para>
+-->
+    <para>GNU libtool 是一个通用库支持脚本，将使用动态库的复杂性隐藏在统一的、可移植的接口中。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -40,21 +43,36 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Libtool</title>
+-->
+    <title>安装 Libtool</title>
 
+<!--E
     <para>Prepare Libtool for compilation:</para>
+-->
+    <para>为编译 Libtool 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results (about 3.0 SBU), issue:</para>
+-->
+    <para>要测试结果（大概 3.0 SBU），请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -62,11 +80,18 @@
 
 
   <sect2 id="contents-libtool" role="content">
+<!--E
     <title>Contents of Libtool</title>
+-->
+    <title>Libtool 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed libraries</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>libtool and libtoolize</seg>
@@ -75,14 +100,20 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="libtool">
         <term><command>libtool</command></term>
         <listitem>
+<!--E
           <para>Provides generalized library-building support services</para>
+-->
+          <para>提供通用的库编译支持。</para>
           <indexterm zone="ch-system-libtool libtool">
             <primary sortas="b-libtool">libtool</primary>
           </indexterm>
@@ -92,8 +123,11 @@
       <varlistentry id="libtoolize">
         <term><command>libtoolize</command></term>
         <listitem>
+<!--E
           <para>Provides a standard way to add <command>libtool</command>
           support to a package</para>
+-->
+          <para>提供了一种标准方式来将 <command>libtool</command> 支持加入到一个软件包中</para>
           <indexterm zone="ch-system-libtool libtoolize">
             <primary sortas="b-libtoolize">libtoolize</primary>
           </indexterm>
@@ -103,7 +137,10 @@
       <varlistentry id="libltdl">
         <term><filename class="libraryfile">libltdl</filename></term>
         <listitem>
+<!--E
           <para>Hides the various difficulties of dlopening libraries</para>
+-->
+          <para>隐藏 dlopening 库的复杂细节</para>
           <indexterm zone="ch-system-libtool libltdl">
             <primary sortas="c-libltdl">libltdl</primary>
           </indexterm>
