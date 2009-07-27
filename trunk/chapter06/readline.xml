@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Readline package is a set of libraries that offers command-line
     editing and history capabilities.</para>
+-->
+    <para>Readline 软件包是一个提供命令行编辑和历史纪录功能的库集合。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,64 +42,100 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Readline</title>
+-->
+    <title>安装 Readline</title>
 
+<!--E
     <para>Reinstalling Readline will cause the old libraries to be moved to
     &lt;libraryname&gt;.old. While this is normally not a problem, in some cases
     it can trigger a linking bug in <command>ldconfig</command>. This can be
     avoided by issuing the following two seds:</para>
+-->
+    <para>重新安装 Readline 会将老的库libraryname重命名为 &lt;libraryname&rt;.old。然而着并不是一个问题。在某些情况下它会引发 <command>ldconfig</command> 的一个链接 bug。应用下面的两个sed命令可以避免这种情况：</para> 
 
 <screen><userinput remap="pre">sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
 
+<!--E
     <para>Readline contains a bug in its handling of non-multibyte characters,
     which can lead to incorrect display calculations and incorrect redisplay.
     Fix this issue by applying the following patch from the upstream maintainer:
     </para>
+-->
+    <para>Readline 有一个处理非多字节时导致不正确的显示计算和不正确的重新显示。通过应用下面的补丁来修复这个问题：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&readline-fixes-patch;</userinput></screen>
 
+<!--E
     <para>Prepare Readline for compilation:</para>
+-->
+    <para>为编译 Readline 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr --libdir=/lib</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make SHLIB_LIBS=-lncurses</userinput></screen>
 
     <variablelist>
+<!--E
       <title>The meaning of the make option:</title>
+-->
+      <title>make 选项的含义：</title>
 
       <varlistentry>
         <term><parameter>SHLIB_LIBS=-lncurses</parameter></term>
         <listitem>
+<!--E
           <para>This option forces Readline to link against the
           <filename class="libraryfile">libncurses</filename> (really,
           <filename class="libraryfile">libncursesw</filename>) library.</para>
+-->
+          <para>这个选项强制 Readline 不链接到 <filename class="libraryfile">libncurses</filename> 库。（事实上是，<filename class="libraryfile">libncursesw</filename>）</para>
         </listitem>
       </varlistentry>
 
     </variablelist>
 
+<!--E
     <para>This package does not come with a test suite.</para>
+-->
+    <para>这个软件包没有附带测试程序。</para>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>Now move the static libraries to a more appropriate location:</para>
+-->
+    <para>将静态库移动到一个更合理的位置：</para>
 
 <screen><userinput remap="install">mv -v /lib/lib{readline,history}.a /usr/lib</userinput></screen>
 
+<!--E
     <para>Next, remove the <filename class="extension">.so</filename> files in
     <filename class="directory">/lib</filename> and relink them into <filename
     class="directory">/usr/lib</filename>:</para>
+-->
+    <para>接下来，删除 <filename class="directory">/lib</filename> 中的 <filename class="extension">.so</filename> 文件，并将它们重新连接到 <filename class="directory">/usr/lib</filename> 中：</para>
 
 <screen><userinput remap="install">rm -v /lib/lib{readline,history}.so
 ln -sfv ../../lib/libreadline.so.5 /usr/lib/libreadline.so
 ln -sfv ../../lib/libhistory.so.5 /usr/lib/libhistory.so</userinput></screen>
 
+<!--E
     <para>If desired, install the documentation:</para>
+-->
+    <para>如果有需要，安装文档：</para>
 
 <screen><userinput remap="install">mkdir   -v       /usr/share/doc/readline-&readline-version;
 install -v -m644 doc/*.{ps,pdf,html,dvi} \
@@ -105,10 +144,16 @@ install -v -m644 doc/*.{ps,pdf,html,dvi} \
   </sect2>
 
   <sect2 id="contents-readline" role="content">
+<!--E
     <title>Contents of Readline</title>
+-->
+    <title>Readline 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed libraries</segtitle>
+-->
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>libhistory.{a,so}, and libreadline.{a,so}</seg>
@@ -116,15 +161,21 @@ install -v -m644 doc/*.{ps,pdf,html,dvi} \
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="libhistory">
         <term><filename class="libraryfile">libhistory</filename></term>
         <listitem>
+<!--E
           <para>Provides a consistent user interface for recalling lines
           of history</para>
+-->
+          <para>提供一个统一的调用历史行的用户接口</para>
           <indexterm zone="ch-system-readline libhistory">
             <primary sortas="c-libhistory">libhistory</primary>
           </indexterm>
@@ -134,8 +185,11 @@ install -v -m644 doc/*.{ps,pdf,html,dvi} \
       <varlistentry id="libreadline">
         <term><filename class="libraryfile">libreadline</filename></term>
         <listitem>
+<!--E
           <para>Aids in the consistency of user interface across discrete
           programs that need to provide a command line interface</para>
+-->
+          <para>应用于各种需要命令行接口的应用程序的统一的用户接口的辅助程序</para>
           <indexterm zone="ch-system-readline libreadline">
             <primary sortas="c-libreadline">libreadline</primary>
           </indexterm>
