@@ -53,7 +53,7 @@
     it can trigger a linking bug in <command>ldconfig</command>. This can be
     avoided by issuing the following two seds:</para>
 -->
-    <para>重新安装 Readline 会将老的库libraryname重命名为 &lt;libraryname&rt;.old。然而着并不是一个问题。在某些情况下它会引发 <command>ldconfig</command> 的一个链接 bug。应用下面的两个sed命令可以避免这种情况：</para> 
+    <para>重新安装 Readline 会将老的库libraryname重命名为 &lt;libraryname&gt;.old。然而着并不是一个问题。在某些情况下它会引发 <command>ldconfig</command> 的一个链接 bug。应用下面的两个sed命令可以避免这种情况：</para> 
 
 <screen><userinput remap="pre">sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install</userinput></screen>
