@@ -22,11 +22,13 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The Gettext package contains utilities for internationalization and
     localization. These allow programs to be compiled with NLS (Native Language
     Support), enabling them to output messages in the user's native
     language.</para>
+    -->
+    <para>Gettext 用于系统的国际化和本地化，可以在编译程序的时候使用本国语言支持（NLS），可以使程序的输出使用用户本国语言。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -41,34 +43,53 @@
   </sect2>
 
   <sect2 role="installation">
+  <!--E
     <title>Installation of Gettext</title>
-
+    -->
+    <title>安装 Gettext</title>
+<!--E
     <para>Prepare Gettext for compilation:</para>
+-->
+    <para>为编译 Gettext 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr \
             --docdir=/usr/share/doc/gettext-&gettext-version;</userinput></screen>
-
+<!--E
     <para>Compile the package:</para>
+    -->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>To test the results (this takes a long time, around 3 SBUs),
     issue:</para>
+    -->
+    <para>要测试结果（这大约需要 5 SBU ），请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
-
+<!--E
     <para>Install the package:</para>
+    -->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 
   <sect2 id="contents-gettext" role="content">
+  <!--E
     <title>Contents of Gettext</title>
-
+-->
+    <title>Gettext 的内容</title>
     <segmentedlist>
+    <!--E
       <segtitle>Installed programs</segtitle>
+      -->
+      <segtitle>安装的程序</segtitle>
+      <!--E
       <segtitle>Installed libraries</segtitle>
+      -->
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>autopoint, config.charset, config.rpath, envsubst, gettext, gettext.sh,
@@ -81,15 +102,21 @@
     </segmentedlist>
 
     <variablelist>
+    <!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      -->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="autopoint">
         <term><command>autopoint</command></term>
         <listitem>
+        <!--E
           <para>Copies standard Gettext infrastructure files into a source
           package</para>
+          -->
+          <para>将标准的 gettext infrastructure 文件拷贝到源码包中</para>
           <indexterm zone="ch-system-gettext autopoint">
             <primary sortas="b-autopoint">autopoint</primary>
           </indexterm>
@@ -99,8 +126,11 @@
       <varlistentry id="config.charset">
         <term><command>config.charset</command></term>
         <listitem>
+<!--E
           <para>Outputs a system-dependent table of character encoding
           aliases</para>
+-->
+          <para>产生一个依赖于系统的字符编码表</para>
           <indexterm zone="ch-system-gettext config.charset">
             <primary sortas="b-config.charset">config.charset</primary>
           </indexterm>
@@ -110,9 +140,12 @@
       <varlistentry id="config.rpath">
         <term><command>config.rpath</command></term>
         <listitem>
+<!--E
           <para>Outputs a system-dependent set of variables, describing how
           to set the runtime search path of shared libraries in an
           executable</para>
+-->
+          <para>输出依赖于系统的变量，描述如何在可执行程序中设置库文件的实时查找路径</para>
           <indexterm zone="ch-system-gettext config.rpath">
             <primary sortas="b-config.rpath">config.rpath</primary>
           </indexterm>
@@ -122,7 +155,10 @@
       <varlistentry id="envsubst">
         <term><command>envsubst</command></term>
         <listitem>
+<!--E
           <para>Substitutes environment variables in shell format strings</para>
+-->
+          <para>替换 shell 格式化字符串中的环境变量</para>
           <indexterm zone="ch-system-gettext envsubst">
             <primary sortas="b-envsubst">envsubst</primary>
           </indexterm>
@@ -132,8 +168,11 @@
       <varlistentry id="gettext">
         <term><command>gettext</command></term>
         <listitem>
+<!--E
           <para>Translates a natural language message into the user's language
           by looking up the translation in a message catalog</para>
+-->
+          <para>通过在消息列表中查找，来将一种自然语言的消息翻译成用户的本地语言</para>
           <indexterm zone="ch-system-gettext gettext">
             <primary sortas="b-gettext">gettext</primary>
           </indexterm>
@@ -143,7 +182,10 @@
       <varlistentry id="gettext.sh">
         <term><command>gettext.sh</command></term>
         <listitem>
+<!--E
           <para>Primarily serves as a shell function library for gettext</para>
+-->
+          <para>主要作为一个shell的函数库来为 gettext 服务</para>
           <indexterm zone="ch-system-gettext gettext.sh">
             <primary sortas="b-gettext.sh">gettext.sh</primary>
           </indexterm>
@@ -153,8 +195,11 @@
       <varlistentry id="gettextize">
         <term><command>gettextize</command></term>
         <listitem>
+<!--E
           <para>Copies all standard Gettext files into the given top-level
           directory of a package to begin internationalizing it</para>
+-->
+          <para>拷贝所有的标准 Gettext 文件到软件包的顶层目录下，以进行国际化</para>
           <indexterm zone="ch-system-gettext gettextize">
             <primary sortas="b-gettextize">gettextize</primary>
           </indexterm>
@@ -164,7 +209,10 @@
       <varlistentry id="hostname-gettext">
         <term><command>hostname</command></term>
         <listitem>
+<!--E
           <para>Displays a network hostname in various forms</para>
+-->
+          <para>用不同的格式显示一个网络主机名</para>
           <indexterm zone="ch-system-gettext hostname-gettext">
             <primary sortas="b-hostname-gettext">hostname</primary>
           </indexterm>
@@ -174,8 +222,11 @@
       <varlistentry id="msgattrib">
         <term><command>msgattrib</command></term>
         <listitem>
+<!--E
           <para>Filters the messages of a translation catalog according to their
           attributes and manipulates the attributes</para>
+-->
+          <para>根据翻译目录中消息的属性过滤它们，并且操作这些属性。</para>
           <indexterm zone="ch-system-gettext msgattrib">
             <primary sortas="b-msgattrib">msgattrib</primary>
           </indexterm>
@@ -185,8 +236,11 @@
       <varlistentry id="msgcat">
         <term><command>msgcat</command></term>
         <listitem>
+<!--E
           <para>Concatenates and merges the given
           <filename class="extension">.po</filename> files</para>
+-->
+          <para>将给定的 <filename class="extension">.po</filename> 文件合并到一起</para>
           <indexterm zone="ch-system-gettext msgcat">
             <primary sortas="b-msgcat">msgcat</primary>
           </indexterm>
@@ -196,8 +250,12 @@
       <varlistentry id="msgcmp">
         <term><command>msgcmp</command></term>
         <listitem>
+<!--E
           <para>Compares two <filename class="extension">.po</filename>
           files to check that both contain the same set of msgid strings</para>
+-->
+          <para>比较 <filename class="extension">.po</filename> 文件，看它们是否包含相同的 msgid 字符串</para>
+
           <indexterm zone="ch-system-gettext msgcmp">
             <primary sortas="b-msgcmp">msgcmp</primary>
           </indexterm>
@@ -207,8 +265,12 @@
       <varlistentry id="msgcomm">
         <term><command>msgcomm</command></term>
         <listitem>
+<!--E
           <para>Finds the messages that are common to to the given
           <filename class="extension">.po</filename> files</para>
+-->
+          <para>找出不同 <filename class="extension">.po</filename> 文件中的相同信息</para>
+
           <indexterm zone="ch-system-gettext msgcomm">
             <primary sortas="b-msgcomm">msgcomm</primary>
           </indexterm>
@@ -218,8 +280,12 @@
       <varlistentry id="msgconv">
         <term><command>msgconv</command></term>
         <listitem>
+<!--E
           <para>Converts a translation catalog to a different character
           encoding</para>
+-->
+          <para>把一个翻译列表转化成另一种字符编码</para>
+
           <indexterm zone="ch-system-gettext msgconv">
             <primary sortas="b-msgconv">msgconv</primary>
           </indexterm>
@@ -229,7 +295,11 @@
       <varlistentry id="msgen">
         <term><command>msgen</command></term>
         <listitem>
+<!--E
           <para>Creates an English translation catalog</para>
+-->
+          <para>建立一个英文翻译目录</para>
+
           <indexterm zone="ch-system-gettext msgen">
             <primary sortas="b-msgen">msgen</primary>
           </indexterm>
@@ -239,8 +309,12 @@
       <varlistentry id="msgexec">
         <term><command>msgexec</command></term>
         <listitem>
+<!--E
           <para>Applies a command to all translations of a translation
           catalog</para>
+-->
+          <para>对一个翻译列表中的所有翻译执行同一个命令</para>
+
           <indexterm zone="ch-system-gettext msgexec">
             <primary sortas="b-msgexec">msgexec</primary>
           </indexterm>
@@ -250,8 +324,12 @@
       <varlistentry id="msgfilter">
         <term><command>msgfilter</command></term>
         <listitem>
+<!--E
           <para>Applies a filter to all translations of a translation
           catalog</para>
+-->
+          <para>对一个翻译列表中的所有翻译使用同一个过滤器</para>
+
           <indexterm zone="ch-system-gettext msgfilter">
             <primary sortas="b-msgfilter">msgfilter</primary>
           </indexterm>
@@ -261,8 +339,12 @@
       <varlistentry id="msgfmt">
         <term><command>msgfmt</command></term>
         <listitem>
+<!--E
           <para>Generates a binary message catalog from a translation
           catalog</para>
+-->
+          <para>从翻译列表生成一个二进制的消息列表</para>
+
           <indexterm zone="ch-system-gettext msgfmt">
             <primary sortas="b-msgfmt">msgfmt</primary>
           </indexterm>
@@ -272,8 +354,12 @@
       <varlistentry id="msggrep">
         <term><command>msggrep</command></term>
         <listitem>
+<!--E
           <para>Extracts all messages of a translation catalog that match a
           given pattern or belong to some given source files</para>
+-->
+          <para>将一个翻译列表中的所有符合给定格式或者属于给定源文件的消息展开</para>
+
           <indexterm zone="ch-system-gettext msggrep">
             <primary sortas="b-msggrep">msggrep</primary>
           </indexterm>
@@ -283,9 +369,13 @@
       <varlistentry id="msginit">
         <term><command>msginit</command></term>
         <listitem>
+<!--E
           <para>Creates a new <filename class="extension">.po</filename> file,
           initializing the meta information with values from the user's
           environment</para>
+-->
+          <para>生成一个新的 <filename class="extension">.po</filename> 文件，并使用用户环境中的消息来对这个文件进行初始化</para>
+
           <indexterm zone="ch-system-gettext msginit">
             <primary sortas="b-msginit">msginit</primary>
           </indexterm>
@@ -295,7 +385,11 @@
       <varlistentry id="msgmerge">
         <term><command>msgmerge</command></term>
         <listitem>
+<!--E
           <para>Combines two raw translations into a single file</para>
+-->
+          <para>将两个翻译合并成一个</para>
+
           <indexterm zone="ch-system-gettext msgmerge">
             <primary sortas="b-msgmerge">msgmerge</primary>
           </indexterm>
@@ -305,8 +399,12 @@
       <varlistentry id="msgunfmt">
         <term><command>msgunfmt</command></term>
         <listitem>
+<!--E
           <para>Decompiles a binary message catalog into raw translation
           text</para>
+-->
+          <para>将二进制翻译文件反编译成源文件</para>
+
           <indexterm zone="ch-system-gettext msgunfmt">
             <primary sortas="b-msgunfmt">msgunfmt</primary>
           </indexterm>
@@ -316,7 +414,11 @@
       <varlistentry id="msguniq">
         <term><command>msguniq</command></term>
         <listitem>
+<!--E
           <para>Unifies duplicate translations in a translation catalog</para>
+-->
+          <para>将翻译目录中重复的翻译合并成一个</para>
+
           <indexterm zone="ch-system-gettext msguniq">
             <primary sortas="b-msguniq">msguniq</primary>
           </indexterm>
@@ -326,8 +428,12 @@
       <varlistentry id="ngettext">
         <term><command>ngettext</command></term>
         <listitem>
+<!--E
           <para>Displays native language translations of a textual message whose
           grammatical form depends on a number</para>
+-->
+          <para>显示依赖于数字格式的文本文件的本国语言翻译</para>
+
           <indexterm zone="ch-system-gettext ngettext">
             <primary sortas="b-ngettext">ngettext</primary>
           </indexterm>
@@ -337,7 +443,10 @@
       <varlistentry id="recode-sr-latin">
         <term><command>recode-sr-latin</command></term>
         <listitem>
+<!--E
           <para>Recodes Serbian text from Cyrillic to Latin script</para>
+-->
+          <para>将 Serbian 文本 Cyrillic 脚本重新编码为 Latin 脚本</para>
           <indexterm zone="ch-system-gettext recode-sr-latin">
             <primary sortas="b-recode-sr-latin">recode-sr-latin</primary>
           </indexterm>
@@ -347,8 +456,12 @@
       <varlistentry id="xgettext">
         <term><command>xgettext</command></term>
         <listitem>
+<!--E
           <para>Extracts the translatable message lines from the given source
           files to make the first translation template</para>
+-->
+          <para>从源文件中展开消息行, 用来创建起始翻译模板</para>
+
           <indexterm zone="ch-system-gettext xgettext">
             <primary sortas="b-xgettext">xgettext</primary>
           </indexterm>
@@ -358,10 +471,14 @@
       <varlistentry id="libasprintf">
         <term><filename class="libraryfile">libasprintf</filename></term>
         <listitem>
+<!--E
           <para>defines the <emphasis>autosprintf</emphasis> class, which makes
           C formatted output routines usable in C++ programs, for use with the
           <emphasis>&lt;string&gt;</emphasis> strings and the
           <emphasis>&lt;iostream&gt;</emphasis> streams</para>
+-->
+          <para>定义 <emphasis>autosprintf</emphasis> 类，使 C 的函数以 C++ 程序可使用的结构输出，与 <emphasis>&lt;string&gt;</emphasis> 字符串和 <emphasis>&lt;iostream&gt;</emphasis> 流一起使用。</para>
+
           <indexterm zone="ch-system-gettext libasprintf">
             <primary sortas="c-libasprintf">libasprintf</primary>
           </indexterm>
@@ -371,8 +488,12 @@
       <varlistentry id="libgettextlib">
         <term><filename class="libraryfile">libgettextlib</filename></term>
         <listitem>
+<!--E
           <para>a private library containing common routines used by the
           various Gettext programs; these are not intended for general use</para>
+-->
+          <para>包含多个 Gettext 程序使用的函数，是私有库</para>
+
           <indexterm zone="ch-system-gettext libgettextlib">
             <primary sortas="c-libgettextlib">libgettextlib</primary>
           </indexterm>
@@ -382,12 +503,16 @@
       <varlistentry id="libgettextpo">
         <term><filename class="libraryfile">libgettextpo</filename></term>
         <listitem>
+<!--E
           <para>Used to write specialized programs that process
           <filename class="extension">.po</filename> files; this library is
           used when the standard applications shipped with Gettext (such as
           <command>msgcomm</command>, <command>msgcmp</command>,
           <command>msgattrib</command>, and <command>msgen</command>) will
           not suffice</para>
+-->
+          <para>用来写处理 <filename class="extension">.po</filename> 文件的程序。当 Gettext 自带的标准程序（如 <command>msgcomm</command>， <command>msgcmp</command>， <command>msgattrib</command>， <command>msgen</command>）不能满足要求时，可以使用这个库</para>
+
           <indexterm zone="ch-system-gettext libgettextpo">
             <primary sortas="c-libgettextpo">libgettextpo</primary>
           </indexterm>
@@ -397,8 +522,12 @@
       <varlistentry id="libgettextsrc">
         <term><filename class="libraryfile">libgettextsrc</filename></term>
         <listitem>
+<!--E
           <para>A private library containing common routines used by the
           various Gettext programs; these are not intended for general use</para>
+-->
+          <para>包含多个 Gettext 程序使用的函数，是私有库。</para>
+
           <indexterm zone="ch-system-gettext libgettextsrc">
             <primary sortas="c-libgettextsrc">libgettextsrc</primary>
           </indexterm>
