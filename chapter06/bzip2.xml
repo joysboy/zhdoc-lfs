@@ -93,7 +93,7 @@ make clean</userinput></screen>
     <filename class="directory">/bin</filename> directory, make
     some necessary symbolic links, and clean up:</para>
 -->
-    <para>把 <command>bzip2</command> 二进制共享库拷贝到 <filename class="directory">/bin</filename> di目录，创建必要的符号链接，再做一些清理工作：</para>
+    <para>把 <command>bzip2</command> 二进制共享库拷贝到 <filename class="directory">/bin</filename> 目录，创建必要的符号链接，再做一些清理工作：</para>
 <screen><userinput remap="install">cp -v bzip2-shared /bin/bzip2
 cp -av libbz2.so* /lib
 ln -sv ../../lib/libbz2.so.1.0 /usr/lib/libbz2.so
@@ -113,8 +113,8 @@ ln -sv bzip2 /bin/bzcat</userinput></screen>
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed libraries</segtitle>
 -->
-      <segtitle>安装的程序：</segtitle>
-      <segtitle>安装的库： </segtitle>
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
       <seglistitem>
         <seg>bunzip2 (link to bzip2), bzcat (link to bzip2), bzcmp (link to
         bzdiff), bzdiff, bzegrep (link to bzgrep), bzfgrep (link to bzgrep),
