@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The Flex package contains a utility for generating programs that
     recognize patterns in text.</para>
+-->
+    <para>Flex 软件包包含一个能生成识别文本模式的程序的工具。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,36 +42,57 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of Flex</title>
+-->
+    <title>安装 Flex</title>
 
+<!--E
     <para>Prepare Flex for compilation:</para>
+-->
+    <para>为编译 Flex 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results (about 0.5 SBU), issue:</para>
+-->
+    <para>要测试结果（大约 0.5 SBU），请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
+<!--E
     <para>There are some packages that expect to find the
     <filename class="libraryfile">lex</filename> library in <filename
     class="directory">/usr/lib</filename>. Create a symlink to account for
     this:</para>
+-->
+    <para>一些程序试图在 <filename class="directory">/usr/lib</filename> 下面寻找 <filename class="libraryfile">lex</filename> ，可以创建一个符号链接来满足要求：</para>
 
 <screen><userinput remap="install">ln -sv libfl.a /usr/lib/libl.a</userinput></screen>
 
+<!--E
     <para>A few programs do not know about <command>flex</command> yet and
     try to run its predecessor, <command>lex</command>. To support those
     programs, create a wrapper script named <filename>lex</filename> that
     calls <filename>flex</filename> in <command>lex</command> emulation
     mode:</para>
+-->
+    <para>一些程序并不知道 <command>flex</command> 而是试图寻找 <command>lex</command> 程序（flex 是实现 lex 功能的另一种也是更好的选择）。为了满足少数一些程序的需要，我们将创建一个 <filename>lex</filename>  脚本，这个脚本调用 <filename>flex</filename> 并通过它来模仿 <command>lex</command> 的输出文件命名惯例：</para>
 
 <screen><userinput remap="install">cat &gt; /usr/bin/lex &lt;&lt; "EOF"
 <literal>#!/bin/sh
@@ -80,8 +104,11 @@ exec /usr/bin/flex -l "$@"
 EOF
 chmod -v 755 /usr/bin/lex</userinput></screen>
 
+<!--E
     <para>If desired, install the <filename>flex.pdf</filename> documentation
     file:</para>
+-->
+    <para>如果有需要，安装 <filename>flex.pdf</filename> 文档文件：</para>
 
 <screen><userinput remap="install">mkdir -v /usr/share/doc/flex-&flex-version;
 cp    -v doc/flex.pdf \
@@ -90,11 +117,18 @@ cp    -v doc/flex.pdf \
   </sect2>
 
   <sect2 id="contents-flex" role="content">
+<!--E
     <title>Contents of Flex</title>
+-->
+    <title>Flex 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed library</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>flex and lex</seg>
@@ -103,16 +137,22 @@ cp    -v doc/flex.pdf \
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="flex">
         <term><command>flex</command></term>
         <listitem>
+<!--E
           <para>A tool for generating programs that recognize patterns in text;
           it allows for the versatility to specify the rules for pattern-finding,
           eradicating the need to develop a specialized program</para>
+-->
+          <para>是一个用来生成识别文本的模式程序的工具；模式识别在很多程序中是非常有用，用户设置一些查询规则，然后 flex 可以生成一个查询程序。人们使用 flex 可以比亲自编写查询程序更便捷</para>
           <indexterm zone="ch-system-flex flex">
             <primary sortas="b-flex">flex</primary>
           </indexterm>
@@ -122,8 +162,11 @@ cp    -v doc/flex.pdf \
       <varlistentry id="lex">
         <term><command>lex</command></term>
         <listitem>
+<!--E
           <para>A script that runs <command>flex</command> in
           <command>lex</command> emulation mode</para>
+-->
+          <para>在 <command>lex</command> 仿真模式下运行 <command>flex</command> 的一个脚本</para>
           <indexterm zone="ch-system-flex lex">
             <primary sortas="b-lex">lex</primary>
           </indexterm>
@@ -133,7 +176,10 @@ cp    -v doc/flex.pdf \
       <varlistentry id="libfl.a">
         <term><filename class="libraryfile">libfl.a</filename></term>
         <listitem>
+<!--E
           <para>The <filename class="libraryfile">flex</filename> library</para>
+-->
+          <para><filename class="libraryfile">flex</filename> 库</para>
           <indexterm zone="ch-system-flex libfl.a">
             <primary sortas="c-libfl.a">libfl.a</primary>
           </indexterm>

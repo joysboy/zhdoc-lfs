@@ -23,8 +23,11 @@
   <sect2 role="package">
     <title/>
 
+<!--E
     <para>The File package contains a utility for determining the type of a given
     file or files.</para>
+-->
+    <para>File 是用来判断文件类型的工具。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -39,11 +42,17 @@
   </sect2>
 
   <sect2 role="installation">
+<!--E
     <title>Installation of File</title>
+-->
+    <title>安装 File</title>
 
+<!--E
     <para>Fix the man page so that it will reflect recent changes to the
-    <parameter>-e</parameter> (<parameter>--exclude</parameter>)
+    <parameter>-e</parameter> (<parameter>-exclude</parameter>)
     parameter:</para>
+-->
+    <para>用 <parameter>-e</parameter>（<parameter>-exclude</parameter>）参数修复 man 手册使得它能够反映出最新的变化：</para>
 
 <!-- The following sed should not be required after the next version update
      as the maintainer has fixed it upstream. -->
@@ -52,19 +61,31 @@
        -e '189,+1d' \
        -e 's/token$/tokens/' doc/file.man</userinput></screen>
 
+<!--E
     <para>Prepare File for compilation:</para>
+-->
+    <para>为编译 File 做准备：</para>
 
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
 
+<!--E
     <para>Compile the package:</para>
+-->
+    <para>编译软件包：</para>
 
 <screen><userinput remap="make">make</userinput></screen>
 
+<!--E
     <para>To test the results, issue:</para>
+-->
+    <para>要测试结果，请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+<!--E
     <para>Install the package:</para>
+-->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install</userinput></screen>
 
@@ -72,11 +93,18 @@
 
 
   <sect2 id="contents-file" role="content">
+<!--E
     <title>Contents of File</title>
+-->
+    <title>File 的内容</title>
 
     <segmentedlist>
+<!--E
       <segtitle>Installed programs</segtitle>
       <segtitle>Installed library</segtitle>
+-->
+      <segtitle>安装的程序</segtitle>
+      <segtitle>安装的库</segtitle>
 
       <seglistitem>
         <seg>file</seg>
@@ -85,16 +113,22 @@
     </segmentedlist>
 
     <variablelist>
+<!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+-->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="file">
         <term><command>file</command></term>
         <listitem>
+<!--E
           <para>Tries to classify each given file; it does this by performing
           several tests&mdash;file system tests, magic number tests, and language
           tests</para>
+-->
+          <para>测试每一个指定的文件并且试图对它们进行分类。有三个测试集，按照下面的顺序执行：文件系统测试、幻数（magic number）测试、语言测试。第一个测试成功后会打印文件文件类型</para>
           <indexterm zone="ch-system-file file">
             <primary sortas="b-file">file</primary>
           </indexterm>
@@ -104,8 +138,11 @@
       <varlistentry id="libmagic">
         <term><filename class="libraryfile">libmagic</filename></term>
         <listitem>
+<!--E
           <para>Contains routines for magic number recognition, used by the
           <command>file</command> program</para>
+-->
+          <para>包含产生幻数（magic number）的函数，供 <command>file</command>程序使用</para>
           <indexterm zone="ch-system-file libmagic">
             <primary sortas="c-libmagic">libmagic</primary>
           </indexterm>
