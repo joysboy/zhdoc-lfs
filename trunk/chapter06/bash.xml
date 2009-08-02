@@ -151,7 +151,7 @@ chown -Rv nobody ./</userinput></screen>
 <!--E
       <segtitle>Installed programs</segtitle>
 -->
-      <segtitle>安装的程序：</segtitle>
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>bash, bashbug, and sh (link to bash)</seg>
       </seglistitem>
