@@ -22,8 +22,10 @@
 
   <sect2 role="package">
     <title/>
-
+<!--E
     <para>The GRUB package contains the GRand Unified Bootloader.</para>
+    -->
+    <para>GRUB 程序包包含 GRand 统一引导装载程序。</para>
 
     <segmentedlist>
       <segtitle>&buildtime;</segtitle>
@@ -38,47 +40,67 @@
   </sect2>
 
   <sect2 role="installation">
+  <!--E
     <title>Installation of GRUB</title>
-
+    -->
+    <title>安装 GRUB</title>
+<!--E
     <para>This package is known to have issues when its default
     optimization flags (including the <parameter>-march</parameter> and
     <parameter>-mcpu</parameter> options) are changed. If any environment
     variables that override default optimizations have been defined, such
     as <envar>CFLAGS</envar> and <envar>CXXFLAGS</envar>,
     unset them when building GRUB.</para>
+    -->
+    <para>如果这个包的缺省的优化参数（包括 <parameter>-march</parameter> 和 <parameter>-mcpu</parameter> 参数）改变了，它会有一些已知的错误。因此，如果你定义了任何优化参数的话，比如 <envar>CFLAGS</envar> 和 <envar>CXXFLAGS</envar>，我们劝你在编译时取消或修改它们。</para>
 
+    <!--E
     <para>Start by applying the following patch to allow for better drive
     detection, fix some GCC 4.x issues, and provide better SATA support
     for some disk controllers:</para>
+    -->
+    <para>开始先打一个补丁来达到更好的硬件侦测、修复 GCC 4.x 的一些问题以及为一些磁盘控制器提供更好的 SATA 支持：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&grub-geometry-patch;</userinput></screen>
 
+    <!--E
     <para>By default, GRUB doesn't support ext2 filesystems with 256-byte inodes.
     Fix this by applying the following patch:</para>
+    -->
+    <para>GRUB 缺省不支持 256 字节 inodes 的 ext2 文件系统。 打下面的补丁来修复：</para>
 
 <screen><userinput remap="pre">patch -Np1 -i ../&grub-inode-patch;</userinput></screen>
-
+<!--E
     <para>Prepare GRUB for compilation:</para>
-
+-->
+    <para>为编译 GRUB 做准备：</para>
 <screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
-
+<!--E
     <para>Compile the package:</para>
-
+-->
+    <para>编译软件包：</para>
 <screen><userinput remap="make">make</userinput></screen>
-
+<!--E
     <para>To test the results, issue:</para>
+    -->
+    <para>要测试结果，请运行：</para>
 
 <screen><userinput remap="test">make check</userinput></screen>
 
+    <!--E
     <para>Install the package:</para>
+    -->
+    <para>安装软件包：</para>
 
 <screen><userinput remap="install">make install
 mkdir -v /boot/grub
 cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
-
+<!--E
     <para>Replace <filename class="directory">i386-pc</filename> with whatever
     directory is appropriate for the hardware in use.</para>
-
+-->
+    <para>把 <filename class="directory">i386-pc</filename> 换成适合你的平台的路径。</para>
+<!--E
     <para>The <filename class="directory">i386-pc</filename> directory
     contains a number of <filename>*stage1_5</filename> files, different
     ones for different file systems. Review the files available and copy
@@ -86,6 +108,8 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
     class="directory">/boot/grub</filename> directory. Most users will
     copy the <filename>e2fs_stage1_5</filename> and/or
     <filename>reiserfs_stage1_5</filename> files.</para>
+-->
+    <para><filename class="directory">i386-pc</filename> 目录还包含一些 <filename>*stage1_5</filename> 文件，是为不同的文件系统准备的。看看有哪些文件可用，并把你所需要的拷贝到<filename class="directory">/boot/grub</filename> 目录下。多数人拷贝 <filename>e2fs_stage1_5</filename> 和／或 <filename>reiserfs_stage1_5</filename> 文件。</para>
 
   </sect2>
 
@@ -93,8 +117,10 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
     <title>Contents of GRUB</title>
 
     <segmentedlist>
+    <!--E
       <segtitle>Installed programs</segtitle>
-
+-->
+      <segtitle>安装的程序</segtitle>
       <seglistitem>
         <seg>grub, grub-install, grub-md5-crypt, grub-set-default,
         grub-terminfo, and mbchk</seg>
@@ -102,14 +128,20 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
     </segmentedlist>
 
     <variablelist>
+    <!--E
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      -->
+      <bridgehead renderas="sect3">简要描述</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
       <varlistentry id="grub">
         <term><command>grub</command></term>
         <listitem>
+        <!--E
           <para>The Grand Unified Bootloader's command shell</para>
+          -->
+          <para>GRUB 的命令解释 shell</para>
           <indexterm zone="ch-system-grub grub">
             <primary sortas="b-grub">grub</primary>
           </indexterm>
@@ -119,7 +151,10 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
       <varlistentry id="grub-install">
         <term><command>grub-install</command></term>
         <listitem>
+        <!--E
           <para>Installs GRUB on the given device</para>
+          -->
+          <para>在指定设备上安装 GRUB</para>
           <indexterm zone="ch-system-grub grub-install">
             <primary sortas="b-grub-install">grub-install</primary>
           </indexterm>
@@ -129,7 +164,10 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
       <varlistentry id="grub-md5-crypt">
         <term><command>grub-md5-crypt</command></term>
         <listitem>
+        <!--E
           <para>Encrypts a password in MD5 format</para>
+          -->
+          <para>以 MD5 加密一个密码</para>
           <indexterm zone="ch-system-grub grub-md5-crypt">
             <primary sortas="b-grub-md5-crypt">grub-md5-crypt</primary>
           </indexterm>
@@ -139,7 +177,10 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
       <varlistentry id="grub-set-default">
         <term><command>grub-set-default</command></term>
         <listitem>
+        <!--E
           <para>Sets the default boot entry for GRUB</para>
+          -->
+          <para>为 Grub 设置默认启动入口</para>
           <indexterm zone="ch-system-grub grub-set-default">
             <primary sortas="b-grub-set-default">grub-set-default</primary>
           </indexterm>
@@ -149,8 +190,11 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
       <varlistentry id="grub-terminfo">
         <term><command>grub-terminfo</command></term>
         <listitem>
+        <!--E
           <para>Generates a terminfo command from a terminfo name; it can be
           employed if an unknown terminal is being used</para>
+          -->
+          <para>从 terminfo 名称产生 terminfo 命令。如果你在一个不常见的终端时，可以使用这个命令。</para>
           <indexterm zone="ch-system-grub grub-terminfo">
             <primary sortas="b-grub-terminfo">grub-terminfo</primary>
           </indexterm>
@@ -160,7 +204,10 @@ cp -v /usr/lib/grub/i386-pc/stage{1,2} /boot/grub</userinput></screen>
       <varlistentry id="mbchk">
         <term><command>mbchk</command></term>
         <listitem>
+        <!--E
           <para>Checks the format of a multi-boot kernel</para>
+          -->
+          <para>检查多重启动内核的格式</para>
           <indexterm zone="ch-system-grub mbchk">
             <primary sortas="b-mbchk">mbchk</primary>
           </indexterm>
