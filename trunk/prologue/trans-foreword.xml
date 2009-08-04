@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="trans-foreword">
+  <?dbhtml filename="trans-foreword.html"?>
+
+  <title>译者序</title>
+
+  <para>很早以前就听说过 LFS，不过一直没有什么时间和精力去尝试它，这一次因为上课任务的需要，才开始接触它。安装 LFS 是我们这门课程当中的一个实验，可能对于高手们来说这不过是小菜一碟，但对于大一的上课前从来没有接触过 Linux 的学生们来说，应该还是一项非常艰难的任务。不过最终结果是令人满意的！很多学生最终完成了实验，并且还有一些学生在课后利用业余时间合作整理（翻译）了 LFS 6.4 的中文手册。</para>
+
+  <para>关于初学者如何学习 LFS 的问题，我觉得金步国先生在 <ulink url="http://lamp.linux.gov.cn/Linux/LFS-6.2/index.html">LFS 6.2 手册</ulink>前的一段<quote>题外话</quote>说的非常好，就直接贴过来了，希望对后来人有用：</para>
+
+  <blockquote>
+    <para>大部分 LFSer 都认为学习 LFS 需要有熟练使用 Linux 的基础，并且大部分听说过 LFS 的人都有一个印象：那是高手的玩具，不是我等菜鸟玩得了的……我不完全赞同，我认为基础如何并非关键，契而不舍的精神和强烈的求知欲才更加重要。想想自己接触 Linux 一个月左右的时候就有了和 Gerard 一样的想法，因为在学习 RedHat / Fedora / Debian 甚至是 Gentoo 的时候，我感觉到自己并不是在学习 Linux 而是在学习这些发行版各自的专有特性，他们把 Linux 本来的面貌层层包裹起来，让我不能深入理解背后的机制。并且这些版本各自有自己的优点和缺点，不能完全满足我的要求。其实那时候我的 Linux 水平仅仅限于会在控制台上敲几个 ls 之类的命令，从未编译过软件，连 make 都没听说过呢。但是我迫切想知道如何定制一个完全适合自己的 Linux 系统，问了好多 Linuxer ，把 Google 搜了个底朝天，也未能得到完整性的答案，唯一让我印象深刻的就是能够容纳在一张软盘上的 babyLinux ，但是它显然太简单，不能满足我的要求。一直郁闷了很久，好不容易机缘巧合，Qoo 兄弟叫我来 LinuxSir.Org 论坛的 LFS 版看看，当时论坛上只有一份不完整的 LFS 6.0 中文版，看完序言后，我激动的跳了起来，欢呼不已！这就是我梦寐以求的东西啊！于是在尚未安装过 LFS 的情况下，静下心来花了十多天时间先完整的翻译了 LFS 6.1 ，又花了5-6天时间，一行命令一行命令地完成了 LFS 的全过程。在学习 LFS 的20天里，我对 Linux 的理解发生了质的飞跃。大约没有人赞同学习 Linux 可以从 LFS 开始，这确实有一定的道理，但是 LFS 教给你的都是真正的 Linux "基础知识"，并且这些知识可以为将来的进一步学习打下绝对扎实的基础。所以我要用自己的亲身经历鼓励那些刚刚接触 Linux 的新生牛犊勇敢的从 LFS 开始：没有基础不要紧，缺什么补什么！当你把 LFS 做完了，也就脱离"菜鸟"的行列了，用 LFS 给你的强大翅膀，勇敢地继续飞翔吧！</para>
+  </blockquote>
+
+  <para>我们这一次在整理（翻译）LFS 6.4 时，使用了与前几个版本不太一样的方法（可能也有人这么做我们不知道）。我们从 LFS 的官方网站上下载了 DocBook 格式的原稿，并在原稿的基础上注释掉英文并添加中文翻译，然后再通过 LFS 官方的 DocBook 模板把中文翻译稿生成为 HTML 格式。这样做的好处很多，譬如可以保证格式的统一、可以根据需要生成各种格式的版本、可以在官方版本更新时利用工具直接 Merge 一部分内容等等。</para>
+
+  <para>另外，我们在 <ulink url="http://code.google.com">code.google.com</ulink> 注册了项目 <ulink url="http://code.google.com/p/zhdoc-lfs/">zhdoc-lfs</ulink>，并把所有的翻译原稿上传到了 svn 版本库中。总的来说，我们希望翻译的工作可以更加规范、更容易更新、更方便所有人使用。</para>
+
+  <para>LFS 6.4 中文手册中的很多内容，是从 LFS 6.2 版本中直接摘取过来的（毕竟原文在很多地方没有太大的变化）。因此非常感谢 LFS 6.2 的翻译者金步国先生和 5.0、6.0 的翻译者们。另外，LFS 6.4 中文手册前五章的很多内容，是从 <ulink url="http://www.linuxsir.org/bbs">LinuxSir.org 论坛</ulink>上 scupan 的翻译稿中摘取的，因此也非常感谢 scupan。</para>
+
+  <para>如前所述，有好几位同学参加了这一次 LFS 6.4 中文手册的整理（翻译）工作，（实际上后期的工作大都是他们做的）。他们都是北京理工大学计算机学院和软件学院 2008 级的本科生（其中的几位是一个学生兴趣小组 <ulink url="http://www.bitctp.org">CTP</ulink> 的成员），他们是：</para>
+  
+  <itemizedlist>
+    <listitem>
+      <para>董帆 &lt;deepblue.aesky.AT.gmail.com&gt;</para>
+    </listitem>
+    <listitem>
+      <para>李俊崧 &lt;ljs.darkfish.AT.gmail.com&gt;</para>
+    </listitem>
+    <listitem>
+      <para>唐一帆 &lt;coy1110.AT.gmail.com&gt;</para>
+    </listitem>
+    <listitem>
+      <para>方艾曼 &lt;fam1011.AT.gmail.com&gt;</para>
+    </listitem>
+    <listitem>
+      <para>王志鹏 &lt;wzp.Mitnick.AT.gmail.com&gt;</para>
+    </listitem>
+  </itemizedlist>
+
+  <para>对于他们所做的出色工作和贡献，我个人表示非常感谢。</para>
+
+  <para>由于时间仓促以及我们水平有限，整理（翻译）的内容难免有错误和疏漏，欢迎广大 LFSer 指正（最好直接在 Google Code 上添加 <ulink url="http://code.google.com/p/zhdoc-lfs/issues/list">Issue</ulink>）。</para>
+
+  <literallayout>--
+北京理工大学 计算机学院 李凌
+lilingv@gmail.com</literallayout>
+</sect1>
