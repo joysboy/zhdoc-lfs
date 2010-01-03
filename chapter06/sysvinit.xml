@@ -115,7 +115,7 @@
 <screen><userinput>cat &gt; /etc/inittab &lt;&lt; "EOF"
 <literal># Begin /etc/inittab
 
-id:3:initdefaul
+id:3:initdefault
 
 si::sysinit:/etc/rc.d/init.d/rc sysinit
 
