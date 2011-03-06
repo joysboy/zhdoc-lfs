@@ -1,0 +1,21 @@
+= 生成 pdf 文件 =
+
+感谢 openbilly(openbillyAT.gmail.com) 提供如下方法
+
+ * stylesheets.tar.gz 放到stylesheets目录，其中的lfs-pdf.xsl其实就是在原来基础上加入：
+{{{
+<xsl:param name="l10n.gentext.language" select="'zh_cn'"/>
+<xsl:param name="body.font.family">WenQuanYi Micro Hei</xsl:param> 
+<xsl:param name="monospace.font.family">WenQuanYi Micro Hei</xsl:param> 
+<xsl:param name="title.font.family">WenQuanYi Micro Hei</xsl:param> 
+}}}
+ * 修改Makefile
+{{{
+其中的：$(Q)fop $(RENDERTMP)/lfs-pdf.fo $(BASEDIR)/$(PDF_OUTPUT)
+改成：$(Q)fop -c stylesheets/zh/fop.xconf $(RENDERTMP)/lfs-pdf.fo $(BASEDIR)/$(PDF_OUTPUT)
+}}}
+ * 如果需要每段缩进两空格。
+{{{
+则修改：stylesheets/lfs-xsl/pdf/lfs-mixed.xsl
+在<xsl:attribute-set name="normal.para.spacing">的下面加入：<xsl:attribute name="text-indent">2em</xsl:attribute>
+}}}
