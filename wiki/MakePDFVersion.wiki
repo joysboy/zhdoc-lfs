@@ -2,6 +2,8 @@
 
 感谢 openbilly(openbillyAT.gmail.com) 提供如下方法
 
+注意：直接解压到 stylesheets 目录中。可以到 Downloads 中下载编译好的版本。
+
  * stylesheets.tar.gz 放到stylesheets目录，其中的lfs-pdf.xsl其实就是在原来基础上加入：
 {{{
 <xsl:param name="l10n.gentext.language" select="'zh_cn'"/>
